@@ -34,7 +34,7 @@
   --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,0.10);
   --series-1:#2a78d6; --series-2:#eb6834; --series-3:#1baf7a; --series-4:#8a63d2;
   --critical:#d03b3b; --good:#0ca30c;
-  --g-kids:#1baf7a; --g-young:#2a78d6; --g-mature:#8a63d2; --g-cross:#eb6834;
+  --g-kids:#1baf7a; --g-young:#2a78d6; --g-30:#0e8a9a; --g-mature:#8a63d2; --g-60:#b45309; --g-cross:#eb6834;
   --tint-1:#e8f0fb;
 }
 @media (prefers-color-scheme: dark){
@@ -45,7 +45,7 @@
     --grid:#2c2c2a; --axis:#44443f; --border:rgba(255,255,255,0.10);
     --series-1:#4a93ea; --series-2:#e5703f; --series-3:#23b683; --series-4:#a283e6;
     --critical:#e25555; --good:#3cc23c;
-    --g-kids:#23b683; --g-young:#4a93ea; --g-mature:#a283e6; --g-cross:#e5703f;
+    --g-kids:#23b683; --g-young:#4a93ea; --g-30:#2aa8b8; --g-mature:#a283e6; --g-60:#d97706; --g-cross:#e5703f;
     --tint-1:#17263a;
   }
 }
@@ -56,7 +56,7 @@
   --grid:#2c2c2a; --axis:#44443f; --border:rgba(255,255,255,0.10);
   --series-1:#4a93ea; --series-2:#e5703f; --series-3:#23b683; --series-4:#a283e6;
   --critical:#e25555; --good:#3cc23c;
-  --g-kids:#23b683; --g-young:#4a93ea; --g-mature:#a283e6; --g-cross:#e5703f;
+  --g-kids:#23b683; --g-young:#4a93ea; --g-30:#2aa8b8; --g-mature:#a283e6; --g-60:#d97706; --g-cross:#e5703f;
   --tint-1:#17263a;
 }
 *{box-sizing:border-box}
@@ -208,14 +208,15 @@ a{color:var(--series-1)}
 
 <section id="audiences">
   <h2>Target audiences first</h2>
-  <p class="lede">Four audience groups, set by age and by who actually makes the decision. Every campaign and post targets one of these groups; the personas below are the people inside them.</p>
-  <div class="grid4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
-    <div class="card" style="border-top:4px solid var(--g-young)"><h3 style="margin:0 0 4px;font-size:15px">Young adults 18–40</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Decides for themselves. 18–29 is a different creative audience from 30–40</div><div style="font-size:12.5px">Wants to be glasses-free, or has been told LASIK is not suitable and needs the alternatives explained. Services: iLASIK, CLEAR PRO, ICL. Inside this group, Gen Z (about 18–29) lives on a phone, checks a trend before booking, and is reached with trending content that is planned and published within 48 hours.</div><div style="font-size:12px;margin-top:8px"><b>Personas:</b> P01, P02, P10</div></div>
+  <p class="lede">Five audience groups, set by age and by who actually makes the decision. Every campaign and post targets one of these groups; the personas below are the people inside them.</p>
+  <div class="grid4" style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px">
+    <div class="card" style="border-top:4px solid var(--g-young)"><h3 style="margin:0 0 4px;font-size:15px">18–30</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Decides for themselves</div><div style="font-size:12.5px">Lives on a phone and checks a trend before booking. Wants to be glasses-free, or has been told LASIK is not suitable and needs the alternatives explained. Services: iLASIK, CLEAR PRO, ICL. Reached with trending content that is planned and published within 48 hours.</div><div style="font-size:12px;margin-top:8px"><b>Personas:</b> P01, P02, P10</div></div>
+    <div class="card" style="border-top:4px solid var(--g-30)"><h3 style="margin:0 0 4px;font-size:15px">30–40</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Decides for themselves</div><div style="font-size:12.5px">The same refractive decision — suitability, cost, and how many days off work — without the 48-hour trend slot. Services: iLASIK, CLEAR PRO, ICL. Screen-related dry eye also lands in this group.</div><div style="font-size:12px;margin-top:8px"><b>Personas:</b> P01, P02, P07</div></div>
     <div class="card" style="border-top:4px solid var(--g-kids)"><h3 style="margin:0 0 4px;font-size:15px">Parents of children 5–17</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">The parent decides, the child is the patient</div><div style="font-size:12.5px">Worried that the child's myopia keeps rising. Services: kids eye examination, myopia control programme. Reached through parenting audiences, schools and optometrists — not through the child.</div><div style="font-size:12px;margin-top:8px"><b>Persona:</b> P03</div></div>
-    <div class="card" style="border-top:4px solid var(--g-mature)"><h3 style="margin:0 0 4px;font-size:15px">Adults 40–59</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Decides for themselves, or arranges for a parent</div><div style="font-size:12.5px">The widest range of needs: presbyopia, cataract, glaucoma, dry eye. Includes the adult son or daughter arranging a parent's cataract surgery. Services: cataract, RLE, glaucoma, dry eye.</div><div style="font-size:12px;margin-top:8px"><b>Personas:</b> P04, P06, P07</div></div>
-    <div class="card" style="border-top:4px solid var(--g-mature)"><h3 style="margin:0 0 4px;font-size:15px">Seniors 60+</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Decides for themselves, often with family support</div><div style="font-size:12.5px">Wants to see the doctor, not type on a phone; comes on a neighbour's or family's recommendation. Services: cataract, glaucoma. Reached through Facebook, radio, Google Business Profile and the family member in the group above.</div><div style="font-size:12px;margin-top:8px"><b>Persona:</b> P05</div></div>
+    <div class="card" style="border-top:4px solid var(--g-mature)"><h3 style="margin:0 0 4px;font-size:15px">40+</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Decides for themselves, or arranges for a parent</div><div style="font-size:12.5px">Presbyopia, cataract, glaucoma and dry eye. Includes the adult son or daughter arranging a parent's cataract surgery. Services: cataract, RLE, glaucoma, dry eye.</div><div style="font-size:12px;margin-top:8px"><b>Personas:</b> P04, P06, P07</div></div>
+    <div class="card" style="border-top:4px solid var(--g-60)"><h3 style="margin:0 0 4px;font-size:15px">60+</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Decides for themselves, often with family support</div><div style="font-size:12.5px">Wants to see the doctor, not type on a phone; comes on a neighbour's or family's recommendation. Services: cataract, glaucoma. Reached through Facebook, radio, Google Business Profile and the family member in the 40+ group.</div><div style="font-size:12px;margin-top:8px"><b>Personas:</b> P05, P06</div></div>
   </div>
-  <p class="note" style="font-size:12px;color:var(--text-secondary);margin-top:12px">P08 and P09 are in the persona list below. They are not missing. P07 (dry eye), P09 (traveller from a city with no centre) and P10 (promo-driven shopper) are situations, not separate age groups — the same person can sit in more than one, and they are reached inside the age groups above with a different message. P08 (Singapore cross-border) is not a primary target: Singapore cannot be targeted as a whole, so it is held as an explore option for the Johor Bahru centre only, if Vista wants it. High screen time is not only an adults-40 concern; it is also how Gen Z meets Vista.</p>
+  <p class="note" style="font-size:12px;color:var(--text-secondary);margin-top:12px">P08 and P09 are in the persona list below. They are not missing. P07 (dry eye), P09 (traveller from a city with no centre) and P10 (promo-driven shopper) are situations, not extra age groups — the same person can sit in more than one, and they are reached inside the age groups above with a different message. P01 (24–34) and P02 (22–40) cross 30, so both are linked to 18–30 and 30–40. P06 (45–60) is linked to 40+ and 60+. P08 (Singapore cross-border) is not a primary target: Singapore cannot be targeted as a whole, so it is held as an explore option for the Johor Bahru centre only, if Vista wants it. High screen time is how 18–30 meets Vista, and it is also a dry-eye concern for 30–40 and 40+.</p>
 </section>
 
 <section id="roster">
@@ -263,13 +264,15 @@ function mono(p){return `<span class="mono" style="background:var(${GC[p.group]}
 
 function filters(){
   const opts=[['all','All ten',null]].concat(Object.entries(D.groups).map(([k,v])=>[k,v,GC[k]]));
-  $('gfilter').innerHTML=opts.map(([k,v,c])=>`<button type="button" data-g="${k}" class="${k===group?'on':''}">${c?`<i class="dot" style="background:var(${c})"></i>`:''}${v} (${k==='all'?P.length:P.filter(p=>p.group===k).length})</button>`).join('');
+  const inGroup=(p,k)=>p.group===k||(p.also||[]).includes(k);
+  $('gfilter').innerHTML=opts.map(([k,v,c])=>`<button type="button" data-g="${k}" class="${k===group?'on':''}">${c?`<i class="dot" style="background:var(${c})"></i>`:''}${v} (${k==='all'?P.length:P.filter(p=>inGroup(p,k)).length})</button>`).join('');
   $('gfilter').onclick=e=>{const b=e.target.closest('button');if(!b)return;group=b.dataset.g;filters();cards();};
 }
 function cards(){
-  const list=P.filter(p=>group==='all'||p.group===group);
+  const inGroup=(p,k)=>p.group===k||(p.also||[]).includes(k);
+  const list=P.filter(p=>group==='all'||inGroup(p,group));
   $('cards').innerHTML=list.map(p=>`<button type="button" class="pc ${p.id===sel?'sel':''}" data-id="${p.id}" aria-pressed="${p.id===sel}">
-    <div class="row">${mono(p)}<div><div class="pid">${p.id}</div><div class="grp">${D.groups[p.group]}</div></div></div>
+    <div class="row">${mono(p)}<div><div class="pid">${p.id}</div><div class="grp">${[p.group].concat(p.also||[]).map(k=>D.groups[k]).filter(Boolean).join(' · ')}</div></div></div>
     <div class="ttl">${esc(p.title)}</div>
     <div class="facts"><span>${esc(p.age)} · ${esc(p.gender)}</span><span>${esc(p.services[0])}</span></div></button>`).join('');
   $('cards').onclick=e=>{const b=e.target.closest('.pc');if(b)select(b.dataset.id,false);};
@@ -285,7 +288,7 @@ function detail(){
   const plat=p.platforms.primary.map(k=>`<span class="tag p">${PL[k]}</span>`).join('')+p.platforms.secondary.map(k=>`<span class="tag">${PL[k]}</span>`).join('');
   const F=(n,k,v,cls='')=>`<div class="f ${cls}"><div class="k"><b>${String(n).padStart(2,'0')}</b>${k}</div><div class="v">${v}</div></div>`;
   $('detail').innerHTML=`
-  <div class="dhead">${mono(p)}<div style="flex:1;min-width:220px"><div class="eyebrow">${p.id} · ${D.groups[p.group]} · ${esc(p.location)}</div><h3>${esc(p.title)}</h3><div class="quote">“${esc(p.quote)}”</div></div>
+  <div class="dhead">${mono(p)}<div style="flex:1;min-width:220px"><div class="eyebrow">${p.id} · ${esc([p.group].concat(p.also||[]).map(k=>D.groups[k]).filter(Boolean).join(' · '))} · ${esc(p.location)}</div><h3>${esc(p.title)}</h3><div class="quote">“${esc(p.quote)}”</div></div>
   <div class="nav2"><button type="button" id="prev" aria-label="Previous persona">← ${P[(i+P.length-1)%P.length].id}</button><button type="button" id="next" aria-label="Next persona">${P[(i+1)%P.length].id} →</button></div></div>
   <div class="fields">
     ${F(1,'Persona title',esc(p.title))}
@@ -334,7 +337,8 @@ function compare(){
   $('cfilter').innerHTML=opts.map(([k,v])=>`<button type="button" data-g="${k}" class="${k===cg?'on':''}">${v}</button>`).join('');
   $('cfilter').onclick=e=>{const b=e.target.closest('button');if(!b)return;cg=b.dataset.g;compare();};
   const cols=[['id','ID'],['title','Persona'],['grp','Segment'],['age','Age'],['gender','Gender'],['income','Income'],['svc','Services'],['pain','Top pain point'],['plat','Primary platforms'],['hook','Buying hook'],['trust','Lead trust factor'],['want','First thing they look for'],['kpi','KPI']];
-  const rows=P.filter(p=>cg==='all'||p.group===cg).map(p=>({id:p.id,title:p.title,grp:D.groups[p.group],age:p.age,gender:p.gender,income:p.income,svc:p.services.join('; '),pain:p.pains[0],plat:p.platforms.primary.map(k=>PL[k]).join(', '),hook:p.hook,trust:p.trust[0],want:p.wants[0],kpi:p.cds.kpi}));
+  const inGroup=(p,k)=>p.group===k||(p.also||[]).includes(k);
+  const rows=P.filter(p=>cg==='all'||inGroup(p,cg)).map(p=>({id:p.id,title:p.title,grp:[p.group].concat(p.also||[]).map(k=>D.groups[k]).filter(Boolean).join(' · '),age:p.age,gender:p.gender,income:p.income,svc:p.services.join('; '),pain:p.pains[0],plat:p.platforms.primary.map(k=>PL[k]).join(', '),hook:p.hook,trust:p.trust[0],want:p.wants[0],kpi:p.cds.kpi}));
   rows.sort((a,b)=>asc?String(a[sk]).localeCompare(String(b[sk])):String(b[sk]).localeCompare(String(a[sk])));
   let h='<table class="data"><thead><tr>'+cols.map(([k,l])=>`<th class="sortable ${k===sk?'sorted'+(asc?' asc':''):''}" data-k="${k}">${l}</th>`).join('')+'</tr></thead><tbody>';
   rows.forEach(r=>{h+='<tr>'+cols.map(([k])=>k==='id'?`<td><button type="button" class="plink" data-id="${r.id}">${r.id}</button></td>`:`<td style="min-width:${k==='hook'||k==='pain'?'220':k==='title'?'170':'110'}px">${esc(r[k])}</td>`).join('')+'</tr>';});

@@ -72,15 +72,18 @@
    }
   ],
   "groups": {
-   "young": "Young adults 18–40",
+   "a18": "18–30",
+   "a30": "30–40",
    "kids": "Parents of children 5–17",
-   "mature": "Adults 40+ and seniors",
+   "a40": "40+",
+   "a60": "60+",
    "cross": "Situational — reached within the groups above"
   },
   "personas": [
    {
     "id": "P01",
-    "group": "young",
+    "group": "a30",
+    "also": ["a18"],
     "title": "The Glasses-Free Young Professional",
     "quote": "I just want to know if I'm suitable, what it costs, and how many days I'll be off work.",
     "age": "24–34",
@@ -159,7 +162,8 @@
    },
    {
     "id": "P02",
-    "group": "young",
+    "group": "a18",
+    "also": ["a30"],
     "title": "The High-Myopia Second-Opinion Seeker",
     "quote": "Two clinics said LASIK isn't for me. I need someone to explain what is.",
     "age": "22–40",
@@ -318,7 +322,7 @@
    },
    {
     "id": "P04",
-    "group": "mature",
+    "group": "a40",
     "title": "The Adult Child Arranging a Parent's Cataract Surgery",
     "quote": "Mum won't go unless I take her. I need to know the cost, the insurance, and how many trips.",
     "age": "35–55 (parent 60–80)",
@@ -397,7 +401,7 @@
    },
    {
     "id": "P05",
-    "group": "mature",
+    "group": "a60",
     "title": "The Senior Who Wants to See the Doctor in Person",
     "quote": "My neighbour went to Vista. I want to see the doctor, not type on a phone.",
     "age": "60–78",
@@ -476,7 +480,8 @@
    },
    {
     "id": "P06",
-    "group": "mature",
+    "group": "a40",
+    "also": ["a60"],
     "title": "The Presbyopic Executive",
     "quote": "I'm tired of reading glasses in every meeting. If there's one proper fix, I'll pay for it.",
     "age": "45–60",
@@ -556,6 +561,7 @@
    {
     "id": "P07",
     "group": "cross",
+    "also": ["a30", "a40"],
     "title": "The Screen-Weary Dry Eye Sufferer",
     "quote": "I've tried every eye drop at the pharmacy. It keeps coming back.",
     "age": "28–55",
@@ -792,7 +798,7 @@
    },
    {
     "id": "P10",
-    "group": "cross",
+    "group": "a18",
     "title": "The Promo-Driven Comparison Shopper",
     "quote": "Saw the promo. What's the actual price? Optimax quoted me already.",
     "age": "20–35",
@@ -959,9 +965,11 @@
   ]
  },
  "GC": {
+  "a18": "--g-young",
+  "a30": "--g-30",
   "kids": "--g-kids",
-  "young": "--g-young",
-  "mature": "--g-mature",
+  "a40": "--g-mature",
+  "a60": "--g-60",
   "cross": "--g-cross"
  }
 }

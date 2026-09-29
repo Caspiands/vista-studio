@@ -107,7 +107,7 @@ export const defaultContent: Content = {
       { label: "Booking rate, paid vs unpaid", value: "1.5% / 14.4%", note: "Dec 2025–Aug 2026, Respond.io lifecycle" },
       { label: "\u201cCataract surgery\u201d on Google", value: "Not in top 100", note: "Vista's largest service is not visible for its own keyword" },
       { label: "New website live", value: "Month 3", note: "Before Chinese New Year, Mandarin campaign first; ~12 weeks from start" },
-      { label: "Audiences · personas", value: "4 · 10", note: "Four audience groups by age and decision-maker; ten personas inside them" },
+      { label: "Audiences · personas", value: "5 · 10", note: "Five audience groups by age and decision-maker; ten personas inside them" },
       { label: "Pillars · campaigns", value: "6 · 13", note: "One content strategy for social, ads, landing pages and search, in EN, BM and ZH" },
     ],
   },
@@ -133,9 +133,9 @@ export const defaultContent: Content = {
         tab: "personas",
         title: "Who we are speaking to",
         stage: "Audiences, then personas",
-        summary: "Four audience groups by age and by who makes the decision, and the ten people inside them.",
+        summary: "Five audience groups by age and by who makes the decision, and the ten people inside them.",
         bullets: [
-          "Young adults 18–40 · parents of children 5–17 · adults 40+ · seniors",
+          "18–30 · 30–40 · parents of children 5–17 · 40+ · 60+",
           "Parents, not children, are the target for myopia",
           "Each persona: journey today vs with the plan",
         ],
@@ -251,7 +251,7 @@ export const defaultContent: Content = {
     columns: { tab: "Tab", covers: "What it covers" },
     rows: [
       { tab: "analysis", covers: "Every digital asset Vista operates — website, tracking, GA4, Respond.io, paid media, agency reporting, social — as raw numbers with findings and opportunities" },
-      { tab: "personas", covers: "Four target audience groups and ten personas: profile, pain points, platforms, journey today and with the plan" },
+      { tab: "personas", covers: "Five target audience groups and ten personas: profile, pain points, platforms, journey today and with the plan" },
       { tab: "campaigns", covers: "Six content pillars with their angles, 13 campaigns with platform and rationale, indicative monthly topics, advertising rules" },
       {
         tab: "search",
