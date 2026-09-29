@@ -79,40 +79,9 @@ footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--grid);font-si
 <div class="wrap">
 <header class="top">
 <div class="eyebrow">Vista Eye Specialist · Digital Transformation RFP QHM/VES/DT/2026/003 · technical scope · Caspian Digital Solutions</div>
-<h1>Technical — <span>comparison, recommendation and sitemap</span></h1>
-<nav class="toc"><a href="#verdict">Recommendation</a><a href="#method">What was reviewed</a><a href="#screens">Screenshots</a><a href="#ux">Experience &amp; content</a><a href="#tech">Technical comparison</a><a href="#fixes">Defects to fix</a><a href="#sitemap">Proposed sitemap</a><a href="#solution">Solution requirements</a></nav>
+<h1>Technical — <span>comparison and sitemap</span></h1>
+<nav class="toc"><a href="#method">What was reviewed</a><a href="#screens">Screenshots</a><a href="#ux">Experience &amp; content</a><a href="#tech">Technical comparison</a><a href="#fixes">Defects to fix</a><a href="#sitemap">Proposed sitemap</a><a href="#solution">Solution requirements</a></nav>
 </header>
-
-<section id="verdict"><h2>Recommendation — build on vista3 (Plain Sight), take four things from vista1</h2>
-<div class="card verdict">
-<p style="margin:0 0 10px;font-size:14px"><b>Go with vista3 as the content base for the new vista.com.my.</b> It is the direction that serves the patients the numbers say matter most, it is the only one that is trilingual, and it is the lightest and most accessible of the two concepts. Take from vista1 the richer booking-form fields, the consultant directory with structured data, and the "three steps to clear vision" explainer. Do not take the price-led home page. Neither prototype ships as code, and neither is the visual design — the production build is Storyblok + Next.js, described as the highest-performing way to run the site.</p>
-<h3 style="margin-top:14px">Why vista3</h3>
-<ol>
-<li><b>It is built for the people who enquire most.</b> Cataract is the largest enquiry category (12,853 conversations in 12 months) and the caregiver (P04) and senior (P05) personas carry the biggest media line. Plain Sight's 13–14 px minimum type, 56 px targets, A+ text control, functional motion and "who is this for?" routing are designed for exactly those visitors. vista1's flowing motion and 12 px footers are designed for the young refractive buyer, who is one segment of three.</li>
-<li><b>It answers the language finding.</b> 9% of users read Mandarin and 37 of 43 Mandarin pages were broken (F-06); BM is the first language on TikTok. vista3 has real /ms/ and /zh/ routes with native copy; vista1 has a switcher that leads nowhere. The CNY campaign on 25 Jan 2027 lands on the new site, so this is not optional.</li>
-<li><b>It is the performance and accessibility target the RFP scores.</b> 475 KB and 14 requests against 2.5 MB / 182 requests today and 10.8 MB / 32 requests for vista1 on mobile; Lighthouse 98 / 93 / 96 / 100 on desktop and 75 / 93 / 96 / 100 on mobile; one axe violation type (contrast) against five on the live site. The committed targets are a load under 3 seconds on a phone in Malaysia, confirmed once hosting and page weight are sized, Lighthouse ≥ 90, Core Web Vitals Good, and WCAG 2.2 AA. vista3 is the lightest of the concepts and the closest on accessibility.</li>
-<li><b>It carries the booking flow the CRM redesign needs.</b> "Who is this for?" is the first step of the wizard, which is what lets Respond.io route a caregiver to a coordinator, a parent to the kids path and a refractive enquiry to the price answer — the mechanics behind moving the paid booking rate from 1.5% to ≥ 6%.</li>
-<li><b>It is the easiest to make compliant.</b> Plain language, no superlatives, no testimonials, a facility-only trust block. One line ("free suitability assessment") has to go; vista1 is also clean; the live site is not ("Top #1", "painless", "25× precision").</li>
-</ol>
-<h3>What vista1 does better — and comes across</h3>
-<ul>
-<li>A clear answer to "how much", kept on the treatment page once Vista approves the figure — not a price card as the first thing on the home page. Price questions went unanswered in chat (0 of 5 in the sample), so the answer has to exist. It does not have to lead.</li>
-<li>The booking form's detail: preferred time slots, insurance panel field, "what happens next", "bring these with you", and the red-flag notice — all of which reduce coordinator work.</li>
-<li>Consultants listed with name, qualifications, sub-specialty and centre, marked up as Physician schema, and MedicalProcedure + FAQPage schema on treatments — the AI-visibility and rich-result groundwork in the SEO scope.</li>
-<li>The nine-service-line grid with "the assessment to book first" on each — it turns a treatment menu into a next action.</li>
-</ul>
-<h3>Why not the current site, and why not vista1</h3>
-<p style="margin:0;font-size:13px;color:var(--text-secondary)">The live site fails the RFP's own acceptance criteria on structure (two H1s, none on branch pages, 74 duplicate location URLs), accessibility (31 axe violations on the home page, 2 of 93 images with alt text), consent (eight tags fire with no CMP) and claims (the page title itself is a prohibited superlative). vista1 is a strong design but as deployed it is the slowest of the three on mobile (LCP 35 s, 0.40 layout shift) because of unoptimised imagery, it is English-only, and its motion-heavy language suits one persona group. Those are fixable, which is why its best parts are being carried across rather than the whole.</p>
-</div>
-<div class="tiles" style="margin-top:14px">
-<div class="tile"><div class="lab">Home page weight · mobile</div><div class="val">2.5 MB · 10.8 MB · 0.5 MB</div><div class="note">current · vista1 · vista3 (Lighthouse total byte weight)</div></div>
-<div class="tile"><div class="lab">Largest Contentful Paint · mobile</div><div class="val">3.8 s · 35.1 s · 4.6 s</div><div class="note">current · vista1 · vista3; desktop 1.0 · 3.9 · 1.1 s</div></div>
-<div class="tile"><div class="lab">Lighthouse accessibility</div><div class="val">85 · 96 · 93</div><div class="note">axe AA violations on home: 31 · 5 · 5 nodes</div></div>
-<div class="tile"><div class="lab">Languages with real pages</div><div class="val">3 (broken) · 1 · 3</div><div class="note">ZH home carries 234 words today vs 874 in EN</div></div>
-<div class="tile"><div class="lab">Interactive targets under 44 px</div><div class="val">67 · 83 · 1</div><div class="note">of 78 · 91 · 40 on the home page</div></div>
-<div class="tile"><div class="lab">Blocking defects found</div><div class="val">— · 1 · 2</div><div class="note">vista1 image weight; vista3 crash + "free" wording</div></div>
-</div>
-</section>
 
 <section id="method"><h2>What was reviewed and how</h2>
 <div class="card"><ul>
