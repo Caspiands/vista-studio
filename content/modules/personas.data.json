@@ -956,13 +956,6 @@
      "P10"
     ]
    }
-  ],
-  "validation": [
-   "Age and gender splits: pull GA4 demographics (Google signals) and Vista's patient management system by procedure in Phase 1.",
-   "Income bands: DOSM Household Income Survey 2024 bands (B40 up to ≈RM5,351, M40 ≈RM6,560–11,161, T20 above ≈RM11,819 per month) applied as working assumptions; confirm with payment-mode data (instalment, insurance, cash).",
-   "Platform mix: add a 'How did you hear about us?' field at booking and in Respond.io from Gate 2.",
-   "Singapore and East Malaysia volumes: GA4 city data includes some non-patient traffic; confirm with enquiry origin (phone country code) before budgeting.",
-   "Prices, promotions and trust claims: every figure used in creative needs Vista's current price list and a Medicine Advertisements Board (MAB) approval record. MAB guideline 3/2023 does not permit free healthcare offers, gifts, price comparisons, treatment testimonials or promotion of an individual practitioner's skills."
   ]
  },
  "GC": {

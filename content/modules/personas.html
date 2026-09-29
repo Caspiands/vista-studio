@@ -4,7 +4,8 @@
 </style>
 <script>
 (function(){
-  function h(){return Math.ceil(Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0));}
+  // documentElement.scrollHeight sticks at the iframe viewport when overflow is hidden, so a shrink would leave a blank page.
+  function h(){var b=document.body;return Math.ceil(b?Math.max(b.scrollHeight,b.offsetHeight):0);}
   function post(){try{parent.postMessage({vistaHub:1,frame:window.name,height:h()},'*');}catch(e){}}
   addEventListener('load',function(){post();try{new ResizeObserver(post).observe(document.body);}catch(e){setInterval(post,800);}});
   addEventListener('resize',post);
@@ -194,7 +195,7 @@ a{color:var(--series-1)}
   <button class="tbtn" id="theme" type="button">◐ Dark mode</button>
 </header>
 <nav class="toc">
-  <a href="#audiences">Target audiences</a><a href="#roster">Personas</a><a href="#matrix">Platform matrix</a><a href="#compare">Comparison table</a><a href="#implications">What it means for the proposal</a><a href="#validate">Assumptions to validate</a><a href="#sources">Sources</a>
+  <a href="#audiences">Target audiences</a><a href="#roster">Personas</a><a href="#matrix">Platform matrix</a><a href="#compare">Comparison table</a><a href="#implications">What it means for the proposal</a>
 </nav>
 
 <div class="tiles">
@@ -244,19 +245,6 @@ a{color:var(--series-1)}
   <div class="impl" id="impl"></div>
 </section>
 
-<section id="validate">
-  <p class="lede">Behaviour, platforms and pain points come from Vista's own data. Demographics do not: GA4 demographics were not pulled and Vista has not shared patient records.</p>
-  <div class="card"><ol class="val" id="val"></ol></div>
-</section>
-
-<section id="sources">
-  <h2>Sources</h2>
-  <div class="card" style="font-size:12.5px;color:var(--text-secondary)">
-    CDS VISTA Digital Asset Analysis, 14 Sep 2026 (GA4 property p265217204, Sep 2025–Aug 2026; Respond.io space 226510, lifecycle Dec 2025–Aug 2026; crawl of vista.com.my and vistanow.com.my; public social profiles; 29 sampled conversations) · Findings register F-01 to F-25, O-01 to O-05 · CDS roadmap Nov 2026–Oct 2027 (objectives O1–O6, KPIs) · <a href="https://www.vista.com.my/" target="_blank" rel="noopener">vista.com.my</a> service structure, booking channels, 0% instalment and trust claims (read 16 Sep 2026) · <a href="https://www.vista.com.my/myopia-shortsightness/" target="_blank" rel="noopener">Vista myopia control page</a> · DOSM Household Income Survey 2024 bands as reported by <a href="https://www.stashaway.my/r/b40-m40-t20-t15-malaysia" target="_blank" rel="noopener">StashAway Malaysia</a>.
-  </div>
-</section>
-
-<footer>Caspian Digital Solutions — prepared for the Vista Eye Specialist Digital Transformation proposal. Prepared for Vista Eye Specialist. Price figures in the messaging lines are placeholders pending Vista's current price list and MAB approval; age, gender and income bands are working assumptions to be confirmed with Vista's patient data in Phase 1.</footer>
 </div>
 
 <script>
@@ -357,7 +345,6 @@ function compare(){
 function impl(){
   $('impl').innerHTML=D.implications.map(x=>`<div class="card"><div class="o">${esc(x.o)}</div><div class="t">${esc(x.t)}</div><div class="d">${esc(x.d)}</div><div class="ps">${x.p.map(id=>`<button type="button" data-id="${id}" title="${esc(P.find(p=>p.id===id).title)}">${id}</button>`).join('')}</div></div>`).join('');
   $('impl').onclick=e=>{const b=e.target.closest('button[data-id]');if(b)select(b.dataset.id,true);};
-  $('val').innerHTML=D.validation.map(v=>`<li>${esc(v)}</li>`).join('');
 }
 const root=document.documentElement,tb=$('theme');
 function isDark(){const t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;}
