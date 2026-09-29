@@ -74,7 +74,7 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);font-si
   </div>
   <button class="tbtn" id="theme">◐ Dark mode</button>
 </header>
-<nav class="toc"><a href="#s1">Objectives</a><a href="#s2">Phases</a><a href="#s3">Gantt</a><a href="#s4">Month by month</a><a href="#s5">Campaigns & media</a><a href="#s6">Team</a><a href="#s7">Solution</a><a href="#s8">KPI ladder</a><a href="#s9">Risks</a></nav>
+<nav class="toc"><a href="#s1">Objectives</a><a href="#s2">Phases</a><a href="#s3">Gantt</a><a href="#s4">Month by month</a><a href="#s5">Campaigns & media</a><a href="#s6">Team</a><a href="#s7">KPI ladder</a><a href="#s8">Risks</a></nav>
 
 <div class="grid g6" style="margin-top:20px">
   <div class="tile"><div class="lab">Planned start</div><div class="val">Month 1</div><div class="note">Dates assume 2 Nov 2026; durations hold if the start moves</div></div>
@@ -114,36 +114,11 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);font-si
 <div class="card" style="margin-top:14px"><div class="chart-title">Roles — core and shared responsibilities</div><div class="chart-sub">Core = the role is accountable and does the work. Shared = the role contributes to, or depends on, another role's deliverable.</div><div class="tscroll" id="t-roles"></div></div>
 </section>
 
-<section id="s7"><h2><span class="num">07</span>Solution requirements</h2>
-<p class="lede">The stack as proposed, the integrations that make the lead ledger possible, and the measurement chain the whole programme depends on. This is the same stack CDS runs for its other clients; nothing here is experimental.</p>
-<div class="grid g2" style="margin-bottom:14px">
-  <div class="card"><div class="chart-title">In plain terms</div><ul style="font-size:12.5px;padding-left:18px;margin:8px 0">
-   <li><b>Storyblok + Next.js.</b> The RFP asks for a headless CMS, and we agree. Storyblok + Next.js is the highest-performing way to run the site, not a new technology. The content (text, images, doctor profiles, an approved price where Vista wants one) is kept in one editing system, and the website reads from it. Vista's team edits pages in a visual editor with a medical sign-off step; the website itself stays fast because it is pre-built rather than assembled on every visit. The same content can later feed the chat assistant or an app without re-entering it.</li>
-   <li><b>One website, personalised.</b> Visitors do not have time to read twenty pages to find what they need. On the new site they can answer three quick questions — who the visit is for, where they are, what brought them here — and the page adapts: relevant treatment, what is included, and the nearest of the 16 centres. Anyone who prefers to browse skips this once and lands on the normal home page. A single site also ranks separately for every page it has, so there is no need for a second website to get a second search listing.</li>
-   <li><b>Existing systems first.</b> Respond.io stays as the chat and lead platform, with automation and a supporting reporting layer added so leads can be tracked from first message to booked and attended visit. Salesforce (or the booking system) is linked to confirm attended appointments — by connector where the subscription allows it, by scheduled export where it does not. A new system is only proposed if the existing ones cannot do the job.</li>
-   <li><b>Customer-service flow.</b> Centres and HQ both handle leads today and there is no hand-over when a conversation goes unanswered (weekends especially). In Phase 1 we sit down with the Vista CS team to map the flow and agree access levels and follow-up rules. This is part of the retainer, not an extra service.</li>
-   <li><b>How CDS uses AI.</b> CDS is an AI-first company for strategy and analysis: the plans here were built with AI tools and then shaped by the team's experience. Delivery stays human-led. Fully automated ad products (for example Meta Advantage+ or Andromeda-style asset matching) are used selectively — they need hundreds of ad variants, can pair the wrong image or music with a clinical message, and cost more than they return at Vista's scale. AI sets the broad targeting frame; people make the experience-based adjustments.</li>
-  </ul></div>
-  <div class="card"><div class="chart-title">What Vista gets that it does not have today</div><ul style="font-size:12.5px;padding-left:18px;margin:8px 0">
-   <li>One lead number everyone agrees on, and a cost per booked appointment and per attended visit by campaign, centre and language.</li>
-   <li>A trilingual website with a load under 3 seconds on a phone in Malaysia, confirmed once hosting and page weight are sized. Lighthouse ≥ 90 and Core Web Vitals Good stay the technical targets, and the site passes accessibility and consent checks.</li>
-   <li>Phone calls from Google Business Profile and the website are not in Respond.io. Call tracking will be chosen with Vista so a call can be tied to a centre and a campaign.</li>
-   <li>Campaigns that optimise towards confirmed bookings, not chat starts.</li>
-   <li>Centre-level visibility: 16 canonical branch pages, Google Business Profile posts per centre, and local search tracking per centre × service.</li>
-   <li>A management view (Command Centre) owned by Vista, so the reporting does not leave when an agency does.</li>
-  </ul></div>
-</div>
-<div class="card"><div class="chart-title">From impression to booked appointment — the chain every number will run through</div><div class="chart-sub">Each link failed in the audit. Each is rebuilt in Phases 1–2 and verified at go-live.</div><div class="chain" id="chain"></div></div>
-<div class="grid g2" style="margin-top:14px">
-  <div class="card"><div class="chart-title">Technology stack</div><div class="tscroll" id="t-stack"></div></div>
-  <div class="card"><div class="chart-title">Integrations</div><ul id="integrations" style="font-size:12.5px;padding-left:18px;margin:8px 0"></ul><div class="note">Glossary: headless CMS — content stored separately from the website's presentation so the same content can serve web, chat and app; server-side tagging — tracking runs from a CDS-controlled server in Malaysia rather than the visitor's browser, so consent is enforced and data is not lost to ad blockers; CAPI / Enhanced Conversions — sending the confirmed booking back to Meta and Google so their systems optimise towards patients, not chat starts; ISR — pages are pre-built for speed and refreshed automatically when content changes.</div></div>
-</div></section>
-
-<section id="s8"><h2><span class="num">08</span>KPI ladder</h2>
+<section id="s7"><h2><span class="num">07</span>KPI ladder</h2>
 <p class="lede">Baselines come from the audit; floors are the CDS submission's commitments, binding from the post-launch baseline (26 Feb 2027). Every figure in the Command Centre carries a confidence label: verified, modelled or estimated.</p>
 <div class="card"><div class="tscroll" id="t-kpi"></div></div></section>
 
-<section id="s9"><h2><span class="num">09</span>Risks, owners and fallbacks</h2>
+<section id="s8"><h2><span class="num">08</span>Risks, owners and fallbacks</h2>
 <div class="card"><div class="tscroll" id="t-risks"></div></div></section>
 
 <footer>Caspian Digital Solutions — prepared for Vista Eye Specialist, September 2026. Evidence base: the Digital Asset Analysis tab and the CDS technical submission to RFP QHM/VES/DT/2026/003. This roadmap is a starting proposal; it is refined together with the Vista team in the first two weeks.</footer>
@@ -240,10 +215,6 @@ table('t-campaigns',[{h:'Campaign',k:'name'},{h:'Platforms',k:'platforms'},{h:'W
  table('t-roles',[{h:'Role',k:'role'},{h:'Tier',k:'tier'},{h:'Core responsibilities',k:'core'},{h:'Shared responsibilities',k:'shared'}],D.team);
  })();
 
-/* solution */
-document.getElementById('chain').innerHTML=D.solution.chain.map(s=>`<div class="step"><b>${s[0]}</b>${s[1]}</div>`).join('');
-table('t-stack',[{h:'Layer',k:'a'},{h:'Specification',k:'b'}],D.solution.stack.map(s=>({a:s[0],b:s[1]})));
-document.getElementById('integrations').innerHTML=D.solution.integrations.map(i=>`<li>${i}</li>`).join('');
 table('t-kpi',[{h:'KPI',k:'k'},{h:'Baseline (audit)',k:'baseline'},{h:'Month 4',k:'m4'},{h:'Month 6',k:'m6'},{h:'Month 12',k:'m12'},{h:'Source',k:'src'}],D.kpis);
 table('t-risks',[{h:'Risk',k:'r'},{h:'Owner',k:'owner'},{h:'Mitigation',k:'mit'},{h:'Fallback',k:'fallback'}],D.risks);
 

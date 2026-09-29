@@ -1,1 +1,81 @@
-{}
+{
+ "SOLUTION": {
+  "stack": [
+   [
+    "Content platform",
+    "Storyblok (headless CMS), visual editor, roles and medical sign-off workflow; editorial region Asia-Pacific where available"
+   ],
+   [
+    "Front end",
+    "Next.js (TypeScript), static generation with incremental revalidation; SSR only for the authenticated Command Centre"
+   ],
+   [
+    "Hosting",
+    "AWS Asia Pacific (Malaysia) ap-southeast-5, 3 AZs; CloudFront + WAF + Shield; Amplify Hosting (ECS Fargate fallback); RDS PostgreSQL Multi-AZ; daily encrypted backups ≥ 30 days; DR to Singapore only with Vista consent"
+   ],
+   [
+    "Security",
+    "TLS/HSTS/CSP, SSO/MFA + RBAC, SAST and CVE checks on every merge, critical patches ≤ 7 days; external architecture/security review at end of Discovery and pre-launch including a penetration test"
+   ],
+   [
+    "Accessibility & performance",
+    "WCAG 2.2 AA with axe-core in CI and manual screen-reader audit; Lighthouse ≥ 90 on every PR; CWV Good at go-live (lab), field p75 Good by Month 6"
+   ],
+   [
+    "Measurement",
+    "GA4 (enquiry-only key events), GTM client + server-side in Malaysia, Consent Management Platform with Consent Mode, Meta Pixel + CAPI, TikTok and LinkedIn pixels, Google Enhanced Conversions, call and WhatsApp attribution, UTM standard"
+   ],
+   [
+    "CRM",
+    "Respond.io: web-chat channel, page-URL and campaign capture, lifecycle redesign, booking signal to Meta/Google, monthly QC; Salesforce/booking-system link to confirm attended appointments"
+   ],
+   [
+    "Command Centre",
+    "Vista-owned management app: five RFP role views, reconciled lead ledger, cost per booking by campaign and branch, data-confidence labels; Looker Studio views for wider circulation"
+   ],
+   [
+    "Search tooling",
+    "Rank and AI-visibility tooling (vendor-neutral, Vista-owned), version-controlled prompt library, ChatGPT/Gemini/Perplexity/Claude via API, Copilot manual"
+   ],
+   [
+    "Governance tooling",
+    "Jira Service Management (SLA tickets), shared RAID log, action log in Command Centre"
+   ]
+  ],
+  "integrations": [
+   "Respond.io ↔ website (web-chat, WhatsApp click with reference)",
+   "Respond.io → Meta CAPI (booking event)",
+   "Respond.io → Google Ads Enhanced Conversions",
+   "Booking system / Salesforce → Command Centre (attended appointments)",
+   "GA4 + Ads + Meta + TikTok + GSC → Command Centre (daily)",
+   "Storyblok → Next.js (webhooks, ISR)",
+   "Call tracking → GA4 + Respond.io reference"
+  ],
+  "chain": [
+   [
+    "Ad / search / social impression",
+    "Platform IDs (gclid, fbclid, ttclid) preserved through CMP consent"
+   ],
+   [
+    "Landing page on new site",
+    "Server-side GTM stamps enquiry reference; page URL and campaign recorded"
+   ],
+   [
+    "Enquiry (WhatsApp, form, call, chat)",
+    "One enquiry = one person = one reference; non-leads routed out"
+   ],
+   [
+    "Respond.io lifecycle",
+    "New → Warm → Hot → Appointment Booked; stage changes timestamped"
+   ],
+   [
+    "Booking system",
+    "Attended appointment confirmed; reference closed"
+   ],
+   [
+    "Command Centre",
+    "Cost per booking by campaign, branch, language; confidence label on every figure"
+   ]
+  ]
+ }
+}
