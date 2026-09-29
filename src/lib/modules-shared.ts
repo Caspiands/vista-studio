@@ -7,7 +7,7 @@ export const MODULE_LABELS: Record<ModuleKey, string> = {
   campaigns: "Content",
   search: "SEO · AEO · GEO",
   creative: "Creative",
-  website: "Website",
+  website: "Technical",
   roadmap: "Roadmap",
 };
 

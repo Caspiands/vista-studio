@@ -22,7 +22,7 @@
   });
 })();
 </script>
-</head><body><title>Vista Website Prototypes</title>
+</head><body><title>Technical</title>
 <style>
 :root{color-scheme:light;--surface-1:#fcfcfb;--plane:#f5f5f2;--chip:#efeee9;--text-primary:#0b0b0b;--text-secondary:#52514e;--muted:#7d7b75;--grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,0.10);--accent:#2a78d6;--tint-1:#e8f0fb;--good:#1baf7a;--warn:#eb6834;--critical:#d03b3b}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;--surface-1:#1a1a19;--plane:#0f0f0e;--chip:#262624;--text-primary:#f5f5f2;--text-secondary:#c3c2b7;--muted:#8f8d86;--grid:#2c2c2a;--axis:#44443f;--border:rgba(255,255,255,0.10);--accent:#4a93ea;--tint-1:#17263a}}
@@ -67,13 +67,20 @@ ul,ol{margin:0;padding-left:18px;font-size:13px}li{margin:5px 0}
 .tree small{color:var(--muted);font-size:11px;margin-left:6px}
 .cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}@media(max-width:1000px){.cols{grid-template-columns:1fr}}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--text-secondary);margin:6px 0 14px}.legend span i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;border:1px solid var(--border)}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1000px){.g2{grid-template-columns:1fr}}
+.chart-title{font-size:14.5px;font-weight:700}.chart-sub{font-size:12.5px;color:var(--text-secondary);margin:2px 0 14px}
+.chain{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.chain .step{background:var(--chip);border-radius:10px;padding:12px;font-size:12px;position:relative;min-width:0;overflow-wrap:break-word}.chain .step b{display:block;font-size:12.5px;margin-bottom:4px}.chain .step::after{content:"→";position:absolute;right:-10px;top:14px;color:var(--muted);font-size:14px}.chain .step:last-child::after{content:""}
+@media(max-width:900px){.chain{grid-template-columns:repeat(2,1fr)}.chain .step::after{content:""}}
+@media(max-width:520px){.chain{grid-template-columns:1fr}}
+#solution .grid>*{min-width:0}#solution .tscroll{max-width:100%}#solution table.data th{cursor:pointer;user-select:none}#solution table.data th.sorted::after{content:" ▾";color:var(--accent)}#solution table.data th.sorted.asc::after{content:" ▴"}#solution{overflow-wrap:break-word}
 footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--grid);font-size:12px;color:var(--muted)}a{color:var(--accent)}
 </style>
 <div class="wrap">
 <header class="top">
 <div class="eyebrow">Vista Eye Specialist · Digital Transformation RFP QHM/VES/DT/2026/003 · website scope · Caspian Digital Solutions</div>
-<h1>Website Concepts — <span>comparison, recommendation and sitemap</span></h1>
-<nav class="toc"><a href="#verdict">Recommendation</a><a href="#method">What was reviewed</a><a href="#screens">Screenshots</a><a href="#ux">Experience &amp; content</a><a href="#tech">Technical comparison</a><a href="#fixes">Defects to fix</a><a href="#sitemap">Proposed sitemap</a></nav>
+<h1>Technical — <span>comparison, recommendation and sitemap</span></h1>
+<nav class="toc"><a href="#verdict">Recommendation</a><a href="#method">What was reviewed</a><a href="#screens">Screenshots</a><a href="#ux">Experience &amp; content</a><a href="#tech">Technical comparison</a><a href="#fixes">Defects to fix</a><a href="#sitemap">Proposed sitemap</a><a href="#solution">Solution requirements</a></nav>
 </header>
 
 <section id="concepts-note">
@@ -229,5 +236,56 @@ footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--grid);font-si
 <p class="note">Language mirrors: every page exists at /ms/ and /zh/ with the same slug, translated titles and hreflang. Mandarin and BM content is written, not machine-translated, for treatments, centres, book and the persona hubs first (go-live), then the eye-health hub (Phase 4). URLs are lower-case, hyphenated, no dates, no query-string language switching.</p>
 </section>
 
+<section id="solution"><h2>Solution requirements</h2>
+<p class="lede">The stack as proposed, the integrations that make the lead ledger possible, and the measurement chain the whole programme depends on. This is the same stack CDS runs for its other clients; nothing here is experimental.</p>
+<div class="grid g2" style="margin-bottom:14px">
+  <div class="card"><div class="chart-title">In plain terms</div><ul style="font-size:12.5px;padding-left:18px;margin:8px 0">
+   <li><b>Storyblok + Next.js.</b> The RFP asks for a headless CMS, and we agree. Storyblok + Next.js is the highest-performing way to run the site, not a new technology. The content (text, images, doctor profiles, an approved price where Vista wants one) is kept in one editing system, and the website reads from it. Vista's team edits pages in a visual editor with a medical sign-off step; the website itself stays fast because it is pre-built rather than assembled on every visit. The same content can later feed the chat assistant or an app without re-entering it.</li>
+   <li><b>One website, personalised.</b> Visitors do not have time to read twenty pages to find what they need. On the new site they can answer three quick questions — who the visit is for, where they are, what brought them here — and the page adapts: relevant treatment, what is included, and the nearest of the 16 centres. Anyone who prefers to browse skips this once and lands on the normal home page. A single site also ranks separately for every page it has, so there is no need for a second website to get a second search listing.</li>
+   <li><b>Existing systems first.</b> Respond.io stays as the chat and lead platform, with automation and a supporting reporting layer added so leads can be tracked from first message to booked and attended visit. Salesforce (or the booking system) is linked to confirm attended appointments — by connector where the subscription allows it, by scheduled export where it does not. A new system is only proposed if the existing ones cannot do the job.</li>
+   <li><b>Customer-service flow.</b> Centres and HQ both handle leads today and there is no hand-over when a conversation goes unanswered (weekends especially). In Phase 1 we sit down with the Vista CS team to map the flow and agree access levels and follow-up rules. This is part of the retainer, not an extra service.</li>
+   <li><b>How CDS uses AI.</b> CDS is an AI-first company for strategy and analysis: the plans here were built with AI tools and then shaped by the team's experience. Delivery stays human-led. Fully automated ad products (for example Meta Advantage+ or Andromeda-style asset matching) are used selectively — they need hundreds of ad variants, can pair the wrong image or music with a clinical message, and cost more than they return at Vista's scale. AI sets the broad targeting frame; people make the experience-based adjustments.</li>
+  </ul></div>
+  <div class="card"><div class="chart-title">What Vista gets that it does not have today</div><ul style="font-size:12.5px;padding-left:18px;margin:8px 0">
+   <li>One lead number everyone agrees on, and a cost per booked appointment and per attended visit by campaign, centre and language.</li>
+   <li>A trilingual website with a load under 3 seconds on a phone in Malaysia, confirmed once hosting and page weight are sized. Lighthouse ≥ 90 and Core Web Vitals Good stay the technical targets, and the site passes accessibility and consent checks.</li>
+   <li>Phone calls from Google Business Profile and the website are not in Respond.io. Call tracking will be chosen with Vista so a call can be tied to a centre and a campaign.</li>
+   <li>Campaigns that optimise towards confirmed bookings, not chat starts.</li>
+   <li>Centre-level visibility: 16 canonical branch pages, Google Business Profile posts per centre, and local search tracking per centre × service.</li>
+   <li>A management view (Command Centre) owned by Vista, so the reporting does not leave when an agency does.</li>
+  </ul></div>
+</div>
+<div class="card"><div class="chart-title">From impression to booked appointment — the chain every number will run through</div><div class="chart-sub">Each link failed in the audit. Each is rebuilt in Phases 1–2 and verified at go-live.</div><div class="chain" id="chain"></div></div>
+<div class="grid g2" style="margin-top:14px">
+  <div class="card"><div class="chart-title">Technology stack</div><div class="tscroll" id="t-stack"></div></div>
+  <div class="card"><div class="chart-title">Integrations</div><ul id="integrations" style="font-size:12.5px;padding-left:18px;margin:8px 0"></ul><div class="note">Glossary: headless CMS — content stored separately from the website's presentation so the same content can serve web, chat and app; server-side tagging — tracking runs from a CDS-controlled server in Malaysia rather than the visitor's browser, so consent is enforced and data is not lost to ad blockers; CAPI / Enhanced Conversions — sending the confirmed booking back to Meta and Google so their systems optimise towards patients, not chat starts; ISR — pages are pre-built for speed and refreshed automatically when content changes.</div></div>
+</div></section>
+
 <footer>Caspian Digital Solutions · Vista DTR 2026–27 · Prepared for Vista Eye Specialist.</footer>
-</div></body></html>
+</div>
+<script>
+const SOLUTION = /*__VISTA_DATA__:SOLUTION*/;
+(function(){
+  const fmt=n=>n==null?'–':Math.round(n).toLocaleString('en-US');
+  function table(id,cols,rows,opts={}){
+    const c=document.getElementById(id);if(!c)return;
+    let sk=opts.sort||null,asc=!!opts.asc;
+    function render(){
+      const data=[...rows];
+      if(sk){const col=cols.find(x=>x.k===sk);data.sort((a,b)=>{let va=a[sk],vb=b[sk];if(col&&col.num){va=+va||0;vb=+vb||0;return asc?va-vb:vb-va;}return asc?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va));});}
+      let h='<table class="data'+(opts.cls?' '+opts.cls:'')+'"><thead><tr>'+cols.map(col=>`<th class="${col.num?'n':''} ${sk===col.k?'sorted'+(asc?' asc':''):''}" data-k="${col.k}">${col.h}</th>`).join('')+'</tr></thead><tbody>';
+      data.forEach(r=>{h+='<tr>'+cols.map(col=>{let v=r[col.k];if(col.f)v=col.f(v,r);else if(col.num)v=fmt(v);return `<td class="${col.num?'n':''}${col.cls?' '+col.cls:''}">${v??'–'}</td>`;}).join('')+'</tr>';});
+      c.innerHTML=h+'</tbody></table>';
+      c.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;if(sk===k)asc=!asc;else{sk=k;asc=false;}render();}));
+    }
+    render();
+  }
+  const S=SOLUTION||{};
+  const chain=document.getElementById('chain');
+  if(chain&&Array.isArray(S.chain)) chain.innerHTML=S.chain.map(s=>`<div class="step"><b>${s[0]}</b>${s[1]}</div>`).join('');
+  if(Array.isArray(S.stack)) table('t-stack',[{h:'Layer',k:'a'},{h:'Specification',k:'b'}],S.stack.map(s=>({a:s[0],b:s[1]})));
+  const integrations=document.getElementById('integrations');
+  if(integrations&&Array.isArray(S.integrations)) integrations.innerHTML=S.integrations.map(i=>`<li>${i}</li>`).join('');
+})();
+</script>
+</body></html>

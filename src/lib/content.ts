@@ -168,7 +168,7 @@ export const defaultContent: Content = {
       },
       {
         tab: "website",
-        title: "Website concepts",
+        title: "Technical",
         stage: "A direction, then the sitemap",
         summary: "The screens are a direction for the journey and the tone, not the design. Only the glasses journey is drawn. Price does not lead the home page.",
         bullets: ["Cataract, dry eye and a general eye check are still to be drawn", "One site, trilingual, mobile-first, a load under 3 seconds once hosting is sized", "Price does not lead the home page; treatments, centres and doctors are linked"],
@@ -177,7 +177,7 @@ export const defaultContent: Content = {
         tab: "roadmap",
         title: "12-month roadmap",
         stage: "How it all lands",
-        summary: "Six phases planned as durations, the Gantt, month by month, the team by role, the technology in plain terms, KPIs and risks.",
+        summary: "Six phases planned as durations, the Gantt, month by month, the team by role, KPIs and risks.",
         bullets: ["Website live in Month 3, before CNY", "Cost per booked and attended visit", "One monthly meeting that closes actions"],
       },
     ],
@@ -259,8 +259,8 @@ export const defaultContent: Content = {
           "Where search stands today, SEO/AEO/GEO in plain terms, keyword and page plan, the 16 centres, answer-engine and AI-assistant implementation, technical foundation, content engine, 12-month search roadmap, tools and technologies, KPIs and reporting",
       },
       { tab: "creative", covers: "Sample posts and ads on Vista's identity, the 12 templates, production workflow, what CDS needs from Vista, first-quarter calendars" },
-      { tab: "website", covers: "Two website concepts compared with the live site, measurements, recommendation, what is being tightened, the full sitemap" },
-      { tab: "roadmap", covers: "Objectives, six phases as durations, Gantt, month by month, team by role, technology in plain terms, KPI ladder, risks and fallbacks" },
+      { tab: "website", covers: "Two website concepts compared with the live site, measurements, recommendation, what is being tightened, the full sitemap, and the solution requirements" },
+      { tab: "roadmap", covers: "Objectives, six phases as durations, Gantt, month by month, team by role, KPI ladder, risks and fallbacks" },
     ],
   },
   footer: {
