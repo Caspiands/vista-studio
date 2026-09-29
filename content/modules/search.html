@@ -2,7 +2,8 @@
 <style>.tbtn#theme{display:none!important}html,body{overflow:hidden}</style>
 <script>
 (function(){
-  function h(){return Math.ceil(Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0));}
+  // documentElement.scrollHeight sticks at the iframe viewport when overflow is hidden, so a shrink leaves a blank page.
+  function h(){var b=document.body;return Math.ceil(b?Math.max(b.scrollHeight,b.offsetHeight):0);}
   function post(){try{parent.postMessage({vistaHub:1,frame:window.name,height:h()},'*');}catch(e){}}
   addEventListener('load',function(){post();try{new ResizeObserver(post).observe(document.body);}catch(e){setInterval(post,800);}});
   addEventListener('resize',post);
