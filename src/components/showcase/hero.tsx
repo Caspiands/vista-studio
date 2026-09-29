@@ -14,7 +14,7 @@ export function Hero() {
     <header id="top" className="hero-dark relative isolate overflow-hidden bg-brand-deep text-white">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="float-slow absolute -top-32 right-[-10%] size-[34rem] rounded-full bg-brand/30 blur-3xl" />
-        <div className="float-slow absolute -bottom-40 left-[-10%] size-[28rem] rounded-full bg-gold/15 blur-3xl [animation-delay:-4s]" />
+        <div className="float-slow absolute -bottom-40 left-[-10%] size-[28rem] rounded-full bg-vista-green/15 blur-3xl [animation-delay:-4s]" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
       </div>
 
@@ -27,7 +27,7 @@ export function Hero() {
             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3 py-1 font-medium backdrop-blur transition-colors duration-300 hover:border-brand-light/60 hover:bg-white/15">
               <Editable path="meta.edition" />
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/15 px-3 py-1 font-medium text-gold backdrop-blur transition-colors duration-300 hover:bg-gold/25">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-vista-green/40 bg-vista-green/15 px-3 py-1 font-medium text-vista-green backdrop-blur transition-colors duration-300 hover:bg-vista-green/25">
               <Editable path="meta.fiscalYear" />
             </span>
           </div>
@@ -37,7 +37,7 @@ export function Hero() {
             path="hero.title"
             as="h1"
             multiline
-            className="text-4xl font-semibold leading-[1.08] tracking-tight text-balance sm:text-5xl lg:text-6xl"
+            className="text-4xl font-semibold leading-[1.08] tracking-tight text-balance sm:text-5xl xl:text-[3.5rem]"
           />
           <Editable path="hero.subtitle" as="p" multiline className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75" />
 
@@ -45,6 +45,7 @@ export function Hero() {
             <Button
               size="lg"
               className="btn-shine h-12 rounded-xl bg-brand px-6 text-base text-white shadow-lg shadow-brand/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand hover:shadow-xl hover:shadow-brand/40"
+              nativeButton={false}
               render={<a href="#roadmap" />}
             >
               <Editable path="hero.primaryCta" />

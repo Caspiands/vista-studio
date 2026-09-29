@@ -7,7 +7,7 @@ import { SectionShell } from "@/components/cms/section-shell";
 
 const AVATAR_TONES = [
   "from-brand to-brand-deep",
-  "from-gold to-amber-700",
+  "from-vista-green to-lime-700",
   "from-emerald-400 to-emerald-700",
   "from-violet-400 to-violet-700",
   "from-rose-400 to-rose-700",

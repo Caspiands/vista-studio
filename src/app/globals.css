@@ -43,7 +43,7 @@
   --color-brand-deep: var(--brand-deep);
   --color-brand-light: var(--brand-light);
   --color-brand-soft: var(--brand-soft);
-  --color-gold: var(--gold);
+  --color-vista-green: var(--vista-green);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -54,11 +54,11 @@
 }
 
 :root {
-  --brand: oklch(0.55 0.12 205);
-  --brand-deep: oklch(0.24 0.05 250);
-  --brand-light: oklch(0.82 0.09 200);
-  --brand-soft: oklch(0.96 0.02 205);
-  --gold: oklch(0.8 0.14 80);
+  --brand: #009fff;
+  --brand-deep: oklch(0.27 0.075 252);
+  --brand-light: #62bbff;
+  --brand-soft: oklch(0.965 0.02 240);
+  --vista-green: #a6e700;
   --background: oklch(1 0 0);
   --foreground: oklch(0.2 0.03 250);
   --card: oklch(1 0 0);
@@ -71,7 +71,7 @@
   --secondary-foreground: oklch(0.24 0.05 250);
   --muted: oklch(0.965 0.01 240);
   --muted-foreground: oklch(0.5 0.03 250);
-  --accent: oklch(0.96 0.02 205);
+  --accent: oklch(0.965 0.02 240);
   --accent-foreground: oklch(0.24 0.05 250);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.91 0.01 240);

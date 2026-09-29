@@ -146,15 +146,15 @@ export const SECTION_LABELS: Record<SectionKey, string> = {
 
 export const defaultContent: Content = {
   meta: {
-    brand: "Vista",
-    brandTagline: "Strategy & Delivery Office",
+    brand: "Vista Eye Specialist",
+    brandTagline: "Digital Transformation Roadmap · FY 2026-27",
     docTitle: "Digital Transformation Roadmap",
     docCode: "DTR",
     version: "v4",
     edition: "Client Edition",
     fiscalYear: "FY 2026-27",
     preparedFor: "Client Leadership Team",
-    preparedBy: "Vista Strategy & Delivery Office",
+    preparedBy: "Vista Eye Specialist · Strategy & Delivery Office",
     issueDate: "September 2026",
     confidentiality: "Confidential — prepared exclusively for the named client",
   },
@@ -444,13 +444,13 @@ export const defaultContent: Content = {
     intro: "",
     body:
       "We are seeking approval of the Recommended option at the October steering committee so that Phase 3 mobilises on schedule. The delivery team is available for a walkthrough of any section of this roadmap.",
-    email: "dtr@vista.example",
+    email: "dtr@vistaeye.example",
     phone: "+1 (555) 014-2027",
-    address: "Vista Strategy & Delivery Office · 400 Harbour Street, Level 12",
+    address: "Vista Eye Specialist · Strategy & Delivery Office, 400 Harbour Street, Level 12",
     ctaLabel: "Book a walkthrough",
   },
   footer: {
-    copyright: "© 2026 Vista. All rights reserved.",
+    copyright: "© 2026 Vista Eye Specialist. All rights reserved.",
     disclaimer:
       "This document is confidential and intended solely for the named client. Figures are indicative and subject to the terms of the master services agreement.",
   },

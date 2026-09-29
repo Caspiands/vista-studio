@@ -29,7 +29,7 @@ export function InvestmentSection() {
               <ItemControls path="investment.tiers" index={index} count={tiers.length} label="option" />
             </div>
             {tier.featured && (
-              <span className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-gold/20 px-3 py-1 text-xs font-semibold text-gold">
+              <span className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-vista-green/20 px-3 py-1 text-xs font-semibold text-vista-green">
                 <Star className="size-3.5 fill-current" />
                 Recommended option
               </span>

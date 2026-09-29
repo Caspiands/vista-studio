@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vista DTR 2026-27 · Client Edition",
-  description: "Vista Digital Transformation Roadmap for FY 2026-27 — client-facing showcase with in-place editing for authorised editors.",
+  title: "Vista Eye Specialist · DTR 2026-27 Client Edition",
+  description: "Vista Eye Specialist Digital Transformation Roadmap for FY 2026-27 — client-facing showcase with in-place editing for authorised editors.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

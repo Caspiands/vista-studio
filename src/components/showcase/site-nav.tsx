@@ -4,8 +4,8 @@ import * as React from "react";
 import { LogOut, Menu, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { BrandLogo } from "@/components/brand-logo";
 import { useCms } from "@/components/cms/cms-provider";
-import { Editable } from "@/components/cms/editable";
 import { SECTION_LABELS, SECTION_ORDER, type SectionKey } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -43,22 +43,16 @@ export function SiteNav() {
     <nav
       data-site-nav
       className={cn(
-        "sticky top-0 z-40 w-full border-b transition-all duration-300",
-        scrolled ? "border-slate-200/80 bg-white/85 shadow-sm backdrop-blur-md" : "border-transparent bg-white/0",
+        "sticky top-0 z-40 w-full border-b bg-white/90 backdrop-blur-md transition-all duration-300",
+        scrolled ? "border-slate-200/80 shadow-sm" : "border-slate-100",
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6">
-        <a href="#top" className="group flex items-center gap-3">
-          <span className="grid size-9 place-items-center rounded-lg bg-brand-deep text-sm font-bold text-white shadow-md shadow-brand-deep/20 transition-transform duration-300 group-hover:rotate-[-6deg] group-hover:scale-105">
-            <Editable path="meta.docCode" className="tracking-tight" />
-          </span>
-          <span className="flex flex-col leading-tight">
-            <Editable path="meta.brand" className="text-base font-semibold tracking-tight text-foreground" />
-            <Editable path="meta.brandTagline" className="text-[11px] text-muted-foreground" />
-          </span>
+        <a href="#top" className="group flex shrink-0 items-center" aria-label="Back to top">
+          <BrandLogo height={38} priority className="transition-transform duration-300 group-hover:scale-[1.04]" />
         </a>
 
-        <ul className="hidden items-center gap-6 lg:flex">
+        <ul className="hidden items-center gap-5 lg:flex xl:gap-6">
           {sections.map((key: SectionKey) => (
             <li key={key}>
               <a

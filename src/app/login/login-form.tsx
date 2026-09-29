@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Eye, EyeOff, KeyRound, Loader2, LockKeyhole, PencilLine, ShieldCheck } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -63,14 +64,18 @@ export function LoginForm({ next, meta, demo }: LoginFormProps) {
       <aside className="relative hidden overflow-hidden bg-brand-deep text-white lg:flex lg:flex-col lg:justify-between lg:p-14">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="float-slow absolute -top-24 -right-24 size-[30rem] rounded-full bg-brand/30 blur-3xl" />
-          <div className="float-slow absolute -bottom-32 -left-20 size-[26rem] rounded-full bg-gold/15 blur-3xl [animation-delay:-5s]" />
+          <div className="float-slow absolute -bottom-32 -left-20 size-[26rem] rounded-full bg-vista-green/15 blur-3xl [animation-delay:-5s]" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
         </div>
 
-        <div className="relative flex items-center gap-3">
-          <span className="grid size-10 place-items-center rounded-lg bg-white/10 text-sm font-bold backdrop-blur">{meta.docCode}</span>
-          <div className="leading-tight">
-            <p className="font-semibold">{meta.brand}</p>
+        <div className="relative flex items-center gap-4">
+          <span className="inline-flex rounded-xl bg-white px-4 py-2.5 shadow-lg shadow-black/20 transition-transform duration-300 hover:scale-[1.03]">
+            <BrandLogo height={40} priority />
+          </span>
+          <div className="border-l border-white/15 pl-4 leading-tight">
+            <p className="font-semibold">
+              {meta.docCode} {meta.version}
+            </p>
             <p className="text-xs text-white/60">{meta.brandTagline}</p>
           </div>
         </div>
@@ -101,14 +106,11 @@ export function LoginForm({ next, meta, demo }: LoginFormProps) {
 
       <main className="flex items-center justify-center bg-background px-6 py-12">
         <div className="w-full max-w-md fade-up">
-          <div className="mb-8 flex items-center gap-3 lg:hidden">
-            <span className="grid size-10 place-items-center rounded-lg bg-brand-deep text-sm font-bold text-white">{meta.docCode}</span>
-            <div className="leading-tight">
-              <p className="font-semibold">{meta.brand}</p>
-              <p className="text-xs text-muted-foreground">
-                {meta.docTitle} · {meta.fiscalYear}
-              </p>
-            </div>
+          <div className="mb-8 flex flex-col gap-3 lg:hidden">
+            <BrandLogo height={44} priority />
+            <p className="text-xs text-muted-foreground">
+              {meta.docCode} {meta.version} · {meta.docTitle} · {meta.fiscalYear}
+            </p>
           </div>
 
           <div className="mb-8">
