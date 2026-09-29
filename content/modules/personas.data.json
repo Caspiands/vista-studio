@@ -630,7 +630,7 @@
      "kpi": "Dry eye assessments booked; programme completion",
      "scope": "2, 4, 5, 6, 7"
     },
-    "evidence": "/dry-eyes-treatment 6,839 + /dry-eyes 3,669 sessions; the assessment price shown publicly (F-22); 0 posts since May 2026 (F-13); vistanow dry-eye cluster published Mar–May 2026."
+    "evidence": "/dry-eyes-treatment 6,839 + /dry-eyes 3,669 sessions; the assessment price shown publicly (F-22); 0 website articles since May 2026 (F-13); vistanow dry-eye cluster published Mar–May 2026."
    },
    {
     "id": "P08",
@@ -897,7 +897,7 @@
     ]
    },
    {
-    "o": "O1 One lead definition, one cost per patient",
+    "o": "O1 One lead definition, one cost per booked appointment",
     "t": "Capture the offline and phone patient",
     "d": "Seniors and caregivers phone or walk in, and none of it is recorded. Call tracking and offline capture are what make these personas measurable.",
     "p": [

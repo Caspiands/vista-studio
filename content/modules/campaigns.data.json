@@ -750,7 +750,7 @@
    {
     "id": "T1",
     "name": "JB Weekend (Singapore)",
-    "type": "Test",
+    "type": "Explore",
     "budgetKey": "test",
     "personas": [
      "P08"
@@ -782,7 +782,7 @@
    {
     "id": "T2",
     "name": "Travel for Sight",
-    "type": "Test",
+    "type": "Explore",
     "budgetKey": "test",
     "personas": [
      "P09"

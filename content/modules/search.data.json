@@ -18,16 +18,16 @@
    {
     "id": "F-12",
     "area": "Structure",
-    "what": "Sitemap omits two years of content; three languages on broken URLs",
-    "ev": "The sitemap lists 224 URLs but none of the 52 posts published in 2025–2026. 0 hreflang tags on 379 pages; languages served on ?lang= query strings; 37 of 43 Mandarin pages on percent-encoded slugs. On vistanow.com.my, 156 BM/ZH pages canonicalise to the English URL and 31 of 39 ZH posts are untranslated English.",
-    "fix": "Clean /ms/ and /zh/ routes with hreflang on the new site; every post in the sitemap; vistanow content migrated and the domain redirected."
+    "what": "Sitemap omits two years of website articles; a Mandarin search does not reliably reach the site without hreflang",
+    "ev": "The sitemap lists 224 URLs but none of the 52 website articles published in 2025–2026. 0 hreflang tags on 379 pages; languages served on ?lang= query strings; 37 of 43 Mandarin pages on percent-encoded slugs. A Mandarin search does not reliably reach the site without hreflang. On vistanow.com.my, 156 BM/ZH pages canonicalise to the English URL and 31 of 39 ZH website articles are untranslated English.",
+    "fix": "Clean /ms/ and /zh/ routes with hreflang on the new site; every website article in the sitemap; vistanow content migrated and the domain redirected."
    },
    {
     "id": "F-13",
     "area": "Content",
-    "what": "Content arrives in batches and has stopped",
-    "ev": "vista.com.my: 55 posts in 24 months, 24 of them in April 2026. vistanow.com.my: 109 posts, 83 in Mar–May 2026. Nothing on either site since May 2026; 15 of 24 months had zero output. At least 10 press clippings duplicated across both domains. The content hub has no active link from the main site.",
-    "fix": "Four medically reviewed articles a month on the main site from Month 2, planned from the keyword map; quarterly refresh of top pages."
+    "what": "Website articles arrive in batches and have stopped",
+    "ev": "vista.com.my: 55 website articles in 24 months, 24 of them in April 2026. vistanow.com.my: 109 website articles, 83 in Mar–May 2026. Nothing on either site since May 2026; 15 of 24 months had zero output. At least 10 press clippings duplicated across both domains. The content hub has no active link from the main site.",
+    "fix": "Medically reviewed website articles on the main site from Month 2, planned from the keyword map. The year aim is 52; the monthly pace flexes with clinical review. Quarterly refresh of top pages."
    },
    {
     "id": "F-19",
@@ -40,7 +40,7 @@
     "id": "O-04",
     "area": "Languages",
     "what": "Mandarin and Malay demand is real and under-served",
-    "ev": "GA4 language settings: Mandarin 9%, Malay 6–10%, Indonesian 2–4% of users; Google Ads already runs full CN and BM campaign sets; TikTok output is 100% BM. On the website the Mandarin pages sit on broken slugs and most ZH posts are untranslated.",
+    "ev": "GA4 language settings: Mandarin 9%, Malay 6–10%, Indonesian 2–4% of users; Google Ads already runs full CN and BM campaign sets; TikTok output is 100% BM. On the website the Mandarin pages sit on broken slugs and most ZH website articles are untranslated. A Mandarin search does not reliably reach the site without hreflang.",
     "fix": "Every service and centre page in EN, BM and ZH with hreflang; BM-first for kids and dry eye; ZH-first for cataract and refractive; the CNY campaign lands on the ZH site."
    },
    {
@@ -292,7 +292,7 @@
    [
     "Rendering",
     "Pages assembled on every visit; 2.5 MB home page; 31 accessibility issues",
-    "Static generation (Next.js) — every page is plain HTML before any script runs; under 1.5 s first paint; Lighthouse ≥ 90 on every release",
+    "Static generation (Next.js) — every page is plain HTML before any script runs; a load under 3 seconds on a phone in Malaysia, confirmed once hosting and page weight are sized; Lighthouse ≥ 90 on every release; Core Web Vitals Good",
     "tech"
    ],
    [
@@ -303,7 +303,7 @@
    ],
    [
     "Sitemap & indexing",
-    "224 URLs, none of the 2025–26 posts; 74 duplicate location URLs",
+    "224 URLs, none of the 2025–26 website articles; 74 duplicate location URLs",
     "Sitemap generated from the CMS on publish; duplicates redirected; index coverage checked weekly in Search Console",
     "SEO"
    ],
@@ -468,7 +468,7 @@
       "kind": "build"
      },
      {
-      "label": "Rolling calendar ≥ 1 month ahead; 4 articles/month in EN, BM and ZH as demand supports",
+      "label": "Rolling calendar ≥ 1 month ahead; medically reviewed articles in EN, BM and ZH, monthly pace flexed with clinical review (52 in the year)",
       "from": "2026-12-01",
       "to": "2027-10-29",
       "kind": "run"
@@ -564,7 +564,7 @@
      "Week-4 crawl and ranking comparison; any page losing > 20% investigated within five days",
      "Google Business Profile: 16 listings complete; centre posts start; review workflow live",
      "Local pack tracking starts for the priority centre × service pairs",
-     "Migration of 2025–26 posts from vistanow into the Happenings section under way",
+     "Migration of 2025–26 website articles from vistanow into the Happenings section under way",
      "Post-launch baseline locked at the end of the month"
     ],
     "out": [
@@ -794,7 +794,7 @@
    [
     "Next.js (static generation) on AWS Malaysia, CloudFront CDN",
     "Platform",
-    "Every page served as HTML; sub-1.5 s first paint; Malaysian hosting for local speed and PDPA",
+    "Every page served as HTML; a load under 3 seconds on a phone in Malaysia, confirmed once hosting and page weight are sized; Lighthouse ≥ 90 and Core Web Vitals Good; Malaysian hosting for local speed and PDPA",
     "In the website build",
     "tech"
    ],
@@ -893,8 +893,8 @@
    },
    {
     "k": "Index health",
-    "base": "74 duplicate URLs; 52 posts missing from sitemap",
-    "m6": "0 duplicates; 100% of posts indexed",
+    "base": "74 duplicate URLs; 52 website articles missing from sitemap",
+    "m6": "0 duplicates; 100% of website articles indexed",
     "m12": "Sustained; checked weekly",
     "src": "Search Console"
    }

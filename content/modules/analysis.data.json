@@ -115,9 +115,9 @@
    "sev": "High",
    "area": "Website structure",
    "scope": "1/2",
-   "title": "Sitemap omits every 2025–2026 post; no hreflang in HTML; Mandarin URLs percent-encoded",
-   "evidence": "vista.com.my Yoast sitemap lists 224 URLs; 52 live indexable posts (8 from 2025, 44 from 2026) are absent — only 2016–2024 press clippings are submitted. 0 hreflang link tags on 379 pages (sitemap only); languages served on ?lang= query strings; 37 of 43 Mandarin pages on percent-encoded slugs. vistanow.com.my: 156 BM/ZH pages canonicalise to the English URL; 31 of 39 ZH posts are untranslated English.",
-   "impact": "All content produced in the last two years is invisible to the sitemap, and the two non-English audiences (Mandarin 9%, Malay 6–10% of users) are served through a broken URL layer.",
+   "title": "Sitemap omits every 2025–2026 website article; no hreflang in HTML; Mandarin URLs percent-encoded",
+   "evidence": "vista.com.my Yoast sitemap lists 224 URLs; 52 live indexable website articles (8 from 2025, 44 from 2026) are absent — only 2016–2024 press clippings are submitted. 0 hreflang link tags on 379 pages (sitemap only); languages served on ?lang= query strings; 37 of 43 Mandarin pages on percent-encoded slugs. A Mandarin search does not reliably reach the site without hreflang. vistanow.com.my: 156 BM/ZH pages canonicalise to the English URL; 31 of 39 ZH website articles are untranslated English.",
+   "impact": "All website articles produced in the last two years are invisible to the sitemap. A Mandarin search does not reliably reach the site without hreflang, and the two non-English audiences (Mandarin 9%, Malay 6–10% of users) are served through a broken URL layer.",
    "source": "Site crawl · GA4 language"
   },
   {
@@ -125,8 +125,8 @@
    "sev": "High",
    "area": "Content",
    "scope": "4",
-   "title": "Content output arrives in batches and has stopped",
-   "evidence": "Last 24 months: vista.com.my 55 posts, 24 of them in April 2026; vistanow.com.my 109 EN posts, 83 in Mar–May 2026 (presbyopia, amblyopia, dry-eye clusters). 0 posts on either site since May 2026; 15 of 24 months had zero output. At least 10 press-clipping posts duplicated across both domains. The RFP requires 4 medically reviewed articles a month.",
+   "title": "Website articles arrive in batches and have stopped",
+   "evidence": "Last 24 months: vista.com.my 55 website articles, 24 of them in April 2026; vistanow.com.my 109 EN website articles, 83 in Mar–May 2026 (presbyopia, amblyopia, dry-eye clusters). 0 website articles on either site since May 2026; 15 of 24 months had zero output. At least 10 press-clipping articles duplicated across both domains.",
    "impact": "Topical authority is built in spikes and decays between them; the content hub has no active link from the main site.",
    "source": "Site crawl content_velocity"
   },

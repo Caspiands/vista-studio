@@ -148,7 +148,7 @@ a{color:var(--series-1)}
   <button class="tbtn" id="theme">◐ Dark mode</button>
 </header>
 <nav class="toc">
-  <a href="#s1">Lead truth</a><a href="#s2">Spend & cost per appointment</a><a href="#s3">GA4</a><a href="#s4">Respond.io funnel</a><a href="#s5">Website</a><a href="#s6">Paid media reporting</a><a href="#s7">SEO</a><a href="#s8">Social</a><a href="#s10">Findings register</a><a href="#s11">August audit cross-check</a><a href="#s12">Sources & limits</a>
+  <a href="#s1">Lead truth</a><a href="#s2">Spend & cost per appointment</a><a href="#s3">GA4</a><a href="#s4">Respond.io funnel</a><a href="#s5">Website</a><a href="#s6">Paid media reporting</a><a href="#s7">SEO</a><a href="#s8">Social</a><a href="#s10">Findings register</a><a href="#s11">August audit cross-check</a>
 </nav>
 
 <div class="grid g6" style="margin-top:22px">
@@ -157,7 +157,7 @@ a{color:var(--series-1)}
   <div class="tile crit"><div class="lab">Paid vs unpaid booking rate</div><div class="val">1.5% / 14.4%</div><div class="note">Paid Ads 288 of 19,670 New Leads booked; Incoming Message 2,428 of 16,883</div></div>
   <div class="tile crit"><div class="lab">Contacts deleted Jul–Aug</div><div class="val">23,616</div><div class="note">34% of the year's intake, by one account; 2 merges in 12 months</div></div>
   <div class="tile warn"><div class="lab">Location URLs for 16 branches</div><div class="val">101</div><div class="note">74 indexable duplicates; 0 of 75 location pages carry an H1</div></div>
-  <div class="tile warn"><div class="lab">Posts published since May 2026</div><div class="val">0</div><div class="note">Across both domains; 15 of the last 24 months had no output</div></div>
+  <div class="tile warn"><div class="lab">Website articles since May 2026</div><div class="val">0</div><div class="note">New pages on vista.com.my and vistanow.com.my. This is website content, not social posts. 15 of the last 24 months had none</div></div>
 </div>
 
 <p class="note" style="margin-top:12px">Each figure above is counted from the system named in its note — Respond.io, the digital-spend ledger, the site crawl and the sitemap. The sections below show the tables behind them.</p>
@@ -165,7 +165,7 @@ a{color:var(--series-1)}
 <!-- 1 LEAD TRUTH -->
 <section id="s1">
   <h2><span class="num">01</span>Lead truth — five counts, one business</h2>
-  <p class="lede">The same twelve months, counted five ways. Each line is a legitimate number from a live system; none is reconciled to another. The bottom line — appointments booked in Respond.io — is the only one a patient stands behind.</p>
+  <p class="lede"><b>Takeaway:</b> five different lead counts are in use for the same year, and none of them is reconciled. The only count a visit stands behind is an appointment booked in Respond.io. The same twelve months, counted five ways. Each line is a legitimate number from a live system.</p>
   <div class="card">
     <div class="chart-head"><div class="chart-title">Monthly lead counts by source of truth, Sep 2025 – Aug 2026</div><button class="tv" data-toggle="t-leads">Show data table</button></div>
     <div class="chart-sub">L10 = client scorecard "Total Leads" (sum of Respond.io channels). Platform = Google Ads conversions + Meta results as reported by the agency (Aug 2026 SEM report not yet issued). Net new contacts = Respond.io contacts added minus CSV imports. Booked = contacts entering "Appointment Booked" (populated from Jan 2026).</div>
@@ -177,11 +177,11 @@ a{color:var(--series-1)}
 
 <!-- 2 SPEND -->
 <section id="s2">
-  <h2><span class="num">02</span>The cost of a patient</h2>
-  <p class="lede">What a booked appointment actually costs, once the CRM's own count of appointments is used as the denominator.</p>
+  <h2><span class="num">02</span>The cost of a booked appointment</h2>
+  <p class="lede"><b>Takeaway:</b> RM182 is the cost of a booked appointment, not the cost of a paying patient. A booking is not a payment, and some appointments never become a visit. Three layers sit in a row: cost per lead (what management uses today, ten to twenty times lower), cost per booked appointment (this chart), and cost per attended visit and cost per paying patient — those last two are not in the data, so they are not claimed here.</p>
     <div class="card">
       <div class="chart-head"><div class="chart-title">Cost per booked appointment (RM)</div></div>
-      <div class="chart-sub">Digital spend divided by appointments booked in Respond.io, month by month. Dec 2025 omitted (the Won stage was populated from 21 Jan 2026). This is the only figure that ties marketing to a patient; the cost-per-lead figure in management use is ten to twenty times lower.</div>
+      <div class="chart-sub">Digital spend divided by appointments booked in Respond.io, month by month. Dec 2025 omitted (the Won stage was populated from 21 Jan 2026). Say “cost per booked appointment” for this figure. Cost per paying patient needs revenue, which Vista’s systems do not report yet.</div>
       <svg id="c-cpa" viewBox="0 0 600 320"></svg>
       <div class="legend"><span><i class="line" style="background:var(--critical)"></i>Cost per booked appointment</span></div>
     </div>
@@ -191,7 +191,7 @@ a{color:var(--series-1)}
 <!-- 3 GA4 -->
 <section id="s3">
   <h2><span class="num">03</span>GA4 — traffic is stable, the conversion metric is not</h2>
-  <p class="lede">Property p265217204, 100% of data, no sampling. Twenty months of monthly pulls show ~21–41k sessions a month with one Carnival outlier, and a key-event rate that moves only when someone changes which events count.</p>
+  <p class="lede"><b>Takeaway:</b> traffic is steady; the conversion rate moved because someone changed which events count. About 80% of users are on a phone (244,918) and 19% on a desktop (57,501), Sep 2025–Aug 2026, so the new site is mobile-first. Property p265217204, 100% of data, no sampling. Twenty months of monthly pulls show ~21–41k sessions a month with one Carnival outlier.</p>
   <div class="card">
     <div class="chart-head"><div class="chart-title">Sessions by default channel group and session key-event rate, Jan 2025 – Aug 2026</div><button class="tv" data-toggle="t-ga4m">Show data table</button></div>
     <div class="chart-sub">Stacked sessions (left axis). Line: share of sessions with a key event (right axis). The rate steps 8% → 90% → 10% with no change in traffic — engagement events were flagged as key events from Jul/Aug 2025 and unflagged around Jun 2026.</div>
@@ -225,7 +225,7 @@ a{color:var(--series-1)}
     </div>
     <div class="card">
       <div class="chart-title">Audience — device, language, city (Sep 2025 – Aug 2026)</div>
-      <div class="chart-sub">Cities with near-zero engagement and 90–99% key-event rates are data-centre traffic; no filter is applied.</div>
+      <div class="chart-sub">Device share of users: mobile 80% (244,918), desktop 19% (57,501), tablet under 1% (1,826). Cities with near-zero engagement and 90–99% key-event rates are data-centre traffic; no filter is applied.</div>
       <div class="tscroll" id="t-aud"></div>
     </div>
   </div>
@@ -234,7 +234,7 @@ a{color:var(--series-1)}
 <!-- 4 RESPOND.IO -->
 <section id="s4">
   <h2><span class="num">04</span>Respond.io — where leads go</h2>
-  <p class="lede">We reviewed 12 months of Respond.io reports — the maximum available on the platform — together with nine months of lifecycle data. This covers 95,031 contacts and 73,069 conversations, managed by four human agents and one AI agent, with the AI agent currently handling 57% of assignments.</p>
+  <p class="lede"><b>Takeaway:</b> unpaid enquiries book at 14.4% and paid enquiries at 1.5%. These figures are conversations and contacts, not conversions. WhatsApp Business API starts a new conversation when a person replies more than 24 hours later, so one contact can be counted more than once. The lifecycle status (New, Warm, Hot, Booked) is a separate field and does not reset with that count. We reviewed 12 months of Respond.io reports — the maximum available on the platform — together with nine months of lifecycle data. This covers 95,031 contacts and 73,069 conversations, managed by four human agents and one AI agent, with the AI agent currently handling 57% of assignments.</p>
   <div class="grid g2">
     <div class="card">
       <div class="chart-head"><div class="chart-title">Lifecycle funnel by month of entry</div><button class="tv" data-toggle="t-funnel">Show data table</button></div>
@@ -254,7 +254,7 @@ a{color:var(--series-1)}
   <div class="grid g3" style="margin-top:14px">
     <div class="card">
       <div class="chart-head"><div class="chart-title">Contacts added vs deleted</div></div>
-      <div class="chart-sub">Adds split into paid, incoming and CSV import. Deletions: 23,616 in Jul–Aug 2026.</div>
+      <div class="chart-sub">Adds split into paid, incoming and CSV import. Deletions: 23,616 in Jul–Aug 2026, by the Help VISTA account.</div>
       <svg id="c-contacts" viewBox="0 0 600 300"></svg>
       <div class="legend"><span><i style="background:var(--series-2)"></i>Paid Ads</span><span><i style="background:var(--series-3)"></i>Incoming</span><span><i style="background:var(--series-5)"></i>Import</span><span><i style="background:var(--critical)"></i>Deleted</span></div>
     </div>
@@ -268,6 +268,10 @@ a{color:var(--series-1)}
       <div class="chart-sub">Lifecycle stage counts across all 95,031 contacts.</div>
       <div class="tscroll" id="t-stages"></div>
     </div>
+  </div>
+  <div class="card" style="margin-top:14px;border-left:4px solid var(--critical)">
+    <div class="chart-title">23,616 contacts deleted in July and August 2026</div>
+    <p class="lede" style="margin:0">This is a finding, not a conclusion. 14,018 contacts were deleted in July and 9,564 in August, 34% of the year’s intake, by one account. The rest of the twelve months does not show a deletion of this size, and once a contact is deleted there is no record of who they were. Deleting contacts also makes a conversion rate look better than the year actually was. Vista needs to say what happened. We have not treated it as a security incident, because the export does not show intent.</p>
   </div>
   <div class="grid g2" style="margin-top:14px">
     <div class="card">
@@ -289,6 +293,8 @@ a{color:var(--series-1)}
         <div>Red-flag symptom case assigned 9:27 PM, still unread</div><div>11:45 PM</div>
         <div>Meta away-message fires before AI reply</div><div>every Meta chat</div>
         <div>CAPI "Purchase" observed on a lead later marked Inactive</div><div>yes</div>
+        <div class="h">Calls</div>
+        <div>Web chat, Google Business and the call channel in Respond.io</div><div>not connected</div>
         <div class="h">Setup</div>
         <div>Workflows (published / stopped / draft)</div><div>10 / 10 / 3</div>
         <div>Human agents active · deleted accounts</div><div>4 · 3</div>
@@ -297,19 +303,23 @@ a{color:var(--series-1)}
       </div>
     </div>
   </div>
+  <div class="card" style="margin-top:14px">
+    <div class="chart-title">Phone calls are a gap</div>
+    <p class="lede" style="margin:0">A call from Google Business Profile or the website call button does not land in Respond.io, so it cannot be tied to a campaign, a centre or a booking. The call counts exist inside Google Business Profile; what they became (a question, a walk-in, an appointment) does not. Call tracking is part of the plan. The tool is chosen with Vista. The point is that a call becomes a measurable enquiry, not that a product name is decided here.</p>
+  </div>
 </section>
 
 <!-- 5 WEBSITE -->
 <section id="s5">
   <h2><span class="num">05</span>Website — vista.com.my and vistanow.com.my</h2>
-  <p class="lede">vista.com.my and vistanow.com.my, both on WordPress 7.1 with Elementor, WPML and Yoast. Crawled 12 September 2026.</p>
+  <p class="lede"><b>Takeaway:</b> the site is slow (about 7 seconds, 3.08 MB on the home page), has no consent layer, and a search in Mandarin does not reliably reach a Mandarin page, because hreflang is missing. vista.com.my and vistanow.com.my, both on WordPress 7.1 with Elementor, WPML and Yoast. Crawled 12 September 2026. The target for the new site is a load under 3 seconds on a phone in Malaysia, confirmed once hosting and page weight are sized.</p>
   <div class="grid g6">
     <div class="tile warn"><div class="lab">Homepage weight</div><div class="val">3.08 MB</div><div class="note">151 requests · 7.3 s load · TTFB 0.9–1.3 s, HTML never edge-cached</div></div>
     <div class="tile warn"><div class="lab">Scripts per page</div><div class="val">91–99</div><div class="note">36–46 stylesheets; reCAPTCHA (347 KB) loaded twice</div></div>
     <div class="tile crit"><div class="lab">Images with empty alt</div><div class="val">95.8%</div><div class="note">17,650 of 18,419 img tags; 79.7% on vistanow</div></div>
     <div class="tile crit"><div class="lab">axe serious violations</div><div class="val">12–38</div><div class="note">per template; no main landmark; focus outline suppressed</div></div>
     <div class="tile crit"><div class="lab">Consent management</div><div class="val">None</div><div class="note">GA4 ×2, 2 Meta pixels, Ads remarketing, Hotjar fire on load</div></div>
-    <div class="tile crit"><div class="lab">2025–26 posts in sitemap</div><div class="val">0 / 52</div><div class="note">Only 2016–2024 press clippings submitted</div></div>
+    <div class="tile crit"><div class="lab">2025–26 website articles in the sitemap</div><div class="val">0 / 52</div><div class="note">Only 2016–2024 press clippings submitted. These are website articles, not social posts</div></div>
   </div>
   <div class="grid g2" style="margin-top:14px">
     <div class="card"><div class="chart-title">URL estate and structure</div><div class="tscroll" id="t-site1"></div></div>
@@ -317,14 +327,14 @@ a{color:var(--series-1)}
   </div>
   <div class="grid g2" style="margin-top:14px">
     <div class="card"><div class="chart-title">SEO hygiene and structured data</div><div class="tscroll" id="t-site3"></div></div>
-    <div class="card"><div class="chart-title">Content velocity — posts per month, both domains</div><div class="chart-sub">Publishing arrives in three batches and stopped in May 2026.</div><svg id="c-vel" viewBox="0 0 600 240"></svg><div class="legend"><span><i style="background:var(--series-1)"></i>vista.com.my</span><span><i style="background:var(--series-3)"></i>vistanow.com.my</span></div></div>
+    <div class="card"><div class="chart-title">Website articles per month, both domains</div><div class="chart-sub">New pages on vista.com.my and vistanow.com.my, not social posts. Publishing arrives in three batches and stopped in May 2026.</div><svg id="c-vel" viewBox="0 0 600 240"></svg><div class="legend"><span><i style="background:var(--series-1)"></i>vista.com.my</span><span><i style="background:var(--series-3)"></i>vistanow.com.my</span></div></div>
   </div>
 </section>
 
 <!-- 6 PAID MEDIA REPORTING -->
 <section id="s6">
   <h2><span class="num">06</span>Paid media as reported by the agency</h2>
-  <p class="lede">Nineteen Google Ads reports and twelve Meta/TikTok decks, read line by line: what each set contains, what it leaves out, and the inconsistencies logged inside it.</p>
+  <p class="lede"><b>Takeaway:</b> Google’s reported conversions include 23–52% Performance Max activity, often far cheaper than a real enquiry, while Meta’s “results” book at 1.5%. Spend is not yet pointed at a confirmed booking. Nineteen Google Ads reports and twelve Meta/TikTok decks, read line by line: what each set contains, what it leaves out, and the inconsistencies logged inside it.</p>
   <div class="card">
     <div class="chart-title">What the 44 reports contain — and do not</div>
     <div class="tscroll" id="t-reports"></div>
@@ -358,7 +368,7 @@ a{color:var(--series-1)}
   <p class="lede">Public profiles read on 14 September 2026. The agency decks contain no organic social metrics, so this is the first consolidated view.</p>
   <div class="card"><div class="tscroll" id="t-social"></div>
   <div class="note">Instagram last 90 days: 32 posts (16 static, 10 reels, 6 carousels) — 0 posts 6–23 Aug, 18 posts 24 Aug–11 Sep. Last 20 posts: average 29 likes (median 27, range 10–67), 9 comments in total; one UGC-style kid reel 293 likes. FB and IG carry identical creative and captions on the same day; LinkedIn reuses the copy; TikTok runs BM re-cuts. No page replies to comments were observed. RFP minimum: 8 counting posts a month, of which 4 reels, 2 carousels, 2 static.</div></div>
-  <div class="card" style="margin-top:14px"><div class="chart-title">Google Business Profile — branch listings</div><div class="chart-sub">13 listings plus a duplicate HQ listing "Vista Laser Eye Center Sdn Bhd" (5.0, 8 reviews). Names carry "| LASIK, Cataract Eye Surgery Malaysia" suffixes.</div><div class="tscroll" id="t-gbp"></div></div>
+  <div class="card" style="margin-top:14px"><div class="chart-title">Google Business Profile — branch listings</div><div class="chart-sub">13 listings plus a duplicate HQ listing "Vista Laser Eye Center Sdn Bhd" (5.0, 8 reviews). Names carry "| LASIK, Cataract Eye Surgery Malaysia" suffixes. Calls and direction requests sit in these listings and are not connected to Respond.io.</div><div class="tscroll" id="t-gbp"></div></div>
 </section>
 
 <!-- 10 FINDINGS -->
@@ -377,39 +387,6 @@ a{color:var(--series-1)}
   <h2><span class="num">10</span>Cross-check against the 16 August audit</h2>
   <p class="lede">Each August finding re-tested on the wider window. Two are closed or changed, one cannot be reproduced from the shared workbook, the rest hold or are larger than first measured.</p>
   <div class="card"><div class="tscroll" id="t-xcheck"></div></div>
-</section>
-
-<!-- 12 SOURCES -->
-<section id="s12">
-  <h2><span class="num">11</span>Sources and limits</h2>
-  <div class="grid g2">
-    <div class="card"><div class="chart-title">Sources read</div><div class="kv">
-      <div>RFP QHM/VES/DT/2026/003 (DOCX, 1,398 lines)</div><div>1</div>
-      
-      <div>Xedea SEO reports Jul 2025–Jul 2026</div><div>13</div>
-      <div>Xedea SEM reports Jan 2025–Jul 2026</div><div>19</div>
-      <div>Xedea Meta/TikTok decks Aug 2025–Jul 2026</div><div>12</div>
-      <div>Vista annual reports 2023–2025</div><div>3</div>
-      <div>L10 VISTA Eye workbook (10 tabs)</div><div>1</div>
-      <div>GA4 report pulls (monthly ×20, three ranges ×9)</div><div>45</div>
-      <div>Respond.io report captures</div><div>60+</div>
-      <div>Pages crawled (vista.com.my / vistanow.com.my)</div><div>427 / 398</div>
-      <div>Social posts sampled (IG / FB / TikTok / LinkedIn)</div><div>47 / 14 / 19 / 5</div>
-      <div>Conversations sampled, no identifiers recorded</div><div>29</div>
-    </div></div>
-    <div class="card"><div class="chart-title">What could not be read</div><div class="kv">
-      <div>GA4 Admin: key-event flags, data streams, retention, product links</div><div>extension disconnected</div>
-      <div>PageSpeed Insights / Lighthouse / CrUX</div><div>API quota 429</div>
-      <div>Respond.io Settings, Channels, Users, Integrations</div><div>access denied</div>
-      <div>Respond.io Lifecycle Sep–Nov 2025</div><div>report did not render</div>
-      <div>Respond.io history beyond 12 months</div><div>platform limit</div>
-      <div>Facebook timeline beyond 3 posts; Page Transparency</div><div>did not paginate</div>
-      <div>L10 channel-contribution % rows (Aug F-01)</div><div>not in shared export</div>
-      
-      <div>Aug 2026 SEM and Meta reports</div><div>not yet issued</div>
-      <div>Actual revenue, appointments attended, procedures</div><div>not supplied by Vista</div>
-    </div></div>
-  </div>
 </section>
 
 <footer>Caspian Digital Solutions — Digital Solutions arm of Qualitas Health Malaysia. Evidence files retained in the Vista DTR project: extracts/ (proposals, reports, L10), ga4/, respondio/, site/, social/. Prepared 14 September 2026.</footer>

@@ -24,15 +24,15 @@
   "objectives": [
    {
     "id": "O1",
-    "name": "One lead definition, one true cost per patient",
-    "why": "At the moment, Vista has five different lead counts, the website conversion metric has already been redefined twice, and campaign reporting does not connect through to revenue. Until there is one agreed lead definition and we can see cost per booked appointment and cost per attended visit side by side, it is difficult to judge campaign performance fairly.",
-    "measure": "One reconciled lead ledger connecting platform → Respond.io → booking system, published monthly from Month 2. Cost per booked appointment to be reported from Month 2, using the current baseline of RM182 from Jan–Aug 2026. Cost per attended visit to be reported once the booking-system connection is live.",
+    "name": "One lead definition, one cost per booked appointment",
+    "why": "At the moment, Vista has five different lead counts, the website conversion metric has already been redefined twice, and campaign reporting does not connect through to revenue. A booked appointment is not a paying patient: some bookings never become a visit, and payment is not in the data yet. Until there is one agreed lead definition, and cost per booked appointment sits beside cost per attended visit, it is difficult to judge campaign performance fairly. Cost per booked appointment is not cost per paying patient. Payment and attended-visit cost are reported once that data exists.",
+    "measure": "One reconciled lead ledger connecting platform → Respond.io → booking system, published monthly from Month 2. Cost per booked appointment to be reported from Month 2, using the current baseline of RM182 from Jan–Aug 2026. Cost per booked appointment is not cost per paying patient. Payment and attended-visit cost are reported once that data exists.",
     "owner": "Analytics Lead. Executive sponsor: Head of Digital Solutions (the Vista leader accountable for this result)"
    },
    {
     "id": "O2",
     "name": "A new website that is fast, trilingual and built to convert",
-    "why": "The current website has 101 location URLs across 16 branches, no consent layer, a 3.08 MB homepage, between 12 and 38 serious accessibility issues per template, and no new posts in the sitemap since 2024. In its current form, it does not meet the RFP’s own acceptance criteria. We should also keep this as one website, not two. The same site can rank separately for every page and location, while a dedicated Happenings section can carry news and updates without creating a second domain or requiring a second KKLIU licence.",
+    "why": "The current website has 101 location URLs across 16 branches, no consent layer, a 3.08 MB homepage, between 12 and 38 serious accessibility issues per template, and no new website articles in the sitemap since 2024. In its current form, it does not meet the RFP’s own acceptance criteria. We should also keep this as one website, not two. The same site can rank separately for every page and location, while a dedicated Happenings section can carry news and updates without creating a second domain or requiring a second KKLIU licence.",
     "measure": "New headless website live by 22 January 2027, hosted on AWS Malaysia, with 16 canonical branch pages, EN / BM / ZH with hreflang, CMP live, a Lighthouse score of 90 or above, WCAG 2.2 AA audited, and Core Web Vitals field p75 rated Good by Month 6.",
     "owner": "Technical Lead · UX/UI Lead"
    },
@@ -568,7 +568,7 @@
       "kind": "build"
      },
      {
-      "label": "Rolling calendar ≥ 1 month ahead; 4 articles/month EN/BM/ZH as demand supports",
+      "label": "Rolling calendar ≥ 1 month ahead; medically reviewed articles in EN/BM/ZH, monthly pace flexed with clinical review (52 in the year)",
       "from": "2026-12-01",
       "to": "2027-10-29",
       "kind": "run"

@@ -169,9 +169,9 @@ export const defaultContent: Content = {
       {
         tab: "website",
         title: "Website concepts",
-        stage: "Two concepts, one recommendation",
-        summary: "Two concept sites against the live site, with measurements, a recommendation and the full sitemap for the new site.",
-        bullets: ["Personalised journey: three questions, one skip", "One site, trilingual, under 1.5 s", "≈ 95-page sitemap for the new vista.com.my"],
+        stage: "A direction, then the sitemap",
+        summary: "The screens are a direction for the journey and the tone, not the design. Only the glasses journey is drawn. Price does not lead the home page.",
+        bullets: ["Cataract, dry eye and a general eye check are still to be drawn", "One site, trilingual, mobile-first, a load under 3 seconds once hosting is sized", "Price does not lead the home page; treatments, centres and doctors are linked"],
       },
       {
         tab: "roadmap",

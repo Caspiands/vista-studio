@@ -189,7 +189,7 @@ a{color:var(--accent)}
   <button class="tbtn" id="theme" type="button">◐ Dark mode</button>
 </header>
 <nav class="toc">
-  <a href="#pillars">Content pillars</a><a href="#rhythm">Weekly rhythm</a><a href="#pxp">Pillar × persona</a><a href="#gantt">Campaign calendar</a><a href="#campaigns">Campaign briefs</a><a href="#calendar">Monthly posting plan</a><a href="#rules">Advertising rules</a>
+  <a href="#pillars">Content pillars</a><a href="#rhythm">Weekly rhythm</a><a href="#pxp">Pillar × persona</a><a href="#gantt">Campaign calendar</a><a href="#campaigns">Campaign briefs</a><a href="#calendar">Monthly content plan</a><a href="#rules">Advertising rules</a>
 </nav>
 
 <div class="tiles" id="tiles"></div>
@@ -218,7 +218,7 @@ a{color:var(--accent)}
     <div class="wk"><div class="wh" style="background:#2f6f6a">WEEK 3</div><div class="wb"><h3>Build Trust</h3><p>Show the clinics, team and technology. Proof before the ask.</p></div></div>
     <div class="wk"><div class="wh" style="background:#b8792a">WEEK 4</div><div class="wb"><h3>Convert</h3><p>Remove the friction &mdash; how to book, which branch, what&#39;s on.</p></div></div>
   </div>
-  <p class="rnote">8 posts a month &middot; cross-posted to Facebook &amp; Instagram &middot; reels and the animation re-cut for TikTok in BM</p>
+  <p class="rnote">Up to 8 pieces of content a month &middot; Facebook &amp; Instagram &middot; reels and the animation re-cut for TikTok in BM &middot; a trending slot can be added inside 48 hours</p>
 </section>
 
 <section id="pxp">
@@ -229,9 +229,9 @@ a{color:var(--accent)}
 
 <section id="gantt">
   <h2>Campaign calendar, Nov 2026 – Oct 2027</h2>
-  <p class="lede">Always-on programmes run all year with heavier weeks shaded darker; seasonal and test campaigns sit on their own rows. Vertical lines mark festivals and programme gates. Hover a bar for dates; select a row to open its brief.</p>
+  <p class="lede">Always-on programmes run all year with heavier weeks shaded darker; seasonal and explore campaigns sit on their own rows. “Explore” is a scoped trial Vista can scale, hold or stop — it is not a test of whether the work matters. Vertical lines mark festivals and programme gates. Hover a bar for dates; select a row to open its brief.</p>
   <div class="card"><div class="tscroll"><svg id="g" role="img" aria-label="Campaign Gantt chart"></svg></div>
-  <div class="legend"><span><i style="background:var(--s1)"></i>Always-on</span><span><i style="background:var(--s1);opacity:.45"></i>Always-on, lighter weeks</span><span><i style="background:var(--s5)"></i>Seasonal</span><span><i style="background:var(--s6)"></i>Test / local</span><span><i class="ln" style="background:var(--fest)"></i>Festival or eye-health day</span><span><i class="ln" style="background:var(--gate)"></i>Programme gate</span></div></div>
+  <div class="legend"><span><i style="background:var(--s1)"></i>Always-on</span><span><i style="background:var(--s1);opacity:.45"></i>Always-on, lighter weeks</span><span><i style="background:var(--s5)"></i>Seasonal</span><span><i style="background:var(--s6)"></i>Explore</span><span><i class="ln" style="background:var(--fest)"></i>Festival or eye-health day</span><span><i class="ln" style="background:var(--gate)"></i>Programme gate</span></div></div>
 </section>
 
 <section id="campaigns">
@@ -242,8 +242,8 @@ a{color:var(--accent)}
 </section>
 
 <section id="calendar">
-  <h2>Monthly posting plan — indicative topics</h2>
-  <p class="lede">Topic ideas for each month, in slot order, with the campaigns live that month. These are the angles, not final posts: the month's posts are agreed with Vista at the monthly planning meeting, and the count flexes between 5 and 8.</p>
+  <h2>Monthly content plan — indicative topics</h2>
+  <p class="lede">Topic ideas for each month, in slot order, with the campaigns live that month. We call this our content. A piece written here may later be boosted, so the plan is not labelled organic or paid. These are the angles, not final posts: the month's posts are agreed with Vista at the monthly planning meeting, and the count flexes between 5 and 8. A trending slot for Gen Z can be turned around within 48 hours, because a trend is gone after that. Every piece still clears MAB 3/2023 or carries its KKLIU number.</p>
   <div class="months" id="months"></div>
   <div class="card" id="cal"></div>
 </section>
@@ -274,7 +274,7 @@ const fmt=n=>Math.round(n).toLocaleString('en-US');
 const ML=m=>{const [y,mo]=m.split('-');return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+mo-1]+' '+y.slice(2);};
 const PIL=Object.fromEntries(D.pillars.map(p=>[p.id,p]));
 const CAM=Object.fromEntries(D.campaigns.map(c=>[c.id,c]));
-const colOf=c=>c.type==='Seasonal'?'--s5':(c.type==='Test'||c.id==='L1')?'--s6':'--s1';
+const colOf=c=>c.type==='Seasonal'?'--s5':(c.type==='Explore'||c.id==='L1')?'--s6':'--s1';
 const tip=$('tip');
 function bindTip(node,html){node.addEventListener('mousemove',e=>{tip.innerHTML=html;tip.style.opacity=1;let x=e.clientX+14,y=e.clientY+14;if(x+310>innerWidth)x=e.clientX-316;if(y+130>innerHeight)y=e.clientY-130;tip.style.left=x+'px';tip.style.top=y+'px';});node.addEventListener('mouseleave',()=>tip.style.opacity=0);}
 const pchip=id=>`<span class="chip" title="${esc(D.personas[id])}">${id}</span>`;
@@ -282,7 +282,7 @@ const pchip=id=>`<span class="chip" title="${esc(D.personas[id])}">${id}</span>`
 $('tiles').innerHTML=[
  ['Content pillars',D.pillars.length,'Mapped to awareness, consideration and conversion'],
  ['Counting posts a month','8','4 reels · 2 carousels · 2 static, plus 4 TikTok BM re-cuts'],
- ['Campaigns',D.campaigns.length,`${D.campaigns.filter(c=>c.type.startsWith('Always')).length} always-on · ${D.campaigns.filter(c=>c.type==='Seasonal').length} seasonal · ${D.campaigns.filter(c=>c.type==='Test').length} tests`],
+ ['Campaigns',D.campaigns.length,`${D.campaigns.filter(c=>c.type.startsWith('Always')).length} always-on · ${D.campaigns.filter(c=>c.type==='Seasonal').length} seasonal · ${D.campaigns.filter(c=>c.type==='Explore').length} explore`],
  ['Planned posts, 12 months','96','Eight counting posts a month, plus TikTok re-cuts and stories'],
  ['Languages','EN · BM · ZH','Bahasa first on TikTok; Mandarin for cataract, myopia and CNY']
 ].map(([l,v,n])=>`<div class="tile"><div class="lab">${l}</div><div class="val">${v}</div><div class="note">${n}</div></div>`).join('');
@@ -362,7 +362,7 @@ function gantt(){
 /* campaign cards */
 let cf='All';
 function cards(){
-  const types=['All','Always-on','Seasonal','Test'];
+  const types=['All','Always-on','Seasonal','Explore'];
   $('cfilter').innerHTML=types.map(t=>`<button type="button" class="${t===cf?'on':''}" data-t="${t}">${t} (${t==='All'?D.campaigns.length:D.campaigns.filter(c=>c.type.startsWith(t)).length})</button>`).join('');
   $('cfilter').onclick=e=>{const b=e.target.closest('button');if(b){cf=b.dataset.t;cards();}};
   const list=D.campaigns.filter(c=>cf==='All'||c.type.startsWith(cf));
