@@ -365,17 +365,28 @@ const MONTHS=/*__VISTA_DATA__:MONTHS*/;
 const MON=/*__VISTA_DATA__:MON*/;
 const fdate=s=>{const d=new Date(s);return d.getDate()+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]+' '+d.getFullYear();};
 let gWS='All';
-function drawGantt(){const svg=$('c-gantt');svg.innerHTML='';const W=1240,L=340,R=16,pw=W-L-R;const X=d=>L+dayN(d)/TOTAL*pw;const rowH=22,hdr=34;
- const ws=S.gantt.filter(w=>gWS==='All'||w.id===gWS);let rows=[];ws.forEach(w=>{rows.push({type:'ws',w});w.bars.forEach(b=>rows.push({type:'bar',w,b}));});
- const H=hdr+rows.length*rowH+16;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+const ganttProbeWrap=document.createElement('div');
+ganttProbeWrap.style.cssText='position:absolute;width:0;height:0;overflow:hidden;';
+const ganttProbe=document.createElement('div');
+ganttProbe.style.cssText='font-size:11.5px;line-height:14px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-wrap:break-word;';
+ganttProbeWrap.appendChild(ganttProbe);document.body.appendChild(ganttProbeWrap);
+function ganttLabelHeight(text,maxW){ganttProbe.style.width=maxW+'px';ganttProbe.textContent=text;return Math.max(14,ganttProbe.scrollHeight);}
+function drawGantt(){const svg=$('c-gantt');svg.innerHTML='';const W=1240,L=340,R=16,pw=W-L-R;const X=d=>L+dayN(d)/TOTAL*pw;const hdr=34,baseH=22,labelX=12,labelMax=L-labelX-12;
+ const ws=S.gantt.filter(w=>gWS==='All'||w.id===gWS);let rows=[];
+ ws.forEach(w=>{rows.push({type:'ws',w,h:baseH});w.bars.forEach(b=>{const labelH=ganttLabelHeight(b.label,labelMax);rows.push({type:'bar',w,b,labelH,h:Math.max(baseH,labelH+8)});});});
+ let y0=hdr;rows.forEach(r=>{r.y=y0;y0+=r.h;});
+ const H=y0+16;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
  MON.forEach((m,i)=>{const x=X(MONTHS[i]+'-01');svg.appendChild(el('line',{x1:x,x2:x,y1:hdr-8,y2:H-10,stroke:css('--grid')}));const t=el('text',{x:x+4,y:hdr-14,class:'tick'});t.textContent=m;svg.appendChild(t);});
  const gl=X('2027-01-22');svg.appendChild(el('line',{x1:gl,x2:gl,y1:hdr-8,y2:H-10,stroke:css('--critical'),'stroke-width':1.5,'stroke-dasharray':'4 3'}));
- rows.forEach((r,i)=>{const y=hdr+i*rowH;
-  if(r.type==='ws'){svg.appendChild(el('rect',{x:0,y:y-2,width:W,height:rowH,fill:css('--chip')}));const t=el('text',{x:8,y:y+13,'font-size':'12','font-weight':'700',fill:css('--text-primary')});t.textContent=r.w.id+' · '+r.w.name;svg.appendChild(t);const o=el('text',{x:L-8,y:y+13,'font-size':'11',fill:css('--muted'),'text-anchor':'end'});o.textContent=r.w.owner;svg.appendChild(o);
+ rows.forEach(r=>{const y=r.y;
+  if(r.type==='ws'){svg.appendChild(el('rect',{x:0,y:y-2,width:W,height:r.h,fill:css('--chip')}));const t=el('text',{x:8,y:y+13,'font-size':'12','font-weight':'700',fill:css('--text-primary')});t.textContent=r.w.id+' · '+r.w.name;svg.appendChild(t);const o=el('text',{x:L-8,y:y+13,'font-size':'11',fill:css('--muted'),'text-anchor':'end'});o.textContent=r.w.owner;svg.appendChild(o);
    r.w.milestones.forEach(m=>{const x=X(m.d);const d=el('rect',{x:x-5,y:y+4,width:10,height:10,transform:`rotate(45 ${x} ${y+9})`,fill:m.t.includes('Go-live')?css('--critical'):css('--text-primary')});svg.appendChild(d);bindTip(d,`<b>${esc(m.t)}</b><span class="r">${fdate(m.d)}</span>`);});
-  }else{const b=r.b;const t=el('text',{x:16,y:y+14,'font-size':'11.5',fill:css('--text-secondary')});let lab=b.label;if(lab.length>54)lab=lab.slice(0,52)+'…';t.textContent=lab;svg.appendChild(t);
-   const x1=X(b.from),x2=X(b.to)+pw/TOTAL;const col=b.kind==='build'?'--build':b.kind==='run'?'--run':'--cadence';const rc=el('rect',{x:x1,y:y+4,width:Math.max(x2-x1,3),height:13,rx:3,fill:css(col),opacity:b.kind==='cadence'?.75:.95});svg.appendChild(rc);
-   if(b.kind==='cadence'){for(let x=x1+18;x<x2;x+=pw/TOTAL*30.4)svg.appendChild(el('line',{x1:x,x2:x,y1:y+4,y2:y+17,stroke:css('--surface-1'),'stroke-width':2}));}
+  }else{const b=r.b;const fo=el('foreignObject',{x:labelX,y:y+(r.h-r.labelH)/2,width:labelMax,height:r.labelH});
+   const div=document.createElementNS('http://www.w3.org/1999/xhtml','div');
+   div.style.cssText='font-size:11.5px;line-height:14px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-wrap:break-word;color:'+css('--text-secondary');
+   div.textContent=b.label;fo.appendChild(div);svg.appendChild(fo);
+   const barH=13,barY=y+(r.h-barH)/2;const x1=X(b.from),x2=X(b.to)+pw/TOTAL;const col=b.kind==='build'?'--build':b.kind==='run'?'--run':'--cadence';const rc=el('rect',{x:x1,y:barY,width:Math.max(x2-x1,3),height:barH,rx:3,fill:css(col),opacity:b.kind==='cadence'?.75:.95});svg.appendChild(rc);
+   if(b.kind==='cadence'){for(let x=x1+18;x<x2;x+=pw/TOTAL*30.4)svg.appendChild(el('line',{x1:x,x2:x,y1:barY,y2:barY+barH,stroke:css('--surface-1'),'stroke-width':2}));}
    bindTip(rc,`<b>${esc(b.label)}</b><span class="r">${fdate(b.from)} – ${fdate(b.to)}</span><span class="r">${esc(r.w.name)} · ${esc(r.w.owner)}</span>`);}
  });}
 (function(){const f=$('g-filters');f.innerHTML='<span class="sep">Workstream</span>'+['All','F','G'].map(v=>`<button data-v="${v}" class="${v==='All'?'on':''}">${v==='All'?'Both':v==='F'?'F · SEO · AEO · GEO · local':'G · Content marketing'}</button>`).join('');
