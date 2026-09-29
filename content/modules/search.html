@@ -257,6 +257,7 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);font-si
 <section id="tech">
   <h2><span class="num">08</span>Technical foundation — built into the new website</h2>
   <p class="lede">Most of Vista's search problems are structural, so most of the fix ships with the website in Month 3 rather than as a separate SEO project. The concepts in the Website tab and the production stack in the Roadmap tab already carry these requirements; this is the search view of them.</p>
+  <div class="filters" id="tech-filters"></div>
   <div class="card"><div class="tscroll" id="t-tech"></div></div>
   <div class="note">Migration safeguard: a full crawl of both current sites is taken before launch; every URL with traffic or a ranking is mapped to its new page; rankings and organic sessions are compared at Week 1, Week 4 and Week 12 after launch, and any page that loses more than 20% is investigated within five days.</div>
 </section>
@@ -350,7 +351,13 @@ kwFilters();kwTable();
 $('t-pairs').innerHTML='<table class="data"><thead><tr><th>Centre</th><th>Services to win locally</th><th>Why</th></tr></thead><tbody>'+S.pairs.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join('')+'</tbody></table>';
 
 /* tech */
-$('t-tech').innerHTML='<table class="data"><thead><tr><th>Area</th><th>Today</th><th>New site</th><th>Track</th></tr></thead><tbody>'+S.tech.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${trackPill(r[3])}</td></tr>`).join('')+'</tbody></table>';
+let techTrack='All';
+function techFilters(){const f=$('tech-filters');const tracks=['All'];S.tech.forEach(r=>{if(!tracks.includes(r[3]))tracks.push(r[3]);});
+ f.innerHTML='<span class="sep">Track</span>'+tracks.map(v=>`<button data-v="${v}" class="${v===techTrack?'on':''}">${v==='tech'?'Build':v}</button>`).join('');
+ f.onclick=e=>{const b=e.target.closest('button');if(!b)return;techTrack=b.dataset.v;techFilters();techTable();};}
+function techTable(){const rows=S.tech.filter(r=>techTrack==='All'||r[3]===techTrack);
+ $('t-tech').innerHTML='<table class="data"><thead><tr><th>Area</th><th>Today</th><th>New site</th><th>Track</th></tr></thead><tbody>'+rows.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${trackPill(r[3])}</td></tr>`).join('')+'</tbody></table>';}
+techFilters();techTable();
 
 /* gantt */
 const T0=new Date('2026-11-01'),T1=new Date('2027-11-01');const dayN=s=>(new Date(s)-T0)/86400000;const TOTAL=(T1-T0)/86400000;
