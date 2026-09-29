@@ -99,6 +99,18 @@ table.data th.sorted::after{content:" ▾";color:var(--accent)}table.data th.sor
 table.data td{padding:8px 9px;border-bottom:1px solid var(--grid);vertical-align:top}
 table.data tbody tr:hover{background:var(--chip)}
 table.data td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code.slug{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;background:var(--chip);border:1px solid var(--border);border-radius:4px;padding:0 5px}
+#keywords,#t-kw{min-width:0;max-width:100%}
+@media(max-width:720px){
+  #t-kw{overflow-x:hidden}
+  #t-kw table.data,#t-kw thead,#t-kw tbody,#t-kw tr,#t-kw td{display:block;width:100%}
+  #t-kw thead tr{display:flex;flex-wrap:wrap;gap:6px;padding:0 0 8px}
+  #t-kw th{border:1px solid var(--border);border-radius:999px;padding:4px 8px;white-space:normal}
+  #t-kw tbody tr{border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin:0 0 10px;background:var(--plane)}
+  #t-kw td{border:0;padding:4px 0;white-space:normal;overflow-wrap:anywhere;text-align:left}
+  #t-kw td.n{text-align:left;white-space:normal}
+  #t-kw td::before{content:attr(data-label);display:block;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px;align-items:center}
 .filters button{background:var(--chip);border:1px solid var(--border);color:var(--text-secondary);border-radius:999px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:inherit}
 .filters button.on{background:var(--text-primary);color:var(--surface-1);border-color:var(--text-primary)}
@@ -322,9 +334,9 @@ const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim
 const tip=$('tip');
 function bindTip(node,html){node.addEventListener('mousemove',e=>{tip.innerHTML=html;tip.style.opacity=1;let x=e.clientX+14,y=e.clientY+14;if(x+310>innerWidth)x=e.clientX-320;if(y+120>innerHeight)y=e.clientY-120;tip.style.left=x+'px';tip.style.top=y+'px';});node.addEventListener('mouseleave',()=>tip.style.opacity=0);}
 function table(id,cols,rows,opts={}){const c=$(id);let sk=opts.sort||null,asc=opts.asc||false;
- function render(){const data=[...rows];if(sk){const col=cols.find(x=>x.k===sk);data.sort((a,b)=>{let va=a[sk],vb=b[sk];if(col.num){va=+va||0;vb=+vb||0;return asc?va-vb:vb-va;}return asc?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va));});}
+ function render(){const data=[...rows];if(sk){const col=cols.find(x=>x.k===sk);data.sort((a,b)=>{let va=a[sk],vb=b[sk];if(col&&col.num){va=+va||0;vb=+vb||0;return asc?va-vb:vb-va;}return asc?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va));});}
   let h='<table class="data"><thead><tr>'+cols.map(col=>`<th class="${sk===col.k?'sorted'+(asc?' asc':''):''}" data-k="${col.k}">${col.h}</th>`).join('')+'</tr></thead><tbody>';
-  data.forEach(r=>{h+='<tr>'+cols.map(col=>{let v=r[col.k];v=col.f?col.f(v,r):esc(v);return `<td class="${col.num?'n':''}">${v}</td>`;}).join('')+'</tr>';});
+  data.forEach(r=>{h+='<tr>'+cols.map(col=>{let v=r[col.k];v=col.f?col.f(v,r):esc(v);const label=opts.stack?` data-label="${esc(col.h)}"`:'';return `<td class="${col.num?'n':''}"${label}>${v}</td>`;}).join('')+'</tr>';});
   c.innerHTML=h+'</tbody></table>';c.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;if(sk===k)asc=!asc;else{sk=k;asc=false;}render();}));}
  render();}
 const trackPill=t=>`<span class="pill ${t==='AEO'?'aeo':t==='GEO'?'geo':t==='Local'?'local':t==='tech'?'tech':''}">${t==='tech'?'Build':t}</span>`;
@@ -340,11 +352,21 @@ table('t-findings',[{h:'Ref',k:'id'},{h:'Area',k:'area'},{h:'What is wrong',k:'w
 
 /* keywords */
 let kwTrack='All',kwLang='All';
+/* EN, BM and ZH are separate codes in lang ("EN · BM · ZH"). A selected language leads with that language's own row and puts the page URL beside the keyword. */
+function langCodes(v){return String(v??'').split(/[^A-Za-z]+/).filter(s=>/^(EN|BM|ZH)$/.test(s));}
+function matchesLang(row,code){return code==='All'||langCodes(row.lang).includes(code);}
+function langRank(row,code){const list=langCodes(row.lang);if(list.length===1&&list[0]===code)return 0;if(list[0]===code)return 1;return 2;}
+function pageCell(v){const s=String(v??'');const m=s.match(/^(\/(?:en|ms|zh)\/)\s*/i);if(!m)return esc(s);return `<code class="slug">${esc(m[1])}</code> ${esc(s.slice(m[0].length))}`;}
 function kwFilters(){const f=$('kw-filters');const tracks=['All','SEO','Local','AEO','GEO'],langs=['All','EN','BM','ZH'];
  f.innerHTML='<span class="sep">Track</span>'+tracks.map(v=>`<button data-t="tr" data-v="${v}" class="${v===kwTrack?'on':''}">${v}</button>`).join('')+'<span class="sep">Language</span>'+langs.map(v=>`<button data-t="ln" data-v="${v}" class="${v===kwLang?'on':''}">${v}</button>`).join('');
  f.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.t==='tr')kwTrack=b.dataset.v;else kwLang=b.dataset.v;kwFilters();kwTable();};}
-function kwTable(){const rows=S.kw.filter(r=>(kwTrack==='All'||r.track===kwTrack)&&(kwLang==='All'||r.lang.includes(kwLang)));
- table('t-kw',[{h:'Search / question',k:'t',f:v=>`<b>${esc(v)}</b>`},{h:'Monthly searches',k:'vol',num:true,f:v=>v==null?'<span style="color:var(--muted)">sized at Day 30</span>':v.toLocaleString('en-US')},{h:'Language',k:'lang'},{h:'Track',k:'track',f:trackPill},{h:'Pillar',k:'pillar'},{h:'Audience',k:'aud'},{h:'Page that wins it',k:'page'},{h:'Position today',k:'now'},{h:'Note',k:'note'}],rows,{sort:'vol'});}
+function kwTable(){let rows=S.kw.filter(r=>(kwTrack==='All'||r.track===kwTrack)&&matchesLang(r,kwLang));
+ const cols=[{h:'Search / question',k:'t',f:v=>`<b>${esc(v)}</b>`},{h:'Page / URL',k:'page',f:pageCell},{h:'Language',k:'lang'},{h:'Monthly searches',k:'vol',num:true,f:v=>v==null?'<span style="color:var(--muted)">sized at Day 30</span>':Number(v).toLocaleString('en-US')},{h:'Track',k:'track',f:trackPill},{h:'Pillar',k:'pillar'},{h:'Audience',k:'aud'},{h:'Position today',k:'now'},{h:'Note',k:'note'}];
+ const opts={stack:true};
+ if(kwLang==='All')opts.sort='vol';
+ else rows=[...rows].sort((a,b)=>langRank(a,kwLang)-langRank(b,kwLang)||((+b.vol||0)-(+a.vol||0))||String(a.t).localeCompare(String(b.t)));
+ if(!rows.length){$('t-kw').innerHTML='<p class="note">No keyword rows for this language.</p>';return;}
+ table('t-kw',cols,rows,opts);}
 kwFilters();kwTable();
 
 /* pairs */
