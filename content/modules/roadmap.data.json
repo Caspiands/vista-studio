@@ -680,7 +680,7 @@
       "kind": "build"
      },
      {
-      "label": "Monthly: 4 reels · 2 carousels · 2 static on IG, cross-published to FB; TikTok BM re-cuts",
+      "label": "Monthly social on Instagram, cross-published to Facebook; TikTok BM re-cuts",
       "from": "2026-12-01",
       "to": "2027-10-29",
       "kind": "run"
@@ -800,7 +800,7 @@
      "First reconciled lead ledger for November (platform → CRM → appointment)",
      "UI design system and prototype signed off (11 Dec); Storyblok schema and AWS environment stood up",
      "AI assistant v2 with price bands, promos and branch data live (18 Dec); returning-contact branch fixed",
-     "First 4 articles published; first full social mix (4 reels / 2 carousels / 2 static)",
+     "First 4 articles published; first full social mix",
      "Server-side GTM and CMP built on staging; Command Centre data model agreed"
     ],
     "campaigns": "Year-end Kids Eye Exam (school holidays to 3 Jan) on Google + Meta; Christmas greeting only; no new ad-hoc spend — budget held for CNY",
@@ -1360,7 +1360,7 @@
      10,
      10
     ],
-    "core": "Channel audit and brand set-up; monthly mix (4 reels, 2 carousels, 2 static) on IG cross-published to FB; TikTok BM re-cuts; community management within 4 business hours; monthly social report",
+    "core": "Channel audit and brand set-up; monthly social mix on Instagram, cross-published to Facebook; TikTok BM re-cuts; community management within 4 business hours; monthly social report",
     "shared": "Motion and design assets with the UX/UI Lead; doctor-led series and copy with the Content Lead; boosting and paid creative with the Paid Media Lead"
    }
   ],

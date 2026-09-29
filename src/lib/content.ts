@@ -108,7 +108,7 @@ export const defaultContent: Content = {
       { label: "\u201cCataract surgery\u201d on Google", value: "Not in top 100", note: "Vista's largest service is not visible for its own keyword" },
       { label: "New website live", value: "Month 3", note: "Before Chinese New Year, Mandarin campaign first; ~12 weeks from start" },
       { label: "Audiences · personas", value: "4 · 10", note: "Four audience groups by age and decision-maker; ten personas inside them" },
-      { label: "Pillars · campaigns", value: "6 · 13", note: "One content strategy for social, ads, landing pages and search; 5–8 posts a month in EN, BM and ZH" },
+      { label: "Pillars · campaigns", value: "6 · 13", note: "One content strategy for social, ads, landing pages and search, in EN, BM and ZH" },
     ],
   },
   flow: {
@@ -145,7 +145,7 @@ export const defaultContent: Content = {
         title: "Content & campaigns",
         stage: "One content strategy",
         summary: "Six content pillars feeding social, ads, landing pages and search; 13 campaigns with the platform each runs on and why.",
-        bullets: ["5–8 posts a month, mix agreed with Vista", "Trend slot from Month 4", "MAB 3/2023 rules built in"],
+        bullets: ["Mix agreed with Vista", "Trend slot from Month 4", "MAB 3/2023 rules built in"],
       },
       {
         tab: "search",
@@ -237,7 +237,7 @@ export const defaultContent: Content = {
     open: [
       "Website direction: confirm concept vista3 (Plain Sight) as the base, with vista1's price hero, booking-form fields, consultant directory and three-step explainer carried across.",
       "Go-live rule: if the mid-January acceptance test is not passed, the launch moves one month rather than launching unfinished.",
-      "Content rhythm: the monthly pillar mix (spread or single theme), the 5–8 post range, and a named Vista reviewer with same-day turnaround before the trend slot starts in Month 4.",
+      "Content rhythm: the monthly pillar mix (spread or single theme), and a named Vista reviewer with same-day turnaround before the trend slot starts in Month 4.",
       "Scope options outside the core plan: Xiaohongshu, Indonesian-language content, a LinkedIn pilot, and whether the Johor Bahru centre targets Singapore visitors.",
       "Data to confirm the personas: GA4 demographics and Vista patient records to validate the age, gender and income assumptions; Vista's current price list and MAB approvals for any price line.",
       "Access and connections: owner-level Respond.io access, the Salesforce tier (connector or scheduled export), and ad-account ownership under Vista's name.",

@@ -73,7 +73,7 @@ h2{font-size:19px;margin:0 0 4px;font-weight:700;text-wrap:balance}
 h3{font-size:15px;margin:0 0 4px}
 .lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:840px}
 .card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
-.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:22px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
 @media(max-width:1000px){.tiles{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:620px){.tiles{grid-template-columns:repeat(2,1fr)}}
 .tile{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
@@ -203,7 +203,7 @@ a{color:var(--accent)}
     <div class="wk"><div class="wh" style="background:#2f6f6a">WEEK 3</div><div class="wb"><h3>Build Trust</h3><p>Show the clinics, team and technology. Proof before the ask.</p></div></div>
     <div class="wk"><div class="wh" style="background:#b8792a">WEEK 4</div><div class="wb"><h3>Convert</h3><p>Remove the friction &mdash; how to book, which branch, what&#39;s on.</p></div></div>
   </div>
-  <p class="rnote">Up to 8 pieces of content a month &middot; Facebook &amp; Instagram &middot; reels and the animation re-cut for TikTok in BM &middot; a trending slot can be added inside 48 hours</p>
+  <p class="rnote">Cross-posted to Facebook &amp; Instagram &middot; reels and the animation re-cut for TikTok in BM &middot; a trending slot can be added inside 48 hours</p>
 </section>
 
 <section id="pillars">
@@ -212,8 +212,8 @@ a{color:var(--accent)}
   <div class="funnel" id="funnel"></div>
   <div class="pgrid">
     <div class="card">
-      <h3>The monthly mix — 5 to 8 posts</h3>
-      <div style="font-size:12px;color:var(--text-secondary);margin-bottom:10px">Up to 4 reels · 2 carousels · 2 static on Instagram, cross-published to Facebook. The count flexes between 5 and 8 a month so quality and the live campaign come first; animation is a technique used inside these slots. The pillar mix is agreed with Vista each month — a spread across pillars, or one pillar as the month's theme.</div>
+      <h3>The monthly mix</h3>
+      <div style="font-size:12px;color:var(--text-secondary);margin-bottom:10px">Cross-published to Facebook and Instagram. Animation is a technique used inside these slots. The pillar mix is agreed with Vista each month — a spread across pillars, or one pillar as the month's theme.</div>
       <div class="mix" id="mix"></div>
       <ul class="extras" id="extras"></ul>
     </div>
@@ -243,7 +243,7 @@ a{color:var(--accent)}
 
 <section id="calendar">
   <h2>Monthly content plan — indicative topics</h2>
-  <p class="lede">Topic ideas for each month, in slot order, with the campaigns live that month. We call this our content. A piece written here may later be boosted, so the plan is not labelled organic or paid. These are the angles, not final posts: the month's posts are agreed with Vista at the monthly planning meeting, and the count flexes between 5 and 8. A trending slot for Gen Z can be turned around within 48 hours, because a trend is gone after that. Every piece still clears MAB 3/2023 or carries its KKLIU number.</p>
+  <p class="lede">Topic ideas for each month, in slot order, with the campaigns live that month. We call this our content. A piece written here may later be boosted, so the plan is not labelled organic or paid. These are the angles, not final posts: the month's posts are agreed with Vista at the monthly planning meeting. A trending slot for Gen Z can be turned around within 48 hours, because a trend is gone after that. Every piece still clears MAB 3/2023 or carries its KKLIU number.</p>
   <div class="months" id="months"></div>
   <div class="card" id="cal"></div>
 </section>
@@ -281,9 +281,7 @@ const pchip=id=>`<span class="chip" title="${esc(D.personas[id])}">${id}</span>`
 
 $('tiles').innerHTML=[
  ['Content pillars',D.pillars.length,'Mapped to awareness, consideration and conversion'],
- ['Counting posts a month','8','4 reels · 2 carousels · 2 static, plus 4 TikTok BM re-cuts'],
  ['Campaigns',D.campaigns.length,`${D.campaigns.filter(c=>c.type.startsWith('Always')).length} always-on · ${D.campaigns.filter(c=>c.type==='Seasonal').length} seasonal · ${D.campaigns.filter(c=>c.type==='Explore').length} explore`],
- ['Planned posts, 12 months','96','Eight counting posts a month, plus TikTok re-cuts and stories'],
  ['Languages','EN · BM · ZH','Bahasa first on TikTok; Mandarin for cataract, myopia and CNY']
 ].map(([l,v,n])=>`<div class="tile"><div class="lab">${l}</div><div class="val">${v}</div><div class="note">${n}</div></div>`).join('');
 
@@ -301,7 +299,7 @@ function mix(){
 function pdetail(){
   const p=PIL[psel];
   const camps=D.campaigns.filter(c=>c.pillars.includes(p.id));
-  $('pdetail').innerHTML=`<div style="display:flex;gap:10px;align-items:center"><span class="pk" style="width:30px;height:30px;font-size:14px">${p.id}</span><div><div class="eyebrow">${p.stage} · ${p.posts} of up to 8 monthly posts</div><h3>${esc(p.name)}</h3></div></div>
+  $('pdetail').innerHTML=`<div style="display:flex;gap:10px;align-items:center"><span class="pk" style="width:30px;height:30px;font-size:14px">${p.id}</span><div><div class="eyebrow">${p.stage}</div><h3>${esc(p.name)}</h3></div></div>
   <p style="margin:10px 0 0;font-size:13.5px">${esc(p.job)}</p>
   <div class="kv">
    <div>Personas</div><div class="chips">${p.personas.map(id=>`<span class="chip">${id} ${esc(D.personas[id])}</span>`).join('')}</div>
