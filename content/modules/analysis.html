@@ -201,15 +201,19 @@ a{color:var(--series-1)}
   </div>
   <div class="grid g2" style="margin-top:14px">
     <div class="card">
-      <div class="chart-title">Enquiry-type events by range</div>
-      <div class="chart-sub">Named conversion events only — the closest thing GA4 has to an enquiry. Compare with the "Key events" totals the reports quote.</div>
-      <div class="tscroll" id="t-events"></div>
+      <div class="chart-head"><div class="chart-title">Enquiry-type events by range</div><button class="tv" data-toggle="t-events">Show data table</button></div>
+      <div class="chart-sub">Named conversion events only — the closest thing GA4 has to an enquiry. Each pie is the share of those five events. Click, scroll, page views, key events and sessions stay in the table, because they are not slices of the same total.</div>
+      <svg id="c-events" viewBox="0 0 560 220"></svg>
+      <div class="legend" id="l-events"></div>
+      <div id="t-events" class="hidden tscroll"></div>
       <div class="note">WhatsApp Conversion per user rose from 1.39 (2025) to 2.12 (2026) — consistent with a double-firing tag. 2025 key events total 342,076 against ~40k named enquiry events.</div>
     </div>
     <div class="card">
-      <div class="chart-title">First-user channel, Sep 2025 – Aug 2026</div>
-      <div class="chart-sub">Where new users came from. Paid Social is 105 users for the year; Meta traffic sits in Cross-network, Organic Social and Referral.</div>
-      <div class="tscroll" id="t-channels"></div>
+      <div class="chart-head"><div class="chart-title">First-user channel, Sep 2025 – Aug 2026</div><button class="tv" data-toggle="t-channels">Show data table</button></div>
+      <div class="chart-sub">Where new users came from. Paid Social is 105 users for the year; Meta traffic sits in Cross-network, Organic Social and Referral. Other is the gap between these rows and the GA4 total.</div>
+      <svg id="c-channels" viewBox="0 0 360 230"></svg>
+      <div class="legend" id="l-channels"></div>
+      <div id="t-channels" class="hidden tscroll"></div>
     </div>
   </div>
   <div class="card" style="margin-top:14px">
@@ -440,6 +444,18 @@ function xLabels(svg,labels,m,W,H,pw){
 function linePath(pts){let d='';pts.forEach((p,i)=>{if(p==null)return;d+=(d===''||pts[i-1]==null?'M':'L')+p[0]+','+p[1];});return d;}
 function drawLine(svg,pts,color,w=2.5,dash){const p=el('path',{d:linePath(pts),fill:'none',stroke:color,'stroke-width':w,'stroke-linejoin':'round','stroke-linecap':'round'});if(dash)p.setAttribute('stroke-dasharray',dash);svg.appendChild(p);pts.forEach(pt=>{if(pt)svg.appendChild(el('circle',{cx:pt[0],cy:pt[1],r:3,fill:color}));});}
 function rect(svg,x,y,w,h,fill,extra={}){const r=el('rect',{x,y,width:Math.max(w,0),height:Math.max(h,0),fill,...extra});svg.appendChild(r);return r;}
+function pie(svg,slices,cx,cy,r){
+  const total=slices.reduce((a,s)=>a+(s.v||0),0)||1;
+  let ang=-Math.PI/2;
+  slices.forEach(s=>{
+    const v=s.v||0;if(v<=0)return;
+    const frac=v/total,a1=ang+frac*2*Math.PI,color=css(s.col);
+    const path=frac>0.999?el('circle',{cx,cy,r,fill:color}):el('path',{d:(()=>{const x0=cx+r*Math.cos(ang),y0=cy+r*Math.sin(ang),x1=cx+r*Math.cos(a1),y1=cy+r*Math.sin(a1),large=a1-ang>Math.PI?1:0;return `M ${cx} ${cy} L ${x0} ${y0} A ${r} ${r} 0 ${large} 1 ${x1} ${y1} Z`;})(),fill:color});
+    svg.appendChild(path);
+    bindTip(path,`<b>${s.label}</b><span class="r">${fmt(v)} · ${(frac*100).toFixed(1)}%</span>`);
+    ang=a1;
+  });
+}
 
 /* sortable table */
 function table(container,cols,rows,opts={}){
@@ -555,6 +571,28 @@ function drawSeo(){
   S.forEach((r,i)=>{const t=el('text',{x:X(i),y:yL(r.t3)+16,class:'dlabel','text-anchor':'middle'});t.textContent=r.t3;svg.appendChild(t);const h=el('rect',{x:X(i)-bw/2,y:m.t,width:bw,height:ph,class:'hit'});bindTip(h,`<b>${ML(r.m)}</b><span class="r">Top 3 ${r.t3} · Top 10 ${r.t10} · Top 100 ${r.t100} of ${r.kw} tracked</span><span class="r">Improved ${r.imp} · declined ${r.dec}</span><span class="r">${r.win}</span>`);svg.appendChild(h);});
   table('t-seo',[{h:'Month',k:'m',f:ML},{h:'Tracked',k:'kw',num:1},{h:'Top 3',k:'t3',num:1},{h:'Top 10',k:'t10',num:1},{h:'Top 100',k:'t100',num:1},{h:'Improved',k:'imp',num:1},{h:'Declined',k:'dec',num:1},{h:'Tracking window',k:'win'}],S);
 }
+function drawEvents(){
+  const svg=document.getElementById('c-events');svg.innerHTML='';
+  const ev=rg=>Object.fromEntries(DATA.ga4_events[rg].map(e=>[e.e,e.count]));
+  const E25=ev('R2025'),E26=ev('R2026');
+  const named=[['Whatsapp Conversion','WhatsApp','--series-1'],['Phone Click Conversion','Phone click','--series-3'],['Thank You Page Conversion','Thank-you page','--series-2'],['Email Conversion','Email','--series-4'],['Carnival','Carnival','--series-5']];
+  pie(svg,named.map(([k,label,col])=>({label,col,v:E25[k]||0})),150,96,78);
+  pie(svg,named.map(([k,label,col])=>({label,col,v:E26[k]||0})),410,96,78);
+  [[150,'2025 (12 mo)'],[410,'2026 Jan–Aug']].forEach(([x,t])=>{const n=el('text',{x,y:202,class:'tick','text-anchor':'middle'});n.textContent=t;svg.appendChild(n);});
+  document.getElementById('l-events').innerHTML=named.map(([,label,col])=>`<span><i style="background:${css(col)}"></i>${label}</span>`).join('');
+}
+function drawChannels(){
+  const svg=document.getElementById('c-channels');svg.innerHTML='';
+  const all=DATA.ga4_channels.L12;
+  const total=(all.find(r=>r.ch==='Total')||{}).users||0;
+  const rows=all.filter(r=>r.ch!=='Total').slice().sort((a,b)=>b.users-a.users);
+  const listed=rows.reduce((a,r)=>a+r.users,0);
+  const slices=rows.map(r=>{const i=CHANNELS.indexOf(r.ch);return {label:r.ch,v:r.users,col:i>=0?CHCOL[i]:'--muted'};});
+  if(total>listed)slices.push({label:'Other',v:total-listed,col:'--muted'});
+  const base=total||listed||1;
+  pie(svg,slices,180,108,88);
+  document.getElementById('l-channels').innerHTML=slices.map(s=>`<span><i style="background:${css(s.col)}"></i>${s.label} ${pct(s.v/base*100)}</span>`).join('');
+}
 function drawOrg(){
   const svg=document.getElementById('c-org'),W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,m={l:52,r:16,t:16,b:40};
   const v=MONTHS20.map(mm=>DATA.ga4_monthly[mm]['Organic Search']?DATA.ga4_monthly[mm]['Organic Search'].sessions:0);
@@ -661,7 +699,7 @@ function findings(){
   render();
 }
 
-function drawAll(){drawLeads();drawCpa();drawGA4();drawFunnel();drawSrc();drawContacts();drawVel();drawSeo();drawOrg();}
+function drawAll(){drawLeads();drawCpa();drawGA4();drawFunnel();drawSrc();drawContacts();drawVel();drawSeo();drawOrg();drawEvents();drawChannels();}
 drawAll();staticTables();findings();
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{syncBtn();drawAll();});
 
