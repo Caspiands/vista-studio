@@ -1,20 +1,23 @@
-# Vista DTR 2026-27 · Client Edition
+# Vista Eye Specialist — Digital Transformation 2026–27 (Client Edition)
 
-A client-facing showcase of the **Vista Digital Transformation Roadmap (DTR) for FY 2026-27**, with a built-in login and a lightweight CMS. Editors sign in and change any element directly on the page; client accounts sign in and see the published, read-only version.
+The client-facing web edition of the **Vista DTR 2026-27 v4 Client Edition** proposal by Caspian Digital Solutions for Vista Eye Specialist, rebuilt as a login-gated site with a built-in CMS. Editors sign in and change any element on the page; client accounts sign in and see the published, read-only version.
 
 ## What's inside
 
 - **Login screen** with two roles
-  - `editor` — can turn on *Edit mode*, change any text, reorder/add/remove list entries, cycle icons and statuses, hide or show whole sections, publish, discard, or reset to the original template.
-  - `viewer` — read-only access to the published showcase.
-- **In-place editing** — every heading, paragraph, metric, table cell, badge, and label is editable where it sits. Changes are drafted locally and published to the server with one click (or `Ctrl/Cmd + S`).
-- **Showcase sections** — hero, executive summary, projected impact, strategic pillars, quarterly roadmap, scope & deliverables table, investment options, governance team, risk register, next steps, footer.
-- **Hover animations** — card lifts, animated nav underlines, button shine sweeps, icon rotations, and timeline node glows throughout.
-- **Print / Save as PDF** — the hero's secondary button opens the browser print dialog with a print-optimised layout (nav and editor controls hidden).
+  - `editor` — turns on *Edit mode*, edits text in place, reorders/adds/removes list entries and table rows, hides or shows sections, publishes, discards, or restores the original; also edits every tab's data and markup.
+  - `viewer` — read-only access to the published document.
+- **Overview hub** (native, fully editable): hero, the six at-a-glance tiles, the seven-step reading order, the twelve-month targets table with group headings, working principles and first-weeks agreements, the tab guide, and the footer.
+- **Seven tabs carried over from the source document** — *Vista Today, Audiences, Content, SEO · AEO · GEO, Creative, Website, Roadmap* — rendered exactly as authored (charts, Gantt, sortable tables, sample creative) inside the app. Each is editable:
+  - **Data & text** — the figures, labels and paragraphs each tab renders are extracted into structured data and edited through a folding tree editor; the tab redraws on publish.
+  - **Edit text in page** — for the image-led tabs (Creative, Website) the page itself becomes editable; click and type, then publish.
+  - **HTML source** — the full markup of any tab, for advanced changes.
+- **Hover animations** throughout the hub: card lifts, tab and link transitions, button shine, icon rotations.
+- **Print / Save as PDF** for the overview with a print-optimised layout.
 
 ## Stack
 
-Next.js 16 (App Router, `proxy.ts` for auth gating), TypeScript, Tailwind CSS v4, shadcn/ui, lucide-react, sonner. No database: published content is written to `data/content.json`; sessions are HMAC-signed cookies.
+Next.js 16 (App Router, `proxy.ts` for auth gating), TypeScript, Tailwind CSS v4, shadcn/ui, lucide-react, sonner. No database: published content is written to `data/` as JSON; sessions are HMAC-signed cookies.
 
 ## Run locally
 
@@ -36,22 +39,31 @@ Default demo credentials (shown on the login page until you override them):
 
 Copy `.env.example` to `.env.local` and set:
 
-| Variable                     | Purpose                                                        |
-| ---------------------------- | -------------------------------------------------------------- |
-| `CMS_EDITOR_USERNAME` / `CMS_EDITOR_PASSWORD` | Editor account                                |
-| `CMS_VIEWER_USERNAME` / `CMS_VIEWER_PASSWORD` | Client (view-only) account                    |
-| `CMS_SESSION_SECRET`         | Long random string used to sign session cookies                |
-| `CMS_DATA_DIR`               | Directory for `content.json` (default `./data`); use a persistent volume in production |
-| `CMS_HIDE_DEMO_CREDENTIALS`  | `true` to hide the demo panel on the login page                |
+| Variable                                      | Purpose                                                                                  |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `CMS_EDITOR_USERNAME` / `CMS_EDITOR_PASSWORD` | Editor account                                                                           |
+| `CMS_VIEWER_USERNAME` / `CMS_VIEWER_PASSWORD` | Client (view-only) account                                                               |
+| `CMS_SESSION_SECRET`                          | Long random string used to sign session cookies                                          |
+| `CMS_DATA_DIR`                                | Directory for published edits (default `./data`); use a persistent volume in production |
+| `CMS_HIDE_DEMO_CREDENTIALS`                   | `true` to hide the demo panel on the login page                                          |
 
 Change all defaults before sharing the site with a client.
 
 ## Editing workflow
 
 1. Sign in as the editor and switch on **Edit mode** in the bottom toolbar.
-2. Click any text to edit it. `Enter` commits single-line fields; `Esc` cancels. Paragraphs accept line breaks.
-3. Use the small amber controls to reorder, remove, or add list entries; click a pillar icon, phase status, or risk level to cycle through options; use **Mark recommended** to highlight an investment option; use **Hide section** to drop a whole section from the client view.
-4. Click **Publish** to save. Viewers see the update on their next page load. **Discard** reverts to the last published version; the reset icon restores the original template.
+2. On the **Overview**, click any text to edit it. `Enter` commits single-line fields; `Esc` cancels; paragraphs accept line breaks. Use the amber controls to reorder, remove, or add list entries and table rows, click a step's *Opens* badge to change which tab it links to, and use **Hide section** to drop a section from the client view. **Publish** (or `Ctrl/Cmd + S`) saves; **Discard** reverts; the reset icon restores the original template.
+3. On any **tab**, an amber editor panel appears above the page. Change values in **Data & text**, or click into the page under **Edit text in page**, then **Publish tab**. **Restore original** returns the tab to the imported version.
+
+## Re-importing a new edition
+
+The tabs are imported from the single-file client edition HTML. To bring in a newer version:
+
+```bash
+node scripts/import-source.mjs path/to/Vista_DTR_2026-27_v5_Client_Edition.html
+```
+
+This rewrites `content/modules/*.html` (tab markup with data-injection markers), `content/modules/*.data.json` (the extracted data constants) and `public/modules/**` (images extracted from the file). Overview copy lives in `src/lib/content.ts` as the default template. Published edits in `data/` are kept separately and are not touched by an import.
 
 ## Scripts
 

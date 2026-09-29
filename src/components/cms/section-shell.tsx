@@ -34,7 +34,7 @@ export function SectionShell({ sectionKey, children, className, tone = "light", 
     if (!editing) return null;
     return (
       <section id={sectionKey} className="scroll-mt-24 border-y border-dashed border-amber-400 bg-amber-50/70 py-6">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-3 px-6 sm:flex-row sm:items-center">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-6 sm:flex-row sm:items-center">
           <p className="text-sm text-amber-900">
             <span className="font-semibold">{SECTION_LABELS[sectionKey]}</span> section is hidden from viewers.
           </p>
@@ -49,7 +49,7 @@ export function SectionShell({ sectionKey, children, className, tone = "light", 
 
   return (
     <section id={sectionKey} className={cn("relative scroll-mt-24 py-20 sm:py-24", toneClasses[tone], className)}>
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-7xl px-6">
         <div className={cn("mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between", centered && "sm:flex-col sm:items-center sm:text-center")}>
           <div className={cn("max-w-3xl", centered && "mx-auto")}>
             <Editable
