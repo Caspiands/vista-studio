@@ -264,8 +264,7 @@ export const defaultContent: Content = {
     ],
   },
   footer: {
-    note:
-      "Caspian Digital Solutions — prepared for Vista Eye Specialist (Qualitas Health Malaysia), September 2026. Figures are as captured 12–14 September 2026 from the data Vista made available, unless a tab states otherwise. Age, gender and income bands in the personas are working assumptions to confirm with Vista's patient data in the first weeks.",
+    note: "",
     copyright: "© 2026 Caspian Digital Solutions · Prepared for Vista Eye Specialist",
   },
 };
