@@ -14,6 +14,13 @@ interface HubMessage {
   scrollTo?: number;
 }
 
+/** Body box, not documentElement.scrollHeight. The root element stretches to the iframe, so a shorter module would otherwise keep the previous tab's height and leave a blank page. */
+function frameContentHeight(frame: HTMLIFrameElement | null): number {
+  const body = frame?.contentDocument?.body;
+  if (!body) return 0;
+  return Math.ceil(body.scrollHeight);
+}
+
 export function ModuleView({ moduleKey }: { moduleKey: ModuleKey }) {
   const { editing } = useCms();
   const frameRef = React.useRef<HTMLIFrameElement>(null);
@@ -22,14 +29,30 @@ export function ModuleView({ moduleKey }: { moduleKey: ModuleKey }) {
   const frameId = `${moduleKey}-${version}`;
   const [loadedFrame, setLoadedFrame] = React.useState<string | null>(null);
   const loaded = loadedFrame === frameId;
+  const [sizedFrame, setSizedFrame] = React.useState(frameId);
+  if (sizedFrame !== frameId) {
+    setSizedFrame(frameId);
+    setHeight(720);
+  }
+
+  const applyHeight = React.useCallback(
+    (reported: number) => {
+      const measured = frameContentHeight(frameRef.current);
+      const next = measured > 0 ? measured : reported;
+      if (next > 0) {
+        setHeight(Math.max(320, next));
+        setLoadedFrame(frameId);
+      }
+    },
+    [frameId],
+  );
 
   React.useEffect(() => {
     const onMessage = (event: MessageEvent<HubMessage>) => {
       const data = event.data;
       if (!data || !data.vistaHub || data.frame !== moduleKey) return;
       if (typeof data.height === "number" && data.height > 0) {
-        setHeight(Math.max(320, data.height));
-        setLoadedFrame(frameId);
+        applyHeight(data.height);
       }
       if (typeof data.scrollTo === "number" && frameRef.current) {
         const bar = document.querySelector<HTMLElement>("[data-site-nav]")?.offsetHeight ?? 0;
@@ -39,12 +62,14 @@ export function ModuleView({ moduleKey }: { moduleKey: ModuleKey }) {
     };
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
-  }, [moduleKey, frameId]);
+  }, [moduleKey, frameId, applyHeight]);
 
   const handleLoad = () => {
     setLoadedFrame(frameId);
     // Modules honour the hub's theme; the showcase is always light.
     frameRef.current?.contentWindow?.postMessage({ vistaTheme: "light" }, "*");
+    const measured = frameContentHeight(frameRef.current);
+    if (measured > 0) setHeight(Math.max(320, measured));
   };
 
   return (
