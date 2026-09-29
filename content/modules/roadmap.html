@@ -70,7 +70,6 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);font-si
   <div>
     <div class="eyebrow">Vista Eye Specialist · Qualitas Health Malaysia · Caspian Digital Solutions</div>
     <h1>Digital Transformation Roadmap <span>November 2026 – October 2027</span></h1>
-    <div class="sub">One year, nine RFP scopes, one accountable partner. In order: get one honest set of numbers, launch the new website before Chinese New Year with the Mandarin campaign first, fix lead handling where enquiries are lost today, and move media money to what produces booked and attended visits from Month 4. Not a replacement of what Vista has — a plan that builds on the current systems and leaves Vista owning something sustainable.</div>
     <div class="meta" id="meta"></div>
   </div>
   <button class="tbtn" id="theme">◐ Dark mode</button>
@@ -84,8 +83,8 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);font-si
   <div class="tile" style="border-left-color:var(--series-3)"><div class="lab">Primary KPI</div><div class="val">RM per booking</div><div class="note">Baseline RM182 per booked appointment (Jan–Aug 2026); target −25% by Month 12. Cost per attended visit reported alongside once the booking-system link is live</div></div>
 </div>
 
-<section id="s1"><h2><span class="num">01</span>Six objectives, each with an owner and a number</h2>
-<p class="lede">Every objective traces to a finding in the audit and to a scope in the RFP. Measures are the commitments CDS put in its submission, made specific.</p>
+<section id="s1"><h2><span class="num">01</span>Six objectives, each with a clear owner and measurable target</h2>
+<p class="lede">Each objective comes directly from what we found in the audit and links back to the RFP scope. The measures below are the commitments CDS proposed, made more specific so everyone is clear on what success looks like. Where a line names an executive sponsor, that is the Vista leader accountable for the result.</p>
 <div class="grid g2" id="objectives"></div></section>
 
 <section id="s2"><h2><span class="num">02</span>Phases and gates</h2>
@@ -167,7 +166,7 @@ const MON=/*__VISTA_DATA__:MON*/;
 const MSTART=D.months.map(m=>dayN(m+'-01'));
 const fdate=s=>{const d=new Date(s);return d.getDate()+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]+' '+d.getFullYear();};
 const HOLIDAYS=/*__VISTA_DATA__:HOLIDAYS*/;
-document.getElementById('meta').textContent=D.meta.prepared+' · '+D.meta.premise;
+document.getElementById('meta').textContent=[D.meta.prepared, D.meta.premise].filter(Boolean).join(' · ');
 
 /* theme */
 const root=document.documentElement,tb=document.getElementById('theme');

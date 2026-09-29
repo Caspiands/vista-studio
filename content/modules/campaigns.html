@@ -185,13 +185,11 @@ a{color:var(--accent)}
   <div>
     <div class="eyebrow">Vista Eye Specialist · Digital Transformation RFP QHM/VES/DT/2026/003 · Caspian Digital Solutions</div>
     <h1>Vista Eye Specialist — <span>Content &amp; Campaign Plan</span></h1>
-    <div class="sub">One content strategy that feeds social media, paid campaigns, landing pages and articles: six content pillars and thirteen campaigns for the 12 months, each tied to the audience group and personas it serves, with the platform each campaign runs on and why, indicative monthly topics, and the advertising rules every post has to clear.</div>
-    <div class="meta" id="basis"></div>
   </div>
   <button class="tbtn" id="theme" type="button">◐ Dark mode</button>
 </header>
 <nav class="toc">
-  <a href="#pillars">Content pillars</a><a href="#rhythm">Weekly rhythm</a><a href="#pxp">Pillar × persona</a><a href="#gantt">Campaign calendar</a><a href="#campaigns">Campaign briefs</a><a href="#calendar">Monthly posting plan</a><a href="#rules">Advertising rules</a><a href="#assume">Assumptions & sources</a>
+  <a href="#pillars">Content pillars</a><a href="#rhythm">Weekly rhythm</a><a href="#pxp">Pillar × persona</a><a href="#gantt">Campaign calendar</a><a href="#campaigns">Campaign briefs</a><a href="#calendar">Monthly posting plan</a><a href="#rules">Advertising rules</a>
 </nav>
 
 <div class="tiles" id="tiles"></div>
@@ -256,13 +254,6 @@ a{color:var(--accent)}
   <div class="guards" id="guards"></div>
 </section>
 
-<section id="assume">
-  <h2>Assumptions and sources</h2>
-  <div class="card">
-    <ol class="val" id="assumptions"></ol>
-    <p style="font-size:12.5px;color:var(--text-secondary);margin:14px 0 0">Sources: Vista Patient Personas (P01–P10, 16 Sep 2026) · CDS roadmap Nov 2026–Oct 2027 (campaigns, media split, gates) · CDS VISTA Digital Asset Analysis (14 Sep 2026) · <a href="https://pharmacy.moh.gov.my/sites/default/files/document-upload/advertising-guidelines-healthcare-facilities-and-services-mab-3.2023.pdf" target="_blank" rel="noopener">MAB 3/2023 Advertising Guidelines for Healthcare Facilities and Services</a> · <a href="https://cutisekolah.com.my/cuti-umum-2027/" target="_blank" rel="noopener">2027 public holidays</a> and <a href="https://cutisekolah.com.my/cuti-sekolah-2027/" target="_blank" rel="noopener">2027 school calendar</a> (CutiSekolah.com.my).</p>
-  </div>
-</section>
 
 <footer>Caspian Digital Solutions — prepared for the Vista Eye Specialist Digital Transformation proposal. Prepared for Vista Eye Specialist. Companion to the Target Audiences &amp; Patient Personas tab.</footer>
 </div>
@@ -288,7 +279,6 @@ const tip=$('tip');
 function bindTip(node,html){node.addEventListener('mousemove',e=>{tip.innerHTML=html;tip.style.opacity=1;let x=e.clientX+14,y=e.clientY+14;if(x+310>innerWidth)x=e.clientX-316;if(y+130>innerHeight)y=e.clientY-130;tip.style.left=x+'px';tip.style.top=y+'px';});node.addEventListener('mouseleave',()=>tip.style.opacity=0);}
 const pchip=id=>`<span class="chip" title="${esc(D.personas[id])}">${id}</span>`;
 
-$('basis').textContent='Prepared '+D.meta.prepared+'. '+D.meta.basis;
 $('tiles').innerHTML=[
  ['Content pillars',D.pillars.length,'Mapped to awareness, consideration and conversion'],
  ['Counting posts a month','8','4 reels · 2 carousels · 2 static, plus 4 TikTok BM re-cuts'],
@@ -419,7 +409,7 @@ function calendar(){
 
 function rest(){
   $('guards').innerHTML=D.guardrails.map(g=>`<div><b>${esc(g.r)}</b>${esc(g.d)}<small>${esc(g.src)}</small></div>`).join('');
-  $('assumptions').innerHTML=D.assumptions.map(a=>`<li>${esc(a)}</li>`).join('');
+  if($('assumptions')) $('assumptions').innerHTML=D.assumptions.map(a=>`<li>${esc(a)}</li>`).join('');
 }
 
 const root=document.documentElement,tb=$('theme');

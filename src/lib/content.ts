@@ -92,9 +92,8 @@ export const defaultContent: Content = {
     eyebrow: "Vista Eye Specialist · Digital Transformation RFP QHM/VES/DT/2026/003 · Qualitas Health Malaysia · Caspian Digital Solutions",
     titleLead: "Vista Eye Specialist —",
     titleAccent: "Digital Transformation 2026–27",
-    subtitle:
-      "The complete plan Caspian Digital Solutions is proposing for Vista, in one place and in reading order: where Vista is today, who we are speaking to, the content and campaigns built for them, the creative that carries them, the new website, and the 12-month roadmap that ties it all together. Everything is connected — one content strategy feeds social, ads, landing pages and search, and one set of numbers measures all of it. Vista knows its patients and services; CDS knows the digital side. This is the starting point for a plan we finalise together.",
-    metaLine: "Prepared by Caspian Digital Solutions for Vista Eye Specialist · September 2026 · Client edition v4 · Commercial figures are in the separate commercial proposal",
+    subtitle: "",
+    metaLine: "",
     primaryCta: "Start with Vista today",
     secondaryCta: "Download as PDF",
   },
@@ -116,7 +115,7 @@ export const defaultContent: Content = {
     visible: true,
     eyebrow: "Reading order",
     heading: "How the plan fits together",
-    intro: "Read the tabs in this order. Each one builds on the one before it — select a step to open its tab.",
+    intro: "",
     openLabel: "Open tab",
     steps: [
       {
@@ -186,9 +185,8 @@ export const defaultContent: Content = {
   targets: {
     visible: true,
     eyebrow: "Commitments",
-    heading: "What the twelve months deliver",
-    intro:
-      "The targets CDS commits to, measured from the baseline in the first tab. Booked appointment means a scheduled visit; attended visit is reported alongside it once the booking-system link is live.",
+    heading: "What the 12 months will bring",
+    intro: "",
     columns: { measure: "Measure", today: "Today", month6: "Month 6", month12: "Month 12" },
     rows: [
       { kind: "row", measure: "Paid enquiries that become booked appointments", today: "1.5%", month6: "≥ 4%", month12: "≥ 6%" },
@@ -227,14 +225,13 @@ export const defaultContent: Content = {
     intro: "",
     principlesTitle: "Working principles",
     principles: [
-      "Joint strategy first. Vista has run these services for years and knows its patients; CDS brings the digital side. The first two weeks are a joint session that sets the plan, not a hand-over of a finished document.",
-      "Build on what Vista has. Respond.io and Salesforce stay; CDS adds automation, a reporting layer and a customer-service flow agreed with the Vista team, so the result is owned by Vista and sustainable after any agency.",
-      "One content strategy for everything. The same six pillars drive social posts, campaign creative, landing pages, articles and search, so a patient sees one story from the first post to the booking.",
-      "Measure patients, not chats. A lead is a chat, not a patient. Reporting moves to cost per booked appointment and cost per attended visit, by campaign, centre and language.",
-      "AI-first strategy, human delivery. CDS builds its analysis and plans with AI and refines them with experience. Ad delivery is people-led: fully automated ad products are used selectively where they earn their cost.",
-      "The retainer covers the scope. The targets in the roadmap are reached within the retainer scopes and subscriptions already in the commercial proposal — no add-on charges to do the job.",
-      "Compliance is part of the plan. MAB guideline 3/2023 is applied to every persona, campaign and post: no free healthcare offers, no price comparisons, testimonials only about the facility, no promotion of an individual practitioner's skills.",
-      "Numbers, not scores. Every tab shows raw figures with sorting and filtering so Vista can draw its own conclusions.",
+      "We build the strategy together. Vista has run these services for years and knows its patients. CDS brings the digital expertise. The first two weeks should be a proper working session between both teams — not us disappearing and coming back with a finished document.",
+      "We build on what Vista already has. Respond.io and Salesforce stay. CDS adds the automation, reporting and customer-service flow around them, but this must be agreed with the Vista team so that what we build is practical, owned by Vista and sustainable after any agency engagement ends.",
+      "Our strategy. The same six content pillars should drive social media, campaign creative, landing pages, articles and search. A patient should be hearing one consistent story from the first post they see right through to booking.",
+      "It's about patients. Reporting needs to move beyond cost per lead and focus on cost per booked appointment and cost per attended visit.",
+      "AI should support the strategy, not lead it. CDS builds the analysis and plans with AI, then applies human judgment and experience to refine them. The work should remain people-led. Automation should be used selectively where it genuinely adds value.",
+      "The retainer covers the agreed scope. The targets in the roadmap are to be achieved within the retainer, scope and subscriptions already outlined in the commercial proposal. There will be no constant add-on charges simply to deliver the agreed work.",
+      "Compliance is part of the work from the beginning. MAB Guideline 3/2023 must be applied across every persona, campaign and post. This means no free healthcare offers, no price comparisons, testimonials only about the facility, and no promotion of an individual practitioner's skills. We work with Qualitas Health Corp Comms to ensure compliance.",
     ],
     openTitle: "What we agree together in the first weeks",
     open: [
@@ -247,7 +244,7 @@ export const defaultContent: Content = {
     ],
   },
   guide: {
-    visible: true,
+    visible: false,
     eyebrow: "Tab guide",
     heading: "What each tab contains",
     intro: "",

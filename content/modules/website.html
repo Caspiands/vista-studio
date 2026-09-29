@@ -72,13 +72,20 @@ footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--grid);font-si
 <header class="top">
 <div class="eyebrow">Vista Eye Specialist · Digital Transformation RFP QHM/VES/DT/2026/003 · website scope · Caspian Digital Solutions</div>
 <h1>Website Concepts — <span>comparison, recommendation and sitemap</span></h1>
-<div class="sub">Two CDS prototypes (vista1 — Concept A "Clarity"; vista3 — Concept C "Plain Sight") reviewed against the live vista.com.my on the same day, with the same browser, on desktop and mobile: screenshots, user-experience and content comparison, technical measurements (Lighthouse, axe-core, network), the recommendation and what it rests on, and the complete sitemap proposed for the new site. The prototypes cover four routes each; the sitemap covers the whole estate.</div>
-<div class="meta">v1 · 27 September 2026 · captured 27 Sep 2026 from a data-centre connection with headless Chromium 140; Lighthouse 12 mobile (Moto G Power emulation, slow 4G) and desktop presets · Prepared for Vista Eye Specialist</div>
 <nav class="toc"><a href="#verdict">Recommendation</a><a href="#method">What was reviewed</a><a href="#screens">Screenshots</a><a href="#ux">Experience &amp; content</a><a href="#tech">Technical comparison</a><a href="#fixes">Defects to fix</a><a href="#sitemap">Proposed sitemap</a></nav>
 </header>
 
 <section id="concepts-note">
-<div class="card" style="border-left:4px solid var(--series-1, #2a78d6)"><b>How to read this tab.</b> vista1 and vista3 are concepts built to show the user journey and the look and feel — they are not the finished website. The production site is built on Storyblok + Next.js (the same stack CDS runs for its other clients) and the pages, centres, doctors and prices shown are placeholders. The personalised journey on vista3 asks three quick questions — who the visit is for, where you are, what brought you here — and adapts the page: the right treatment, what is included, and the nearest centre. Visitors who just want to browse choose "Skip for now" once at the first step. For a live example of this pattern in production, see the CDS-built CCIS site on our development server.</div>
+<div class="card" style="border-left:4px solid var(--series-1, #2a78d6)">
+<h3 style="margin-top:0">What vista1, vista2 and vista3 are</h3>
+<p style="margin:0 0 8px">These are design concepts for the new website, shown beside the live site so the journeys can be compared. They are not the finished website. Only two concepts were built for this review.</p>
+<ul>
+<li><b>vista1 — Concept A, “Clarity”.</b> The more visual concept: curved transitions, gradients and movement as you scroll. It leads with the price (for example, iLASIK from a monthly figure) and a detailed booking form. It is in English only.</li>
+<li><b>vista2</b> is not in this edition. No third concept was built or reviewed here.</li>
+<li><b>vista3 — Concept C, “Plain Sight”.</b> Plain Sight means the page is meant to be understood at a glance: plain language, larger type, and nothing decorative between the visitor and the answer. It asks three short questions — who the visit is for, where you are, and what brought you here — then shows the relevant treatment, what is included, and the nearest centre. Someone who only wants to browse chooses “Skip for now” once. It is the only concept with real English, Bahasa Malaysia and Mandarin pages.</li>
+</ul>
+<p style="margin:0">The recommendation is to build on vista3 and bring four specific pieces across from vista1. Prices, centres, doctors and photographs in both concepts are placeholders.</p>
+</div>
 </section>
 <section id="verdict"><h2>Recommendation — build on vista3 (Plain Sight), take four things from vista1</h2>
 <div class="card verdict">
@@ -138,6 +145,7 @@ footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--grid);font-si
 
 <section id="tech"><h2>Technical comparison</h2>
 <h3>Performance — Lighthouse 12, home page</h3>
+<p class="lede">Lighthouse is Google’s free check of a page, scored out of 100. It measures how fast the page loads, how accessible it is, and how well search engines can read it. The table is that check, run on the home page of the live site and of each concept.</p>
 <div class="tscroll"><table class="data"><thead><tr><th>Measure</th><th>vista.com.my</th><th>vista1</th><th>vista3 (patched)</th></tr></thead><tbody><tr><td>Lighthouse performance (mobile / desktop)</td><td>59 / 93</td><td>64 / 59</td><td>75 / 98</td></tr><tr><td>Lighthouse accessibility</td><td>85 / 82</td><td>96 / 96</td><td>93 / 93</td></tr><tr><td>Lighthouse best practices</td><td>54 / 54</td><td>73 / 77</td><td>96 / 96</td></tr><tr><td>Lighthouse SEO</td><td>100 / 100</td><td>83 / 83</td><td>100 / 100</td></tr><tr><td>First Contentful Paint (mobile / desktop)</td><td>1.4 s / 0.4 s</td><td>3.5 s / 0.7 s</td><td>3.4 s / 0.7 s</td></tr><tr><td>Largest Contentful Paint (mobile / desktop)</td><td>3.8 s / 1.0 s</td><td><b>35.1 s</b> / 3.9 s</td><td>4.6 s / 1.1 s</td></tr><tr><td>Total Blocking Time (mobile / desktop)</td><td><b>2,470 ms</b> / 190 ms</td><td>100 ms / 0 ms</td><td>130 ms / 0 ms</td></tr><tr><td>Cumulative Layout Shift (mobile / desktop)</td><td>0.005 / 0.004</td><td>0 / <b>0.40</b></td><td>0 / 0</td></tr><tr><td>Speed Index (mobile / desktop)</td><td>3.5 s / 1.2 s</td><td>5.3 s / 1.4 s</td><td>3.4 s / 0.7 s</td></tr><tr><td>Total page weight, home (Lighthouse)</td><td>2.5 MB</td><td><b>10.8 MB</b> mobile · 3.6 MB desktop</td><td>475 KB</td></tr><tr><td>Network requests, home</td><td>182</td><td>32</td><td>14</td></tr><tr><td>DOM elements, home</td><td>1,865</td><td>677</td><td>321</td></tr><tr><td>Script tags / stylesheets, home</td><td>108 / 10</td><td>7 / 2</td><td>3 / 2</td></tr><tr><td>Largest single asset</td><td>reCAPTCHA 347 KB (loaded twice) · GTM/gtag 159–183 KB × 3</td><td>centre-interior.webp 1.8 MB · hero-child-exam.webp 1.7 MB · doctor portraits 1.4–1.5 MB each</td><td>app bundle 378 KB (all pages)</td></tr><tr><td>Unused JavaScript (Lighthouse estimate)</td><td>~1,000 KB</td><td>40 KB</td><td>131 KB</td></tr></tbody></table></div>
 <p class="note">Mobile = Moto G Power emulation on throttled 4G; desktop = unthrottled. vista3 measured from a local mirror of its exact assets with the one-line fix applied, so its network numbers exclude the CDN hop. The live site's desktop score reflects NitroPack's cache serving a data-centre; the August audit measured 7.3 s from Malaysia.</p>
 <h3>Architecture, SEO, accessibility, tracking</h3>
@@ -222,5 +230,5 @@ footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--grid);font-si
 <p class="note">Language mirrors: every page exists at /ms/ and /zh/ with the same slug, translated titles and hreflang. Mandarin and BM content is written, not machine-translated, for treatments, centres, book and the persona hubs first (go-live), then the eye-health hub (Phase 4). URLs are lower-case, hyphenated, no dates, no query-string language switching.</p>
 </section>
 
-<footer>Caspian Digital Solutions · Vista DTR 2026–27 · Prototypes: vista1.devteam-cds.tech, vista3.devteam-cds.tech · Raw measurements (metrics.json, Lighthouse JSON) and full-size screenshots are in the Vista DTR / CDS Analysis / website-review folder.</footer>
+<footer>Caspian Digital Solutions · Vista DTR 2026–27 · Prepared for Vista Eye Specialist.</footer>
 </div></body></html>

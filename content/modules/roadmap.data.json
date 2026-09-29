@@ -24,45 +24,45 @@
   "objectives": [
    {
     "id": "O1",
-    "name": "One lead definition, one cost per patient",
-    "why": "Today there are five different lead counts, the website conversion metric has been redefined twice, and no revenue is recorded against any campaign. Until one lead definition exists and cost per booked appointment and cost per attended visit are reported side by side, nothing else can be judged fairly.",
-    "measure": "One reconciled lead ledger (platform → Respond.io → booking system) published monthly from Month 2; cost per booked appointment reported from Month 2 (baseline RM182, Jan–Aug 2026) and cost per attended visit from the moment the booking-system link is live.",
-    "owner": "Analytics Lead · sponsor: Head of Digital Solutions"
+    "name": "One lead definition, one true cost per patient",
+    "why": "At the moment, Vista has five different lead counts, the website conversion metric has already been redefined twice, and campaign reporting does not connect through to revenue. Until there is one agreed lead definition and we can see cost per booked appointment and cost per attended visit side by side, it is difficult to judge campaign performance fairly.",
+    "measure": "One reconciled lead ledger connecting platform → Respond.io → booking system, published monthly from Month 2. Cost per booked appointment to be reported from Month 2, using the current baseline of RM182 from Jan–Aug 2026. Cost per attended visit to be reported once the booking-system connection is live.",
+    "owner": "Analytics Lead. Executive sponsor: Head of Digital Solutions (the Vista leader accountable for this result)"
    },
    {
     "id": "O2",
     "name": "A new website that is fast, trilingual and built to convert",
-    "why": "101 location URLs for 16 branches, no consent layer, 3.08 MB homepage, 12–38 serious accessibility violations per template, 0 posts in the sitemap since 2024. The current site cannot pass the RFP's own acceptance criteria. One site, not two: the same website ranks separately for every page it has, and a Happenings section carries news and updates without a second domain or a second KKLIU licence.",
-    "measure": "Headless site live 22 January 2027 on AWS Malaysia: 16 canonical branch pages, EN/BM/ZH with hreflang, CMP live, Lighthouse ≥ 90, WCAG 2.2 AA audited, CWV field p75 Good by Month 6.",
+    "why": "The current website has 101 location URLs across 16 branches, no consent layer, a 3.08 MB homepage, between 12 and 38 serious accessibility issues per template, and no new posts in the sitemap since 2024. In its current form, it does not meet the RFP’s own acceptance criteria. We should also keep this as one website, not two. The same site can rank separately for every page and location, while a dedicated Happenings section can carry news and updates without creating a second domain or requiring a second KKLIU licence.",
+    "measure": "New headless website live by 22 January 2027, hosted on AWS Malaysia, with 16 canonical branch pages, EN / BM / ZH with hreflang, CMP live, a Lighthouse score of 90 or above, WCAG 2.2 AA audited, and Core Web Vitals field p75 rated Good by Month 6.",
     "owner": "Technical Lead · UX/UI Lead"
    },
    {
     "id": "O3",
-    "name": "Turn the enquiries Vista already gets into booked visits",
-    "why": "Unpaid enquiries book at 14.4%, paid at 1.5%. Warm→Hot sits at 21–33% every month; the AI assistant cannot answer a price question and the auto-close manufactures 'Inactive' losses.",
-    "measure": "Paid Ads booking rate from 1.5% to ≥ 4% by Month 6 and ≥ 6% by Month 12; Warm→Hot ≥ 40% by Month 6; zero after-hours red-flag cases unread past 9 am next day.",
-    "owner": "Account Manager with Vista CS lead · Analytics Lead"
+    "name": "Turn the enquiries Vista already receives into booked visits",
+    "why": "The biggest issue is not necessarily getting more enquiries. It is converting the enquiries Vista already has. Unpaid enquiries currently book at 14.4%, while paid enquiries book at only 1.5%. Warm-to-Hot conversion sits between 21% and 33% each month. The AI assistant also cannot currently answer a price question properly, and the auto-close process is creating avoidable “Inactive” losses.",
+    "measure": "Paid ads booking rate from 1.5% to at least 4% by Month 6 and at least 6% by Month 12. Warm-to-Hot conversion of at least 40% by Month 6. Zero after-hours red-flag cases left unread beyond 9 am the next day.",
+    "owner": "Account Manager with Vista CS Lead. Support: Analytics Lead"
    },
    {
     "id": "O4",
-    "name": "Be found for cataract, LASIK and every centre",
-    "why": "Organic Search is the best-engaged channel and the one nobody reports on. Content arrives in batches and stopped in May 2026. AI-referral traffic has started (282 sessions) with no one measuring it.",
-    "measure": "Organic sessions +40% on the post-launch baseline by Month 12; 52 medically reviewed articles; ≥ 60% of tracked keywords on page 1; local-pack top-3 for priority centre × service pairs; AI visibility on ≥ 5 engines by Month 12.",
+    "name": "Be found for cataract, LASIK and every Vista centre",
+    "why": "Organic search is currently one of Vista’s strongest-engagement channels, but it is not being properly reported on. Content has also been published in batches and appears to have stopped in May 2026. At the same time, AI referral traffic has already started, with 282 sessions recorded, but this is not yet being actively measured or managed.",
+    "measure": "Organic sessions +40% on the post-launch baseline by Month 12. 52 medically reviewed articles. At least 60% of tracked keywords on page 1. Local-pack top 3 positions for priority centre × service combinations. AI visibility across at least 5 engines by Month 12.",
     "owner": "SEO/AEO/GEO Lead · Content Lead"
    },
    {
     "id": "O5",
-    "name": "Put media money where the bookings come from",
-    "why": "The annual media budget is allocated on Google 'conversions' that are 23–52% PMax, bought at a fraction of the cost of a real enquiry, and Meta 'results' that book at 1.5%. The cheapest channel, TikTok, has no plan at all.",
-    "measure": "Every campaign optimised to a CRM-verified booking signal by Month 4; cost per appointment −25% by Month 12 versus the Month-4 baseline; TikTok and LinkedIn decided on pilot evidence, not opinion.",
+    "name": "Put media spend where the bookings are actually coming from",
+    "why": "Media decisions should be based on confirmed bookings, not platform numbers alone. At present, Google “conversions” include 23–52% Performance Max activity, often at a much lower cost than a genuine enquiry, while Meta “results” are currently producing only a 1.5% booking rate. TikTok is also the cheapest channel, but there is no clear plan for how it should be tested or used.",
+    "measure": "Every campaign optimised towards a CRM-verified booking signal by Month 4. Cost per appointment reduced by 25% by Month 12, compared with the Month 4 baseline. TikTok and LinkedIn decisions based on pilot results and actual evidence, not assumptions.",
     "owner": "Paid Media Lead"
    },
    {
     "id": "O6",
-    "name": "Keep it fixed — one monthly meeting that closes actions",
-    "why": "345 open action items with no closure state and monthly reports without analysis. Findings recur because nobody owns closing them.",
-    "measure": "Monthly strategy meeting with pre-read 2 days before and minutes 1 day after; action closure ≥ 90%; quarterly SteerCo with market research; Command Centre live at go-live.",
-    "owner": "Programme Manager · Head of Digital Solutions"
+    "name": "Keep things fixed once they are fixed",
+    "why": "Vista currently has 345 open action items with no clear closure status, while monthly reports often show numbers without enough analysis or follow-through. The same issues keep appearing because there is no clear process to close actions and confirm they are resolved.",
+    "measure": "One monthly strategy meeting, with the pre-read shared 2 days before and the minutes and actions issued 1 day after. An action closure rate of at least 90%. A quarterly steering committee supported by market research. The Command Centre live from go-live.",
+    "owner": "Programme Manager. Executive sponsor: Head of Digital Solutions (the Vista leader accountable for this result)"
    }
   ],
   "phases": [

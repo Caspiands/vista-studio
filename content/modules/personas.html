@@ -190,8 +190,6 @@ a{color:var(--series-1)}
   <div>
     <div class="eyebrow">Vista Eye Specialist · Digital Transformation RFP QHM/VES/DT/2026/003 · Caspian Digital Solutions</div>
     <h1>Vista Eye Specialist — <span>Target Audiences &amp; Patient Personas</span></h1>
-    <div class="sub">Who Vista is speaking to. First the target audience groups by age and who makes the decision, then the ten patient and caregiver personas inside them: how each one hears about Vista, enquires, books and visits, where that journey breaks today, and what changes for them under the 12-month plan.</div>
-    <div class="meta" id="basis"></div>
   </div>
   <button class="tbtn" id="theme" type="button">◐ Dark mode</button>
 </header>
@@ -247,7 +245,6 @@ a{color:var(--series-1)}
 </section>
 
 <section id="validate">
-  <h2>Assumptions to validate in Phase 1</h2>
   <p class="lede">Behaviour, platforms and pain points come from Vista's own data. Demographics do not: GA4 demographics were not pulled and Vista has not shared patient records.</p>
   <div class="card"><ol class="val" id="val"></ol></div>
 </section>
@@ -274,8 +271,6 @@ const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let group='all', sel='P01';
 try{const s=localStorage.getItem('vp-sel');if(s&&P.some(p=>p.id===s))sel=s;}catch(e){}
-$('basis').textContent='Prepared '+D.meta.prepared+'. '+D.meta.basis;
-
 function mono(p){return `<span class="mono" style="background:var(${GC[p.group]})">${p.id.replace('P','')}</span>`;}
 
 function filters(){
