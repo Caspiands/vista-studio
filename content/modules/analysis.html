@@ -223,14 +223,18 @@ a{color:var(--series-1)}
   </div>
   <div class="grid g2" style="margin-top:14px">
     <div class="card">
-      <div class="chart-title">Source / medium, Sep 2025 – Aug 2026 (top 40)</div>
-      <div class="chart-sub">Non-standard mediums (centers, center, fb, social, cny) fall into Unassigned; chatgpt.com appears under four mediums.</div>
-      <div class="tscroll" id="t-sm"></div>
+      <div class="chart-head"><div class="chart-title">Source / medium, Sep 2025 – Aug 2026 (top 40)</div><button class="tv" data-toggle="t-sm">Show data table</button></div>
+      <div class="chart-sub">Share of sessions. Sources under 1.5% are grouped as Other, including the rows outside this top 40. Non-standard mediums (centers, center, fb, social, cny) fall into Unassigned; chatgpt.com appears under four mediums.</div>
+      <svg id="c-sm" viewBox="0 0 360 230"></svg>
+      <div class="legend" id="l-sm"></div>
+      <div id="t-sm" class="hidden tscroll"></div>
     </div>
     <div class="card">
-      <div class="chart-title">Audience — device, language, city (Sep 2025 – Aug 2026)</div>
-      <div class="chart-sub">Device share of users: mobile 80% (244,918), desktop 19% (57,501), tablet under 1% (1,826). Cities with near-zero engagement and 90–99% key-event rates are data-centre traffic; no filter is applied.</div>
-      <div class="tscroll" id="t-aud"></div>
+      <div class="chart-head"><div class="chart-title">Audience — device, language, city (Sep 2025 – Aug 2026)</div><button class="tv" data-toggle="t-aud">Show data table</button></div>
+      <div class="chart-sub">Device is the share of users. City is the share of users who have a city. Language was not pulled as a row-level count (about 9% Mandarin and 6–10% Malay). Cities with near-zero engagement and 90–99% key-event rates are data-centre traffic; no filter is applied.</div>
+      <svg id="c-aud" viewBox="0 0 560 220"></svg>
+      <div class="legend" id="l-aud"></div>
+      <div id="t-aud" class="hidden tscroll"></div>
     </div>
   </div>
 </section>
@@ -372,7 +376,7 @@ a{color:var(--series-1)}
   <p class="lede">Public profiles read on 14 September 2026. The agency decks contain no organic social metrics, so this is the first consolidated view.</p>
   <div class="card"><div class="tscroll" id="t-social"></div>
   <div class="note">Instagram last 90 days: 32 posts (16 static, 10 reels, 6 carousels) — 0 posts 6–23 Aug, 18 posts 24 Aug–11 Sep. Last 20 posts: average 29 likes (median 27, range 10–67), 9 comments in total; one UGC-style kid reel 293 likes. FB and IG carry identical creative and captions on the same day; LinkedIn reuses the copy; TikTok runs BM re-cuts. No page replies to comments were observed.</div></div>
-  <div class="card" style="margin-top:14px"><div class="chart-title">Google Business Profile — branch listings</div><div class="chart-sub">13 listings plus a duplicate HQ listing "Vista Laser Eye Center Sdn Bhd" (5.0, 8 reviews). Names carry "| LASIK, Cataract Eye Surgery Malaysia" suffixes. Calls and direction requests sit in these listings and are not connected to Respond.io.</div><div class="tscroll" id="t-gbp"></div></div>
+  <div class="card" style="margin-top:14px"><div class="chart-title">Google Business Profile — branch listings</div><div class="chart-sub">13 listings plus a duplicate HQ listing "Vista Laser Eye Center Sdn Bhd" (5.0, 8 reviews). Names carry "| LASIK, Cataract Eye Surgery Malaysia" suffixes. Calls and direction requests sit in these listings and are not connected to Respond.io. The Calls column is the number of calls on each Vista listing; those counts were not in the data Vista shared, so the cells are blank rather than estimated.</div><div class="tscroll" id="t-gbp"></div></div>
 </section>
 
 <!-- 10 FINDINGS -->
@@ -593,6 +597,38 @@ function drawChannels(){
   pie(svg,slices,180,108,88);
   document.getElementById('l-channels').innerHTML=slices.map(s=>`<span><i style="background:${css(s.col)}"></i>${s.label} ${pct(s.v/base*100)}</span>`).join('');
 }
+const PIECOLS=['--series-1','--series-2','--series-3','--series-4','--series-5','--critical','--good','--warning','--serious','--opp'];
+function drawSource(){
+  const svg=document.getElementById('c-sm');svg.innerHTML='';
+  const all=DATA.ga4_sm;
+  const total=(all.find(r=>r.sm==='Total')||{}).sessions||0;
+  const rows=all.filter(r=>r.sm!=='Total').slice().sort((a,b)=>b.sessions-a.sessions);
+  const keep=rows.filter(r=>total&&r.sessions/total>=0.015);
+  const kept=keep.reduce((a,r)=>a+r.sessions,0);
+  const slices=keep.map((r,i)=>({label:r.sm,v:r.sessions,col:PIECOLS[i%PIECOLS.length]}));
+  if(total>kept)slices.push({label:'Other',v:total-kept,col:'--muted'});
+  const base=total||kept||1;
+  pie(svg,slices,180,108,88);
+  document.getElementById('l-sm').innerHTML=slices.map(s=>`<span><i style="background:${css(s.col)}"></i>${s.label} ${pct(s.v/base*100)}</span>`).join('');
+}
+function drawAudience(){
+  const svg=document.getElementById('c-aud');svg.innerHTML='';
+  const dev=DATA.ga4_tech.filter(r=>r.dim==='Device category').slice().sort((a,b)=>b.users-a.users);
+  const dcols={'mobile':'--series-1','desktop':'--series-3','tablet':'--series-5','smart tv':'--muted'};
+  pie(svg,dev.map(r=>({label:r.v,v:r.users,col:dcols[r.v]||'--axis'})),150,96,78);
+  const cities=DATA.ga4_demo.filter(r=>r.dim==='City'&&r.v!=='Total').slice().sort((a,b)=>b.users-a.users);
+  const citySum=cities.reduce((a,r)=>a+r.users,0)||1;
+  const named=cities.filter(r=>r.users/citySum>=0.025);
+  const rest=citySum-named.reduce((a,r)=>a+r.users,0);
+  const cityCols=['--series-2','--series-4','--critical','--good','--warning','--serious','--opp','--axis'];
+  const cslices=named.map((r,i)=>({label:r.v,v:r.users,col:cityCols[i%cityCols.length]}));
+  if(rest>0)cslices.push({label:'Other cities',v:rest,col:'--muted'});
+  pie(svg,cslices,410,96,78);
+  [[150,'Device'],[410,'City']].forEach(([x,t])=>{const n=el('text',{x,y:202,class:'tick','text-anchor':'middle'});n.textContent=t;svg.appendChild(n);});
+  const dbase=dev.reduce((a,r)=>a+r.users,0)||1;
+  const leg=dev.map(r=>`<span><i style="background:${css(dcols[r.v]||'--axis')}"></i>${r.v} ${pct(r.users/dbase*100)}</span>`).join('')+cslices.map(s=>`<span><i style="background:${css(s.col)}"></i>${s.label} ${pct(s.v/citySum*100)}</span>`).join('');
+  document.getElementById('l-aud').innerHTML=leg;
+}
 function drawOrg(){
   const svg=document.getElementById('c-org'),W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,m={l:52,r:16,t:16,b:40};
   const v=MONTHS20.map(mm=>DATA.ga4_monthly[mm]['Organic Search']?DATA.ga4_monthly[mm]['Organic Search'].sessions:0);
@@ -678,9 +714,9 @@ function staticTables(){
     {a:'YouTube',b:'vistaeyespecialist1963',c:45,d:'Eye Carnival 2026 shorts',e:'7K–203K views on shorts; "I AM VISTA" 407K (2017)',f:'10 videos; otherwise dormant; only KKLIU reference (0366/2017) on the 2017 video'},
     {a:'Google Business Profile',b:'13 listings',c:7150,d:'–',e:'weighted ~4.8★',f:'Duplicate HQ listing; keyword-stuffed names; no GBP row populated in L10'}
   ]);
-  table('t-gbp',[{h:'Branch listing',k:'a'},{h:'Rating',k:'b',num:1,f:v=>v.toFixed(1)},{h:'Reviews',k:'c',num:1}],[
+  table('t-gbp',[{h:'Branch listing',k:'a'},{h:'Rating',k:'b',num:1,f:v=>v.toFixed(1)},{h:'Reviews',k:'c',num:1},{h:'Calls',k:'calls',num:1}],[
     {a:'PJ The Curve (HQ)',b:4.8,c:1015},{a:'Air Itam, Penang',b:4.9,c:1215},{a:'Ipoh Bond Square',b:5.0,c:632},{a:'Straits Residence, Penang',b:5.0,c:405},{a:'Kajang',b:4.8,c:685},{a:'Mount Austin, JB',b:4.7,c:646},{a:'Klang',b:4.7,c:503},{a:'Cheras',b:4.8,c:482},{a:'Sutera Utama, JB',b:4.8,c:474},{a:'Puchong',b:4.7,c:383},{a:'Bukit Mertajam',b:4.8,c:373},{a:'Kepong',b:4.8,c:335},{a:'Vista Laser Eye Center Sdn Bhd (duplicate HQ)',b:5.0,c:8}
-  ],{sort:'c'});
+  ].map(r=>({...r,calls:null})),{sort:'c'});
   table('t-xcheck',[{h:'Aug ID',k:'a'},{h:'August finding',k:'b'},{h:'Status',k:'c'},{h:'What the wider window shows',k:'d'}],AUG_XCHECK.map(([a,b,c,d])=>({a,b,c,d})));
 }
 
@@ -699,7 +735,7 @@ function findings(){
   render();
 }
 
-function drawAll(){drawLeads();drawCpa();drawGA4();drawFunnel();drawSrc();drawContacts();drawVel();drawSeo();drawOrg();drawEvents();drawChannels();}
+function drawAll(){drawLeads();drawCpa();drawGA4();drawFunnel();drawSrc();drawContacts();drawVel();drawSeo();drawOrg();drawEvents();drawChannels();drawSource();drawAudience();}
 drawAll();staticTables();findings();
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{syncBtn();drawAll();});
 
