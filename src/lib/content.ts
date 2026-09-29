@@ -135,7 +135,7 @@ export const defaultContent: Content = {
         stage: "Audiences, then personas",
         summary: "Five audience groups by age and by who makes the decision, and the ten people inside them.",
         bullets: [
-          "18–30 · 30–40 · parents of children 5–17 · 40+ · 60+",
+          "Gen Z 18–30 · Young Adults 30–40 · parents of children 5–17 · Adults 40+ · Seniors",
           "Parents, not children, are the target for myopia",
           "Each persona: journey today vs with the plan",
         ],

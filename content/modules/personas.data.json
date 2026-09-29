@@ -72,11 +72,11 @@
    }
   ],
   "groups": {
-   "a18": "18–30",
-   "a30": "30–40",
+   "a18": "Gen Z 18–30",
+   "a30": "Young Adults 30–40",
    "kids": "Parents of children 5–17",
-   "a40": "40+",
-   "a60": "60+",
+   "a40": "Adults 40+",
+   "a60": "Seniors",
    "cross": "Situational — reached within the groups above"
   },
   "personas": [
