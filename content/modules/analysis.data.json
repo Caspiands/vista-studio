@@ -1,0 +1,5672 @@
+{
+ "FINDINGS": [
+  {
+   "id": "F-01",
+   "sev": "Critical",
+   "area": "Measurement",
+   "scope": "7",
+   "title": "Five different lead counts exist for the same twelve months, and nothing reconciles them",
+   "evidence": "Sep 2025–Aug 2026: L10 scorecard 73,193 leads; Respond.io conversations opened 73,069; Respond.io contacts added 69,483, of which 19,404 are CSV imports (net 50,079); platform-reported Sep–Jul 61,063 (Google Ads 26,756 fractional conversions + Meta 34,307 conversation starts); appointments booked Dec–Aug 3,094. No document in the set reconciles any two of these.",
+   "impact": "Every cost-per-lead, ROAS and channel-share figure in management use depends on which of the five counts was picked that month.",
+   "source": "L10 · Respond.io · Xedea SEM/Meta decks"
+  },
+  {
+   "id": "F-02",
+   "sev": "Critical",
+   "area": "Measurement",
+   "scope": "7",
+   "title": "GA4 key events were redefined twice in twenty months",
+   "evidence": "Session key-event rate 8–12% (Jan–Jun 2025) → 24% (Jul 2025) → 86–94% (Aug 2025–May 2026) → 54% (Jun 2026) → 10–12% (Jul–Aug 2026). Monthly key events 2,491 → 121,920 (Mar 2026) → 4,647 (Jul 2026). Named enquiry events (WhatsApp, Phone, Thank-you, Email, Carnival) sum to ~40k in 2025 against 342,076 key events. Admin key-event list could not be read (extension disconnected on Admin).",
+   "impact": "No year-on-year or month-on-month conversion comparison on the key-events metric is valid. The August audit's 52.6% all-time rate blends two definitions.",
+   "source": "GA4 monthly pulls"
+  },
+  {
+   "id": "F-03",
+   "sev": "Critical",
+   "area": "CRM & lead handling",
+   "scope": "5/7",
+   "title": "Paid-ads leads book appointments at 1.5%; organic incoming leads at 14.4%",
+   "evidence": "Dec 2025–Aug 2026 lifecycle by source: Paid Ads 19,670 New Leads → 6,110 Warm → 667 Hot → 288 booked (1.46%). Incoming Message 16,883 → 11,173 → 3,981 → 2,428 booked (14.4%). Paid → Hot Prospect 3.4%. Meta CAPI workflows fire a Purchase event on lifecycle change (observed on a lead that later went Inactive), not on a booking.",
+   "impact": "The bulk of Meta spend from Dec 2025 is optimised towards a signal that does not represent a booking, and its leads are 10× less likely to book than unpaid ones.",
+   "source": "Respond.io Lifecycle by source · Workflows"
+  },
+  {
+   "id": "F-04",
+   "sev": "Critical",
+   "area": "CRM & lead handling",
+   "scope": "7",
+   "title": "A third of the year's contacts were bulk-deleted; half the database has no stage",
+   "evidence": "23,616 contacts deleted in Jul (14,018) and Aug (9,564) 2026 by the 'Help VISTA' account — 34% of the 12-month intake; 2 merges in 12 months. 44,300 of 95,031 contacts (47%) carry no lifecycle stage. 6,090 'Appointment Booked' contacts were created by a 21 Jan 2026 import; historic booked contacts were bulk-moved to 'cold leads' on 14 Apr 2026.",
+   "impact": "Historic funnel and conversion rates cannot be reconstructed, and 'Won' counts before Jan 2026 are not comparable with those after.",
+   "source": "Respond.io Contacts report · Deleted log · Contacts module"
+  },
+  {
+   "id": "F-05",
+   "sev": "Critical",
+   "area": "Commercial",
+   "scope": "7/9",
+   "title": "Cost per booked appointment is RM182; the cost per lead in management use is ten to twenty times lower",
+   "evidence": "Total digital spend Jan–Aug 2026 against 3,065 appointments booked in Respond.io gives RM182 per booked appointment, steady from February to August (January higher while the Won stage was still ramping; Dec 2025 excluded because that stage was populated from 21 Jan 2026). The L10 'Revenue attribution' block multiplies hot leads by an assumed value per lead; Xedea Meta decks leave ROAS, Revenue and Sales blank every month; GA4 revenue is zero on every row.",
+   "impact": "The only number that ties marketing to a patient is ten to twenty times higher than the number budgets are set against.",
+   "source": "L10 · Respond.io Lifecycle · GA4"
+  },
+  {
+   "id": "F-06",
+   "sev": "High",
+   "area": "Paid media",
+   "scope": "5",
+   "title": "Google Ads 'conversions' are fractional all-action totals dominated by Performance Max",
+   "evidence": "PMax is 23–52% of reported conversions each month at a small fraction of the cost of a search conversion; Mar 2026 Carnival PMax alone added 3,302 conversions and pulled the headline cost per lead down by two thirds. Campaign tables fail to reconcile to the headline in 4 of 19 months (Jul 2026 gap: 1,079 conversions). A Jul 2025 step change in reported cost per lead is consistent with a conversion-action change; PMax cost per click fell by about three quarters.",
+   "impact": "Google cost per lead is not comparable across months and understates the cost of a real enquiry.",
+   "source": "19 Xedea SEM reports"
+  },
+  {
+   "id": "F-07",
+   "sev": "High",
+   "area": "Reporting",
+   "scope": "7/9",
+   "title": "Agency reporting is tool export without analysis",
+   "evidence": "13 SEO reports are Semrush position-tracking exports: GA4 and GSC widgets carry no numbers, organic sessions and leads never appear, May 2026 report tracks a single day (7 Jun). 19 SEM reports are Looker exports with no commentary, targets, impression share or quality signals. Meta decks: Executive Summary ROAS / Revenue / Solution Seekers / Sales blank in every issue; no organic page metrics; 14 internal inconsistencies logged. Not one report mentions GA4 setup, Respond.io or the lead discrepancy the client raised repeatedly in L10.",
+   "impact": "The client has never received a written explanation of performance from its agency; the L10 issue list has carried 'Leads discrepancy — what's happening?' unresolved.",
+   "source": "32 Xedea reports · 12 Meta decks · L10"
+  },
+  {
+   "id": "F-08",
+   "sev": "High",
+   "area": "Website tracking",
+   "scope": "7",
+   "title": "Tracking fires without consent, double-loads GA4 and inflates form conversions",
+   "evidence": "vista.com.my: GA4 G-YKLZKC1WCE loaded hard-coded and again via GTM-PQ9TCR4 (two page_view hits); two Meta Pixels (760750721361681, 1655751015569796) and Google Ads AW-1071140050 hard-coded on every page including thank-you pages; Hotjar; no CMP or Consent Mode; no dataLayer events or conversion labels in source; WhatsApp 601155853937 links carry no UTMs. Thank-you pages are indexable and in the sitemap; 719 sessions landed directly on /thank-you* in 2025 with ~100% key-event rate.",
+   "impact": "PDPA consent requirement (RFP §19) is unmet on the live site; GA4 page_view and Meta PageView are over-counted; form conversions include refreshes and direct hits.",
+   "source": "Site crawl · GA4 landing pages"
+  },
+  {
+   "id": "F-09",
+   "sev": "High",
+   "area": "Attribution",
+   "scope": "5/7",
+   "title": "Meta spend is invisible as Paid Social; UTM taxonomy has three parallel schemes",
+   "evidence": "Paid Social: 105 sessions in 20 months against a full year of Meta spend (Aug 2025–Jul 2026); Meta traffic lands in Cross-network (169,799 sessions), Organic Social (34,989, 2–11 s engagement, 99% 'engaged') and Referral (m.facebook.com). Custom mediums 'centers', 'center', 'fb', 'social', 'cny/2025' send 19,402 sessions to Unassigned. Campaign names use 1.1-General / 2.1-白内障 / 3.1-(BM) / 'XD -' / lowercase variants; Meta campaign IDs appear as utm_campaign. Ad campaign IDs reach Respond.io only in Sep 2025 and Apr–Aug 2026 (6,696 of 28,437 paid contacts).",
+   "impact": "Channel comparison in GA4 is a classification artefact; the Meta-vs-Google performance gap cannot be read from any current report.",
+   "source": "GA4 source/medium, campaigns · Respond.io Contacts"
+  },
+  {
+   "id": "F-10",
+   "sev": "High",
+   "area": "Measurement",
+   "scope": "7",
+   "title": "Data-centre and bot traffic is unfiltered and inflates engagement",
+   "evidence": "Cities with 0–5 s engagement and 90–99% key-event rates: Prineville, Fort Worth, Altoona, Ashburn (US), Dublin, Lulea, Lanzhou (99.77% key-event rate, 1 s), Forest City, Mumbai — roughly 15–20k users a year. '(not set)' browser/OS: 6,101 users in 2026 with 0 s engagement and 99% engagement rate. '(not set)' source/medium 563 sessions in 2025 at 27 events per session.",
+   "impact": "Engagement rate (92%) and key-event totals are overstated; no bot segment or filter exists.",
+   "source": "GA4 demographics · tech"
+  },
+  {
+   "id": "F-11",
+   "sev": "High",
+   "area": "Website structure",
+   "scope": "1/2",
+   "title": "Sixteen branches, 101 location URLs, no H1 on any of them",
+   "evidence": "74 duplicate, legacy or hub-copy location URLs return 200, self-canonicalise and sit in the sitemap (5 PJ-HQ copies in BM and 5 in ZH, 7 BM and 7 ZH hub copies, /locations-old/, 5 EN pages under the CJK slug /诊所地点/). 0 of 75 location pages carry an H1; none carries LocalBusiness schema; 9 of 16 EN branch pages have 78–109 words. Phone formats differ on 3 of 16 branch pages; enquiry form lists 14 of 16 branches; BM/ZH pages use retired branch names. GBP: 13 listings, ~7,150 reviews at ~4.8★, plus a duplicate HQ listing and keyword-stuffed names.",
+   "impact": "Local search authority is split across duplicates for the network's highest-intent queries ('eye specialist near me', 'ipoh eye specialist'). The /pages/ estate flagged in August now redirects (15/15 tested) — that finding is closed; this one replaces it.",
+   "source": "Site crawl · Google Maps"
+  },
+  {
+   "id": "F-12",
+   "sev": "High",
+   "area": "Website structure",
+   "scope": "1/2",
+   "title": "Sitemap omits every 2025–2026 post; no hreflang in HTML; Mandarin URLs percent-encoded",
+   "evidence": "vista.com.my Yoast sitemap lists 224 URLs; 52 live indexable posts (8 from 2025, 44 from 2026) are absent — only 2016–2024 press clippings are submitted. 0 hreflang link tags on 379 pages (sitemap only); languages served on ?lang= query strings; 37 of 43 Mandarin pages on percent-encoded slugs. vistanow.com.my: 156 BM/ZH pages canonicalise to the English URL; 31 of 39 ZH posts are untranslated English.",
+   "impact": "All content produced in the last two years is invisible to the sitemap, and the two non-English audiences (Mandarin 9%, Malay 6–10% of users) are served through a broken URL layer.",
+   "source": "Site crawl · GA4 language"
+  },
+  {
+   "id": "F-13",
+   "sev": "High",
+   "area": "Content",
+   "scope": "4",
+   "title": "Content output arrives in batches and has stopped",
+   "evidence": "Last 24 months: vista.com.my 55 posts, 24 of them in April 2026; vistanow.com.my 109 EN posts, 83 in Mar–May 2026 (presbyopia, amblyopia, dry-eye clusters). 0 posts on either site since May 2026; 15 of 24 months had zero output. At least 10 press-clipping posts duplicated across both domains. The RFP requires 4 medically reviewed articles a month.",
+   "impact": "Topical authority is built in spikes and decays between them; the content hub has no active link from the main site.",
+   "source": "Site crawl content_velocity"
+  },
+  {
+   "id": "F-14",
+   "sev": "High",
+   "area": "CRM & lead handling",
+   "scope": "7",
+   "title": "The AI assistant handles 57% of conversations but cannot answer the question most leads ask",
+   "evidence": "VISTA Virtual Assistant assigned 46,447 of 12-month conversations; 4 human agents; 3 deleted agent accounts carried ~13,800 assignments. In 29 sampled conversations: every price or promo question ends in 'pricing not available here, please leave name and number' then auto-close as Inactive; 4 of 8 Instagram ad leads received the 'returning contact' menu instead of an answer; a booked patient adding a second person was answered with the welcome menu; a red-flag symptom case assigned to a human at 9:27 PM was unread at 11:45 PM; Meta page away-message fires before the AI reply.",
+   "impact": "The largest single lost-stage reason (Inactive Lead, ~40% of losses) is manufactured by the 8 h / 14 h auto-close after the bot fails to answer.",
+   "source": "Respond.io conversations sample · Workflows · Assignments"
+  },
+  {
+   "id": "F-15",
+   "sev": "High",
+   "area": "CRM & lead handling",
+   "scope": "7",
+   "title": "Warm Lead remains the choke point and overall drop-off is rising",
+   "evidence": "Dec 2025–Aug 2026: Warm→Hot 21–33% every month; overall drop-off 65.5% (Dec) → 84.5% (Aug); average time to drop-off fell from 2 d 15 h to 10 h as auto-close tightened. Aug journey: New Lead drop 44% (Inactive 1,466, SPAM 439), Warm Lead drop 57% ('cold leads' 1,323 set by agents), Hot Prospect drop 31% ('Future Appointment' 124).",
+   "impact": "The August finding holds across nine months of data; the loss is a handling problem, not a media problem.",
+   "source": "Respond.io Lifecycle monthly"
+  },
+  {
+   "id": "F-16",
+   "sev": "Medium",
+   "area": "Website performance",
+   "scope": "1/3",
+   "title": "Homepage is 3.08 MB, 151 requests, 7.3 s; HTML is never edge-cached",
+   "evidence": "TTFB 895–1,280 ms on every HTML document (cf-cache-status DYNAMIC, x-nitro-cache MISS, cache-control no-cache) despite Elementor Cloud + Cloudflare + NitroPack. 91–99 script tags and 36–46 stylesheets per page; reCAPTCHA Enterprise (347 KB) loaded twice because the form is embedded twice; observed mobile CLS 0.167. vistanow homepage 2.18 MB / 8.7 s / TTFB 1.4 s, no CDN. PageSpeed Insights API returned 429 (quota) — no Lighthouse or CrUX figures in this audit.",
+   "impact": "RFP acceptance requires Core Web Vitals 'Good' on mobile and Lighthouse ≥ 90; the current stack is structurally unable to reach it.",
+   "source": "Site crawl measurements"
+  },
+  {
+   "id": "F-17",
+   "sev": "Medium",
+   "area": "Accessibility",
+   "scope": "1",
+   "title": "12–38 serious axe violations per page; 95.8% of images have empty alt",
+   "evidence": "axe-core 4.10.2 serious violations: home 22, LASIK 19, cataract 17, PJ location 12, doctors 12, vistanow home 38 (contrast, nameless icon links). No <main> landmark on any vista.com.my page; :focus{outline:none} on both sites; 83 focusable elements inside aria-hidden on the homepage; 17,650 of 18,419 img elements with alt=\"\" including logo and doctor portraits.",
+   "impact": "WCAG 2.1/2.2 AA (RFP Scope 1 acceptance criterion) is not met on any tested template.",
+   "source": "Site crawl accessibility"
+  },
+  {
+   "id": "F-18",
+   "sev": "Medium",
+   "area": "Security",
+   "scope": "3",
+   "title": "No security headers; content hub exposes wp-login and xmlrpc",
+   "evidence": "vista.com.my: HSTS 180 days only; no CSP, X-Frame-Options, X-Content-Type-Options or Referrer-Policy; /readme.html exposed. vistanow.com.my: no HSTS, no security headers, /wp-login.php and /xmlrpc.php return 200, Elementor 3.13.1 / WPML 4.6.3 behind the main site. Both on WordPress 7.1. The August finding on plaintext credentials (F-06) was not re-tested.",
+   "impact": "Baseline hardening expected under RFP Scope 3 is absent on both domains.",
+   "source": "Site crawl tech"
+  },
+  {
+   "id": "F-19",
+   "sev": "Medium",
+   "area": "SEO",
+   "scope": "2",
+   "title": "Structured data is Yoast default; 20 doctors share one page with no profile URLs",
+   "evidence": "Organization / WebPage / Breadcrumb / Article everywhere; Service on 6 pages, FAQPage on 4 (one duplicated), LocalBusiness on the EN homepage only. No MedicalOrganization, MedicalClinic, Physician or MedicalProcedure on either domain. 20 ophthalmologists listed on /doctors with no individual URLs, portraits with empty alt, one name rendered with Cyrillic characters. 176 of 379 pages without meta description, 131 without H1, 67 pages in 14 duplicate-title groups.",
+   "impact": "E-E-A-T and entity signals the RFP's AEO/GEO scope depends on (author, physician, procedure entities) do not exist in markup.",
+   "source": "Site crawl seo"
+  },
+  {
+   "id": "F-20",
+   "sev": "Medium",
+   "area": "SEO",
+   "scope": "2",
+   "title": "Ranking counts are flattered by brand terms and a keyword-set expansion",
+   "evidence": "Semrush Top-3 count 59 (Jul 2025, 150 kw) → 87 (Aug 2025, set expanded to 201) → 106 (Apr 2026) → 97 (Jul 2026). 60–70 of the Top-3 terms each month are brand/navigational or near-zero volume. High-volume heads: 'eye specialist' (4,400/mo) 11→4–6; 'lasik surgery' (3,600) 5→1→21; 'cataract surgery' (3,600) 17→7→23→not in top 100; 'ipoh eye specialist' (2,900) 7→12. Organic sessions are not reported in any SEO report; GA4 shows Organic Search 121,135 sessions in 20 months at 52 s engagement — the best of any channel. vistanow index rate ~40% (Aug audit) unchanged in reporting.",
+   "impact": "The SEO KPI the client sees (Top-N count) can rise while commercial rankings fall.",
+   "source": "13 Xedea SEO reports · GA4"
+  },
+  {
+   "id": "F-21",
+   "sev": "Medium",
+   "area": "Social",
+   "scope": "6",
+   "title": "Social output is below the RFP minimum and engagement is thin; TikTok is the outlier",
+   "evidence": "Facebook 84K followers (7,357 reviews, 100% recommend); Instagram 21.3k, 994 posts; TikTok 14.2K followers / 44.7K likes; LinkedIn 689 (page slug vista-laser-eye-center); YouTube 45 subscribers. IG last 90 days: 32 posts (16 static, 10 reels, 6 carousels) — 0 posts 6–23 Aug, 18 posts 24 Aug–11 Sep. Last 20 IG posts average 29 likes (0.14% of followers) and 9 comments in total; FB posts 3–18 reactions, 0 comments; no page replies seen. FB and IG are identical cross-posts. TikTok pinned BM explainers 1.1M / 820K / 711K views; 16 BM videos in the last 4 weeks at 0.2–4.1K views. Xedea decks report no organic social metrics.",
+   "impact": "The channel with the largest audience (FB) has the lowest engagement; the channel with the best reach per post (TikTok) has no goal or budget line.",
+   "source": "Public profiles 14 Sep 2026 · Meta decks"
+  },
+  {
+   "id": "F-22",
+   "sev": "Medium",
+   "area": "Compliance",
+   "scope": "All",
+   "title": "Advertising-rule exposure across site, ads and social (flag only)",
+   "evidence": "'Top #1' / 'Best #1' in 8 page titles; 'patients are guaranteed the highest level of service'; 'painless laser surgery'; '99% safety rate' (press clipping); 'most awarded'; Google Ads sitelinks 'The Best Eye Specialists', 'Award Winning'; Newsweek '#23 Refractive Eye Surgery' on the FB cover; public discount pricing on procedure and assessment offers; procedure-led promotions; 'EVO Toric ICL 2,000' milestone. KKLIU 0945 / EXP 31.12.2027 in the site footer; no KKLIU reference on 2026 social posts. No testimonials or before/after images found.",
+   "impact": "The RFP requires an approval trail evidencing medical and compliance sign-off; none of the observed claims carries one.",
+   "source": "Site crawl · Social profiles · Google SERP"
+  },
+  {
+   "id": "F-23",
+   "sev": "Medium",
+   "area": "Governance",
+   "scope": "9",
+   "title": "The L10 workbook carries formula errors, a copy error and an unbounded issue list",
+   "evidence": "#REF! in Carnival-Form and Total Leads (Mar 2023–Dec 2024) and CPL (2024). The ad-spend tab repeats October's Meta figure in November, against a different figure in the agency deck. Feb 2026 counts a 13,996-contact WhatsApp broadcast as leads, taking the month to 17,154 and cutting the reported cost per lead by two thirds. 190 to-dos and 169 issues with no dates or closure states. 2026 top-line lead goal, cost per lead and spend all blank in the yearly tab; VTO 1-year plan still dated 31 Dec 2025. The channel contribution-% rows behind August finding F-01 are not present in the shared export.",
+   "impact": "The one document the client manages performance from cannot be trusted below 2025 and has no closure discipline.",
+   "source": "L10 Google Sheet"
+  },
+  {
+   "id": "F-24",
+   "sev": "Medium",
+   "area": "CRM & lead handling",
+   "scope": "7",
+   "title": "Website attribution in Respond.io can never populate: there is no web-chat channel",
+   "evidence": "Channels in use: WhatsApp Business (53%), Messenger Main (42%), Instagram (4.5%), Messenger Kid and JB Mount Austin (<0.5%). No web-chat widget, Google Business Messages, Telegram or LINE channel exists, so Website / Page URL / Widget ID are attribution columns that no contact can carry. Calls is disabled. Settings, Channels, Users and Integrations are access-denied to the audit login. Reports allow 12 months of history; the Lifecycle report freezes on a 12-month range and shows stale numbers after a range change without reload.",
+   "impact": "Root cause of August finding F-08; website-originated WhatsApp leads are indistinguishable from any other WhatsApp contact.",
+   "source": "Respond.io Reports · Settings"
+  },
+  {
+   "id": "F-25",
+   "sev": "Medium",
+   "area": "CRM & lead handling",
+   "scope": "7",
+   "title": "Broadcast imports enter the lead funnel as Warm Leads",
+   "evidence": "CSV imports: Oct 2025 3,300; Feb 2026 11,822; Mar 2026 984; Jul 2026 3,214 — matching WhatsApp broadcast campaigns (Durian Runtuh, per-branch Carnival 2026, ipfrelocation). 35 broadcasts, 19,247 messages sent, 14.5% failed. Imported contacts sit in Warm Lead (21,590 total) and inflate stage counts; 'Marketing' lost-reason spikes after each broadcast.",
+   "impact": "Warm Lead and contacts-added figures are not comparable in import months.",
+   "source": "Respond.io Contacts · Broadcasts"
+  },
+  {
+   "id": "O-01",
+   "sev": "Opportunity",
+   "area": "CRM & lead handling",
+   "scope": "2/7",
+   "title": "Unpaid enquiries are the appointment engine",
+   "evidence": "Incoming Message leads: 16,883 New Leads → 2,428 appointments (14.4%) Dec–Aug, 8.4× the paid rate. Organic Search: 121,135 sessions, 52 s average engagement, 94% engagement rate — the strongest of any channel over 20 months. Google Maps: ~7,150 reviews at ~4.8★ across 13 listings.",
+   "impact": "The channels that book patients are the ones with no owner, no target and no reporting.",
+   "source": "Respond.io · GA4 · Google Maps"
+  },
+  {
+   "id": "O-02",
+   "sev": "Opportunity",
+   "area": "Paid media",
+   "scope": "5",
+   "title": "TikTok is the cheapest and highest-reach channel and has no plan",
+   "evidence": "TikTok evergreen cost per result more than halved through 2026 on a small monthly budget; three pinned BM explainers total 2.6M views; @vista.eye posts near-daily in BM. No 2026 goal or budget line in L10; no TikTok integration with Respond.io ('Tiktok. integrate to respondio' open in the to-do list).",
+   "impact": "A measured test at a fraction of Meta's cost per lead is available without new creative.",
+   "source": "Meta/TikTok decks · L10 · TikTok profile"
+  },
+  {
+   "id": "O-03",
+   "sev": "Opportunity",
+   "area": "Attribution",
+   "scope": "7",
+   "title": "Carnival is the only fully tagged funnel — and shows what tagging is worth",
+   "evidence": "/malaysia-truly-carnival: 40,664 sessions Jan–Aug 2026 at 93% key-event rate; Mar 2026 sessions 59,570 (57% Cross-network); L10 records '1,300 leads form submission with UTM, 200 WhatsApp'. Carnival form leads are excluded from the monthly lead total by design.",
+   "impact": "The mechanics (UTM discipline, dedicated landing page, form + WhatsApp split) transfer directly to evergreen service pages.",
+   "source": "GA4 · L10"
+  },
+  {
+   "id": "O-04",
+   "sev": "Opportunity",
+   "area": "Content",
+   "scope": "1/4",
+   "title": "Mandarin and Malay demand is real and structurally under-served",
+   "evidence": "GA4 language: Mandarin 9%, Malay 6–10%, Indonesian 2–4% of users. Google Ads runs full CN and BM campaign sets in three regions. TikTok output is 100% BM. On the website, 37 of 43 Mandarin pages sit on percent-encoded slugs and vistanow's ZH posts are 79% untranslated. Xedea notes ~20% of visitors browse in a non-English setting.",
+   "impact": "The rebuild can serve both segments on clean URLs with hreflang at no incremental content cost.",
+   "source": "GA4 · Site crawl · SEM reports"
+  },
+  {
+   "id": "O-05",
+   "sev": "Opportunity",
+   "area": "SEO",
+   "scope": "2",
+   "title": "An AI-referral baseline already exists before any GEO work",
+   "evidence": "GA4 'AI Assistant' channel: 282 sessions in 20 months, 7 in May 2026 → 134 in Aug 2026, 89–92% engagement rate; chatgpt.com appears under four different mediums. A first AI-visibility baseline can be taken in Week 1 with a fixed prompt library across ChatGPT, Gemini, Perplexity and Claude, so the RFP's GEO KPI starts from a measured number.",
+   "impact": "The RFP's GEO KPI can be baselined on day one rather than day 30.",
+   "source": "GA4"
+  }
+ ],
+ "AUG_XCHECK": [
+  [
+   "F-01",
+   "Channel attribution sums to 131%",
+   "Not reproducible",
+   "The contribution-% rows are not in the L10 export shared with CDS; the monthly scorecard has no channel-% block. Either a hidden tab or a different workbook version."
+  ],
+  [
+   "F-02",
+   "Leads counted as conversations, 1.57 per contact",
+   "Confirmed, extended",
+   "12 months: 73,069 conversations vs 50,079 net new contacts (1.46×); 36% of conversations are returning contacts."
+  ],
+  [
+   "F-03",
+   "6,687 contacts deleted, 0 merged (3–16 Aug)",
+   "Confirmed, larger",
+   "23,616 deleted across Jul–Aug 2026 (14,018 + 9,564) by one account; 2 merges in 12 months."
+  ],
+  [
+   "F-04",
+   "GA4 key events are engagement proxies (52.6%)",
+   "Refined",
+   "The rate is a blend of two definitions; ~90% Aug 2025–May 2026, ~10–12% since Jul 2026. The definition was changed again around June 2026."
+  ],
+  [
+   "F-05",
+   "Legacy /pages/* estate absorbs a third of traffic",
+   "Changed",
+   "All 15 tested /pages/ URLs now 301-redirect; the GA4 figures were historical. The live duplication problem is the 101-URL location estate (F-11)."
+  ],
+  [
+   "F-06",
+   "Plaintext credentials in the access tracker",
+   "Not re-tested",
+   "Outside this pass; remains open."
+  ],
+  [
+   "F-07",
+   "No revenue measured anywhere",
+   "Confirmed",
+   "GA4 revenue is zero on every row; Meta deck ROAS and Revenue blank; L10 revenue is hot leads × an assumed value."
+  ],
+  [
+   "F-08",
+   "Website/Page URL/Widget ID blank on every contact",
+   "Root cause found",
+   "No web-chat channel exists in the workspace, so those fields can never populate (F-24)."
+  ],
+  [
+   "F-09",
+   "Lead volume fell, CPL rose",
+   "Confirmed with caveat",
+   "Q2 2026 3,398/month vs H2 2025 5,861/month on L10; Jul/Aug 2026 (6,624 / 4,337) include WhatsApp spikes of 4,997 and broadcast imports."
+  ],
+  [
+   "F-11",
+   "Offline channels never recorded",
+   "Confirmed",
+   "GBP / walk-in / call-in / offline WhatsApp rows still empty through Aug 2026."
+  ],
+  [
+   "F-12",
+   "Warm Lead is the choke point (53.5%)",
+   "Confirmed monthly",
+   "Warm→Hot 21–33% every month Dec–Aug; overall drop-off rose to 84.5% in Aug."
+  ],
+  [
+   "F-13",
+   "Non-lead traffic inside the lifecycle",
+   "Confirmed",
+   "Stage counts today: SPAM 24 (spam is blocked/deleted instead), HR 96, Marketing 201; 9,104 conversations closed as Spam in 12 months."
+  ],
+  [
+   "F-16",
+   "Meta classified as Cross-network",
+   "Confirmed",
+   "Paid Social 105 sessions in 20 months; Cross-network 169,799."
+  ],
+  [
+   "F-18",
+   "SEO reporting stopped after Feb 2026",
+   "Refined",
+   "Semrush reports continue monthly to Jul 2026 but carry no traffic or lead figures; the L10 SEO rows are what stopped."
+  ],
+  [
+   "F-19",
+   "Branch pages across five taxonomies",
+   "Confirmed, quantified",
+   "101 location URLs for 16 branches; 74 duplicates indexable; 0 H1s."
+  ],
+  [
+   "F-22",
+   "TikTok cheapest channel, no target",
+   "Confirmed",
+   "Evergreen cost per result more than halved by mid-2026; still no goal or budget line."
+  ],
+  [
+   "F-24",
+   "Respond.io reports unreliable",
+   "Reproduced differently",
+   "Range change without reload shows stale numbers; Lifecycle report freezes on 12-month ranges; Settings denied."
+  ]
+ ],
+ "DATA": {
+  "ga4_monthly": {
+   "2025-01": {
+    "Total": {
+     "sessions": 21378,
+     "key_events": 2491,
+     "ker": 8.65,
+     "eng": 91
+    },
+    "Paid Search": {
+     "sessions": 9618,
+     "key_events": 815,
+     "ker": 7.43,
+     "eng": 93.54
+    },
+    "Organic Search": {
+     "sessions": 5069,
+     "key_events": 527,
+     "ker": 8.44,
+     "eng": 90.73
+    },
+    "Cross-network": {
+     "sessions": 3193,
+     "key_events": 389,
+     "ker": 8.05,
+     "eng": 89.23
+    },
+    "Direct": {
+     "sessions": 1950,
+     "key_events": 248,
+     "ker": 9.08,
+     "eng": 90.21
+    },
+    "Unassigned": {
+     "sessions": 1210,
+     "key_events": 416,
+     "ker": 15.54,
+     "eng": 91.32
+    },
+    "Organic Social": {
+     "sessions": 354,
+     "key_events": 58,
+     "ker": 13.84,
+     "eng": 96.05
+    },
+    "Referral": {
+     "sessions": 239,
+     "key_events": 36,
+     "ker": 12.55,
+     "eng": 89.54
+    },
+    "Organic Video": {
+     "sessions": 13,
+     "key_events": 2,
+     "ker": 15.38,
+     "eng": 76.92
+    }
+   },
+   "2025-02": {
+    "Total": {
+     "sessions": 33368,
+     "key_events": 4779,
+     "ker": 9.07,
+     "eng": 91.63
+    },
+    "Paid Search": {
+     "sessions": 9512,
+     "key_events": 822,
+     "ker": 7.24,
+     "eng": 94.81
+    },
+    "Unassigned": {
+     "sessions": 8850,
+     "key_events": 2169,
+     "ker": 11.93,
+     "eng": 90.92
+    },
+    "Organic Search": {
+     "sessions": 6810,
+     "key_events": 616,
+     "ker": 7.5,
+     "eng": 90.15
+    },
+    "Cross-network": {
+     "sessions": 4575,
+     "key_events": 510,
+     "ker": 7.52,
+     "eng": 88.66
+    },
+    "Direct": {
+     "sessions": 3139,
+     "key_events": 510,
+     "ker": 11.02,
+     "eng": 89.55
+    },
+    "Organic Social": {
+     "sessions": 425,
+     "key_events": 71,
+     "ker": 10.59,
+     "eng": 97.18
+    },
+    "Referral": {
+     "sessions": 300,
+     "key_events": 81,
+     "ker": 16.67,
+     "eng": 92.33
+    },
+    "Organic Video": {
+     "sessions": 6,
+     "key_events": 0,
+     "ker": 0,
+     "eng": 83.33
+    }
+   },
+   "2025-03": {
+    "Total": {
+     "sessions": 25507,
+     "key_events": 3257,
+     "ker": 9.7,
+     "eng": 93.37
+    },
+    "Paid Search": {
+     "sessions": 11489,
+     "key_events": 1246,
+     "ker": 9.09,
+     "eng": 94.15
+    },
+    "Organic Search": {
+     "sessions": 6591,
+     "key_events": 708,
+     "ker": 8.6,
+     "eng": 93.26
+    },
+    "Direct": {
+     "sessions": 3173,
+     "key_events": 430,
+     "ker": 10.15,
+     "eng": 89.6
+    },
+    "Cross-network": {
+     "sessions": 2977,
+     "key_events": 742,
+     "ker": 14.81,
+     "eng": 90.7
+    },
+    "Organic Social": {
+     "sessions": 425,
+     "key_events": 48,
+     "ker": 9.65,
+     "eng": 97.18
+    },
+    "Referral": {
+     "sessions": 379,
+     "key_events": 52,
+     "ker": 10.82,
+     "eng": 92.61
+    },
+    "Unassigned": {
+     "sessions": 171,
+     "key_events": 31,
+     "ker": 11.11,
+     "eng": 73.1
+    },
+    "Organic Video": {
+     "sessions": 2,
+     "key_events": 0,
+     "ker": 0,
+     "eng": 100
+    },
+    "Organic Shopping": {
+     "sessions": 1,
+     "key_events": 0,
+     "ker": 0,
+     "eng": 100
+    }
+   },
+   "2025-04": {
+    "Total": {
+     "sessions": 21829,
+     "key_events": 3501,
+     "ker": 11.72,
+     "eng": 91.22
+    },
+    "Organic Search": {
+     "sessions": 7845,
+     "key_events": 989,
+     "ker": 10.3,
+     "eng": 91.2
+    },
+    "Paid Search": {
+     "sessions": 6981,
+     "key_events": 822,
+     "ker": 9.44,
+     "eng": 95.03
+    },
+    "Cross-network": {
+     "sessions": 3481,
+     "key_events": 1263,
+     "ker": 21.4,
+     "eng": 91.67
+    },
+    "Direct": {
+     "sessions": 2519,
+     "key_events": 309,
+     "ker": 10,
+     "eng": 88.41
+    },
+    "Referral": {
+     "sessions": 422,
+     "key_events": 47,
+     "ker": 9.95,
+     "eng": 93.84
+    },
+    "Organic Social": {
+     "sessions": 398,
+     "key_events": 49,
+     "ker": 9.55,
+     "eng": 96.73
+    },
+    "Unassigned": {
+     "sessions": 85,
+     "key_events": 22,
+     "ker": 15.29,
+     "eng": 67.06
+    },
+    "Organic Video": {
+     "sessions": 2,
+     "key_events": 0,
+     "ker": 0,
+     "eng": 100
+    }
+   },
+   "2025-05": {
+    "Total": {
+     "sessions": 20106,
+     "key_events": 2067,
+     "ker": 8,
+     "eng": 90.63
+    },
+    "Organic Search": {
+     "sessions": 8085,
+     "key_events": 822,
+     "ker": 8.19,
+     "eng": 91.94
+    },
+    "Paid Search": {
+     "sessions": 6037,
+     "key_events": 632,
+     "ker": 8.6,
+     "eng": 94.24
+    },
+    "Cross-network": {
+     "sessions": 2730,
+     "key_events": 309,
+     "ker": 7,
+     "eng": 87.03
+    },
+    "Direct": {
+     "sessions": 2289,
+     "key_events": 224,
+     "ker": 7.65,
+     "eng": 86.89
+    },
+    "Organic Social": {
+     "sessions": 411,
+     "key_events": 38,
+     "ker": 7.79,
+     "eng": 96.11
+    },
+    "Referral": {
+     "sessions": 307,
+     "key_events": 33,
+     "ker": 7.49,
+     "eng": 90.88
+    },
+    "Unassigned": {
+     "sessions": 97,
+     "key_events": 8,
+     "ker": 8.25,
+     "eng": 63.92
+    },
+    "Organic Video": {
+     "sessions": 3,
+     "key_events": 1,
+     "ker": 33.33,
+     "eng": 100
+    }
+   },
+   "2025-06": {
+    "Total": {
+     "sessions": 32759,
+     "key_events": 3814,
+     "ker": 8.32,
+     "eng": 90.05
+    },
+    "Paid Search": {
+     "sessions": 11378,
+     "key_events": 1093,
+     "ker": 7.82,
+     "eng": 94.09
+    },
+    "Cross-network": {
+     "sessions": 10543,
+     "key_events": 1490,
+     "ker": 8.85,
+     "eng": 88.15
+    },
+    "Organic Search": {
+     "sessions": 6346,
+     "key_events": 590,
+     "ker": 7.63,
+     "eng": 90.48
+    },
+    "Direct": {
+     "sessions": 2443,
+     "key_events": 280,
+     "ker": 8.92,
+     "eng": 88.09
+    },
+    "Organic Social": {
+     "sessions": 778,
+     "key_events": 182,
+     "ker": 13.5,
+     "eng": 96.27
+    },
+    "Unassigned": {
+     "sessions": 564,
+     "key_events": 126,
+     "ker": 10.64,
+     "eng": 80.67
+    },
+    "Referral": {
+     "sessions": 373,
+     "key_events": 53,
+     "ker": 9.38,
+     "eng": 87.94
+    },
+    "Organic Video": {
+     "sessions": 3,
+     "key_events": 0,
+     "ker": 0,
+     "eng": 100
+    },
+    "Paid Other": {
+     "sessions": 1,
+     "key_events": 0,
+     "ker": 0,
+     "eng": 0
+    }
+   },
+   "2025-07": {
+    "Total": {
+     "sessions": 32094,
+     "key_events": 18746,
+     "ker": 24.35,
+     "eng": 92.67
+    },
+    "Paid Search": {
+     "sessions": 9298,
+     "key_events": 6587,
+     "ker": 28.89,
+     "eng": 92.48
+    },
+    "Organic Search": {
+     "sessions": 7395,
+     "key_events": 5102,
+     "ker": 26.67,
+     "eng": 93.62
+    },
+    "Organic Social": {
+     "sessions": 5951,
+     "key_events": 1948,
+     "ker": 15.78,
+     "eng": 92.54
+    },
+    "Cross-network": {
+     "sessions": 5274,
+     "key_events": 3032,
+     "ker": 24.1,
+     "eng": 90.63
+    },
+    "Direct": {
+     "sessions": 2726,
+     "key_events": 1367,
+     "ker": 26.45,
+     "eng": 88.08
+    },
+    "Unassigned": {
+     "sessions": 948,
+     "key_events": 304,
+     "ker": 14.45,
+     "eng": 85.97
+    },
+    "Referral": {
+     "sessions": 524,
+     "key_events": 401,
+     "ker": 25.76,
+     "eng": 90.46
+    },
+    "Organic Video": {
+     "sessions": 4,
+     "key_events": 5,
+     "ker": 50,
+     "eng": 75
+    }
+   },
+   "2025-08": {
+    "Total": {
+     "sessions": 24960,
+     "key_events": 60114,
+     "ker": 89.36,
+     "eng": 95.05
+    },
+    "Paid Search": {
+     "sessions": 8998,
+     "key_events": 22593,
+     "ker": 91.99,
+     "eng": 96.45
+    },
+    "Organic Search": {
+     "sessions": 6488,
+     "key_events": 16816,
+     "ker": 89.66,
+     "eng": 98.2
+    },
+    "Cross-network": {
+     "sessions": 6342,
+     "key_events": 13514,
+     "ker": 89.64,
+     "eng": 91.88
+    },
+    "Direct": {
+     "sessions": 2506,
+     "key_events": 4721,
+     "ker": 83.56,
+     "eng": 90.82
+    },
+    "Organic Social": {
+     "sessions": 664,
+     "key_events": 1276,
+     "ker": 93.98,
+     "eng": 97.14
+    },
+    "Referral": {
+     "sessions": 403,
+     "key_events": 999,
+     "ker": 83.13,
+     "eng": 97.52
+    },
+    "Unassigned": {
+     "sessions": 115,
+     "key_events": 188,
+     "ker": 75.65,
+     "eng": 60.87
+    },
+    "Organic Video": {
+     "sessions": 2,
+     "key_events": 7,
+     "ker": 100,
+     "eng": 100
+    }
+   },
+   "2025-09": {
+    "Total": {
+     "sessions": 22471,
+     "key_events": 53892,
+     "ker": 92.16,
+     "eng": 95.55
+    },
+    "Paid Search": {
+     "sessions": 8282,
+     "key_events": 21323,
+     "ker": 92.48,
+     "eng": 96.68
+    },
+    "Organic Search": {
+     "sessions": 5901,
+     "key_events": 14434,
+     "ker": 89.15,
+     "eng": 97.95
+    },
+    "Cross-network": {
+     "sessions": 4570,
+     "key_events": 9888,
+     "ker": 91.66,
+     "eng": 92.25
+    },
+    "Direct": {
+     "sessions": 1957,
+     "key_events": 4234,
+     "ker": 86.1,
+     "eng": 91.98
+    },
+    "Organic Social": {
+     "sessions": 1458,
+     "key_events": 3022,
+     "ker": 98.77,
+     "eng": 97.94
+    },
+    "Referral": {
+     "sessions": 257,
+     "key_events": 653,
+     "ker": 82.88,
+     "eng": 97.28
+    },
+    "Unassigned": {
+     "sessions": 147,
+     "key_events": 312,
+     "ker": 89.12,
+     "eng": 58.5
+    },
+    "Organic Video": {
+     "sessions": 3,
+     "key_events": 17,
+     "ker": 100,
+     "eng": 100
+    },
+    "Paid Other": {
+     "sessions": 1,
+     "key_events": 9,
+     "ker": 100,
+     "eng": 100
+    }
+   },
+   "2025-10": {
+    "Total": {
+     "sessions": 24421,
+     "key_events": 56630,
+     "ker": 92.55,
+     "eng": 96.24
+    },
+    "Paid Search": {
+     "sessions": 9208,
+     "key_events": 23018,
+     "ker": 93.83,
+     "eng": 96.74
+    },
+    "Organic Search": {
+     "sessions": 5664,
+     "key_events": 14088,
+     "ker": 90.7,
+     "eng": 97.42
+    },
+    "Cross-network": {
+     "sessions": 4319,
+     "key_events": 10058,
+     "ker": 92.89,
+     "eng": 92.29
+    },
+    "Direct": {
+     "sessions": 2609,
+     "key_events": 5165,
+     "ker": 90.15,
+     "eng": 95.06
+    },
+    "Organic Social": {
+     "sessions": 2257,
+     "key_events": 3477,
+     "ker": 99.73,
+     "eng": 99.47
+    },
+    "Referral": {
+     "sessions": 210,
+     "key_events": 620,
+     "ker": 87.62,
+     "eng": 96.19
+    },
+    "Unassigned": {
+     "sessions": 109,
+     "key_events": 204,
+     "ker": 88.07,
+     "eng": 51.38
+    }
+   },
+   "2025-11": {
+    "Total": {
+     "sessions": 29736,
+     "key_events": 70773,
+     "ker": 93.68,
+     "eng": 95.24
+    },
+    "Paid Search": {
+     "sessions": 13161,
+     "key_events": 31459,
+     "ker": 93.11,
+     "eng": 95.18
+    },
+    "Organic Search": {
+     "sessions": 5506,
+     "key_events": 14498,
+     "ker": 89.1,
+     "eng": 97.8
+    },
+    "Direct": {
+     "sessions": 4922,
+     "key_events": 10298,
+     "ker": 94.39,
+     "eng": 92.69
+    },
+    "Cross-network": {
+     "sessions": 4886,
+     "key_events": 11974,
+     "ker": 92.55,
+     "eng": 95.6
+    },
+    "Organic Social": {
+     "sessions": 1122,
+     "key_events": 1733,
+     "ker": 98.57,
+     "eng": 98.93
+    },
+    "Referral": {
+     "sessions": 252,
+     "key_events": 641,
+     "ker": 88.89,
+     "eng": 96.43
+    },
+    "Unassigned": {
+     "sessions": 112,
+     "key_events": 170,
+     "ker": 75,
+     "eng": 50
+    }
+   },
+   "2025-12": {
+    "Total": {
+     "sessions": 28072,
+     "key_events": 62012,
+     "ker": 91.47,
+     "eng": 93.54
+    },
+    "Paid Search": {
+     "sessions": 10574,
+     "key_events": 25497,
+     "ker": 92.79,
+     "eng": 95.98
+    },
+    "Organic Search": {
+     "sessions": 5638,
+     "key_events": 13747,
+     "ker": 86.11,
+     "eng": 97.37
+    },
+    "Cross-network": {
+     "sessions": 4939,
+     "key_events": 10651,
+     "ker": 89.35,
+     "eng": 91.58
+    },
+    "Direct": {
+     "sessions": 4358,
+     "key_events": 7424,
+     "ker": 92.7,
+     "eng": 83.46
+    },
+    "Organic Social": {
+     "sessions": 2639,
+     "key_events": 3725,
+     "ker": 98.9,
+     "eng": 98.33
+    },
+    "Referral": {
+     "sessions": 308,
+     "key_events": 749,
+     "ker": 86.69,
+     "eng": 95.13
+    },
+    "Unassigned": {
+     "sessions": 141,
+     "key_events": 205,
+     "ker": 83.69,
+     "eng": 63.12
+    },
+    "Organic Video": {
+     "sessions": 2,
+     "key_events": 14,
+     "ker": 100,
+     "eng": 100
+    }
+   },
+   "2026-01": {
+    "Total": {
+     "sessions": 36669,
+     "key_events": 72695,
+     "ker": 92.27,
+     "eng": 93.89
+    },
+    "Paid Search": {
+     "sessions": 11078,
+     "key_events": 26556,
+     "ker": 92.09,
+     "eng": 96.9
+    },
+    "Cross-network": {
+     "sessions": 7873,
+     "key_events": 14976,
+     "ker": 89.62,
+     "eng": 91.95
+    },
+    "Organic Social": {
+     "sessions": 6901,
+     "key_events": 9499,
+     "ker": 99.62,
+     "eng": 99.52
+    },
+    "Organic Search": {
+     "sessions": 5791,
+     "key_events": 14037,
+     "ker": 87.76,
+     "eng": 97.76
+    },
+    "Direct": {
+     "sessions": 4418,
+     "key_events": 6948,
+     "ker": 91.81,
+     "eng": 79.27
+    },
+    "Unassigned": {
+     "sessions": 183,
+     "key_events": 246,
+     "ker": 76.5,
+     "eng": 48.63
+    },
+    "Referral": {
+     "sessions": 180,
+     "key_events": 415,
+     "ker": 81.67,
+     "eng": 97.78
+    },
+    "Organic Video": {
+     "sessions": 4,
+     "key_events": 18,
+     "ker": 75,
+     "eng": 100
+    }
+   },
+   "2026-02": {
+    "Total": {
+     "sessions": 41397,
+     "key_events": 82365,
+     "ker": 91.88,
+     "eng": 94.17
+    },
+    "Cross-network": {
+     "sessions": 13365,
+     "key_events": 24841,
+     "ker": 91.34,
+     "eng": 91.69
+    },
+    "Paid Search": {
+     "sessions": 9010,
+     "key_events": 22032,
+     "ker": 93.19,
+     "eng": 96.77
+    },
+    "Organic Social": {
+     "sessions": 7383,
+     "key_events": 12167,
+     "ker": 97.41,
+     "eng": 98.29
+    },
+    "Organic Search": {
+     "sessions": 4311,
+     "key_events": 10224,
+     "ker": 87.03,
+     "eng": 97.4
+    },
+    "Unassigned": {
+     "sessions": 3578,
+     "key_events": 6798,
+     "ker": 91.42,
+     "eng": 91.73
+    },
+    "Direct": {
+     "sessions": 3319,
+     "key_events": 5848,
+     "ker": 91.59,
+     "eng": 83.4
+    },
+    "Referral": {
+     "sessions": 190,
+     "key_events": 416,
+     "ker": 74.74,
+     "eng": 95.26
+    },
+    "Paid Social": {
+     "sessions": 30,
+     "key_events": 36,
+     "ker": 100,
+     "eng": 83.33
+    },
+    "Organic Video": {
+     "sessions": 1,
+     "key_events": 3,
+     "ker": 100,
+     "eng": 100
+    }
+   },
+   "2026-03": {
+    "Total": {
+     "sessions": 59570,
+     "key_events": 121920,
+     "ker": 91.05,
+     "eng": 91.26
+    },
+    "Cross-network": {
+     "sessions": 33999,
+     "key_events": 67100,
+     "ker": 91.81,
+     "eng": 90.51
+    },
+    "Paid Search": {
+     "sessions": 9921,
+     "key_events": 22771,
+     "ker": 90.84,
+     "eng": 95.33
+    },
+    "Organic Search": {
+     "sessions": 6058,
+     "key_events": 14234,
+     "ker": 86.53,
+     "eng": 95.96
+    },
+    "Direct": {
+     "sessions": 3371,
+     "key_events": 5986,
+     "ker": 88.88,
+     "eng": 83.71
+    },
+    "Organic Social": {
+     "sessions": 2407,
+     "key_events": 6903,
+     "ker": 87.49,
+     "eng": 95.51
+    },
+    "Unassigned": {
+     "sessions": 2248,
+     "key_events": 4234,
+     "ker": 78.47,
+     "eng": 86.12
+    },
+    "Referral": {
+     "sessions": 293,
+     "key_events": 549,
+     "ker": 73.38,
+     "eng": 92.15
+    },
+    "Paid Social": {
+     "sessions": 75,
+     "key_events": 91,
+     "ker": 100,
+     "eng": 68
+    },
+    "Organic Video": {
+     "sessions": 14,
+     "key_events": 52,
+     "ker": 64.29,
+     "eng": 85.71
+    }
+   },
+   "2026-04": {
+    "Total": {
+     "sessions": 25039,
+     "key_events": 51353,
+     "ker": 86.46,
+     "eng": 91.14
+    },
+    "Paid Search": {
+     "sessions": 9864,
+     "key_events": 21773,
+     "ker": 89.2,
+     "eng": 94.26
+    },
+    "Cross-network": {
+     "sessions": 6008,
+     "key_events": 10488,
+     "ker": 84.84,
+     "eng": 85.67
+    },
+    "Organic Search": {
+     "sessions": 5928,
+     "key_events": 13395,
+     "ker": 85.73,
+     "eng": 96.27
+    },
+    "Direct": {
+     "sessions": 2918,
+     "key_events": 4552,
+     "ker": 88.07,
+     "eng": 83.1
+    },
+    "Referral": {
+     "sessions": 302,
+     "key_events": 538,
+     "ker": 71.52,
+     "eng": 93.38
+    },
+    "Organic Social": {
+     "sessions": 267,
+     "key_events": 462,
+     "ker": 90.26,
+     "eng": 89.89
+    },
+    "Unassigned": {
+     "sessions": 173,
+     "key_events": 137,
+     "ker": 43.35,
+     "eng": 50.29
+    },
+    "Organic Video": {
+     "sessions": 1,
+     "key_events": 8,
+     "ker": 100,
+     "eng": 100
+    }
+   },
+   "2026-05": {
+    "Total": {
+     "sessions": 28204,
+     "key_events": 54998,
+     "ker": 87.76,
+     "eng": 90.04
+    },
+    "Paid Search": {
+     "sessions": 9637,
+     "key_events": 21085,
+     "ker": 89.3,
+     "eng": 94.61
+    },
+    "Cross-network": {
+     "sessions": 9530,
+     "key_events": 15583,
+     "ker": 89.02,
+     "eng": 85.22
+    },
+    "Organic Search": {
+     "sessions": 5269,
+     "key_events": 11591,
+     "ker": 86.15,
+     "eng": 96.13
+    },
+    "Direct": {
+     "sessions": 3176,
+     "key_events": 5332,
+     "ker": 91.69,
+     "eng": 80.95
+    },
+    "Referral": {
+     "sessions": 384,
+     "key_events": 933,
+     "ker": 74.48,
+     "eng": 96.09
+    },
+    "Organic Social": {
+     "sessions": 170,
+     "key_events": 331,
+     "ker": 94.71,
+     "eng": 91.76
+    },
+    "Unassigned": {
+     "sessions": 97,
+     "key_events": 128,
+     "ker": 68.04,
+     "eng": 53.61
+    },
+    "AI Assistant": {
+     "sessions": 7,
+     "key_events": 15,
+     "ker": 100,
+     "eng": 100
+    }
+   },
+   "2026-06": {
+    "Total": {
+     "sessions": 31363,
+     "key_events": 36076,
+     "ker": 53.65,
+     "eng": 89.6
+    },
+    "Cross-network": {
+     "sessions": 13396,
+     "key_events": 11447,
+     "ker": 49.31,
+     "eng": 87.25
+    },
+    "Paid Search": {
+     "sessions": 9215,
+     "key_events": 12913,
+     "ker": 58.56,
+     "eng": 94.14
+    },
+    "Organic Search": {
+     "sessions": 5229,
+     "key_events": 7491,
+     "ker": 56.07,
+     "eng": 94.15
+    },
+    "Direct": {
+     "sessions": 3304,
+     "key_events": 3096,
+     "ker": 54.66,
+     "eng": 76.97
+    },
+    "Referral": {
+     "sessions": 376,
+     "key_events": 801,
+     "ker": 58.78,
+     "eng": 95.48
+    },
+    "Organic Social": {
+     "sessions": 235,
+     "key_events": 209,
+     "ker": 51.91,
+     "eng": 94.89
+    },
+    "Unassigned": {
+     "sessions": 140,
+     "key_events": 37,
+     "ker": 17.14,
+     "eng": 15.71
+    },
+    "AI Assistant": {
+     "sessions": 58,
+     "key_events": 79,
+     "ker": 58.62,
+     "eng": 84.48
+    },
+    "Organic Video": {
+     "sessions": 1,
+     "key_events": 3,
+     "ker": 100,
+     "eng": 100
+    }
+   },
+   "2026-07": {
+    "Total": {
+     "sessions": 33052,
+     "key_events": 4647,
+     "ker": 10,
+     "eng": 88.76
+    },
+    "Cross-network": {
+     "sessions": 12047,
+     "key_events": 2680,
+     "ker": 13.98,
+     "eng": 87.96
+    },
+    "Paid Search": {
+     "sessions": 10525,
+     "key_events": 1133,
+     "ker": 9.28,
+     "eng": 92.42
+    },
+    "Organic Search": {
+     "sessions": 5542,
+     "key_events": 544,
+     "ker": 8.35,
+     "eng": 91.9
+    },
+    "Direct": {
+     "sessions": 3558,
+     "key_events": 220,
+     "ker": 4.53,
+     "eng": 82.18
+    },
+    "Referral": {
+     "sessions": 375,
+     "key_events": 35,
+     "ker": 7.2,
+     "eng": 93.6
+    },
+    "Organic Social": {
+     "sessions": 236,
+     "key_events": 20,
+     "ker": 7.2,
+     "eng": 97.88
+    },
+    "AI Assistant": {
+     "sessions": 83,
+     "key_events": 14,
+     "ker": 16.87,
+     "eng": 91.57
+    },
+    "Unassigned": {
+     "sessions": 56,
+     "key_events": 1,
+     "ker": 1.79,
+     "eng": 26.79
+    },
+    "Organic Video": {
+     "sessions": 1,
+     "key_events": 0,
+     "ker": 0,
+     "eng": 100
+    }
+   },
+   "2026-08": {
+    "Total": {
+     "sessions": 30815,
+     "key_events": 5542,
+     "ker": 12.13,
+     "eng": 91.93
+    },
+    "Cross-network": {
+     "sessions": 11954,
+     "key_events": 3603,
+     "ker": 17.19,
+     "eng": 93.48
+    },
+    "Paid Search": {
+     "sessions": 9322,
+     "key_events": 1005,
+     "ker": 9.47,
+     "eng": 92.64
+    },
+    "Organic Search": {
+     "sessions": 5335,
+     "key_events": 496,
+     "ker": 7.85,
+     "eng": 92.15
+    },
+    "Direct": {
+     "sessions": 3892,
+     "key_events": 377,
+     "ker": 6.22,
+     "eng": 81.73
+    },
+    "Referral": {
+     "sessions": 361,
+     "key_events": 35,
+     "ker": 8.59,
+     "eng": 93.63
+    },
+    "Organic Social": {
+     "sessions": 306,
+     "key_events": 8,
+     "ker": 2.61,
+     "eng": 95.42
+    },
+    "AI Assistant": {
+     "sessions": 134,
+     "key_events": 17,
+     "ker": 11.19,
+     "eng": 94.78
+    },
+    "Unassigned": {
+     "sessions": 45,
+     "key_events": 1,
+     "ker": 2.22,
+     "eng": 40
+    },
+    "Organic Video": {
+     "sessions": 1,
+     "key_events": 0,
+     "ker": 0,
+     "eng": 100
+    }
+   }
+  },
+  "sem": [
+   {
+    "m": "2025-01",
+    "spend": 32934.22,
+    "impr": 269483,
+    "clicks": 16178,
+    "conv": 1368.49,
+    "cpl": 24.07,
+    "pmax_share": "24.2%",
+    "gap_spend": "3,603.11",
+    "gap_conv": "41.66"
+   },
+   {
+    "m": "2025-02",
+    "spend": 29843.12,
+    "impr": 381287,
+    "clicks": 17699,
+    "conv": 1454.62,
+    "cpl": 20.52,
+    "pmax_share": "30.5%",
+    "gap_spend": "1.78",
+    "gap_conv": "-0.01"
+   },
+   {
+    "m": "2025-03",
+    "spend": 48578.85,
+    "impr": 225280,
+    "clicks": 18646,
+    "conv": 1894.81,
+    "cpl": 25.64,
+    "pmax_share": "29.6%",
+    "gap_spend": "1.80",
+    "gap_conv": "0.00"
+   },
+   {
+    "m": "2025-04",
+    "spend": 24117.18,
+    "impr": 157478,
+    "clicks": 12429,
+    "conv": 1729.2,
+    "cpl": 13.95,
+    "pmax_share": "51.5%",
+    "gap_spend": "0.85",
+    "gap_conv": "0.00"
+   },
+   {
+    "m": "2025-05",
+    "spend": 18934.35,
+    "impr": 212354,
+    "clicks": 12109,
+    "conv": 849.5,
+    "cpl": 22.29,
+    "pmax_share": "23.0%",
+    "gap_spend": "1.67",
+    "gap_conv": "-0.01"
+   },
+   {
+    "m": "2025-06",
+    "spend": 46846.16,
+    "impr": 511389,
+    "clicks": 30274,
+    "conv": 2085.96,
+    "cpl": 22.46,
+    "pmax_share": "50.3%",
+    "gap_spend": "4.39",
+    "gap_conv": "-0.01"
+   },
+   {
+    "m": "2025-07",
+    "spend": 22069.41,
+    "impr": 321793,
+    "clicks": 16787,
+    "conv": 1874.51,
+    "cpl": 11.77,
+    "pmax_share": "40.3%",
+    "gap_spend": "2.21",
+    "gap_conv": "-0.00"
+   },
+   {
+    "m": "2025-08",
+    "spend": 28530.24,
+    "impr": 382462,
+    "clicks": 19119,
+    "conv": 1689.28,
+    "cpl": 16.89,
+    "pmax_share": "40.9%",
+    "gap_spend": "3.06",
+    "gap_conv": "0.01"
+   },
+   {
+    "m": "2025-09",
+    "spend": 25605.72,
+    "impr": 296051,
+    "clicks": 17261,
+    "conv": 1461.32,
+    "cpl": 17.52,
+    "pmax_share": "33.9%",
+    "gap_spend": "1.58",
+    "gap_conv": "-0.01"
+   },
+   {
+    "m": "2025-10",
+    "spend": 27891.34,
+    "impr": 283661,
+    "clicks": 18715,
+    "conv": 1632.57,
+    "cpl": 17.08,
+    "pmax_share": "29.9%",
+    "gap_spend": "3.00",
+    "gap_conv": "0.01"
+   },
+   {
+    "m": "2025-11",
+    "spend": 30043.24,
+    "impr": 234017,
+    "clicks": 18803,
+    "conv": 2016.21,
+    "cpl": 14.9,
+    "pmax_share": "43.5%",
+    "gap_spend": "2.16",
+    "gap_conv": "0.00"
+   },
+   {
+    "m": "2025-12",
+    "spend": 30493.8,
+    "impr": 287032,
+    "clicks": 19988,
+    "conv": 1731.4,
+    "cpl": 17.61,
+    "pmax_share": "34.4%",
+    "gap_spend": "2.72",
+    "gap_conv": "-0.01"
+   },
+   {
+    "m": "2026-01",
+    "spend": 32198.42,
+    "impr": 438826,
+    "clicks": 25481,
+    "conv": 2057.4,
+    "cpl": 15.65,
+    "pmax_share": "40.6%",
+    "gap_spend": "2.31",
+    "gap_conv": "0.00"
+   },
+   {
+    "m": "2026-02",
+    "spend": 34222.57,
+    "impr": 681807,
+    "clicks": 31989,
+    "conv": 2988.02,
+    "cpl": 11.45,
+    "pmax_share": "38.5%",
+    "gap_spend": "4,702.21",
+    "gap_conv": "721.10"
+   },
+   {
+    "m": "2026-03",
+    "spend": 40050.14,
+    "impr": 1080125,
+    "clicks": 65707,
+    "conv": 5260.43,
+    "cpl": 7.61,
+    "pmax_share": "12.4%",
+    "gap_spend": "0.45",
+    "gap_conv": "0.00"
+   },
+   {
+    "m": "2026-04",
+    "spend": 28616.07,
+    "impr": 232673,
+    "clicks": 19908,
+    "conv": 2083.14,
+    "cpl": 13.74,
+    "pmax_share": "45.4%",
+    "gap_spend": "2.94",
+    "gap_conv": "0.01"
+   },
+   {
+    "m": "2026-05",
+    "spend": 30895.48,
+    "impr": 318717,
+    "clicks": 26967,
+    "conv": 2011.93,
+    "cpl": 15.36,
+    "pmax_share": "45.3%",
+    "gap_spend": "2.61",
+    "gap_conv": "0.01"
+   },
+   {
+    "m": "2026-06",
+    "spend": 32403.8,
+    "impr": 420682,
+    "clicks": 34382,
+    "conv": 2476.07,
+    "cpl": 13.09,
+    "pmax_share": "26.8%",
+    "gap_spend": "663.21",
+    "gap_conv": "731.00"
+   },
+   {
+    "m": "2026-07",
+    "spend": 35896.73,
+    "impr": 387624,
+    "clicks": 31354,
+    "conv": 3037.08,
+    "cpl": 11.82,
+    "pmax_share": "33.0%",
+    "gap_spend": "6,765.99",
+    "gap_conv": "1,079.32"
+   }
+  ],
+  "meta": [
+   {
+    "m": "2025-08",
+    "platform": "Meta (FB+IG)",
+    "spend": 45163.51,
+    "leads": 2675,
+    "cpl": 16.88,
+    "kpi_leads": 2675,
+    "goal_leads": 1983,
+    "goal_cpl": 19,
+    "eg_spend": 35521.23,
+    "eg_leads": 2072,
+    "eg_cpr": 17.14
+   },
+   {
+    "m": "2025-09",
+    "platform": "Meta (FB+IG)",
+    "spend": 40868.27,
+    "leads": 2633,
+    "cpl": 15.52,
+    "kpi_leads": 2633,
+    "goal_leads": 1983,
+    "goal_cpl": 19,
+    "eg_spend": 32984.61,
+    "eg_leads": 2144,
+    "eg_cpr": 15.38
+   },
+   {
+    "m": "2025-10",
+    "platform": "Meta (FB+IG)",
+    "spend": 60297.72,
+    "leads": 3950,
+    "cpl": 15.27,
+    "kpi_leads": 3950,
+    "goal_leads": 1983,
+    "goal_cpl": 19,
+    "eg_spend": 32062.26,
+    "eg_leads": 2756,
+    "eg_cpr": 11.63
+   },
+   {
+    "m": "2025-11",
+    "platform": "Meta (FB+IG)",
+    "spend": 79448.25,
+    "leads": 6972,
+    "cpl": 11.4,
+    "kpi_leads": 6972,
+    "goal_leads": 1983,
+    "goal_cpl": 19,
+    "eg_spend": 31104.76,
+    "eg_leads": 1999,
+    "eg_cpr": 15.56
+   },
+   {
+    "m": "2025-12",
+    "platform": "Meta (FB+IG)",
+    "spend": 36450.1,
+    "leads": 2317,
+    "cpl": 15.73,
+    "kpi_leads": 2332,
+    "goal_leads": 1983,
+    "goal_cpl": 19,
+    "eg_spend": 32289.19,
+    "eg_leads": 2087,
+    "eg_cpr": 15.47
+   },
+   {
+    "m": "2026-01",
+    "platform": "Meta (FB+IG)",
+    "spend": 41394.91,
+    "leads": 3042,
+    "cpl": 13.61,
+    "kpi_leads": 3042,
+    "goal_leads": 1983,
+    "goal_cpl": 19,
+    "eg_spend": 32959.81,
+    "eg_leads": 2509,
+    "eg_cpr": 13.13
+   },
+   {
+    "m": "2026-02",
+    "platform": "Meta (FB+IG)",
+    "spend": 51868.45,
+    "leads": 3767,
+    "cpl": 13.77,
+    "kpi_leads": 3769,
+    "goal_leads": 1983,
+    "goal_cpl": 19,
+    "eg_spend": 30357.55,
+    "eg_leads": 2370,
+    "eg_cpr": 12.81
+   },
+   {
+    "m": "2026-03",
+    "platform": "Meta (FB+IG)",
+    "spend": 42345.07,
+    "leads": 3762,
+    "cpl": 11.26,
+    "kpi_leads": 3762,
+    "goal_leads": 1983,
+    "goal_cpl": 19,
+    "eg_spend": 7627.78,
+    "eg_leads": 895,
+    "eg_cpr": 8.52
+   },
+   {
+    "m": "2026-04",
+    "platform": "Meta (FB+IG)",
+    "spend": 30524.55,
+    "leads": 2171,
+    "cpl": 14.06,
+    "kpi_leads": 2171,
+    "goal_leads": 1983,
+    "goal_cpl": 19,
+    "eg_spend": 27299.04,
+    "eg_leads": 1983,
+    "eg_cpr": 13.77
+   },
+   {
+    "m": "2026-05",
+    "platform": "Meta (FB+IG)",
+    "spend": 25761.3,
+    "leads": 1872,
+    "cpl": 13.76,
+    "kpi_leads": 1714,
+    "goal_leads": 1983,
+    "goal_cpl": 19,
+    "eg_spend": 23668.13,
+    "eg_leads": 1723,
+    "eg_cpr": 13.74
+   },
+   {
+    "m": "2026-06",
+    "platform": "Meta (FB+IG)",
+    "spend": 24075.95,
+    "leads": 1729,
+    "cpl": 13.92,
+    "kpi_leads": 1639,
+    "goal_leads": 1983,
+    "goal_cpl": 19,
+    "eg_spend": 21928.86,
+    "eg_leads": 1639,
+    "eg_cpr": 13.38
+   },
+   {
+    "m": "2026-07",
+    "platform": "Meta (FB+IG)",
+    "spend": 29560.41,
+    "leads": 2092,
+    "cpl": 14.13,
+    "kpi_leads": 1474,
+    "goal_leads": 1458,
+    "goal_cpl": 18,
+    "eg_spend": 23537.8,
+    "eg_leads": 1474,
+    "eg_cpr": 15.97
+   },
+   {
+    "m": "2025-08",
+    "platform": "TikTok",
+    "spend": 2957.8,
+    "leads": 241,
+    "cpl": 12.27,
+    "kpi_leads": null,
+    "goal_leads": null,
+    "goal_cpl": null,
+    "eg_spend": null,
+    "eg_leads": null,
+    "eg_cpr": null
+   },
+   {
+    "m": "2025-09",
+    "platform": "TikTok",
+    "spend": 2089.74,
+    "leads": 240,
+    "cpl": 8.71,
+    "kpi_leads": null,
+    "goal_leads": null,
+    "goal_cpl": null,
+    "eg_spend": null,
+    "eg_leads": null,
+    "eg_cpr": null
+   },
+   {
+    "m": "2025-10",
+    "platform": "TikTok",
+    "spend": 1981.98,
+    "leads": 209,
+    "cpl": 9.48,
+    "kpi_leads": null,
+    "goal_leads": null,
+    "goal_cpl": null,
+    "eg_spend": null,
+    "eg_leads": null,
+    "eg_cpr": null
+   },
+   {
+    "m": "2025-11",
+    "platform": "TikTok",
+    "spend": 899.64,
+    "leads": 129,
+    "cpl": 6.97,
+    "kpi_leads": null,
+    "goal_leads": null,
+    "goal_cpl": null,
+    "eg_spend": null,
+    "eg_leads": null,
+    "eg_cpr": null
+   },
+   {
+    "m": "2025-12",
+    "platform": "TikTok",
+    "spend": 922.96,
+    "leads": 103,
+    "cpl": 8.96,
+    "kpi_leads": null,
+    "goal_leads": null,
+    "goal_cpl": null,
+    "eg_spend": null,
+    "eg_leads": null,
+    "eg_cpr": null
+   },
+   {
+    "m": "2026-01",
+    "platform": "TikTok",
+    "spend": 928.07,
+    "leads": 107,
+    "cpl": 8.67,
+    "kpi_leads": null,
+    "goal_leads": null,
+    "goal_cpl": null,
+    "eg_spend": null,
+    "eg_leads": null,
+    "eg_cpr": null
+   },
+   {
+    "m": "2026-02",
+    "platform": "TikTok",
+    "spend": 648.03,
+    "leads": 58,
+    "cpl": 11.17,
+    "kpi_leads": null,
+    "goal_leads": null,
+    "goal_cpl": null,
+    "eg_spend": null,
+    "eg_leads": null,
+    "eg_cpr": null
+   },
+   {
+    "m": "2026-03",
+    "platform": "TikTok",
+    "spend": 890.81,
+    "leads": 105,
+    "cpl": 8.48,
+    "kpi_leads": null,
+    "goal_leads": null,
+    "goal_cpl": null,
+    "eg_spend": null,
+    "eg_leads": null,
+    "eg_cpr": null
+   },
+   {
+    "m": "2026-04",
+    "platform": "TikTok",
+    "spend": 899.78,
+    "leads": 138,
+    "cpl": 6.52,
+    "kpi_leads": null,
+    "goal_leads": null,
+    "goal_cpl": null,
+    "eg_spend": null,
+    "eg_leads": null,
+    "eg_cpr": null
+   },
+   {
+    "m": "2026-05",
+    "platform": "TikTok",
+    "spend": 929.55,
+    "leads": 186,
+    "cpl": 5,
+    "kpi_leads": null,
+    "goal_leads": null,
+    "goal_cpl": null,
+    "eg_spend": null,
+    "eg_leads": null,
+    "eg_cpr": null
+   },
+   {
+    "m": "2026-06",
+    "platform": "TikTok",
+    "spend": 912.01,
+    "leads": 177,
+    "cpl": 5.15,
+    "kpi_leads": null,
+    "goal_leads": null,
+    "goal_cpl": null,
+    "eg_spend": null,
+    "eg_leads": null,
+    "eg_cpr": null
+   },
+   {
+    "m": "2026-07",
+    "platform": "TikTok",
+    "spend": 992.02,
+    "leads": 194,
+    "cpl": 5.11,
+    "kpi_leads": null,
+    "goal_leads": null,
+    "goal_cpl": null,
+    "eg_spend": null,
+    "eg_leads": null,
+    "eg_cpr": null
+   }
+  ],
+  "l10": [
+   {
+    "m": "2025-01",
+    "total_leads": 3199,
+    "spend": 48934,
+    "cpl": 15.3,
+    "meta_leads_respondio": 427,
+    "meta_eg_leads": 1129,
+    "meta_eg_spend": 16000
+   },
+   {
+    "m": "2025-02",
+    "total_leads": 5680,
+    "spend": 71143,
+    "cpl": 12.5,
+    "meta_leads_respondio": 687,
+    "meta_eg_leads": 1549,
+    "meta_eg_spend": 36000
+   },
+   {
+    "m": "2025-03",
+    "total_leads": 5014,
+    "spend": 102990,
+    "cpl": 20.5,
+    "meta_leads_respondio": 940,
+    "meta_eg_leads": 1306,
+    "meta_eg_spend": 39402
+   },
+   {
+    "m": "2025-04",
+    "total_leads": 3969,
+    "spend": 60522,
+    "cpl": 15.2,
+    "meta_leads_respondio": 767,
+    "meta_eg_leads": 1110,
+    "meta_eg_spend": 29786
+   },
+   {
+    "m": "2025-05",
+    "total_leads": 4360,
+    "spend": 57707,
+    "cpl": 13.2,
+    "meta_leads_respondio": 984,
+    "meta_eg_leads": 1407,
+    "meta_eg_spend": 30598
+   },
+   {
+    "m": "2025-06",
+    "total_leads": 7448,
+    "spend": 92650,
+    "cpl": 12.4,
+    "meta_leads_respondio": 1031,
+    "meta_eg_leads": 1425,
+    "meta_eg_spend": 30452
+   },
+   {
+    "m": "2025-07",
+    "total_leads": 7687,
+    "spend": 61499,
+    "cpl": 8,
+    "meta_leads_respondio": 1617,
+    "meta_eg_leads": 1897,
+    "meta_eg_spend": 35298
+   },
+   {
+    "m": "2025-08",
+    "total_leads": 5584,
+    "spend": 73694,
+    "cpl": 13.2,
+    "meta_leads_respondio": 1493,
+    "meta_eg_leads": 2072,
+    "meta_eg_spend": 35521
+   },
+   {
+    "m": "2025-09",
+    "total_leads": 5210,
+    "spend": 66477,
+    "cpl": 12.8,
+    "meta_leads_respondio": 1959,
+    "meta_eg_leads": 2144,
+    "meta_eg_spend": 32987
+   },
+   {
+    "m": "2025-10",
+    "total_leads": 5865,
+    "spend": 88189,
+    "cpl": 15,
+    "meta_leads_respondio": 2584,
+    "meta_eg_leads": 2756,
+    "meta_eg_spend": 32062
+   },
+   {
+    "m": "2025-11",
+    "total_leads": 8386,
+    "spend": 109485,
+    "cpl": 13.1,
+    "meta_leads_respondio": 2173,
+    "meta_eg_leads": 1999,
+    "meta_eg_spend": 31105
+   },
+   {
+    "m": "2025-12",
+    "total_leads": 4116,
+    "spend": 66944,
+    "cpl": 16.3,
+    "meta_leads_respondio": 1519,
+    "meta_eg_leads": 2087,
+    "meta_eg_spend": 32289
+   },
+   {
+    "m": "2026-01",
+    "total_leads": 4632,
+    "spend": 73593,
+    "cpl": 15.9,
+    "meta_leads_respondio": 1340,
+    "meta_eg_leads": 2509,
+    "meta_eg_spend": 32960
+   },
+   {
+    "m": "2026-02",
+    "total_leads": 17154,
+    "spend": 81390,
+    "cpl": 4.7,
+    "meta_leads_respondio": 1220,
+    "meta_eg_leads": 2370,
+    "meta_eg_spend": 30358
+   },
+   {
+    "m": "2026-03",
+    "total_leads": 6681,
+    "spend": 82396,
+    "cpl": 12.3,
+    "meta_leads_respondio": 1696,
+    "meta_eg_leads": 895,
+    "meta_eg_spend": 7628
+   },
+   {
+    "m": "2026-04",
+    "total_leads": 3698,
+    "spend": 59141,
+    "cpl": 16,
+    "meta_leads_respondio": 925,
+    "meta_eg_leads": 1983,
+    "meta_eg_spend": 27299
+   },
+   {
+    "m": "2026-05",
+    "total_leads": 3313,
+    "spend": 56657,
+    "cpl": 17.1,
+    "meta_leads_respondio": 804,
+    "meta_eg_leads": 1723,
+    "meta_eg_spend": 23668
+   },
+   {
+    "m": "2026-06",
+    "total_leads": 3177,
+    "spend": 56484,
+    "cpl": 17.8,
+    "meta_leads_respondio": 804,
+    "meta_eg_leads": 1639,
+    "meta_eg_spend": 21933
+   },
+   {
+    "m": "2026-07",
+    "total_leads": 6624,
+    "spend": 65457,
+    "cpl": 9.9,
+    "meta_leads_respondio": null,
+    "meta_eg_leads": 1474,
+    "meta_eg_spend": 23538
+   },
+   {
+    "m": "2026-08",
+    "total_leads": 4337,
+    "spend": 84020,
+    "cpl": 19.4,
+    "meta_leads_respondio": null,
+    "meta_eg_leads": 1490,
+    "meta_eg_spend": 23896
+   }
+  ],
+  "respondio": {
+   "conv_opened": {
+    "2025-09": 3391,
+    "2025-10": 7759,
+    "2025-11": 10471,
+    "2025-12": 5624,
+    "2026-01": 6116,
+    "2026-02": 7460,
+    "2026-03": 7610,
+    "2026-04": 5083,
+    "2026-05": 4331,
+    "2026-06": 4259,
+    "2026-07": 4925,
+    "2026-08": 6040
+   },
+   "contacts_added": {
+    "2025-09": 2343,
+    "2025-10": 8609,
+    "2025-11": 8112,
+    "2025-12": 3806,
+    "2026-01": 4271,
+    "2026-02": 16662,
+    "2026-03": 6285,
+    "2026-04": 3390,
+    "2026-05": 2971,
+    "2026-06": 2811,
+    "2026-07": 6265,
+    "2026-08": 3958
+   },
+   "contacts_deleted": {
+    "2025-09": 9,
+    "2025-10": 6,
+    "2025-11": 0,
+    "2025-12": 0,
+    "2026-01": 0,
+    "2026-02": 0,
+    "2026-03": 17,
+    "2026-04": 0,
+    "2026-05": 0,
+    "2026-06": 2,
+    "2026-07": 14018,
+    "2026-08": 9564
+   },
+   "contacts_merged": {
+    "2025-09": 0,
+    "2025-10": 0,
+    "2025-11": 0,
+    "2025-12": 0,
+    "2026-01": 0,
+    "2026-02": 2,
+    "2026-03": 0,
+    "2026-04": 0,
+    "2026-05": 0,
+    "2026-06": 0,
+    "2026-07": 0,
+    "2026-08": 0
+   },
+   "conv_by_channel": {
+    "Facebook Messenger (Main)": {
+     "2025-09": 1249,
+     "2025-10": 3971,
+     "2025-11": 3847,
+     "2025-12": 2708,
+     "2026-01": 2943,
+     "2026-02": 3361,
+     "2026-03": 3708,
+     "2026-04": 2125,
+     "2026-05": 1690,
+     "2026-06": 1490,
+     "2026-07": 1565,
+     "2026-08": 1978
+    },
+    "Instagram": {
+     "2025-09": 439,
+     "2025-10": 482,
+     "2025-11": 365,
+     "2025-12": 180,
+     "2026-01": 154,
+     "2026-02": 285,
+     "2026-03": 262,
+     "2026-04": 167,
+     "2026-05": 122,
+     "2026-06": 82,
+     "2026-07": 186,
+     "2026-08": 520
+    },
+    "Facebook Messenger (Kid)": {
+     "2025-09": 134,
+     "2025-10": 28,
+     "2025-11": 7,
+     "2025-12": 4,
+     "2026-01": 4,
+     "2026-02": 0,
+     "2026-03": 4,
+     "2026-04": 2,
+     "2026-05": 0,
+     "2026-06": 2,
+     "2026-07": 0,
+     "2026-08": 2
+    },
+    "Facebook Messenger (JB Mount Austin)": {
+     "2025-09": 6,
+     "2025-10": 14,
+     "2025-11": 6,
+     "2025-12": 6,
+     "2026-01": 5,
+     "2026-02": 7,
+     "2026-03": 11,
+     "2026-04": 10,
+     "2026-05": 9,
+     "2026-06": 10,
+     "2026-07": 13,
+     "2026-08": 7
+    },
+    "Whatsapp Business": {
+     "2025-09": 1540,
+     "2025-10": 3235,
+     "2025-11": 6219,
+     "2025-12": 2721,
+     "2026-01": 2985,
+     "2026-02": 3778,
+     "2026-03": 3595,
+     "2026-04": 2765,
+     "2026-05": 2502,
+     "2026-06": 2668,
+     "2026-07": 3151,
+     "2026-08": 3512
+    }
+   },
+   "conv_by_source": {
+    "Contact": {
+     "2025-09": 2051,
+     "2025-10": 3934,
+     "2025-11": 3874,
+     "2025-12": 2720,
+     "2026-01": 2803,
+     "2026-02": 3488,
+     "2026-03": 4013,
+     "2026-04": 2856,
+     "2026-05": 2450,
+     "2026-06": 2716,
+     "2026-07": 3164,
+     "2026-08": 2960
+    },
+    "Paid Ads": {
+     "2025-09": 1287,
+     "2025-10": 3765,
+     "2025-11": 6547,
+     "2025-12": 2892,
+     "2026-01": 3261,
+     "2026-02": 3913,
+     "2026-03": 3544,
+     "2026-04": 2196,
+     "2026-05": 1855,
+     "2026-06": 1526,
+     "2026-07": 1738,
+     "2026-08": 3040
+    },
+    "User": {
+     "2025-09": 53,
+     "2025-10": 60,
+     "2025-11": 50,
+     "2025-12": 12,
+     "2026-01": 52,
+     "2026-02": 59,
+     "2026-03": 53,
+     "2026-04": 31,
+     "2026-05": 26,
+     "2026-06": 17,
+     "2026-07": 23,
+     "2026-08": 40
+    }
+   },
+   "conv_by_type": {
+    "New": {
+     "2025-09": 2282,
+     "2025-10": 5165,
+     "2025-11": 7131,
+     "2025-12": 3634,
+     "2026-01": 4129,
+     "2026-02": 4559,
+     "2026-03": 3858,
+     "2026-04": 3332,
+     "2026-05": 2837,
+     "2026-06": 2757,
+     "2026-07": 2982,
+     "2026-08": 3802
+    },
+    "Returning": {
+     "2025-09": 1109,
+     "2025-10": 2594,
+     "2025-11": 3340,
+     "2025-12": 1990,
+     "2026-01": 1987,
+     "2026-02": 2901,
+     "2026-03": 3752,
+     "2026-04": 1751,
+     "2026-05": 1494,
+     "2026-06": 1502,
+     "2026-07": 1943,
+     "2026-08": 2238
+    }
+   },
+   "closed_by_category": {
+    "Other": {
+     "2025-09": 1453,
+     "2025-10": 3200,
+     "2025-11": 3591,
+     "2025-12": 2514,
+     "2026-01": 2931,
+     "2026-02": 4153,
+     "2026-03": 4362,
+     "2026-04": 1876,
+     "2026-05": 1652,
+     "2026-06": 1794,
+     "2026-07": 1984,
+     "2026-08": 1793
+    },
+    "Cataract": {
+     "2025-09": 660,
+     "2025-10": 1598,
+     "2025-11": 2635,
+     "2025-12": 1297,
+     "2026-01": 1281,
+     "2026-02": 897,
+     "2026-03": 582,
+     "2026-04": 970,
+     "2026-05": 583,
+     "2026-06": 520,
+     "2026-07": 834,
+     "2026-08": 996
+    },
+    "Refractive": {
+     "2025-09": 437,
+     "2025-10": 970,
+     "2025-11": 1065,
+     "2025-12": 901,
+     "2026-01": 960,
+     "2026-02": 931,
+     "2026-03": 781,
+     "2026-04": 1271,
+     "2026-05": 1261,
+     "2026-06": 1211,
+     "2026-07": 1481,
+     "2026-08": 2370
+    },
+    "Spam": {
+     "2025-09": 323,
+     "2025-10": 1038,
+     "2025-11": 2175,
+     "2025-12": 476,
+     "2026-01": 586,
+     "2026-02": 668,
+     "2026-03": 935,
+     "2026-04": 558,
+     "2026-05": 498,
+     "2026-06": 706,
+     "2026-07": 580,
+     "2026-08": 561
+    }
+   },
+   "closed_by": {
+    "User": {
+     "2025-09": 2721,
+     "2025-10": 6645,
+     "2025-11": 7539,
+     "2025-12": 4100,
+     "2026-01": 3928,
+     "2026-02": 4556,
+     "2026-03": 6079,
+     "2026-04": 4402,
+     "2026-05": 3635,
+     "2026-06": 3813,
+     "2026-07": 4606,
+     "2026-08": 5401
+    },
+    "Blocked": {
+     "2025-09": 367,
+     "2025-10": 708,
+     "2025-11": 821,
+     "2025-12": 299,
+     "2026-01": 316,
+     "2026-02": 320,
+     "2026-03": 483,
+     "2026-04": 371,
+     "2026-05": 285,
+     "2026-06": 53,
+     "2026-07": 22,
+     "2026-08": 76
+    },
+    "AI Agent": {
+     "2025-09": 202,
+     "2025-10": 373,
+     "2025-11": 2145,
+     "2025-12": 1208,
+     "2026-01": 1967,
+     "2026-02": 2416,
+     "2026-03": 933,
+     "2026-04": 287,
+     "2026-05": 385,
+     "2026-06": 438,
+     "2026-07": 293,
+     "2026-08": 423
+    },
+    "Workflow": {
+     "2025-09": 99,
+     "2025-10": 22,
+     "2025-11": 0,
+     "2025-12": 1,
+     "2026-01": 0,
+     "2026-02": 159,
+     "2026-03": 171,
+     "2026-04": 0,
+     "2026-05": 0,
+     "2026-06": 0,
+     "2026-07": 0,
+     "2026-08": 0
+    }
+   },
+   "added_by_source": {
+    "Paid Ads": {
+     "2025-09": 1175,
+     "2025-10": 3356,
+     "2025-11": 5438,
+     "2025-12": 2295,
+     "2026-01": 2724,
+     "2026-02": 3181,
+     "2026-03": 2069,
+     "2026-04": 1801,
+     "2026-05": 1569,
+     "2026-06": 1231,
+     "2026-07": 1260,
+     "2026-08": 2338
+    },
+    "Incoming Message": {
+     "2025-09": 1158,
+     "2025-10": 1924,
+     "2025-11": 2655,
+     "2025-12": 1505,
+     "2026-01": 1540,
+     "2026-02": 1654,
+     "2026-03": 3227,
+     "2026-04": 1588,
+     "2026-05": 1318,
+     "2026-06": 1566,
+     "2026-07": 1786,
+     "2026-08": 1615
+    },
+    "Echo Message": {
+     "2025-09": 10,
+     "2025-10": 29,
+     "2025-11": 19,
+     "2025-12": 6,
+     "2026-01": 7,
+     "2026-02": 5,
+     "2026-03": 5,
+     "2026-04": 1,
+     "2026-05": 4,
+     "2026-06": 10,
+     "2026-07": 5,
+     "2026-08": 5
+    },
+    "Contact Import": {
+     "2025-09": 0,
+     "2025-10": 3300,
+     "2025-11": 0,
+     "2025-12": 0,
+     "2026-01": 0,
+     "2026-02": 11822,
+     "2026-03": 984,
+     "2026-04": 0,
+     "2026-05": 80,
+     "2026-06": 4,
+     "2026-07": 3214,
+     "2026-08": 0
+    }
+   },
+   "first_response": {
+    "2025-09": "04:32:36",
+    "2025-10": "00:46:18",
+    "2025-11": "00:28:44",
+    "2025-12": "00:29:24",
+    "2026-01": "00:31:47",
+    "2026-02": "00:54:17",
+    "2026-03": "00:55:28",
+    "2026-04": "00:35:14",
+    "2026-05": "00:38:28",
+    "2026-06": "00:31:09",
+    "2026-07": "00:36:54",
+    "2026-08": "00:33:49"
+   },
+   "resolution": {
+    "2025-09": "10:22:23",
+    "2025-10": "06:49:14",
+    "2025-11": "05:23:24",
+    "2025-12": "04:58:48",
+    "2026-01": "05:19:10",
+    "2026-02": "07:28:28",
+    "2026-03": "06:59:09",
+    "2026-04": "07:06:08",
+    "2026-05": "07:14:57",
+    "2026-06": "08:12:27",
+    "2026-07": "07:40:28",
+    "2026-08": "07:42:45"
+   },
+   "lifecycle": [
+    {
+     "m": "2025-12",
+     "nl": 4214,
+     "wl": 2083,
+     "hp": 455,
+     "won": 29,
+     "nl_wl": 49,
+     "wl_hp": 22,
+     "hp_won": 6,
+     "conv": 0.67,
+     "drop": 65.5,
+     "lost": 2816
+    },
+    {
+     "m": "2026-01",
+     "nl": 4545,
+     "wl": 2126,
+     "hp": 560,
+     "won": 175,
+     "nl_wl": 47,
+     "wl_hp": 26,
+     "hp_won": 31,
+     "conv": 3.72,
+     "drop": 71.2,
+     "lost": 3351
+    },
+    {
+     "m": "2026-02",
+     "nl": 5638,
+     "wl": 2766,
+     "hp": 581,
+     "won": 460,
+     "nl_wl": 49,
+     "wl_hp": 21,
+     "hp_won": 79,
+     "conv": 6.86,
+     "drop": 74.1,
+     "lost": 4967
+    },
+    {
+     "m": "2026-03",
+     "nl": 5656,
+     "wl": 2259,
+     "hp": 744,
+     "won": 519,
+     "nl_wl": 40,
+     "wl_hp": 33,
+     "hp_won": 70,
+     "conv": 8.43,
+     "drop": 74.5,
+     "lost": 4591
+    },
+    {
+     "m": "2026-04",
+     "nl": 3730,
+     "wl": 1882,
+     "hp": 498,
+     "won": 357,
+     "nl_wl": 50,
+     "wl_hp": 26,
+     "hp_won": 72,
+     "conv": 9,
+     "drop": 72,
+     "lost": 2750
+    },
+    {
+     "m": "2026-05",
+     "nl": 3153,
+     "wl": 1652,
+     "hp": 485,
+     "won": 339,
+     "nl_wl": 52,
+     "wl_hp": 29,
+     "hp_won": 70,
+     "conv": 10,
+     "drop": 68,
+     "lost": 2200
+    },
+    {
+     "m": "2026-06",
+     "nl": 3090,
+     "wl": 1495,
+     "hp": 495,
+     "won": 348,
+     "nl_wl": 48,
+     "wl_hp": 33,
+     "hp_won": 70,
+     "conv": 10.53,
+     "drop": 75,
+     "lost": 2477
+    },
+    {
+     "m": "2026-07",
+     "nl": 3527,
+     "wl": 1966,
+     "hp": 615,
+     "won": 396,
+     "nl_wl": 56,
+     "wl_hp": 31,
+     "hp_won": 64,
+     "conv": 10,
+     "drop": 80,
+     "lost": 3036
+    },
+    {
+     "m": "2026-08",
+     "nl": 4475,
+     "wl": 2567,
+     "hp": 733,
+     "won": 471,
+     "nl_wl": 57,
+     "wl_hp": 29,
+     "hp_won": 64,
+     "conv": 10.26,
+     "drop": 84.5,
+     "lost": 3880
+    }
+   ],
+   "funnel_by_source": [
+    {
+     "m": "2025-12",
+     "paid": [
+      2444,
+      818,
+      65,
+      10
+     ],
+     "organic": [
+      1695,
+      1197,
+      368,
+      18
+     ],
+     "import": [
+      68,
+      68,
+      22,
+      1
+     ]
+    },
+    {
+     "m": "2026-01",
+     "paid": [
+      2861,
+      883,
+      99,
+      18
+     ],
+     "organic": [
+      1600,
+      1165,
+      431,
+      142
+     ],
+     "import": [
+      77,
+      78,
+      30,
+      15
+     ]
+    },
+    {
+     "m": "2026-02",
+     "paid": [
+      3405,
+      1094,
+      90,
+      60
+     ],
+     "organic": [
+      1707,
+      1138,
+      348,
+      279
+     ],
+     "import": [
+      522,
+      534,
+      143,
+      121
+     ]
+    },
+    {
+     "m": "2026-03",
+     "paid": [
+      2166,
+      586,
+      114,
+      75
+     ],
+     "organic": [
+      3275,
+      1456,
+      538,
+      368
+     ],
+     "import": [
+      183,
+      188,
+      82,
+      67
+     ]
+    },
+    {
+     "m": "2026-04",
+     "paid": [
+      1883,
+      407,
+      31,
+      17
+     ],
+     "organic": [
+      1728,
+      1355,
+      423,
+      302
+     ],
+     "import": [
+      117,
+      120,
+      44,
+      38
+     ]
+    },
+    {
+     "m": "2026-05",
+     "paid": [
+      1639,
+      398,
+      34,
+      12
+     ],
+     "organic": [
+      1425,
+      1163,
+      411,
+      298
+     ],
+     "import": [
+      86,
+      91,
+      40,
+      29
+     ]
+    },
+    {
+     "m": "2026-06",
+     "paid": [
+      1307,
+      315,
+      34,
+      14
+     ],
+     "organic": [
+      1680,
+      1085,
+      426,
+      311
+     ],
+     "import": [
+      93,
+      95,
+      35,
+      23
+     ]
+    },
+    {
+     "m": "2026-07",
+     "paid": [
+      1404,
+      517,
+      61,
+      24
+     ],
+     "organic": [
+      1998,
+      1313,
+      497,
+      333
+     ],
+     "import": [
+      120,
+      136,
+      57,
+      39
+     ]
+    },
+    {
+     "m": "2026-08",
+     "paid": [
+      2561,
+      1092,
+      139,
+      58
+     ],
+     "organic": [
+      1775,
+      1301,
+      539,
+      377
+     ],
+     "import": [
+      134,
+      174,
+      55,
+      36
+     ]
+    }
+   ],
+   "lost_reasons_aug": {
+    "Inactive Lead": 1571,
+    "cold leads": 1495,
+    "SPAM": 466,
+    "Future Appointment": 220
+   },
+   "stage_counts": {
+    "New Lead": 8168,
+    "Warm Lead": 21590,
+    "Hot Prospect": 559,
+    "Appointment Booked": 6090,
+    "Inactive Lead": 3046,
+    "Budget": 209,
+    "Future Carnival": 268,
+    "Future Appointment": 1762,
+    "SPAM": 24,
+    "Appt Cancelled TBFU": 306,
+    "Not Interested": 559,
+    "cold leads": 8405,
+    "Marketing": 201,
+    "HR": 96,
+    "(no stage)": 44300
+   },
+   "totals12m": {
+    "opened": 73069,
+    "closed": 73068,
+    "contacts_added": 69483,
+    "added_paid": 28437,
+    "added_incoming": 21536,
+    "added_import": 19404,
+    "deleted": 23616,
+    "merged": 2,
+    "total_contacts": 95031,
+    "spam_conversations": 9104,
+    "ai_assigned_share": 57,
+    "agents_human": 4,
+    "workflows": 23,
+    "broadcasts": 35,
+    "broadcast_sent": 19247,
+    "broadcast_failed_pct": 14.5
+   }
+  },
+  "ga4_channels": {
+   "R2025": [
+    {
+     "ch": "Total",
+     "users": 235472,
+     "new": 234906,
+     "ke": 342076
+    },
+    {
+     "ch": "Paid Search",
+     "users": 88689,
+     "new": 88856,
+     "ke": 135155
+    },
+    {
+     "ch": "Organic Search",
+     "users": 50729,
+     "new": 50291,
+     "ke": 81312
+    },
+    {
+     "ch": "Cross-network",
+     "users": 43724,
+     "new": 43727,
+     "ke": 63211
+    },
+    {
+     "ch": "Direct",
+     "users": 28050,
+     "new": 27082,
+     "ke": 40487
+    },
+    {
+     "ch": "Organic Social",
+     "users": 14765,
+     "new": 14519,
+     "ke": 15355
+    },
+    {
+     "ch": "Unassigned",
+     "users": 8400,
+     "new": 8349,
+     "ke": 3512
+    },
+    {
+     "ch": "Referral",
+     "users": 2077,
+     "new": 2051,
+     "ke": 2996
+    },
+    {
+     "ch": "Organic Video",
+     "users": 30,
+     "new": 30,
+     "ke": 46
+    },
+    {
+     "ch": "Display",
+     "users": 1,
+     "new": 0,
+     "ke": 0
+    },
+    {
+     "ch": "Organic Shopping",
+     "users": 1,
+     "new": 1,
+     "ke": 0
+    },
+    {
+     "ch": "Paid Social",
+     "users": 1,
+     "new": 0,
+     "ke": 2
+    }
+   ],
+   "R2026": [
+    {
+     "ch": "Total",
+     "users": 223712,
+     "new": 217700,
+     "ke": 429596
+    },
+    {
+     "ch": "Cross-network",
+     "users": 84126,
+     "new": 83666,
+     "ke": 150880
+    },
+    {
+     "ch": "Paid Search",
+     "users": 60358,
+     "new": 59371,
+     "ke": 128504
+    },
+    {
+     "ch": "Organic Search",
+     "users": 29721,
+     "new": 29104,
+     "ke": 70614
+    },
+    {
+     "ch": "Direct",
+     "users": 25255,
+     "new": 24444,
+     "ke": 39235
+    },
+    {
+     "ch": "Organic Social",
+     "users": 15793,
+     "new": 16052,
+     "ke": 28290
+    },
+    {
+     "ch": "Unassigned",
+     "users": 3691,
+     "new": 3666,
+     "ke": 9122
+    },
+    {
+     "ch": "Referral",
+     "users": 1104,
+     "new": 1084,
+     "ke": 2616
+    },
+    {
+     "ch": "AI Assistant",
+     "users": 191,
+     "new": 191,
+     "ke": 121
+    },
+    {
+     "ch": "Paid Social",
+     "users": 105,
+     "new": 105,
+     "ke": 127
+    },
+    {
+     "ch": "Organic Video",
+     "users": 17,
+     "new": 17,
+     "ke": 87
+    }
+   ],
+   "L12": [
+    {
+     "ch": "Total",
+     "users": 305555,
+     "new": 299590,
+     "ke": 672903
+    },
+    {
+     "ch": "Cross-network",
+     "users": 98203,
+     "new": 97792,
+     "ke": 192654
+    },
+    {
+     "ch": "Paid Search",
+     "users": 92703,
+     "new": 91987,
+     "ke": 228879
+    },
+    {
+     "ch": "Organic Search",
+     "users": 45104,
+     "new": 44339,
+     "ke": 126616
+    },
+    {
+     "ch": "Direct",
+     "users": 37290,
+     "new": 36256,
+     "ke": 69989
+    },
+    {
+     "ch": "Organic Social",
+     "users": 22967,
+     "new": 23340,
+     "ke": 40141
+    },
+    {
+     "ch": "Unassigned",
+     "users": 3947,
+     "new": 3912,
+     "ke": 9818
+    },
+    {
+     "ch": "Referral",
+     "users": 1668,
+     "new": 1646,
+     "ke": 4440
+    },
+    {
+     "ch": "AI Assistant",
+     "users": 191,
+     "new": 191,
+     "ke": 121
+    },
+    {
+     "ch": "Paid Social",
+     "users": 105,
+     "new": 105,
+     "ke": 127
+    },
+    {
+     "ch": "Organic Video",
+     "users": 22,
+     "new": 22,
+     "ke": 118
+    }
+   ]
+  },
+  "ga4_landing": [
+   {
+    "lp": "Total",
+    "sessions": 395040,
+    "users": 305457,
+    "ke": 672903,
+    "ker": 74.5,
+    "eng": 37
+   },
+   {
+    "lp": "/",
+    "sessions": 187471,
+    "users": 159077,
+    "ke": 324010,
+    "ker": 73.17,
+    "eng": 38
+   },
+   {
+    "lp": "/malaysia-truly-carnival",
+    "sessions": 40719,
+    "users": 34358,
+    "ke": 87737,
+    "ker": 93.19,
+    "eng": 48
+   },
+   {
+    "lp": "/lasik-eye-surgery-malaysia-ilasik",
+    "sessions": 17369,
+    "users": 15112,
+    "ke": 27889,
+    "ker": 67.42,
+    "eng": 34
+   },
+   {
+    "lp": "/no-blade-cataract-surgery-malaysia",
+    "sessions": 14528,
+    "users": 12731,
+    "ke": 24911,
+    "ker": 73.44,
+    "eng": 51
+   },
+   {
+    "lp": "/locations",
+    "sessions": 11499,
+    "users": 9828,
+    "ke": 20866,
+    "ker": 76.31,
+    "eng": 25
+   },
+   {
+    "lp": "(not set)",
+    "sessions": 10890,
+    "users": 8649,
+    "ke": 9951,
+    "ker": 82.98,
+    "eng": 12
+   },
+   {
+    "lp": "/kids-eye-exam",
+    "sessions": 8321,
+    "users": 7659,
+    "ke": 16626,
+    "ker": 77.09,
+    "eng": 39
+   },
+   {
+    "lp": "/dry-eyes-treatment",
+    "sessions": 6839,
+    "users": 6382,
+    "ke": 11532,
+    "ker": 71.81,
+    "eng": 39
+   },
+   {
+    "lp": "/doctors",
+    "sessions": 6422,
+    "users": 5096,
+    "ke": 8009,
+    "ker": 59.11,
+    "eng": 45
+   },
+   {
+    "lp": "/pemeriksaan-mata-kanak-kanak",
+    "sessions": 5320,
+    "users": 4994,
+    "ke": 9981,
+    "ker": 80.47,
+    "eng": 35
+   },
+   {
+    "lp": "/rawatan-pembedahan-katarak-mata-malaysia",
+    "sessions": 4615,
+    "users": 4157,
+    "ke": 8621,
+    "ker": 85.5,
+    "eng": 52
+   },
+   {
+    "lp": "/ilasik",
+    "sessions": 3830,
+    "users": 3493,
+    "ke": 7584,
+    "ker": 86.87,
+    "eng": 39
+   },
+   {
+    "lp": "/locations/pj-the-curve",
+    "sessions": 3747,
+    "users": 2695,
+    "ke": 4967,
+    "ker": 55.22,
+    "eng": 34
+   },
+   {
+    "lp": "/dry-eyes",
+    "sessions": 3669,
+    "users": 3462,
+    "ke": 7096,
+    "ker": 79.42,
+    "eng": 37
+   },
+   {
+    "lp": "/implantable-contact-lens-icl",
+    "sessions": 2482,
+    "users": 2087,
+    "ke": 3545,
+    "ker": 64.83,
+    "eng": 40
+   },
+   {
+    "lp": "/clear-pro",
+    "sessions": 2324,
+    "users": 1965,
+    "ke": 2982,
+    "ker": 54.17,
+    "eng": 51
+   },
+   {
+    "lp": "/飞秒全激光矫正手术",
+    "sessions": 2218,
+    "users": 1990,
+    "ke": 4542,
+    "ker": 82.6,
+    "eng": 45
+   },
+   {
+    "lp": "/locations/kajang",
+    "sessions": 2121,
+    "users": 1568,
+    "ke": 3133,
+    "ker": 65.91,
+    "eng": 31
+   },
+   {
+    "lp": "/儿童眼睛检查",
+    "sessions": 2015,
+    "users": 1865,
+    "ke": 4600,
+    "ker": 79.75,
+    "eng": 42
+   },
+   {
+    "lp": "/locations/mount-austin-johor-bahru",
+    "sessions": 2001,
+    "users": 1579,
+    "ke": 3490,
+    "ker": 64.32,
+    "eng": 41
+   },
+   {
+    "lp": "/locations/puchong-pfcc-5",
+    "sessions": 1607,
+    "users": 1246,
+    "ke": 2537,
+    "ker": 62.54,
+    "eng": 36
+   },
+   {
+    "lp": "/lens-exchange",
+    "sessions": 1576,
+    "users": 1353,
+    "ke": 2308,
+    "ker": 64.21,
+    "eng": 51
+   },
+   {
+    "lp": "/lokasi",
+    "sessions": 1573,
+    "users": 1465,
+    "ke": 3076,
+    "ker": 81.69,
+    "eng": 25
+   },
+   {
+    "lp": "/locations/cheras",
+    "sessions": 1509,
+    "users": 1170,
+    "ke": 2167,
+    "ker": 62.43,
+    "eng": 33
+   },
+   {
+    "lp": "/lokasi-2/klang-bandar-botanic",
+    "sessions": 1269,
+    "users": 1154,
+    "ke": 1925,
+    "ker": 71,
+    "eng": 27
+   },
+   {
+    "lp": "/locations/sutera-utama-skudai",
+    "sessions": 1165,
+    "users": 902,
+    "ke": 1908,
+    "ker": 67.81,
+    "eng": 27
+   },
+   {
+    "lp": "/locations/klang-bdr-botanic",
+    "sessions": 1162,
+    "users": 956,
+    "ke": 1822,
+    "ker": 64.63,
+    "eng": 33
+   },
+   {
+    "lp": "/locations/kepong",
+    "sessions": 1147,
+    "users": 911,
+    "ke": 1858,
+    "ker": 63.12,
+    "eng": 43
+   },
+   {
+    "lp": "/career-opportunities",
+    "sessions": 1057,
+    "users": 828,
+    "ke": 1568,
+    "ker": 68.5,
+    "eng": 42
+   },
+   {
+    "lp": "/other-services",
+    "sessions": 1052,
+    "users": 863,
+    "ke": 1137,
+    "ker": 48.86,
+    "eng": 28
+   },
+   {
+    "lp": "/locations/subang",
+    "sessions": 1026,
+    "users": 905,
+    "ke": 1717,
+    "ker": 70.86,
+    "eng": 38
+   },
+   {
+    "lp": "/locations/air-itam-penang-all-seasons-place",
+    "sessions": 989,
+    "users": 848,
+    "ke": 1811,
+    "ker": 70.48,
+    "eng": 45
+   },
+   {
+    "lp": "/locations/klang-valley",
+    "sessions": 988,
+    "users": 585,
+    "ke": 1402,
+    "ker": 53.54,
+    "eng": 18
+   },
+   {
+    "lp": "/我们提供的服务",
+    "sessions": 939,
+    "users": 883,
+    "ke": 1379,
+    "ker": 54.21,
+    "eng": 38
+   },
+   {
+    "lp": "/pages",
+    "sessions": 925,
+    "users": 897,
+    "ke": 1978,
+    "ker": 80.86,
+    "eng": 38
+   },
+   {
+    "lp": "/locations/bukit-mertajam-marc-residences",
+    "sessions": 919,
+    "users": 730,
+    "ke": 1373,
+    "ker": 59.09,
+    "eng": 33
+   },
+   {
+    "lp": "/locations/kuantan",
+    "sessions": 894,
+    "users": 792,
+    "ke": 1374,
+    "ker": 76.4,
+    "eng": 19
+   },
+   {
+    "lp": "/locations/johor",
+    "sessions": 883,
+    "users": 633,
+    "ke": 1356,
+    "ker": 55.72,
+    "eng": 30
+   },
+   {
+    "lp": "/locations/penang",
+    "sessions": 883,
+    "users": 675,
+    "ke": 1756,
+    "ker": 65.12,
+    "eng": 41
+   },
+   {
+    "lp": "/晶体置换手术",
+    "sessions": 877,
+    "users": 780,
+    "ke": 1465,
+    "ker": 70.7,
+    "eng": 48
+   }
+  ],
+  "ga4_events": {
+   "R2025": [
+    {
+     "e": "Total",
+     "count": 2214881,
+     "users": 235472
+    },
+    {
+     "e": "page_view",
+     "count": 1093116,
+     "users": 235399
+    },
+    {
+     "e": "user_engagement",
+     "count": 375357,
+     "users": 164915
+    },
+    {
+     "e": "session_start",
+     "count": 317156,
+     "users": 235138
+    },
+    {
+     "e": "first_visit",
+     "count": 234906,
+     "users": 232812
+    },
+    {
+     "e": "scroll",
+     "count": 96086,
+     "users": 62866
+    },
+    {
+     "e": "click",
+     "count": 37833,
+     "users": 26258
+    },
+    {
+     "e": "Whatsapp Conversion",
+     "count": 27468,
+     "users": 19696
+    },
+    {
+     "e": "file_download",
+     "count": 15919,
+     "users": 6360
+    },
+    {
+     "e": "Phone Click Conversion",
+     "count": 4965,
+     "users": 3976
+    },
+    {
+     "e": "Thank You Page Conversion",
+     "count": 4777,
+     "users": 3759
+    },
+    {
+     "e": "Carnival",
+     "count": 2465,
+     "users": 1878
+    },
+    {
+     "e": "video_progress",
+     "count": 2237,
+     "users": 523
+    },
+    {
+     "e": "view_search_results",
+     "count": 1230,
+     "users": 893
+    },
+    {
+     "e": "video_start",
+     "count": 637,
+     "users": 551
+    },
+    {
+     "e": "video_complete",
+     "count": 397,
+     "users": 344
+    },
+    {
+     "e": "Email Conversion",
+     "count": 327,
+     "users": 279
+    },
+    {
+     "e": "tw_visit_tagged_mid_session",
+     "count": 4,
+     "users": 1
+    },
+    {
+     "e": "tw_visit_tagged_non_eligible",
+     "count": 1,
+     "users": 1
+    }
+   ],
+   "R2026": [
+    {
+     "e": "Total",
+     "count": 1824730,
+     "users": 223712
+    },
+    {
+     "e": "page_view",
+     "count": 900977,
+     "users": 223560
+    },
+    {
+     "e": "session_start",
+     "count": 285068,
+     "users": 223311
+    },
+    {
+     "e": "user_engagement",
+     "count": 253542,
+     "users": 112291
+    },
+    {
+     "e": "first_visit",
+     "count": 217700,
+     "users": 220289
+    },
+    {
+     "e": "scroll",
+     "count": 60661,
+     "users": 42261
+    },
+    {
+     "e": "click",
+     "count": 48158,
+     "users": 24395
+    },
+    {
+     "e": "Whatsapp Conversion",
+     "count": 41931,
+     "users": 19817
+    },
+    {
+     "e": "file_download",
+     "count": 5952,
+     "users": 3475
+    },
+    {
+     "e": "Phone Click Conversion",
+     "count": 3461,
+     "users": 2696
+    },
+    {
+     "e": "Thank You Page Conversion",
+     "count": 3272,
+     "users": 2533
+    },
+    {
+     "e": "Carnival",
+     "count": 1928,
+     "users": 1454
+    },
+    {
+     "e": "view_search_results",
+     "count": 803,
+     "users": 589
+    },
+    {
+     "e": "Email Conversion",
+     "count": 640,
+     "users": 385
+    },
+    {
+     "e": "video_progress",
+     "count": 439,
+     "users": 106
+    },
+    {
+     "e": "video_start",
+     "count": 121,
+     "users": 109
+    },
+    {
+     "e": "video_complete",
+     "count": 77,
+     "users": 69
+    }
+   ],
+   "L12": [
+    {
+     "e": "Total",
+     "count": 2555287,
+     "users": 305555
+    },
+    {
+     "e": "page_view",
+     "count": 1265911,
+     "users": 305316
+    },
+    {
+     "e": "session_start",
+     "count": 390553,
+     "users": 304907
+    },
+    {
+     "e": "user_engagement",
+     "count": 376590,
+     "users": 166508
+    },
+    {
+     "e": "first_visit",
+     "count": 299590,
+     "users": 302316
+    },
+    {
+     "e": "scroll",
+     "count": 87417,
+     "users": 60854
+    },
+    {
+     "e": "click",
+     "count": 60491,
+     "users": 32699
+    },
+    {
+     "e": "Whatsapp Conversion",
+     "count": 51086,
+     "users": 26285
+    },
+    {
+     "e": "file_download",
+     "count": 9403,
+     "users": 5424
+    },
+    {
+     "e": "Phone Click Conversion",
+     "count": 5186,
+     "users": 4081
+    },
+    {
+     "e": "Thank You Page Conversion",
+     "count": 3954,
+     "users": 3094
+    },
+    {
+     "e": "Carnival",
+     "count": 1938,
+     "users": 1456
+    },
+    {
+     "e": "view_search_results",
+     "count": 1225,
+     "users": 888
+    },
+    {
+     "e": "video_progress",
+     "count": 815,
+     "users": 198
+    },
+    {
+     "e": "Email Conversion",
+     "count": 757,
+     "users": 492
+    },
+    {
+     "e": "video_start",
+     "count": 229,
+     "users": 205
+    },
+    {
+     "e": "video_complete",
+     "count": 142,
+     "users": 129
+    }
+   ]
+  },
+  "ga4_sm": [
+   {
+    "sm": "Total",
+    "sessions": 395040,
+    "ke": 672903,
+    "ker": 74.5,
+    "eng": 37
+   },
+   {
+    "sm": "google / cpc",
+    "sessions": 240815,
+    "ke": 415801,
+    "ker": 73.97,
+    "eng": 40
+   },
+   {
+    "sm": "google / organic",
+    "sessions": 55061,
+    "ke": 102674,
+    "ker": 73.18,
+    "eng": 47
+   },
+   {
+    "sm": "(direct) / (none)",
+    "sessions": 42290,
+    "ke": 59480,
+    "ker": 72.53,
+    "eng": 18
+   },
+   {
+    "sm": "m.facebook.com / referral",
+    "sessions": 15418,
+    "ke": 16560,
+    "ker": 98.14,
+    "eng": 2
+   },
+   {
+    "sm": "facebook.com / referral",
+    "sessions": 4483,
+    "ke": 10442,
+    "ker": 95.25,
+    "eng": 4
+   },
+   {
+    "sm": "(data not available)",
+    "sessions": 3027,
+    "ke": 8053,
+    "ker": 81.53,
+    "eng": 51
+   },
+   {
+    "sm": "bing / organic",
+    "sessions": 2506,
+    "ke": 5655,
+    "ker": 74.1,
+    "eng": 77
+   },
+   {
+    "sm": "facebook / social",
+    "sessions": 2133,
+    "ke": 6216,
+    "ker": 88.37,
+    "eng": 50
+   },
+   {
+    "sm": "l.wl.co / referral",
+    "sessions": 1832,
+    "ke": 2675,
+    "ker": 55.68,
+    "eng": 30
+   },
+   {
+    "sm": "(not set)",
+    "sessions": 1701,
+    "ke": 2481,
+    "ker": 66.02,
+    "eng": 55
+   },
+   {
+    "sm": "flyercss / social",
+    "sessions": 1542,
+    "ke": 4204,
+    "ker": 83.72,
+    "eng": 48
+   },
+   {
+    "sm": "aim / center",
+    "sessions": 1268,
+    "ke": 2375,
+    "ker": 83.12,
+    "eng": 33
+   },
+   {
+    "sm": "VISTAMountAustinJohorgbp / organic",
+    "sessions": 1232,
+    "ke": 3082,
+    "ker": 68.34,
+    "eng": 61
+   },
+   {
+    "sm": "VISTAHQPJgbp / organic",
+    "sessions": 1197,
+    "ke": 2627,
+    "ker": 67.34,
+    "eng": 60
+   },
+   {
+    "sm": "VISTAJohorgbp / organic",
+    "sessions": 781,
+    "ke": 1743,
+    "ker": 66.07,
+    "eng": 51
+   },
+   {
+    "sm": "iph / center",
+    "sessions": 773,
+    "ke": 1418,
+    "ker": 91.07,
+    "eng": 24
+   },
+   {
+    "sm": "bmm / center",
+    "sessions": 643,
+    "ke": 1190,
+    "ker": 88.34,
+    "eng": 26
+   },
+   {
+    "sm": "malaysia.search.yahoo.com / referral",
+    "sessions": 635,
+    "ke": 1328,
+    "ker": 75.28,
+    "eng": 78
+   },
+   {
+    "sm": "VISTAAirItamPenanggbp / organic",
+    "sessions": 607,
+    "ke": 1509,
+    "ker": 71.33,
+    "eng": 72
+   },
+   {
+    "sm": "VISTAKajanggbp / organic",
+    "sessions": 603,
+    "ke": 1521,
+    "ker": 73.63,
+    "eng": 66
+   },
+   {
+    "sm": "l.facebook.com / referral",
+    "sessions": 602,
+    "ke": 1411,
+    "ker": 91.36,
+    "eng": 36
+   },
+   {
+    "sm": "VISTAPuchonggbp / organic",
+    "sessions": 596,
+    "ke": 1462,
+    "ker": 72.82,
+    "eng": 59
+   },
+   {
+    "sm": "VISTACherasgbp / organic",
+    "sessions": 590,
+    "ke": 1358,
+    "ker": 69.49,
+    "eng": 55
+   },
+   {
+    "sm": "VISTABukitMertajamPenanggbp / organic",
+    "sessions": 452,
+    "ke": 1056,
+    "ker": 71.46,
+    "eng": 54
+   },
+   {
+    "sm": "kep / center",
+    "sessions": 437,
+    "ke": 831,
+    "ker": 89.47,
+    "eng": 24
+   },
+   {
+    "sm": "pj / center",
+    "sessions": 413,
+    "ke": 749,
+    "ker": 93.46,
+    "eng": 17
+   },
+   {
+    "sm": "tiktok.com / referral",
+    "sessions": 382,
+    "ke": 866,
+    "ker": 97.12,
+    "eng": 22
+   },
+   {
+    "sm": "VISTAIpohGardengbp / organic",
+    "sessions": 372,
+    "ke": 843,
+    "ker": 68.55,
+    "eng": 68
+   },
+   {
+    "sm": "VISTAKlangSlgrgbp / organic",
+    "sessions": 371,
+    "ke": 1012,
+    "ker": 73.58,
+    "eng": 61
+   },
+   {
+    "sm": "app.respond.io / referral",
+    "sessions": 370,
+    "ke": 753,
+    "ker": 43.78,
+    "eng": 15
+   },
+   {
+    "sm": "VISTAKepongGiSquaregbp / organic",
+    "sessions": 365,
+    "ke": 867,
+    "ker": 69.59,
+    "eng": 57
+   },
+   {
+    "sm": "chatgpt.com / referral",
+    "sessions": 347,
+    "ke": 862,
+    "ker": 78.96,
+    "eng": 41
+   },
+   {
+    "sm": "chatgpt.com / organic",
+    "sessions": 344,
+    "ke": 636,
+    "ker": 63.66,
+    "eng": 51
+   },
+   {
+    "sm": "chatgpt.com / (not set)",
+    "sessions": 314,
+    "ke": 711,
+    "ker": 96.82,
+    "eng": 42
+   },
+   {
+    "sm": "chatgpt.com / ai-assistant",
+    "sessions": 279,
+    "ke": 123,
+    "ker": 24.73,
+    "eng": 27
+   },
+   {
+    "sm": "klg / center",
+    "sessions": 273,
+    "ke": 602,
+    "ker": 90.84,
+    "eng": 34
+   },
+   {
+    "sm": "yahoo / organic",
+    "sessions": 220,
+    "ke": 475,
+    "ker": 70.91,
+    "eng": 94
+   },
+   {
+    "sm": "puc / center",
+    "sessions": 212,
+    "ke": 403,
+    "ker": 77.36,
+    "eng": 28
+   },
+   {
+    "sm": "che / center",
+    "sessions": 207,
+    "ke": 367,
+    "ker": 86.47,
+    "eng": 23
+   },
+   {
+    "sm": "linktr.ee / referral",
+    "sessions": 202,
+    "ke": 252,
+    "ker": 47.52,
+    "eng": 50
+   }
+  ],
+  "ga4_tech": [
+   {
+    "dim": "All",
+    "v": "Total",
+    "users": 305457,
+    "eng": 47,
+    "ke": 672903
+   },
+   {
+    "dim": "Device category",
+    "v": "mobile",
+    "users": 244918,
+    "eng": 45,
+    "ke": 519189
+   },
+   {
+    "dim": "Device category",
+    "v": "desktop",
+    "users": 57501,
+    "eng": 58,
+    "ke": 149556
+   },
+   {
+    "dim": "Device category",
+    "v": "tablet",
+    "users": 1826,
+    "eng": 53,
+    "ke": 4151
+   },
+   {
+    "dim": "Device category",
+    "v": "smart tv",
+    "users": 5,
+    "eng": 172,
+    "ke": 7
+   },
+   {
+    "dim": "Browser",
+    "v": "Chrome",
+    "users": 175097,
+    "eng": 48,
+    "ke": 406136
+   },
+   {
+    "dim": "Browser",
+    "v": "Safari",
+    "users": 63793,
+    "eng": 36,
+    "ke": 131705
+   },
+   {
+    "dim": "Browser",
+    "v": "Android Webview",
+    "users": 36708,
+    "eng": 77,
+    "ke": 85087
+   },
+   {
+    "dim": "Browser",
+    "v": "Samsung Internet",
+    "users": 7902,
+    "eng": 45,
+    "ke": 18202
+   },
+   {
+    "dim": "Browser",
+    "v": "Safari (in-app)",
+    "users": 7586,
+    "eng": 14,
+    "ke": 6727
+   },
+   {
+    "dim": "Browser",
+    "v": "(not set)",
+    "users": 6391,
+    "eng": 0,
+    "ke": 8302
+   },
+   {
+    "dim": "Browser",
+    "v": "Edge",
+    "users": 3141,
+    "eng": 117,
+    "ke": 10833
+   },
+   {
+    "dim": "Browser",
+    "v": "Firefox",
+    "users": 1367,
+    "eng": 90,
+    "ke": 3915
+   },
+   {
+    "dim": "Browser",
+    "v": "Opera",
+    "users": 682,
+    "eng": 36,
+    "ke": 1355
+   },
+   {
+    "dim": "Browser",
+    "v": "Android Runtime",
+    "users": 251,
+    "eng": 1,
+    "ke": 441
+   },
+   {
+    "dim": "Browser",
+    "v": "UC Browser",
+    "users": 108,
+    "eng": 12,
+    "ke": 128
+   },
+   {
+    "dim": "Browser",
+    "v": "Mozilla Compatible Agent",
+    "users": 24,
+    "eng": 17,
+    "ke": 28
+   },
+   {
+    "dim": "Browser",
+    "v": "Aloha Browser",
+    "users": 10,
+    "eng": 92,
+    "ke": 10
+   },
+   {
+    "dim": "Browser",
+    "v": "Internet Explorer",
+    "users": 9,
+    "eng": 1,
+    "ke": 11
+   },
+   {
+    "dim": "Browser",
+    "v": "YaBrowser",
+    "users": 7,
+    "eng": 17,
+    "ke": 12
+   },
+   {
+    "dim": "Browser",
+    "v": "Amazon Silk",
+    "users": 2,
+    "eng": 6,
+    "ke": 3
+   },
+   {
+    "dim": "Browser",
+    "v": "PaleMoon",
+    "users": 2,
+    "eng": 0,
+    "ke": 2
+   },
+   {
+    "dim": "Browser",
+    "v": "Phoenix Browser",
+    "users": 2,
+    "eng": 8,
+    "ke": 0
+   },
+   {
+    "dim": "Browser",
+    "v": "YE",
+    "users": 2,
+    "eng": 21,
+    "ke": 3
+   },
+   {
+    "dim": "Browser",
+    "v": "Android Browser",
+    "users": 1,
+    "eng": 0,
+    "ke": 1
+   },
+   {
+    "dim": "Browser",
+    "v": "Mozilla",
+    "users": 1,
+    "eng": 0,
+    "ke": 1
+   },
+   {
+    "dim": "Browser",
+    "v": "Whale Browser",
+    "users": 1,
+    "eng": 10,
+    "ke": 1
+   },
+   {
+    "dim": "Operating system",
+    "v": "Android",
+    "users": 162845,
+    "eng": 52,
+    "ke": 357623
+   },
+   {
+    "dim": "Operating system",
+    "v": "iOS",
+    "users": 82292,
+    "eng": 34,
+    "ke": 162769
+   },
+   {
+    "dim": "Operating system",
+    "v": "Windows",
+    "users": 40785,
+    "eng": 69,
+    "ke": 116492
+   },
+   {
+    "dim": "Operating system",
+    "v": "Linux",
+    "users": 6504,
+    "eng": 16,
+    "ke": 10683
+   },
+   {
+    "dim": "Operating system",
+    "v": "(not set)",
+    "users": 6212,
+    "eng": 0,
+    "ke": 8045
+   },
+   {
+    "dim": "Operating system",
+    "v": "Macintosh",
+    "users": 5137,
+    "eng": 77,
+    "ke": 16245
+   },
+   {
+    "dim": "Operating system",
+    "v": "Chrome OS",
+    "users": 466,
+    "eng": 53,
+    "ke": 1030
+   },
+   {
+    "dim": "Operating system",
+    "v": "Tizen",
+    "users": 5,
+    "eng": 320,
+    "ke": 8
+   },
+   {
+    "dim": "Operating system",
+    "v": "MacOS",
+    "users": 3,
+    "eng": 102,
+    "ke": 6
+   },
+   {
+    "dim": "Operating system",
+    "v": "Playstation 4",
+    "users": 1,
+    "eng": 114,
+    "ke": 2
+   }
+  ],
+  "ga4_demo": [
+   {
+    "dim": "All",
+    "v": "Total",
+    "users": 305457,
+    "eng": 47,
+    "ke": 672903,
+    "ker": 82.23
+   },
+   {
+    "dim": "Country",
+    "v": "Malaysia",
+    "users": 247050,
+    "eng": 53,
+    "ke": 571426,
+    "ker": 81.73
+   },
+   {
+    "dim": "Country",
+    "v": "Singapore",
+    "users": 16042,
+    "eng": 44,
+    "ke": 34352,
+    "ker": 76.42
+   },
+   {
+    "dim": "Country",
+    "v": "United States",
+    "users": 15224,
+    "eng": 4,
+    "ke": 21328,
+    "ker": 94.42
+   },
+   {
+    "dim": "Country",
+    "v": "China",
+    "users": 8739,
+    "eng": 2,
+    "ke": 11078,
+    "ker": 85.68
+   },
+   {
+    "dim": "Country",
+    "v": "India",
+    "users": 3046,
+    "eng": 25,
+    "ke": 3584,
+    "ker": 75.21
+   },
+   {
+    "dim": "Country",
+    "v": "Ireland",
+    "users": 2742,
+    "eng": 2,
+    "ke": 4042,
+    "ker": 98.07
+   },
+   {
+    "dim": "Country",
+    "v": "Sweden",
+    "users": 2381,
+    "eng": 1,
+    "ke": 3398,
+    "ker": 97.35
+   },
+   {
+    "dim": "Country",
+    "v": "Indonesia",
+    "users": 2304,
+    "eng": 45,
+    "ke": 5173,
+    "ker": 88.72
+   },
+   {
+    "dim": "Country",
+    "v": "Germany",
+    "users": 753,
+    "eng": 28,
+    "ke": 1500,
+    "ker": 94.29
+   },
+   {
+    "dim": "Country",
+    "v": "Nepal",
+    "users": 728,
+    "eng": 41,
+    "ke": 209,
+    "ker": 19.23
+   },
+   {
+    "dim": "Country",
+    "v": "Australia",
+    "users": 711,
+    "eng": 83,
+    "ke": 2081,
+    "ker": 84.67
+   },
+   {
+    "dim": "Country",
+    "v": "United Kingdom",
+    "users": 641,
+    "eng": 41,
+    "ke": 1525,
+    "ker": 85.34
+   },
+   {
+    "dim": "Country",
+    "v": "Hong Kong",
+    "users": 460,
+    "eng": 44,
+    "ke": 1046,
+    "ker": 82.17
+   },
+   {
+    "dim": "Country",
+    "v": "Vietnam",
+    "users": 444,
+    "eng": 22,
+    "ke": 939,
+    "ker": 84.23
+   },
+   {
+    "dim": "Country",
+    "v": "Algeria",
+    "users": 350,
+    "eng": 42,
+    "ke": 97,
+    "ker": 18.29
+   },
+   {
+    "dim": "Country",
+    "v": "Japan",
+    "users": 335,
+    "eng": 58,
+    "ke": 853,
+    "ker": 86.57
+   },
+   {
+    "dim": "Country",
+    "v": "Thailand",
+    "users": 299,
+    "eng": 43,
+    "ke": 698,
+    "ker": 82.61
+   },
+   {
+    "dim": "Country",
+    "v": "Bangladesh",
+    "users": 284,
+    "eng": 56,
+    "ke": 591,
+    "ker": 71.13
+   },
+   {
+    "dim": "Country",
+    "v": "Cambodia",
+    "users": 266,
+    "eng": 49,
+    "ke": 673,
+    "ker": 78.95
+   },
+   {
+    "dim": "Country",
+    "v": "United Arab Emirates",
+    "users": 260,
+    "eng": 21,
+    "ke": 496,
+    "ker": 86.54
+   },
+   {
+    "dim": "Country",
+    "v": "Brunei",
+    "users": 244,
+    "eng": 70,
+    "ke": 738,
+    "ker": 89.75
+   },
+   {
+    "dim": "Country",
+    "v": "Egypt",
+    "users": 219,
+    "eng": 24,
+    "ke": 181,
+    "ker": 35.62
+   },
+   {
+    "dim": "Country",
+    "v": "Iraq",
+    "users": 210,
+    "eng": 21,
+    "ke": 217,
+    "ker": 60
+   },
+   {
+    "dim": "Country",
+    "v": "Philippines",
+    "users": 195,
+    "eng": 43,
+    "ke": 408,
+    "ker": 78.97
+   },
+   {
+    "dim": "Country",
+    "v": "Pakistan",
+    "users": 190,
+    "eng": 40,
+    "ke": 271,
+    "ker": 63.68
+   },
+   {
+    "dim": "Country",
+    "v": "France",
+    "users": 187,
+    "eng": 24,
+    "ke": 301,
+    "ker": 72.73
+   },
+   {
+    "dim": "Country",
+    "v": "Netherlands",
+    "users": 182,
+    "eng": 20,
+    "ke": 420,
+    "ker": 92.31
+   },
+   {
+    "dim": "Country",
+    "v": "Türkiye",
+    "users": 181,
+    "eng": 10,
+    "ke": 353,
+    "ker": 89.5
+   },
+   {
+    "dim": "Country",
+    "v": "Brazil",
+    "users": 177,
+    "eng": 14,
+    "ke": 193,
+    "ker": 69.49
+   },
+   {
+    "dim": "Country",
+    "v": "New Zealand",
+    "users": 176,
+    "eng": 54,
+    "ke": 426,
+    "ker": 86.93
+   },
+   {
+    "dim": "Country",
+    "v": "Albania",
+    "users": 172,
+    "eng": 3,
+    "ke": 148,
+    "ker": 81.98
+   },
+   {
+    "dim": "Country",
+    "v": "Taiwan",
+    "users": 156,
+    "eng": 47,
+    "ke": 318,
+    "ker": 74.36
+   },
+   {
+    "dim": "Country",
+    "v": "Canada",
+    "users": 135,
+    "eng": 59,
+    "ke": 246,
+    "ker": 80
+   },
+   {
+    "dim": "Country",
+    "v": "Afghanistan",
+    "users": 106,
+    "eng": 7,
+    "ke": 85,
+    "ker": 78.3
+   },
+   {
+    "dim": "Country",
+    "v": "(not set)",
+    "users": 96,
+    "eng": 2,
+    "ke": 96,
+    "ker": 64.58
+   },
+   {
+    "dim": "Country",
+    "v": "Maldives",
+    "users": 96,
+    "eng": 71,
+    "ke": 269,
+    "ker": 89.58
+   },
+   {
+    "dim": "Country",
+    "v": "Tunisia",
+    "users": 94,
+    "eng": 39,
+    "ke": 75,
+    "ker": 39.36
+   },
+   {
+    "dim": "Country",
+    "v": "Saudi Arabia",
+    "users": 89,
+    "eng": 43,
+    "ke": 163,
+    "ker": 83.15
+   },
+   {
+    "dim": "Country",
+    "v": "Sri Lanka",
+    "users": 86,
+    "eng": 44,
+    "ke": 107,
+    "ker": 45.35
+   },
+   {
+    "dim": "Country",
+    "v": "Argentina",
+    "users": 80,
+    "eng": 3,
+    "ke": 62,
+    "ker": 65
+   },
+   {
+    "dim": "Country",
+    "v": "Spain",
+    "users": 80,
+    "eng": 23,
+    "ke": 156,
+    "ker": 88.75
+   },
+   {
+    "dim": "Country",
+    "v": "Poland",
+    "users": 79,
+    "eng": 12,
+    "ke": 74,
+    "ker": 73.42
+   },
+   {
+    "dim": "Country",
+    "v": "South Korea",
+    "users": 75,
+    "eng": 43,
+    "ke": 183,
+    "ker": 85.33
+   },
+   {
+    "dim": "Country",
+    "v": "Colombia",
+    "users": 74,
+    "eng": 3,
+    "ke": 150,
+    "ker": 90.54
+   },
+   {
+    "dim": "Country",
+    "v": "Nigeria",
+    "users": 70,
+    "eng": 15,
+    "ke": 139,
+    "ker": 92.86
+   },
+   {
+    "dim": "Country",
+    "v": "Norway",
+    "users": 63,
+    "eng": 20,
+    "ke": 101,
+    "ker": 95.24
+   },
+   {
+    "dim": "Country",
+    "v": "Ethiopia",
+    "users": 59,
+    "eng": 55,
+    "ke": 10,
+    "ker": 13.56
+   },
+   {
+    "dim": "Country",
+    "v": "Burkina Faso",
+    "users": 58,
+    "eng": 31,
+    "ke": 13,
+    "ker": 17.24
+   },
+   {
+    "dim": "Country",
+    "v": "Armenia",
+    "users": 57,
+    "eng": 12,
+    "ke": 58,
+    "ker": 94.74
+   },
+   {
+    "dim": "Country",
+    "v": "Peru",
+    "users": 54,
+    "eng": 2,
+    "ke": 103,
+    "ker": 94.44
+   },
+   {
+    "dim": "City",
+    "v": "Kuala Lumpur",
+    "users": 122347,
+    "eng": 49,
+    "ke": 257513,
+    "ker": 80.23
+   },
+   {
+    "dim": "City",
+    "v": "Singapore",
+    "users": 15529,
+    "eng": 44,
+    "ke": 33418,
+    "ker": 75.83
+   },
+   {
+    "dim": "City",
+    "v": "Johor Bahru",
+    "users": 10816,
+    "eng": 46,
+    "ke": 22234,
+    "ker": 77.83
+   },
+   {
+    "dim": "City",
+    "v": "Kota Kinabalu",
+    "users": 10004,
+    "eng": 32,
+    "ke": 16288,
+    "ker": 74.86
+   },
+   {
+    "dim": "City",
+    "v": "Shah Alam",
+    "users": 9553,
+    "eng": 54,
+    "ke": 21463,
+    "ker": 80.95
+   },
+   {
+    "dim": "City",
+    "v": "Petaling Jaya",
+    "users": 9000,
+    "eng": 76,
+    "ke": 29989,
+    "ker": 79.34
+   },
+   {
+    "dim": "City",
+    "v": "Puchong",
+    "users": 7480,
+    "eng": 55,
+    "ke": 20462,
+    "ker": 79.91
+   },
+   {
+    "dim": "City",
+    "v": "Sungai Petani",
+    "users": 7145,
+    "eng": 31,
+    "ke": 11752,
+    "ker": 73.77
+   },
+   {
+    "dim": "City",
+    "v": "(not set)",
+    "users": 6743,
+    "eng": 18,
+    "ke": 9937,
+    "ker": 79.16
+   },
+   {
+    "dim": "City",
+    "v": "Kajang",
+    "users": 6536,
+    "eng": 55,
+    "ke": 14524,
+    "ker": 81.17
+   },
+   {
+    "dim": "City",
+    "v": "Kuching",
+    "users": 6062,
+    "eng": 52,
+    "ke": 8596,
+    "ker": 63.81
+   },
+   {
+    "dim": "City",
+    "v": "Klang",
+    "users": 6010,
+    "eng": 43,
+    "ke": 12086,
+    "ker": 78.22
+   },
+   {
+    "dim": "City",
+    "v": "Butterworth",
+    "users": 5828,
+    "eng": 29,
+    "ke": 9300,
+    "ker": 71.57
+   },
+   {
+    "dim": "City",
+    "v": "Malacca",
+    "users": 5777,
+    "eng": 31,
+    "ke": 9279,
+    "ker": 72.79
+   },
+   {
+    "dim": "City",
+    "v": "Ipoh",
+    "users": 5743,
+    "eng": 38,
+    "ke": 10185,
+    "ker": 75.45
+   },
+   {
+    "dim": "City",
+    "v": "Lanzhou",
+    "users": 4870,
+    "eng": 1,
+    "ke": 6640,
+    "ker": 98.17
+   },
+   {
+    "dim": "City",
+    "v": "Seremban",
+    "users": 3277,
+    "eng": 29,
+    "ke": 5265,
+    "ker": 72.44
+   },
+   {
+    "dim": "City",
+    "v": "Ampang Jaya",
+    "users": 3276,
+    "eng": 54,
+    "ke": 7071,
+    "ker": 82.14
+   },
+   {
+    "dim": "City",
+    "v": "Prineville",
+    "users": 3274,
+    "eng": 1,
+    "ke": 4457,
+    "ker": 96.73
+   },
+   {
+    "dim": "City",
+    "v": "Sandakan",
+    "users": 3200,
+    "eng": 28,
+    "ke": 4732,
+    "ker": 71.56
+   },
+   {
+    "dim": "City",
+    "v": "Subang Jaya",
+    "users": 3175,
+    "eng": 57,
+    "ke": 8298,
+    "ker": 77.86
+   },
+   {
+    "dim": "City",
+    "v": "Forest City",
+    "users": 3139,
+    "eng": 1,
+    "ke": 4398,
+    "ker": 98.34
+   },
+   {
+    "dim": "City",
+    "v": "Dublin",
+    "users": 2730,
+    "eng": 2,
+    "ke": 4005,
+    "ker": 98.17
+   },
+   {
+    "dim": "City",
+    "v": "Kota Bharu",
+    "users": 2723,
+    "eng": 29,
+    "ke": 4084,
+    "ker": 71.39
+   },
+   {
+    "dim": "City",
+    "v": "Lulea",
+    "users": 2317,
+    "eng": 1,
+    "ke": 3257,
+    "ker": 97.37
+   },
+   {
+    "dim": "City",
+    "v": "Bayan Lepas",
+    "users": 2205,
+    "eng": 61,
+    "ke": 5455,
+    "ker": 83.08
+   },
+   {
+    "dim": "City",
+    "v": "Rawang",
+    "users": 1967,
+    "eng": 47,
+    "ke": 3858,
+    "ker": 78.75
+   },
+   {
+    "dim": "City",
+    "v": "Fort Worth",
+    "users": 1954,
+    "eng": 1,
+    "ke": 2748,
+    "ker": 97.85
+   },
+   {
+    "dim": "City",
+    "v": "Batu Caves",
+    "users": 1899,
+    "eng": 46,
+    "ke": 3979,
+    "ker": 80.25
+   }
+  ],
+  "seo": [
+   {
+    "month": "2025-07",
+    "report_generated": "2025-08-07",
+    "position_tracking_window": "Jul 01-31, 2025",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "150",
+    "keywords_listed_in_table": "150",
+    "keywords_top3": "59",
+    "top3_new": "10",
+    "top3_lost": "7",
+    "keywords_top10": "115",
+    "top10_new": "10",
+    "top10_lost": "5",
+    "keywords_top20": "136",
+    "top20_new": "2",
+    "top20_lost": "2",
+    "keywords_top100": "140",
+    "top100_new": "1",
+    "top100_lost": "2",
+    "keywords_improved": "51",
+    "keywords_declined": "28",
+    "total_positive_impact_visibility": "6.30%",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "user_engagement; first_visit; scroll; Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Carnival; Email Conversion",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": "First report; 150 keywords tracked (Semrush campaign expanded to 201 from Aug). GSC clicks/impressions shown as chart only (y-axis 0-100 clicks, 0-4K impressions) with compare-to Jun 2025; no numeric values. GA4 event counts printed only as 'K' (values not extractable)."
+   },
+   {
+    "month": "2025-08",
+    "report_generated": "2025-09-03",
+    "position_tracking_window": "Aug 01-31, 2025",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "201",
+    "keywords_listed_in_table": "150",
+    "keywords_top3": "87",
+    "top3_new": "18",
+    "top3_lost": "10",
+    "keywords_top10": "163",
+    "top10_new": "14",
+    "top10_lost": "4",
+    "keywords_top20": "173",
+    "top20_new": "5",
+    "top20_lost": "2",
+    "keywords_top100": "177",
+    "top100_new": "3",
+    "top100_lost": "2",
+    "keywords_improved": "63",
+    "keywords_declined": "40",
+    "total_positive_impact_visibility": "7.15%",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "user_engagement; first_visit; scroll; Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Email Conversion",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": "Keyword set expanded 150 -> 201 (adds 'article phase 3' keywords) - Top-N counts not comparable with Jul. GSC chart axis 0-200 clicks / 0-10K impressions."
+   },
+   {
+    "month": "2025-09",
+    "report_generated": "2025-10-03",
+    "position_tracking_window": "Sep 01-30, 2025",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "201",
+    "keywords_listed_in_table": "150",
+    "keywords_top3": "87",
+    "top3_new": "21",
+    "top3_lost": "8",
+    "keywords_top10": "156",
+    "top10_new": "5",
+    "top10_lost": "10",
+    "keywords_top20": "169",
+    "top20_new": "0",
+    "top20_lost": "6",
+    "keywords_top100": "176",
+    "top100_new": "0",
+    "top100_lost": "2",
+    "keywords_improved": "65",
+    "keywords_declined": "41",
+    "total_positive_impact_visibility": "9.84%",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "user_engagement; first_visit; scroll; Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Email Conversion",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": "GSC chart axis 0-200 clicks / 4K-10K impressions."
+   },
+   {
+    "month": "2025-10",
+    "report_generated": "2025-11-04",
+    "position_tracking_window": "Oct 01-31, 2025",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "201",
+    "keywords_listed_in_table": "150",
+    "keywords_top3": "90",
+    "top3_new": "11",
+    "top3_lost": "14",
+    "keywords_top10": "159",
+    "top10_new": "5",
+    "top10_lost": "6",
+    "keywords_top20": "173",
+    "top20_new": "6",
+    "top20_lost": "1",
+    "keywords_top100": "179",
+    "top100_new": "2",
+    "top100_lost": "0",
+    "keywords_improved": "51",
+    "keywords_declined": "38",
+    "total_positive_impact_visibility": "5.87%",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "user_engagement; first_visit; scroll; Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Email Conversion",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": ""
+   },
+   {
+    "month": "2025-11",
+    "report_generated": "2025-12-05",
+    "position_tracking_window": "Nov 01-30, 2025",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "201",
+    "keywords_listed_in_table": "150",
+    "keywords_top3": "101",
+    "top3_new": "18",
+    "top3_lost": "7",
+    "keywords_top10": "168",
+    "top10_new": "10",
+    "top10_lost": "2",
+    "keywords_top20": "174",
+    "top20_new": "4",
+    "top20_lost": "2",
+    "keywords_top100": "180",
+    "top100_new": "1",
+    "top100_lost": "0",
+    "keywords_improved": "79",
+    "keywords_declined": "36",
+    "total_positive_impact_visibility": "11.13%",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "user_engagement; first_visit; scroll; Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Email Conversion",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": "Best Improved-vs-Declined ratio of the series (79 vs 36)."
+   },
+   {
+    "month": "2025-12",
+    "report_generated": "2026-01-05",
+    "position_tracking_window": "Dec 01-31, 2025",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "201",
+    "keywords_listed_in_table": "150",
+    "keywords_top3": "94",
+    "top3_new": "23",
+    "top3_lost": "9",
+    "keywords_top10": "170",
+    "top10_new": "4",
+    "top10_lost": "2",
+    "keywords_top20": "175",
+    "top20_new": "2",
+    "top20_lost": "1",
+    "keywords_top100": "179",
+    "top100_new": "1",
+    "top100_lost": "1",
+    "keywords_improved": "68",
+    "keywords_declined": "33",
+    "total_positive_impact_visibility": "10.40%",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "user_engagement; first_visit; scroll; Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Email Conversion; Carnival",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": "GSC chart axis 4K-10K impressions / 100-200 clicks."
+   },
+   {
+    "month": "2026-01",
+    "report_generated": "2026-02-06",
+    "position_tracking_window": "Jan 01-31, 2026",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "201",
+    "keywords_listed_in_table": "150",
+    "keywords_top3": "97",
+    "top3_new": "9",
+    "top3_lost": "12",
+    "keywords_top10": "172",
+    "top10_new": "5",
+    "top10_lost": "3",
+    "keywords_top20": "174",
+    "top20_new": "2",
+    "top20_lost": "3",
+    "keywords_top100": "181",
+    "top100_new": "2",
+    "top100_lost": "0",
+    "keywords_improved": "38",
+    "keywords_declined": "41",
+    "total_positive_impact_visibility": "4.04%",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "user_engagement; first_visit; scroll; Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Email Conversion; Carnival",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": "GSC widget changed: no month-over-month comparison from this report onward; site shown as https://www.vista.com.my/. Chart axis 100-300 clicks / 6K-10K impressions. Several KD% values missing in keyword table."
+   },
+   {
+    "month": "2026-02",
+    "report_generated": "2026-03-03",
+    "position_tracking_window": "Feb 01-28, 2026",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "201",
+    "keywords_listed_in_table": "150",
+    "keywords_top3": "98",
+    "top3_new": "14",
+    "top3_lost": "11",
+    "keywords_top10": "161",
+    "top10_new": "4",
+    "top10_lost": "14",
+    "keywords_top20": "167",
+    "top20_new": "2",
+    "top20_lost": "9",
+    "keywords_top100": "175",
+    "top100_new": "0",
+    "top100_lost": "6",
+    "keywords_improved": "38",
+    "keywords_declined": "59",
+    "total_positive_impact_visibility": "7.33%",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "user_engagement; first_visit; scroll; Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Carnival; Email Conversion",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": "Declined (59) exceeds improved (38); Top-10 lost 14, Top-100 lost 6. Chart axis 0-200 clicks / 4K-8K impressions."
+   },
+   {
+    "month": "2026-03",
+    "report_generated": "2026-04-05",
+    "position_tracking_window": "Mar 01-31, 2026",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "201",
+    "keywords_listed_in_table": "150",
+    "keywords_top3": "101",
+    "top3_new": "19",
+    "top3_lost": "17",
+    "keywords_top10": "162",
+    "top10_new": "7",
+    "top10_lost": "10",
+    "keywords_top20": "170",
+    "top20_new": "3",
+    "top20_lost": "4",
+    "keywords_top100": "180",
+    "top100_new": "1",
+    "top100_lost": "2",
+    "keywords_improved": "46",
+    "keywords_declined": "53",
+    "total_positive_impact_visibility": "10.17%",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "user_engagement; first_visit; scroll; Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Carnival; Email Conversion",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": "Chart axis 0-400 clicks / 4K-10K impressions (highest click axis of series, coincides with Carnival month)."
+   },
+   {
+    "month": "2026-04",
+    "report_generated": "2026-05-11",
+    "position_tracking_window": "Apr 01-30, 2026",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "201",
+    "keywords_listed_in_table": "150",
+    "keywords_top3": "106",
+    "top3_new": "12",
+    "top3_lost": "9",
+    "keywords_top10": "160",
+    "top10_new": "8",
+    "top10_lost": "11",
+    "keywords_top20": "171",
+    "top20_new": "6",
+    "top20_lost": "5",
+    "keywords_top100": "176",
+    "top100_new": "1",
+    "top100_lost": "5",
+    "keywords_improved": "32",
+    "keywords_declined": "43",
+    "total_positive_impact_visibility": "7.02%",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "user_engagement; first_visit; scroll; Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Email Conversion",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": "Highest Top-3 count of series (106). Chart axis 100-200 clicks / 4K-8K impressions."
+   },
+   {
+    "month": "2026-05",
+    "report_generated": "2026-06-09",
+    "position_tracking_window": "Jun 07, 2026 (single day)",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "201",
+    "keywords_listed_in_table": "200",
+    "keywords_top3": "104",
+    "top3_new": "0",
+    "top3_lost": "0",
+    "keywords_top10": "159",
+    "top10_new": "0",
+    "top10_lost": "0",
+    "keywords_top20": "172",
+    "top20_new": "0",
+    "top20_lost": "0",
+    "keywords_top100": "181",
+    "top100_new": "0",
+    "top100_lost": "0",
+    "keywords_improved": "0",
+    "keywords_declined": "0",
+    "total_positive_impact_visibility": "",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "user_engagement; first_visit; scroll; Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Email Conversion",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": "MISCONFIGURED: position tracking window is a single day (Jun 07, 2026) instead of May 1-31, so new/lost/improved/declined are all 0 and no Total Positive Impact printed. GSC/GA4 widgets do cover May 1-31. Keyword table expanded to 200 rows from this report. GA4 widget now labelled 'Key Events Tracking: Key Events Only'."
+   },
+   {
+    "month": "2026-06",
+    "report_generated": "2026-07-01",
+    "position_tracking_window": "Jun 01-30, 2026",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "201",
+    "keywords_listed_in_table": "200",
+    "keywords_top3": "88",
+    "top3_new": "16",
+    "top3_lost": "2",
+    "keywords_top10": "149",
+    "top10_new": "16",
+    "top10_lost": "5",
+    "keywords_top20": "168",
+    "top20_new": "3",
+    "top20_lost": "5",
+    "keywords_top100": "178",
+    "top100_new": "2",
+    "top100_lost": "2",
+    "keywords_improved": "57",
+    "keywords_declined": "22",
+    "total_positive_impact_visibility": "7.36%",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "user_engagement; first_visit; scroll; Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Email Conversion",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": "Top-3 falls 104 -> 88 and Top-10 159 -> 149 vs the Jun-07 snapshot; 'lasik laser eye surgery' -82 positions, 'eye test online' -43. Layout of overview panel jumbled in PDF (Top20/Top100 values read as 168/178)."
+   },
+   {
+    "month": "2026-07",
+    "report_generated": "2026-08-03",
+    "position_tracking_window": "Jul 01-31, 2026",
+    "organic_sessions": "",
+    "organic_users": "",
+    "organic_clicks_gsc": "chart only (no value)",
+    "impressions_gsc": "chart only (no value)",
+    "ctr": "",
+    "avg_position": "",
+    "keywords_tracked": "201",
+    "keywords_listed_in_table": "200",
+    "keywords_top3": "97",
+    "top3_new": "15",
+    "top3_lost": "16",
+    "keywords_top10": "156",
+    "top10_new": "20",
+    "top10_lost": "9",
+    "keywords_top20": "168",
+    "top20_new": "8",
+    "top20_lost": "6",
+    "keywords_top100": "178",
+    "top100_new": "3",
+    "top100_lost": "2",
+    "keywords_improved": "57",
+    "keywords_declined": "48",
+    "total_positive_impact_visibility": "9.80%",
+    "indexed_pages": "",
+    "organic_leads_conversions": "GA4 event list printed, counts blank",
+    "ga4_events_listed": "Whatsapp Conversion; Phone Click Conversion; Thank You Page Conversion; Email Conversion",
+    "backlinks": "",
+    "domain_authority": "",
+    "target": "",
+    "actual": "",
+    "notes": "GA4 widget now shows only the 4 conversion events (user_engagement/first_visit/scroll dropped). 'bladeless laser cataract surgery' printed as pos 8 / change 92 (was pos 1 in Jun-07 snapshot - internally inconsistent); 'child myopia treatment' and 'eye test online' dropped out of top 100 (changes 99 and 43); 'rle eye surgery' entered at pos 1 from outside top 100 (+99)."
+   }
+  ]
+ },
+ "MONTHS12": [
+  "2025-09",
+  "2025-10",
+  "2025-11",
+  "2025-12",
+  "2026-01",
+  "2026-02",
+  "2026-03",
+  "2026-04",
+  "2026-05",
+  "2026-06",
+  "2026-07",
+  "2026-08"
+ ],
+ "MONTHS20": [],
+ "CHANNELS": [
+  "Paid Search",
+  "Cross-network",
+  "Organic Search",
+  "Direct",
+  "Organic Social",
+  "Unassigned",
+  "Referral",
+  "Paid Social",
+  "AI Assistant",
+  "Display",
+  "Organic Video"
+ ],
+ "CHCOL": [
+  "--series-1",
+  "--series-2",
+  "--series-3",
+  "--muted",
+  "--series-4",
+  "--series-5",
+  "--axis",
+  "--critical",
+  "--good",
+  "--grid",
+  "--grid"
+ ],
+ "V": [
+  [
+   "2024-10",
+   3,
+   2
+  ],
+  [
+   "2024-11",
+   0,
+   0
+  ],
+  [
+   "2024-12",
+   0,
+   1
+  ],
+  [
+   "2025-01",
+   0,
+   0
+  ],
+  [
+   "2025-02",
+   2,
+   0
+  ],
+  [
+   "2025-03",
+   0,
+   0
+  ],
+  [
+   "2025-04",
+   0,
+   1
+  ],
+  [
+   "2025-05",
+   0,
+   0
+  ],
+  [
+   "2025-06",
+   0,
+   0
+  ],
+  [
+   "2025-07",
+   0,
+   0
+  ],
+  [
+   "2025-08",
+   0,
+   12
+  ],
+  [
+   "2025-09",
+   6,
+   2
+  ],
+  [
+   "2025-10",
+   0,
+   0
+  ],
+  [
+   "2025-11",
+   0,
+   0
+  ],
+  [
+   "2025-12",
+   0,
+   0
+  ],
+  [
+   "2026-01",
+   6,
+   8
+  ],
+  [
+   "2026-02",
+   0,
+   0
+  ],
+  [
+   "2026-03",
+   7,
+   23
+  ],
+  [
+   "2026-04",
+   24,
+   30
+  ],
+  [
+   "2026-05",
+   7,
+   30
+  ],
+  [
+   "2026-06",
+   0,
+   0
+  ],
+  [
+   "2026-07",
+   0,
+   0
+  ],
+  [
+   "2026-08",
+   0,
+   0
+  ],
+  [
+   "2026-09",
+   0,
+   0
+  ]
+ ]
+}

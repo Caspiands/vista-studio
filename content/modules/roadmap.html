@@ -1,0 +1,256 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>img{max-width:100%}[hidden]{display:none!important}</style>
+<style>.tbtn#theme{display:none!important}html,body{overflow:hidden}</style>
+<script>
+(function(){
+  function h(){return Math.ceil(Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0));}
+  function post(){try{parent.postMessage({vistaHub:1,frame:window.name,height:h()},'*');}catch(e){}}
+  addEventListener('load',function(){post();try{new ResizeObserver(post).observe(document.body);}catch(e){setInterval(post,800);}});
+  addEventListener('resize',post);
+  document.addEventListener('toggle',post,true);
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(!a)return;var id=a.getAttribute('href').slice(1);var t=id&&document.getElementById(id);
+    if(t){e.preventDefault();try{parent.postMessage({vistaHub:1,frame:window.name,scrollTo:t.getBoundingClientRect().top},'*');}catch(x){t.scrollIntoView();}}
+  });
+  addEventListener('message',function(e){
+    var d=e.data;if(!d||!d.vistaTheme)return;
+    var root=document.documentElement,want=d.vistaTheme==='dark';
+    var cur=root.getAttribute('data-theme');var dark=cur?cur==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    var btn=document.getElementById('theme');
+    if(dark!==want){ if(btn){btn.click();} else {root.setAttribute('data-theme',d.vistaTheme);} }
+    setTimeout(post,50);
+  });
+})();
+</script>
+</head><body><title>Vista DTR Roadmap 2026–27</title>
+<style>
+:root{color-scheme:light;--surface-1:#fcfcfb;--plane:#f9f9f7;--text-primary:#0b0b0b;--text-secondary:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,0.10);--series-1:#2a78d6;--series-2:#eb6834;--series-3:#1baf7a;--series-4:#8a63d2;--series-5:#c7a008;--good:#0ca30c;--warning:#fab219;--critical:#d03b3b;--chip:#f0efec;--build:#2a78d6;--run:#1baf7a;--cadence:#8a63d2;--today:#d03b3b}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;--surface-1:#1a1a19;--plane:#0d0d0d;--text-primary:#fff;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,0.10);--series-1:#3987e5;--series-2:#d95926;--series-3:#199e70;--series-4:#9d7be0;--series-5:#d9b32a;--chip:#262624;--build:#3987e5;--run:#199e70;--cadence:#9d7be0}}
+:root[data-theme="dark"]{color-scheme:dark;--surface-1:#1a1a19;--plane:#0d0d0d;--text-primary:#fff;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,0.10);--series-1:#3987e5;--series-2:#d95926;--series-3:#199e70;--series-4:#9d7be0;--series-5:#d9b32a;--chip:#262624;--build:#3987e5;--run:#199e70;--cadence:#9d7be0}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{background:var(--plane);color:var(--text-primary);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-inline:16px}
+.wrap{max-width:1280px;margin:0 auto;padding-block:28px 80px}
+header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;padding-bottom:20px;border-bottom:2px solid var(--series-1);margin-bottom:22px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:29px;line-height:1.2;margin:6px 0;font-weight:700;letter-spacing:-.01em;text-wrap:balance}h1 span{color:var(--series-1)}
+.sub{color:var(--text-secondary);font-size:14px;max-width:720px}.meta{font-size:12px;color:var(--muted);margin-top:10px}
+.tbtn{background:var(--surface-1);border:1px solid var(--border);color:var(--text-secondary);border-radius:999px;padding:7px 15px;font-size:12.5px;cursor:pointer;font-family:inherit;white-space:nowrap}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;margin:-6px 0 8px}nav.toc a{color:var(--text-secondary);text-decoration:none;border-bottom:1px solid var(--grid)}nav.toc a:hover{color:var(--series-1);border-color:var(--series-1)}
+section{margin:44px 0 0}h2{font-size:19px;margin:0 0 4px;font-weight:700}h2 .num{color:var(--series-1);font-variant-numeric:tabular-nums;margin-right:8px}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 18px;max-width:840px}
+.card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+.grid{display:grid;gap:14px}.g6{grid-template-columns:repeat(6,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1000px){.g6{grid-template-columns:repeat(3,1fr)}.g3,.g2{grid-template-columns:1fr}}@media(max-width:620px){.g6{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:2px;min-height:112px;border-left:4px solid var(--series-1)}
+.tile .lab{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}.tile .val{font-size:26px;font-weight:700;line-height:1.1;margin-top:4px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.tile .note{font-size:11.5px;color:var(--text-secondary);margin-top:auto;line-height:1.4}
+.obj{display:grid;grid-template-columns:44px 1fr;gap:12px}.obj .id{font-size:22px;font-weight:700;color:var(--series-1);font-variant-numeric:tabular-nums}.obj h3{margin:0 0 4px;font-size:15px}.obj p{margin:0 0 6px;font-size:12.5px;color:var(--text-secondary)}.obj .m{font-size:12.5px;color:var(--text-primary)}.obj .o{font-size:11.5px;color:var(--muted);margin-top:6px}
+.chart-title{font-size:14.5px;font-weight:700}.chart-sub{font-size:12.5px;color:var(--text-secondary);margin:2px 0 14px}
+svg{display:block;width:100%;overflow:visible}.tick{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--text-secondary)}.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.tip{position:fixed;pointer-events:none;z-index:99;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:9px 11px;font-size:12px;box-shadow:0 6px 22px rgba(0,0,0,.16);opacity:0;transition:opacity .1s;max-width:300px;color:var(--text-primary)}.tip b{display:block;font-size:12.5px;margin-bottom:3px}.tip .r{color:var(--text-secondary);display:block}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px;align-items:center}.filters button{background:var(--chip);border:1px solid var(--border);color:var(--text-secondary);border-radius:999px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:inherit}.filters button.on{background:var(--series-1);color:#fff;border-color:var(--series-1)}.filters .sep{color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-left:6px}
+.gantt-wrap{overflow-x:auto}
+.tscroll{overflow-x:auto;margin-top:12px}
+table.data{width:100%;border-collapse:collapse;font-size:12.5px}table.data th{text-align:left;font-weight:600;color:var(--text-secondary);border-bottom:1px solid var(--axis);padding:7px 9px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;cursor:pointer;user-select:none}table.data th.n{text-align:right}table.data th.sorted::after{content:" ▾";color:var(--series-1)}table.data th.sorted.asc::after{content:" ▴"}
+table.data td{padding:7px 9px;border-bottom:1px solid var(--grid);vertical-align:top}table.data td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}table.data tbody tr:hover{background:var(--chip)}
+.heat td.h{text-align:center;font-variant-numeric:tabular-nums;font-size:12px;min-width:38px}
+.month{border:1px solid var(--border);border-radius:12px;background:var(--surface-1);margin-bottom:10px}.month summary{cursor:pointer;padding:14px 18px;display:grid;grid-template-columns:90px 1fr auto;gap:14px;align-items:baseline;list-style:none}.month summary::-webkit-details-marker{display:none}.month summary .mm{font-weight:700;font-variant-numeric:tabular-nums}.month summary .th{font-weight:600}.month summary .ph{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}.month .body{padding:0 18px 16px;display:grid;grid-template-columns:2fr 1fr;gap:18px}.month .body h4{margin:8px 0 4px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.month .body ul{margin:0;padding-left:18px;font-size:12.5px}.month .body li{margin-bottom:3px}.month .body p{margin:0;font-size:12.5px}
+@media(max-width:800px){.month .body{grid-template-columns:1fr}.month summary{grid-template-columns:1fr}}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;color:#fff;background:var(--series-1)}
+.kv{display:grid;grid-template-columns:1fr auto;gap:6px 14px;font-size:12.5px}.kv div:nth-child(even){text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.chain{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.chain .step{background:var(--chip);border-radius:10px;padding:12px;font-size:12px;position:relative}.chain .step b{display:block;font-size:12.5px;margin-bottom:4px}.chain .step::after{content:"→";position:absolute;right:-12px;top:14px;color:var(--muted);font-size:14px}.chain .step:last-child::after{content:""}
+@media(max-width:900px){.chain{grid-template-columns:repeat(2,1fr)}.chain .step::after{content:""}}
+.note{font-size:12px;color:var(--text-secondary);margin-top:10px}
+footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);font-size:12px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--series-1);outline-offset:2px}@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div>
+    <div class="eyebrow">Vista Eye Specialist · Qualitas Health Malaysia · Caspian Digital Solutions</div>
+    <h1>Digital Transformation Roadmap <span>November 2026 – October 2027</span></h1>
+    <div class="sub">One year, nine RFP scopes, one accountable partner. In order: get one honest set of numbers, launch the new website before Chinese New Year with the Mandarin campaign first, fix lead handling where enquiries are lost today, and move media money to what produces booked and attended visits from Month 4. Not a replacement of what Vista has — a plan that builds on the current systems and leaves Vista owning something sustainable.</div>
+    <div class="meta" id="meta"></div>
+  </div>
+  <button class="tbtn" id="theme">◐ Dark mode</button>
+</header>
+<nav class="toc"><a href="#s1">Objectives</a><a href="#s2">Phases</a><a href="#s3">Gantt</a><a href="#s4">Month by month</a><a href="#s5">Campaigns & media</a><a href="#s6">Team</a><a href="#s7">Solution</a><a href="#s8">KPI ladder</a><a href="#s9">Risks</a></nav>
+
+<div class="grid g6" style="margin-top:20px">
+  <div class="tile"><div class="lab">Planned start</div><div class="val">Month 1</div><div class="note">Dates assume 2 Nov 2026; durations hold if the start moves</div></div>
+  <div class="tile" style="border-left-color:var(--critical)"><div class="lab">Website go-live</div><div class="val">22 Jan 2027</div><div class="note">Week 12; fallback 22 Feb if Gate 5 fails on 15 Jan</div></div>
+  <div class="tile"><div class="lab">Delivery team</div><div class="val">16 roles</div><div class="note">People to be assigned; plus clinical advisor, external security/accessibility reviewer, translator</div></div>
+  <div class="tile" style="border-left-color:var(--series-3)"><div class="lab">Primary KPI</div><div class="val">RM per booking</div><div class="note">Baseline RM182 per booked appointment (Jan–Aug 2026); target −25% by Month 12. Cost per attended visit reported alongside once the booking-system link is live</div></div>
+</div>
+
+<section id="s1"><h2><span class="num">01</span>Six objectives, each with an owner and a number</h2>
+<p class="lede">Every objective traces to a finding in the audit and to a scope in the RFP. Measures are the commitments CDS put in its submission, made specific.</p>
+<div class="grid g2" id="objectives"></div></section>
+
+<section id="s2"><h2><span class="num">02</span>Phases and gates</h2>
+<p class="lede">Six phases, each planned as a duration. The dates shown assume work starts on 2 November 2026; if the start date moves, every phase moves with it and the durations hold. The build sits inside the first three months so that everything else runs on a tracked, properly structured site for nine months of the year.</p>
+<div class="card"><svg id="c-phases" viewBox="0 0 1200 200"></svg><div id="phase-cards" class="grid g3" style="margin-top:16px"></div></div></section>
+
+<section id="s3"><h2><span class="num">03</span>Gantt — ten workstreams, twelve months</h2>
+<p class="lede">Filter by workstream or owner. Blue bars are build work with an end date; green bars are retained delivery; purple bars are cadences. Diamonds are gates and milestones. Hover any bar for dates.</p>
+<div class="card">
+  <div class="filters" id="g-filters"></div>
+  <div class="gantt-wrap"><svg id="c-gantt" viewBox="0 0 1240 100"></svg></div>
+  <div class="legend"><span><i style="background:var(--build)"></i>Build / one-off</span><span><i style="background:var(--run)"></i>Retained delivery</span><span><i style="background:var(--cadence)"></i>Cadence</span><span><i style="background:var(--critical);border-radius:1px;transform:rotate(45deg)"></i>Gate / milestone</span><span><i style="background:var(--chip);border:1px dashed var(--muted)"></i>Public holiday / festival</span></div>
+</div></section>
+
+<section id="s4"><h2><span class="num">04</span>Month by month</h2>
+<p class="lede">What is delivered, what is running in market, what is measured and which gate closes the month. Open any month.</p>
+<div id="months"></div></section>
+
+<section id="s5"><h2><span class="num">05</span>Campaign calendar</h2>
+<p class="lede">Evergreen campaigns run all year; seasonal campaigns draw on a reserve that returns to evergreen when unused. Every campaign is optimised to a CRM-verified booking from March 2027.</p>
+<div class="card"><div class="chart-title">Campaign calendar 2026–27</div><svg id="c-cal" viewBox="0 0 600 420"></svg></div>
+<div class="card" style="margin-top:14px"><div class="chart-title">Campaign register</div><div class="tscroll" id="t-campaigns"></div></div></section>
+
+<section id="s6"><h2><span class="num">06</span>Team and allocation</h2>
+<p class="lede">Planned days per role per month, with each role's core and shared responsibilities. People are assigned against these roles at mobilisation; these are the planning figures CDS commits to at contract.</p>
+<div class="card"><div class="chart-title">Allocation heatmap (days/month by role)</div><div class="tscroll" id="t-team"></div></div>
+<div class="card" style="margin-top:14px"><div class="chart-title">Roles — core and shared responsibilities</div><div class="chart-sub">Core = the role is accountable and does the work. Shared = the role contributes to, or depends on, another role's deliverable.</div><div class="tscroll" id="t-roles"></div></div>
+</section>
+
+<section id="s7"><h2><span class="num">07</span>Solution requirements</h2>
+<p class="lede">The stack as proposed, the integrations that make the lead ledger possible, and the measurement chain the whole programme depends on. This is the same stack CDS runs for its other clients; nothing here is experimental.</p>
+<div class="grid g2" style="margin-bottom:14px">
+  <div class="card"><div class="chart-title">In plain terms</div><ul style="font-size:12.5px;padding-left:18px;margin:8px 0">
+   <li><b>Headless CMS (Storyblok).</b> The RFP asks for a headless CMS, and we agree. It simply means the content (text, images, prices, doctor profiles) is kept in one editing system, and the website reads from it. Vista's team edits pages in a visual editor with a medical sign-off step; the website itself stays fast because it is pre-built rather than assembled on every visit. The same content can later feed the chat assistant or an app without re-entering it.</li>
+   <li><b>One website, personalised.</b> Visitors do not have time to read twenty pages to find what they need. On the new site they can answer three quick questions — who the visit is for, where they are, what brought them here — and the page adapts: relevant treatment, what is included, and the nearest of the 16 centres. Anyone who prefers to browse skips this once and lands on the normal home page. A single site also ranks separately for every page it has, so there is no need for a second website to get a second search listing.</li>
+   <li><b>Existing systems first.</b> Respond.io stays as the chat and lead platform, with automation and a supporting reporting layer added so leads can be tracked from first message to booked and attended visit. Salesforce (or the booking system) is linked to confirm attended appointments — by connector where the subscription allows it, by scheduled export where it does not. A new system is only proposed if the existing ones cannot do the job.</li>
+   <li><b>Customer-service flow.</b> Centres and HQ both handle leads today and there is no hand-over when a conversation goes unanswered (weekends especially). In Phase 1 we sit down with the Vista CS team to map the flow and agree access levels and follow-up rules. This is part of the retainer, not an extra service.</li>
+   <li><b>How CDS uses AI.</b> CDS is an AI-first company for strategy and analysis: the plans here were built with AI tools and then shaped by the team's experience. Delivery stays human-led. Fully automated ad products (for example Meta Advantage+ or Andromeda-style asset matching) are used selectively — they need hundreds of ad variants, can pair the wrong image or music with a clinical message, and cost more than they return at Vista's scale. AI sets the broad targeting frame; people make the experience-based adjustments.</li>
+  </ul></div>
+  <div class="card"><div class="chart-title">What Vista gets that it does not have today</div><ul style="font-size:12.5px;padding-left:18px;margin:8px 0">
+   <li>One lead number everyone agrees on, and a cost per booked appointment and per attended visit by campaign, centre and language.</li>
+   <li>A trilingual website that loads in under 1.5 seconds and passes accessibility and consent checks.</li>
+   <li>Campaigns that optimise towards confirmed bookings, not chat starts.</li>
+   <li>Centre-level visibility: 16 canonical branch pages, Google Business Profile posts per centre, and local search tracking per centre × service.</li>
+   <li>A management view (Command Centre) owned by Vista, so the reporting does not leave when an agency does.</li>
+  </ul></div>
+</div>
+<div class="card"><div class="chart-title">From impression to booked appointment — the chain every number will run through</div><div class="chart-sub">Each link failed in the audit. Each is rebuilt in Phases 1–2 and verified at go-live.</div><div class="chain" id="chain"></div></div>
+<div class="grid g2" style="margin-top:14px">
+  <div class="card"><div class="chart-title">Technology stack</div><div class="tscroll" id="t-stack"></div></div>
+  <div class="card"><div class="chart-title">Integrations</div><ul id="integrations" style="font-size:12.5px;padding-left:18px;margin:8px 0"></ul><div class="note">Glossary: headless CMS — content stored separately from the website's presentation so the same content can serve web, chat and app; server-side tagging — tracking runs from a CDS-controlled server in Malaysia rather than the visitor's browser, so consent is enforced and data is not lost to ad blockers; CAPI / Enhanced Conversions — sending the confirmed booking back to Meta and Google so their systems optimise towards patients, not chat starts; ISR — pages are pre-built for speed and refreshed automatically when content changes.</div></div>
+</div></section>
+
+<section id="s8"><h2><span class="num">08</span>KPI ladder</h2>
+<p class="lede">Baselines come from the audit; floors are the CDS submission's commitments, binding from the post-launch baseline (26 Feb 2027). Every figure in the Command Centre carries a confidence label: verified, modelled or estimated.</p>
+<div class="card"><div class="tscroll" id="t-kpi"></div></div></section>
+
+<section id="s9"><h2><span class="num">09</span>Risks, owners and fallbacks</h2>
+<div class="card"><div class="tscroll" id="t-risks"></div></div></section>
+
+<footer>Caspian Digital Solutions — prepared for Vista Eye Specialist, September 2026. Evidence base: the Digital Asset Analysis tab and the CDS technical submission to RFP QHM/VES/DT/2026/003. This roadmap is a starting proposal; it is refined together with the Vista team in the first two weeks.</footer>
+</div>
+<div class="tip" id="tip"></div>
+<script>
+const ROADMAP = /*__VISTA_DATA__:ROADMAP*/;
+
+</script>
+<script>
+const NS='http://www.w3.org/2000/svg';
+const el=(n,a={})=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt=n=>n==null?'–':Math.round(n).toLocaleString('en-US');
+const tip=document.getElementById('tip');
+function bindTip(node,html){node.addEventListener('mousemove',e=>{tip.innerHTML=html;tip.style.opacity=1;let x=e.clientX+14,y=e.clientY+14;if(x+310>innerWidth)x=e.clientX-320;if(y+120>innerHeight)y=e.clientY-120;tip.style.left=x+'px';tip.style.top=y+'px';});node.addEventListener('mouseleave',()=>tip.style.opacity=0);}
+const D=ROADMAP;
+const T0=new Date('2026-11-01'),T1=new Date('2027-11-01');
+const dayN=s=>(new Date(s)-T0)/86400000;const TOTAL=(T1-T0)/86400000;
+const MON=/*__VISTA_DATA__:MON*/;
+const MSTART=D.months.map(m=>dayN(m+'-01'));
+const fdate=s=>{const d=new Date(s);return d.getDate()+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]+' '+d.getFullYear();};
+const HOLIDAYS=/*__VISTA_DATA__:HOLIDAYS*/;
+document.getElementById('meta').textContent=D.meta.prepared+' · '+D.meta.premise;
+
+/* theme */
+const root=document.documentElement,tb=document.getElementById('theme');
+const isDark=()=>{const t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;};
+const syncBtn=()=>tb.textContent=isDark()?'◑ Light mode':'◐ Dark mode';
+tb.addEventListener('click',()=>{root.setAttribute('data-theme',isDark()?'light':'dark');syncBtn();drawAll();});syncBtn();
+
+/* sortable table */
+function table(id,cols,rows,opts={}){const c=document.getElementById(id);let sk=opts.sort||null,asc=opts.asc||false;
+ function render(){const data=[...rows];if(sk){const col=cols.find(x=>x.k===sk);data.sort((a,b)=>{let va=a[sk],vb=b[sk];if(col.num){va=+va||0;vb=+vb||0;return asc?va-vb:vb-va;}return asc?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va));});}
+  let h='<table class="data'+(opts.cls?' '+opts.cls:'')+'"><thead><tr>'+cols.map(col=>`<th class="${col.num?'n':''} ${sk===col.k?'sorted'+(asc?' asc':''):''}" data-k="${col.k}">${col.h}</th>`).join('')+'</tr></thead><tbody>';
+  data.forEach(r=>{h+='<tr>'+cols.map(col=>{let v=r[col.k];if(col.f)v=col.f(v,r);else if(col.num)v=fmt(v);return `<td class="${col.num?'n':''}${col.cls?' '+col.cls:''}">${v??'–'}</td>`;}).join('')+'</tr>';});
+  c.innerHTML=h+'</tbody></table>';c.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;if(sk===k)asc=!asc;else{sk=k;asc=false;}render();}));}
+ render();}
+
+/* objectives */
+document.getElementById('objectives').innerHTML=D.objectives.map(o=>`<div class="card obj"><div class="id">${o.id}</div><div><h3>${o.name}</h3><p>${o.why}</p><div class="m"><b>Measure:</b> ${o.measure}</div><div class="o">Owner: ${o.owner}</div></div></div>`).join('');
+
+/* phases strip */
+function drawPhases(){const svg=document.getElementById('c-phases');svg.innerHTML='';const W=1200,L=20,R=70,pw=W-L-R;const X=d=>L+dayN(d)/TOTAL*pw;const SHORT=/*__VISTA_DATA__:SHORT*/;
+ MON.forEach((m,i)=>{const x=X(D.months[i]+'-01');svg.appendChild(el('line',{x1:x,x2:x,y1:20,y2:140,stroke:css('--grid')}));const t=el('text',{x:x+4,y:16,class:'tick'});t.textContent=m;svg.appendChild(t);});
+ const cols=['--series-2','--series-1','--series-1','--series-4','--series-3','--series-3'];
+ D.phases.forEach((p,i)=>{const x1=X(p.from),x2=X(p.to)+pw/TOTAL;const y=24+(i%3)*30;const r=el('rect',{x:x1,y,width:x2-x1,height:24,rx:5,fill:css(cols[i]),opacity:.9});svg.appendChild(r);const t=el('text',{x:x1+7,y:y+16,fill:'#fff','font-size':'11.5','font-weight':'700'});t.textContent=(x2-x1)<60?p.id:(x2-x1)<230?p.id+' '+SHORT[p.id]:p.id+' '+p.name+' · '+fdate(p.from).slice(0,6)+' – '+fdate(p.to).slice(0,6);svg.appendChild(t);bindTip(r,`<b>${p.name}</b><span class="r">${p.summary}</span><span class="r">Gates: ${p.gate}</span>`);});
+ const gates=[["2026-11-13","Gate 0"],["2026-11-20","Gate 1"],["2026-11-27","Gate 2"],["2026-12-16","Day 45"],["2027-01-15","Gate 5"],["2027-01-22","GO-LIVE"],["2027-02-19","Gate 6"],["2027-02-26","Baseline"],["2027-04-26","SteerCo 2"],["2027-06-30","M6"],["2027-07-26","SteerCo 3"],["2027-07-30","Renewal"],["2027-10-25","SteerCo 4"]];
+ gates.forEach(([d,n],i)=>{const x=X(d);const y=130;const dm=el('rect',{x:x-5,y:y-5,width:10,height:10,transform:`rotate(45 ${x} ${y})`,fill:n==='GO-LIVE'?css('--critical'):css('--text-primary')});svg.appendChild(dm);bindTip(dm,`<b>${n}</b><span class="r">${fdate(d)}</span>`);const t=el('text',{x,y:y+20+(i%3)*14,class:'tick','text-anchor':'middle','font-weight':n==='GO-LIVE'?'700':'400'});t.textContent=n+' '+fdate(d).slice(0,6);svg.appendChild(t);});
+ document.getElementById('phase-cards').innerHTML=D.phases.map(p=>`<div style="font-size:12.5px"><b>${p.id} ${p.name}</b> <span style="color:var(--muted)">${p.dur} · ${fdate(p.from)} – ${fdate(p.to)}</span><div style="color:var(--text-secondary);margin-top:3px">${p.summary}</div><div style="margin-top:3px"><b>Gates:</b> ${p.gate}</div></div>`).join('');
+}
+
+/* gantt */
+let gWS='All',gOwner='All';
+function drawGantt(){
+ const svg=document.getElementById('c-gantt');svg.innerHTML='';const W=1240,L=330,R=16,pw=W-L-R;const X=d=>L+dayN(d)/TOTAL*pw;const rowH=22,hdr=34;
+ const ws=D.workstreams.filter(w=>(gWS==='All'||w.id===gWS)&&(gOwner==='All'||w.owner.includes(gOwner)||w.support.includes(gOwner)));
+ let rows=[];ws.forEach(w=>{rows.push({type:'ws',w});w.bars.forEach(b=>rows.push({type:'bar',w,b}));});
+ const H=hdr+rows.length*rowH+16;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+ MON.forEach((m,i)=>{const x=X(D.months[i]+'-01');svg.appendChild(el('line',{x1:x,x2:x,y1:hdr-8,y2:H-10,stroke:css('--grid')}));const t=el('text',{x:x+4,y:hdr-14,class:'tick'});t.textContent=m;svg.appendChild(t);});
+ HOLIDAYS.forEach(([d,n])=>{const x=X(d);const r=el('rect',{x:x-1,y:hdr-8,width:pw/TOTAL*1.5+1,height:H-hdr-2,fill:css('--muted'),opacity:.18});svg.appendChild(r);bindTip(r,`<b>${n}</b><span class="r">${fdate(d)}</span>`);});
+ const gl=X('2027-01-22');svg.appendChild(el('line',{x1:gl,x2:gl,y1:hdr-8,y2:H-10,stroke:css('--critical'),'stroke-width':1.5,'stroke-dasharray':'4 3'}));
+ rows.forEach((r,i)=>{const y=hdr+i*rowH;
+  if(r.type==='ws'){svg.appendChild(el('rect',{x:0,y:y-2,width:W,height:rowH,fill:css('--chip')}));const t=el('text',{x:8,y:y+13,'font-size':'12','font-weight':'700',fill:css('--text-primary')});t.textContent=r.w.id+' · '+r.w.name;svg.appendChild(t);const o=el('text',{x:L-8,y:y+13,'font-size':'11',fill:css('--muted'),'text-anchor':'end'});o.textContent=r.w.owner+' · scope '+r.w.scope;svg.appendChild(o);
+   r.w.milestones.forEach(m=>{const x=X(m.d);const d=el('rect',{x:x-5,y:y+4,width:10,height:10,transform:`rotate(45 ${x} ${y+9})`,fill:m.t.includes('GO-LIVE')?css('--critical'):css('--text-primary')});svg.appendChild(d);bindTip(d,`<b>${m.t}</b><span class="r">${fdate(m.d)}</span>`);});
+  }else{const b=r.b;const t=el('text',{x:16,y:y+14,'font-size':'11.5',fill:css('--text-secondary')});let lab=b.label;if(lab.length>52)lab=lab.slice(0,50)+'…';t.textContent=lab;svg.appendChild(t);
+   const x1=X(b.from),x2=X(b.to)+pw/TOTAL;const col=b.kind==='build'?'--build':b.kind==='run'?'--run':'--cadence';const rc=el('rect',{x:x1,y:y+4,width:Math.max(x2-x1,3),height:13,rx:3,fill:css(col),opacity:b.kind==='cadence'?.75:.95});svg.appendChild(rc);
+   if(b.kind==='cadence'){for(let x=x1+18;x<x2;x+=pw/TOTAL*30.4)svg.appendChild(el('line',{x1:x,x2:x,y1:y+4,y2:y+17,stroke:css('--surface-1'),'stroke-width':2}));}
+   bindTip(rc,`<b>${b.label}</b><span class="r">${fdate(b.from)} – ${fdate(b.to)}</span><span class="r">${r.w.name} · ${r.w.owner}</span><span class="r">Support: ${r.w.support}</span>`);}
+ });
+}
+function ganttFilters(){const f=document.getElementById('g-filters');const owners=[...new Set(D.workstreams.map(w=>w.owner))];
+ f.innerHTML='<span class="sep">Workstream</span>'+['All',...D.workstreams.map(w=>w.id)].map(v=>`<button data-t="ws" data-v="${v}" class="${v==='All'?'on':''}">${v==='All'?'All':v+' '+D.workstreams.find(w=>w.id===v).name}</button>`).join('')+'<span class="sep">Owner</span>'+['All',...owners].map(v=>`<button data-t="ow" data-v="${v}" class="${v==='All'?'on':''}">${v}</button>`).join('');
+ f.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.t==='ws')gWS=b.dataset.v;else gOwner=b.dataset.v;f.querySelectorAll('button').forEach(x=>x.classList.toggle('on',(x.dataset.t==='ws'?gWS:gOwner)===x.dataset.v));drawGantt();});}
+
+/* months */
+document.getElementById('months').innerHTML=D.monthly.map((m,i)=>`<details class="month" ${i<2?'open':''}><summary><span class="mm">${MON[i]}</span><span><span class="th">${m.theme}</span></span><span class="ph">${m.phase}</span></summary><div class="body"><div><h4>Deliverables</h4><ul>${m.deliverables.map(d=>`<li>${d}</li>`).join('')}</ul></div><div><h4>In market</h4><p>${m.campaigns}</p><h4>Measured</h4><p>${m.kpi}</p><h4>Gates</h4><p>${m.gates}</p></div></div></details>`).join('');
+
+/* campaign calendar */
+function drawCal(){const svg=document.getElementById('c-cal');svg.innerHTML='';const W=600,L=150,pw=W-L-10;const X=d=>L+dayN(d)/TOTAL*pw;const rowH=30,hdr=26;
+ const rows=[["Cataract evergreen","2026-11-02","2027-10-29","--series-1"],["LASIK / ICL evergreen","2026-11-02","2027-10-29","--series-1"],["Kids / Myopia","2026-11-16","2027-01-03","--series-3"],["Kids / Myopia (mid-year)","2027-05-24","2027-06-27","--series-3"],["Dry Eye","2026-11-02","2027-10-29","--series-1"],["CNY 2027","2027-01-25","2027-02-14","--series-2"],["Eye Carnival 2027","2027-02-22","2027-04-30","--series-2"],["Branch-level local","2027-05-03","2027-10-29","--series-4"],["Open House 2027","2027-07-12","2027-09-19","--series-2"],["TikTok pilot → scale","2027-01-04","2027-10-29","--series-5"],["LinkedIn validation","2027-01-04","2027-03-26","--series-5"],["World Sight Day / Deepavali","2027-10-11","2027-10-29","--series-2"]];
+ const H=hdr+rows.length*rowH;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+ MON.forEach((m,i)=>{const x=X(D.months[i]+'-01');svg.appendChild(el('line',{x1:x,x2:x,y1:hdr-6,y2:H,stroke:css('--grid')}));const t=el('text',{x:x+2,y:hdr-12,class:'tick','font-size':'9.5'});t.textContent=m.split(' ')[0];svg.appendChild(t);});
+ rows.forEach((r,i)=>{const y=hdr+i*rowH;const t=el('text',{x:0,y:y+15,'font-size':'11.5',fill:css('--text-primary')});t.textContent=r[0];svg.appendChild(t);const rc=el('rect',{x:X(r[1]),y:y+3,width:X(r[2])-X(r[1])+pw/TOTAL,height:17,rx:4,fill:css(r[3]),opacity:r[3]==='--series-1'?.55:.9});svg.appendChild(rc);bindTip(rc,`<b>${r[0]}</b><span class="r">${fdate(r[1])} – ${fdate(r[2])}</span>`);});
+ const gl=X('2027-01-22');svg.appendChild(el('line',{x1:gl,x2:gl,y1:hdr-6,y2:H,stroke:css('--critical'),'stroke-dasharray':'4 3'}));}
+table('t-campaigns',[{h:'Campaign',k:'name'},{h:'Platforms',k:'platforms'},{h:'Window',k:'window'},{h:'Owner',k:'owner'},{h:'Basis',k:'note'}],D.campaigns);
+
+/* team */
+(function(){const cols=[{h:'Role',k:'role'},{h:'Tier',k:'tier'}].concat(MON.map((m,i)=>({h:m.split(' ')[0],k:'a'+i,num:1,cls:'h',f:(v)=>v})));cols.push({h:'Total',k:'tot',num:1});
+ const rows=D.team.map(t=>{const r={role:t.role,tier:t.tier,tot:t.alloc.reduce((a,b)=>a+b,0)};t.alloc.forEach((v,i)=>r['a'+i]=v);return r;});
+ table('t-team',cols,rows,{cls:'heat'});
+ const totals=MON.map((m,i)=>D.team.reduce((a,t)=>a+t.alloc[i],0));const tb=document.querySelector('#t-team tbody');const tr=document.createElement('tr');tr.innerHTML='<td><b>Team total (days)</b></td><td></td>'+totals.map(v=>`<td class="n h"><b>${v}</b></td>`).join('')+`<td class="n"><b>${totals.reduce((a,b)=>a+b,0)}</b></td>`;tb.appendChild(tr);
+ document.querySelectorAll('#t-team td.h').forEach(td=>{const v=+td.textContent;if(v>=14)td.style.background='rgba(42,120,214,.28)';else if(v>=8)td.style.background='rgba(42,120,214,.14)';});
+ table('t-roles',[{h:'Role',k:'role'},{h:'Tier',k:'tier'},{h:'Core responsibilities',k:'core'},{h:'Shared responsibilities',k:'shared'}],D.team);
+ })();
+
+/* solution */
+document.getElementById('chain').innerHTML=D.solution.chain.map(s=>`<div class="step"><b>${s[0]}</b>${s[1]}</div>`).join('');
+table('t-stack',[{h:'Layer',k:'a'},{h:'Specification',k:'b'}],D.solution.stack.map(s=>({a:s[0],b:s[1]})));
+document.getElementById('integrations').innerHTML=D.solution.integrations.map(i=>`<li>${i}</li>`).join('');
+table('t-kpi',[{h:'KPI',k:'k'},{h:'Baseline (audit)',k:'baseline'},{h:'Month 4',k:'m4'},{h:'Month 6',k:'m6'},{h:'Month 12',k:'m12'},{h:'Source',k:'src'}],D.kpis);
+table('t-risks',[{h:'Risk',k:'r'},{h:'Owner',k:'owner'},{h:'Mitigation',k:'mit'},{h:'Fallback',k:'fallback'}],D.risks);
+
+function drawAll(){drawPhases();drawGantt();drawCal();}
+ganttFilters();drawAll();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{syncBtn();drawAll();});
+
+</script>
+
+</body></html>

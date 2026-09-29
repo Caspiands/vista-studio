@@ -1,0 +1,981 @@
+{
+ "S": {
+  "findings": [
+   {
+    "id": "F-20",
+    "area": "Rankings",
+    "what": "The ranking count Vista sees is flattered by brand terms",
+    "ev": "Semrush top-3 count 59 → 106 → 97 (Jul 2025–Jul 2026) after the tracked set grew from 150 to 201 keywords; 60–70 of the top-3 terms each month are brand or near-zero volume. Meanwhile 'lasik surgery' (3,600/mo) went 5 → 21 and 'cataract surgery' (3,600/mo) 7 → 23 → out of the top 100. Organic sessions were never reported.",
+    "fix": "Report organic visitors and enquiries first; track a commercial keyword set agreed with Vista; brand terms shown separately."
+   },
+   {
+    "id": "F-11",
+    "area": "Local",
+    "what": "16 centres, 101 location URLs, no H1 on any of them",
+    "ev": "74 duplicate, legacy or copied location URLs return 200 and sit in the sitemap (5 PJ-HQ copies in BM and 5 in ZH, hub copies, /locations-old/, EN pages under a Chinese slug). 0 of 75 location pages carry an H1; none has LocalBusiness markup; 9 of 16 centre pages have 78–109 words. Phone formats differ on 3 pages; the enquiry form lists 14 of 16 centres. Google Business Profile: 13 listings plus a duplicate HQ listing, keyword-stuffed names.",
+    "fix": "One canonical page per centre per language with markup; 74 URLs redirected; 16 verified listings with real names; centre × service tracking."
+   },
+   {
+    "id": "F-12",
+    "area": "Structure",
+    "what": "Sitemap omits two years of content; three languages on broken URLs",
+    "ev": "The sitemap lists 224 URLs but none of the 52 posts published in 2025–2026. 0 hreflang tags on 379 pages; languages served on ?lang= query strings; 37 of 43 Mandarin pages on percent-encoded slugs. On vistanow.com.my, 156 BM/ZH pages canonicalise to the English URL and 31 of 39 ZH posts are untranslated English.",
+    "fix": "Clean /ms/ and /zh/ routes with hreflang on the new site; every post in the sitemap; vistanow content migrated and the domain redirected."
+   },
+   {
+    "id": "F-13",
+    "area": "Content",
+    "what": "Content arrives in batches and has stopped",
+    "ev": "vista.com.my: 55 posts in 24 months, 24 of them in April 2026. vistanow.com.my: 109 posts, 83 in Mar–May 2026. Nothing on either site since May 2026; 15 of 24 months had zero output. At least 10 press clippings duplicated across both domains. The content hub has no active link from the main site.",
+    "fix": "Four medically reviewed articles a month on the main site from Month 2, planned from the keyword map; quarterly refresh of top pages."
+   },
+   {
+    "id": "F-19",
+    "area": "Entities",
+    "what": "No medical structured data; 20 doctors share one page",
+    "ev": "Markup is the CMS default (Organization, WebPage, Breadcrumb, Article); LocalBusiness on the English home page only. No MedicalOrganization, MedicalClinic, Physician or MedicalProcedure on either domain. 20 ophthalmologists listed on one /doctors page with no individual URLs, portraits with empty alt text. 176 of 379 pages have no meta description.",
+    "fix": "Full medical schema set; a profile page per doctor; FAQ blocks per service; meta data generated from the CMS with a check in CI."
+   },
+   {
+    "id": "O-04",
+    "area": "Languages",
+    "what": "Mandarin and Malay demand is real and under-served",
+    "ev": "GA4 language settings: Mandarin 9%, Malay 6–10%, Indonesian 2–4% of users; Google Ads already runs full CN and BM campaign sets; TikTok output is 100% BM. On the website the Mandarin pages sit on broken slugs and most ZH posts are untranslated.",
+    "fix": "Every service and centre page in EN, BM and ZH with hreflang; BM-first for kids and dry eye; ZH-first for cataract and refractive; the CNY campaign lands on the ZH site."
+   },
+   {
+    "id": "O-05",
+    "area": "AI",
+    "what": "AI assistants already send patients — nobody measures it",
+    "ev": "GA4 'AI Assistant' channel: 282 sessions in 20 months, 7 in May 2026 rising to 134 in August 2026, with 89–92% engagement; chatgpt.com appears under four different mediums because the channel grouping was never set up.",
+    "fix": "Channel grouping fixed in Month 1; prompt-library baseline on five engines by Day 30; citation-ready content standard from Month 2."
+   }
+  ],
+  "kw": [
+   {
+    "t": "eye specialist",
+    "vol": 4400,
+    "lang": "EN",
+    "track": "SEO",
+    "pillar": "Inside Vista",
+    "aud": "All",
+    "page": "Home + centre pages",
+    "now": "4–6",
+    "note": "Brand-adjacent head term; hold and extend to city variants"
+   },
+   {
+    "t": "cataract surgery",
+    "vol": 3600,
+    "lang": "EN",
+    "track": "SEO",
+    "pillar": "Weigh Your Options",
+    "aud": "Adults 40+ · Seniors",
+    "page": "Cataract service page + centre × cataract",
+    "now": "Not in top 100",
+    "note": "Largest enquiry category (12,853 chats/yr); first priority"
+   },
+   {
+    "t": "lasik surgery",
+    "vol": 3600,
+    "lang": "EN",
+    "track": "SEO",
+    "pillar": "Weigh Your Options",
+    "aud": "Young adults",
+    "page": "iLASIK service page",
+    "now": "21",
+    "note": "Was 5, then 1; recover with a rebuilt page and comparison content"
+   },
+   {
+    "t": "ipoh eye specialist",
+    "vol": 2900,
+    "lang": "EN",
+    "track": "Local",
+    "pillar": "Inside Vista",
+    "aud": "All",
+    "page": "Ipoh centre page",
+    "now": "12",
+    "note": "Template for every city term"
+   },
+   {
+    "t": "lasik price malaysia",
+    "vol": null,
+    "lang": "EN",
+    "track": "AEO",
+    "pillar": "Weigh Your Options",
+    "aud": "Young adults",
+    "page": "iLASIK page — price FAQ block",
+    "now": "–",
+    "note": "The question chat cannot answer today; approved price range on the page"
+   },
+   {
+    "t": "lasik vs smile / clear pro vs icl",
+    "vol": null,
+    "lang": "EN · ZH",
+    "track": "AEO",
+    "pillar": "Weigh Your Options",
+    "aud": "Young adults",
+    "page": "Comparison page",
+    "now": "–",
+    "note": "Second-opinion seekers (P02); answer-box target"
+   },
+   {
+    "t": "icl malaysia / implantable contact lens",
+    "vol": null,
+    "lang": "EN",
+    "track": "SEO",
+    "pillar": "Weigh Your Options",
+    "aud": "Young adults",
+    "page": "ICL hub page",
+    "now": "–",
+    "note": "ICL page drew 2,482 sessions with no schema"
+   },
+   {
+    "t": "eye specialist near me",
+    "vol": null,
+    "lang": "EN · BM",
+    "track": "Local",
+    "pillar": "Plan Your Visit",
+    "aud": "All",
+    "page": "Google Business Profile + centre pages",
+    "now": "–",
+    "note": "Won in the map pack, not the page list"
+   },
+   {
+    "t": "pakar mata / klinik mata berhampiran",
+    "vol": null,
+    "lang": "BM",
+    "track": "Local",
+    "pillar": "Plan Your Visit",
+    "aud": "All",
+    "page": "/ms/ centre pages",
+    "now": "–",
+    "note": "BM centre pages exist today under retired centre names"
+   },
+   {
+    "t": "myopia control kids / rabun jauh kanak-kanak",
+    "vol": null,
+    "lang": "EN · BM · ZH",
+    "track": "SEO",
+    "pillar": "Every Age, Every Eye",
+    "aud": "Parents of children 5–17",
+    "page": "Kids eye exam + myopia control pages",
+    "now": "–",
+    "note": "Kids pages drew 15,656 sessions across three languages"
+   },
+   {
+    "t": "儿童近视控制 / 白内障手术 (ZH)",
+    "vol": null,
+    "lang": "ZH",
+    "track": "SEO",
+    "pillar": "Know Your Eyes",
+    "aud": "Parents · Adults 40+",
+    "page": "/zh/ service pages",
+    "now": "–",
+    "note": "9% of users read Mandarin; pages currently on broken slugs"
+   },
+   {
+    "t": "presbyopia treatment / reading glasses alternative",
+    "vol": null,
+    "lang": "EN",
+    "track": "AEO",
+    "pillar": "Weigh Your Options",
+    "aud": "Adults 40+",
+    "page": "RLE / presbyopia page",
+    "now": "–",
+    "note": "Presbyopic executive (P06); question-led page"
+   },
+   {
+    "t": "dry eye treatment malaysia / mata kering",
+    "vol": null,
+    "lang": "EN · BM",
+    "track": "SEO",
+    "pillar": "Know Your Eyes",
+    "aud": "Adults 18–55",
+    "page": "Dry eye condition + treatment page",
+    "now": "–",
+    "note": "Recurring symptom searches; article cluster"
+   },
+   {
+    "t": "glaucoma symptoms / treatment",
+    "vol": null,
+    "lang": "EN · BM",
+    "track": "SEO",
+    "pillar": "Know Your Eyes",
+    "aud": "Adults 40+",
+    "page": "Glaucoma condition page",
+    "now": "–",
+    "note": "World Glaucoma Week content in March"
+   },
+   {
+    "t": "cataract surgery cost malaysia",
+    "vol": null,
+    "lang": "EN · ZH",
+    "track": "AEO",
+    "pillar": "Weigh Your Options",
+    "aud": "Adults 40+ · caregivers",
+    "page": "Cataract page — cost & insurance FAQ",
+    "now": "–",
+    "note": "Caregiver (P04) question; panel/insurance answer"
+   },
+   {
+    "t": "best eye clinic kuala lumpur / where to get lasik in kl",
+    "vol": null,
+    "lang": "EN",
+    "track": "GEO",
+    "pillar": "Inside Vista",
+    "aud": "Young adults · Adults 40+",
+    "page": "Facts page + doctor profiles + reviews",
+    "now": "–",
+    "note": "Assistant-style prompts; measured in the prompt library, not Semrush"
+   },
+   {
+    "t": "is lasik safe / am i suitable for lasik",
+    "vol": null,
+    "lang": "EN · ZH",
+    "track": "GEO",
+    "pillar": "Weigh Your Options",
+    "aud": "Young adults",
+    "page": "Suitability page with reviewer and sources",
+    "now": "–",
+    "note": "Citation-ready article; no outcome guarantees (MAB)"
+   },
+   {
+    "t": "ophthalmologist penang / johor bahru / klang",
+    "vol": null,
+    "lang": "EN",
+    "track": "Local",
+    "pillar": "Inside Vista",
+    "aud": "All",
+    "page": "Centre pages + Physician profiles",
+    "now": "–",
+    "note": "Doctor entities per centre"
+   }
+  ],
+  "pairs": [
+   [
+    "Petaling Jaya (HQ)",
+    "Cataract surgery · LASIK · Kids eye exam",
+    "Largest centre; most chats; duplicate listing to merge"
+   ],
+   [
+    "Ipoh",
+    "Eye specialist · Cataract surgery",
+    "'ipoh eye specialist' 2,900/mo, position 12"
+   ],
+   [
+    "Penang",
+    "LASIK · Cataract surgery",
+    "Northern refractive demand; P02 location"
+   ],
+   [
+    "Johor Bahru",
+    "LASIK · Kids eye exam",
+    "Cross-border and southern demand"
+   ],
+   [
+    "Klang",
+    "Cataract surgery",
+    "Senior persona (P05) location"
+   ],
+   [
+    "Kajang · Kepong · Cheras",
+    "Eye specialist near me · Cataract",
+    "Klang Valley map-pack coverage"
+   ],
+   [
+    "Remaining centres",
+    "Eye specialist + one lead service each",
+    "Confirmed at Day 45 from enquiry data per centre"
+   ]
+  ],
+  "tech": [
+   [
+    "Rendering",
+    "Pages assembled on every visit; 2.5 MB home page; 31 accessibility issues",
+    "Static generation (Next.js) — every page is plain HTML before any script runs; under 1.5 s first paint; Lighthouse ≥ 90 on every release",
+    "tech"
+   ],
+   [
+    "URLs & languages",
+    "?lang= query strings; percent-encoded Mandarin slugs; 0 hreflang",
+    "/en/ /ms/ /zh/ routes, readable slugs, hreflang on every page, one canonical per page",
+    "SEO"
+   ],
+   [
+    "Sitemap & indexing",
+    "224 URLs, none of the 2025–26 posts; 74 duplicate location URLs",
+    "Sitemap generated from the CMS on publish; duplicates redirected; index coverage checked weekly in Search Console",
+    "SEO"
+   ],
+   [
+    "Headings & metadata",
+    "Two H1s on home, none on centre pages; 176 pages without meta description",
+    "One H1 per page from the CMS template; titles and descriptions required fields with length checks",
+    "SEO"
+   ],
+   [
+    "Structured data",
+    "CMS defaults only; no medical entities",
+    "MedicalOrganization, MedicalClinic, Physician, MedicalProcedure, FAQPage, BreadcrumbList as JSON-LD generated from CMS fields; validated in CI",
+    "AEO"
+   ],
+   [
+    "Doctor and centre entities",
+    "One shared doctors page; retired centre names on BM/ZH pages",
+    "A profile URL per doctor; a page per centre per language; the same facts on Google Business Profile and directories",
+    "AEO"
+   ],
+   [
+    "Machine-readable summary",
+    "None",
+    "llms.txt and a facts page listing services, centres, doctors and accreditations for AI assistants",
+    "GEO"
+   ],
+   [
+    "Authorship",
+    "Posts with no author, reviewer or date",
+    "Author, reviewing ophthalmologist, publish and review dates on every article, in markup and on the page",
+    "GEO"
+   ],
+   [
+    "Images",
+    "2 of 93 home-page images with alt text; 10.8 MB concept pages",
+    "Alt text required in the CMS; images resized and converted on upload; lazy loading",
+    "SEO"
+   ],
+   [
+    "Consent & tracking",
+    "Tags fire without consent; GA4 loads twice; bot traffic unfiltered",
+    "Consent Management Platform with Consent Mode; server-side tagging; bot filter — organic numbers become trustworthy",
+    "tech"
+   ],
+   [
+    "Second domain",
+    "vistanow.com.my duplicates content and splits authority",
+    "Folded into the main site as a Happenings section; domain redirected page-by-page by Month 5",
+    "SEO"
+   ],
+   [
+    "Monitoring",
+    "PageSpeed and Lighthouse could not be read during the audit (API quota)",
+    "Core Web Vitals field data (CrUX), uptime and crawl errors in the Command Centre; alerts to the maintenance team",
+    "tech"
+   ]
+  ],
+  "gantt": [
+   {
+    "id": "F",
+    "name": "SEO · AEO · GEO · local",
+    "owner": "SEO/AEO/GEO Lead",
+    "bars": [
+     {
+      "label": "Day 1–30 audit: crawl, EN/BM/ZH keyword & entity map, backlinks, 16-centre local baseline",
+      "from": "2026-11-02",
+      "to": "2026-12-01",
+      "kind": "build"
+     },
+     {
+      "label": "AI-visibility baseline (prompt library, 5 engines) by Day 30",
+      "from": "2026-11-09",
+      "to": "2026-12-01",
+      "kind": "build"
+     },
+     {
+      "label": "12-month search roadmap and commercial keyword set approved (Day 45)",
+      "from": "2026-12-01",
+      "to": "2026-12-16",
+      "kind": "build"
+     },
+     {
+      "label": "Migration SEO: redirect map, schema (MedicalOrganization, Physician, LocalBusiness, FAQ), hreflang",
+      "from": "2026-12-07",
+      "to": "2027-01-22",
+      "kind": "build"
+     },
+     {
+      "label": "Google Business Profile: 16 listings cleaned, duplicate HQ removed, review workflow",
+      "from": "2026-12-01",
+      "to": "2027-02-26",
+      "kind": "build"
+     },
+     {
+      "label": "Post-launch checks: crawl comparison Week 1 / 4 / 12, ranking and traffic watch",
+      "from": "2027-01-25",
+      "to": "2027-04-16",
+      "kind": "build"
+     },
+     {
+      "label": "Monthly on-page, technical, authority & local execution",
+      "from": "2027-02-01",
+      "to": "2027-10-29",
+      "kind": "run"
+     },
+     {
+      "label": "AEO: FAQ schema, 'People also ask' coverage, entity and Knowledge Panel work",
+      "from": "2027-03-01",
+      "to": "2027-10-29",
+      "kind": "run"
+     },
+     {
+      "label": "GEO: monthly prompt-library run; quarterly AI-visibility benchmark; llms.txt; citation-ready content",
+      "from": "2027-02-01",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     },
+     {
+      "label": "Centre × service local campaigns scaled where the local pack is won",
+      "from": "2027-07-01",
+      "to": "2027-10-29",
+      "kind": "run"
+     }
+    ],
+    "milestones": [
+     {
+      "d": "2026-12-01",
+      "t": "AI baseline (Day 30)"
+     },
+     {
+      "d": "2026-12-16",
+      "t": "Search roadmap approved"
+     },
+     {
+      "d": "2027-01-22",
+      "t": "Go-live: pre/post crawl comparison"
+     },
+     {
+      "d": "2027-02-26",
+      "t": "Post-launch baseline"
+     },
+     {
+      "d": "2027-06-30",
+      "t": "M6: ≥ 50% page 1 · ≥ 8 pairs · 3 engines"
+     },
+     {
+      "d": "2027-10-29",
+      "t": "M12: ≥ 60% · ≥ 16 pairs · 5 engines"
+     }
+    ]
+   },
+   {
+    "id": "G",
+    "name": "Content marketing",
+    "owner": "Content Lead",
+    "bars": [
+     {
+      "label": "Set-up: editorial standards, medical review workflow in the CMS, keyword-cluster map",
+      "from": "2026-11-09",
+      "to": "2026-11-27",
+      "kind": "build"
+     },
+     {
+      "label": "Rolling calendar ≥ 1 month ahead; 4 articles/month in EN, BM and ZH as demand supports",
+      "from": "2026-12-01",
+      "to": "2027-10-29",
+      "kind": "run"
+     },
+     {
+      "label": "Migration: consolidate vistanow content, remove cross-domain duplicates",
+      "from": "2026-12-14",
+      "to": "2027-03-26",
+      "kind": "build"
+     },
+     {
+      "label": "Quarterly contributory article + refresh of the top ten pages",
+      "from": "2027-02-01",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     }
+    ],
+    "milestones": [
+     {
+      "d": "2026-12-31",
+      "t": "First 4 articles published"
+     },
+     {
+      "d": "2027-04-30",
+      "t": "vistanow redirected"
+     },
+     {
+      "d": "2027-10-29",
+      "t": "52 articles; ≥ 10% in top 10"
+     }
+    ]
+   }
+  ],
+  "months": [
+   {
+    "m": "Month 1",
+    "d": "Nov 2026",
+    "phase": "Mobilise · Audit",
+    "do": [
+     "Take over Search Console, Google Business Profile, Analytics, tag manager and CMS access under Vista's ownership",
+     "Full crawl of both sites; backlink profile; 16-centre local baseline; competitor set agreed",
+     "Keyword and entity map in EN, BM and ZH from search data, Respond.io chat questions and GA4 pages",
+     "Prompt library written; first AI-visibility run on five engines",
+     "GA4 channel grouping fixed so organic and AI referrals are counted correctly"
+    ],
+    "out": [
+     "Day-30 audit report",
+     "AI-visibility baseline",
+     "Draft commercial keyword set"
+    ],
+    "see": "Baseline numbers only — no targets claimed yet; every figure labelled by confidence"
+   },
+   {
+    "m": "Month 2",
+    "d": "Dec 2026",
+    "phase": "Discovery → Build",
+    "do": [
+     "12-month search roadmap and commercial keyword set approved at Day 45",
+     "Sitemap for the new site finalised with the SEO view: one page per intent, per centre, per language",
+     "Redirect map started from the crawl; schema specification handed to the build team",
+     "Google Business Profile clean-up begins: missing centres added, duplicate HQ merged, names corrected",
+     "Editorial standards and the medical review workflow set up in the CMS; first 4 articles published on the current site"
+    ],
+    "out": [
+     "Approved search roadmap",
+     "Schema and hreflang specification",
+     "First 4 articles"
+    ],
+    "see": "First monthly search report: organic sessions and enquiries by language and centre"
+   },
+   {
+    "m": "Month 3",
+    "d": "Jan 2027",
+    "phase": "Build → Go-live",
+    "do": [
+     "All service, condition, centre and doctor pages written to the AEO pattern and reviewed",
+     "Structured data validated on the staging site; hreflang and canonical checks; sitemap generation tested",
+     "Pre-launch crawl frozen as the comparison point; redirect map verified URL by URL",
+     "Go-live in Week 12; same-day crawl and index submission; Mandarin pages live for the CNY campaign"
+    ],
+    "out": [
+     "Pre-launch crawl",
+     "Launch checklist signed",
+     "Post-launch Week-1 comparison"
+    ],
+    "see": "Launch report: pages indexed, redirects working, rankings held or moved"
+   },
+   {
+    "m": "Month 4",
+    "d": "Feb 2027",
+    "phase": "Hypercare",
+    "do": [
+     "Week-4 crawl and ranking comparison; any page losing > 20% investigated within five days",
+     "Google Business Profile: 16 listings complete; centre posts start; review workflow live",
+     "Local pack tracking starts for the priority centre × service pairs",
+     "Migration of 2025–26 posts from vistanow into the Happenings section under way",
+     "Post-launch baseline locked at the end of the month"
+    ],
+    "out": [
+     "Post-launch baseline document",
+     "16 verified listings",
+     "Local-pack tracking live"
+    ],
+    "see": "Baseline report: the numbers all Month 6 and Month 12 targets are measured from"
+   },
+   {
+    "m": "Month 5",
+    "d": "Mar 2027",
+    "phase": "Optimise",
+    "do": [
+     "Monthly on-page and technical cycle begins: title and content improvements on the commercial set",
+     "AEO track starts: FAQ blocks and 'People also ask' coverage per service; Knowledge Panel claimed",
+     "World Glaucoma Week content cluster; Raya centre-hours updates on every listing",
+     "vistanow.com.my content migration completed; page-by-page redirects"
+    ],
+    "out": [
+     "First AEO coverage report",
+     "Redirects complete"
+    ],
+    "see": "Floors binding from this month; first answer-box appearances reported"
+   },
+   {
+    "m": "Month 6",
+    "d": "Apr 2027",
+    "phase": "Optimise",
+    "do": [
+     "Week-12 post-launch comparison closed out",
+     "Doctor profile pages complete for all 20 ophthalmologists with Physician markup",
+     "Second quarterly AI-visibility benchmark against three competitors; llms.txt and facts page published",
+     "vistanow.com.my domain fully redirected; authority consolidated"
+    ],
+    "out": [
+     "Doctor profiles live",
+     "Q2 AI benchmark",
+     "vistanow retired"
+    ],
+    "see": "Six-month view: organic trend since launch, keywords on page 1, local pairs, AI mentions"
+   },
+   {
+    "m": "Month 7",
+    "d": "May 2027",
+    "phase": "Optimise",
+    "do": [
+     "School-holiday kids content cluster in BM and ZH ahead of the June break",
+     "Authority work: partner, insurer-panel and association listings corrected and linked",
+     "Centre × service pages for the next set of pairs",
+     "Quarterly refresh of the ten best-performing pages"
+    ],
+    "out": [
+     "Kids cluster live",
+     "Directory corrections log"
+    ],
+    "see": "Local report by centre: calls, directions, website clicks, pairs in the top 3"
+   },
+   {
+    "m": "Month 8",
+    "d": "Jun 2027",
+    "phase": "Month-6 checkpoint",
+    "do": [
+     "KPI checkpoint against the Month-6 floors: ≥ 50% commercial keywords on page 1, ≥ 8 local pairs, cited on ≥ 3 engines",
+     "Eye Carnival landing pages built to the AEO pattern and indexed before the campaign",
+     "Prompt library reviewed and extended with the questions chat is now receiving"
+    ],
+    "out": [
+     "Month-6 checkpoint report",
+     "Updated prompt library"
+    ],
+    "see": "Checkpoint: where each target stands and what changes for the second half"
+   },
+   {
+    "m": "Month 9",
+    "d": "Jul 2027",
+    "phase": "Scale",
+    "do": [
+     "Local campaigns scaled in the centres where the local pack is won",
+     "Third quarterly AI-visibility benchmark",
+     "Merdeka and Malaysia Day content; centre-hours updates",
+     "Backlink and citation programme continues; press and contributory article"
+    ],
+    "out": [
+     "Q3 AI benchmark",
+     "Local scale plan"
+    ],
+    "see": "Organic enquiries and bookings by centre — which centres search is now feeding"
+   },
+   {
+    "m": "Month 10",
+    "d": "Aug 2027",
+    "phase": "Scale",
+    "do": [
+     "Year-2 keyword and content plan drafted from twelve months of data",
+     "Technical health review: Core Web Vitals field data, crawl budget, index coverage",
+     "Content refresh round two"
+    ],
+    "out": [
+     "Draft Year-2 search plan"
+    ],
+    "see": "Trend report: organic vs paid share of enquiries since launch"
+   },
+   {
+    "m": "Month 11",
+    "d": "Sep 2027",
+    "phase": "Scale",
+    "do": [
+     "Deepavali and World Sight Day content clusters",
+     "Doctor profile and centre page refresh with any changes in the network",
+     "Final push on the commercial keyword set and remaining local pairs"
+    ],
+    "out": [
+     "Refreshed entity pages"
+    ],
+    "see": "Pre-review report against every Month-12 target"
+   },
+   {
+    "m": "Month 12",
+    "d": "Oct 2027",
+    "phase": "Review & renew",
+    "do": [
+     "Month-12 review: ≥ 60% of the commercial set on page 1, ≥ 16 local pairs, cited on ≥ 5 engines, organic sessions +40%, 52 articles",
+     "Fourth AI-visibility benchmark; twelve-month AI-referral trend",
+     "Year-2 search plan presented; all tools and data confirmed under Vista's ownership"
+    ],
+    "out": [
+     "Month-12 review",
+     "Year-2 plan",
+     "Ownership handover checklist"
+    ],
+    "see": "The full year: from a ranking count to visitors, enquiries and bookings by centre and language"
+   }
+  ],
+  "tools": [
+   [
+    "Google Search Console",
+    "Measure",
+    "Organic clicks, impressions, index coverage, Core Web Vitals, sitemap status for every property and language",
+    "Vista-owned (free)",
+    "SEO"
+   ],
+   [
+    "Google Analytics 4",
+    "Measure",
+    "Organic and AI-referred sessions, enquiries and key events; channel grouping fixed in Month 1",
+    "Vista-owned (free)",
+    "SEO"
+   ],
+   [
+    "Google Business Profile",
+    "Local",
+    "16 centre listings, posts, Q&A, reviews, calls and direction requests; managed from one Vista-owned group account",
+    "Vista-owned (free)",
+    "Local"
+   ],
+   [
+    "Rank & keyword tracking — Semrush or Ahrefs",
+    "Measure",
+    "Commercial keyword set positions (EN/BM/ZH), keyword research, competitor gap, backlink audit; the current Semrush history is imported",
+    "Vista-owned subscription, 12 months",
+    "SEO"
+   ],
+   [
+    "Local rank tracking — Local Falcon or BrightLocal",
+    "Local",
+    "Map-pack position per centre × service from points around each centre; citation audit and directory sync",
+    "Subscription, 12 months",
+    "Local"
+   ],
+   [
+    "Site crawler — Screaming Frog or Sitebulb",
+    "Technical",
+    "Full crawls before and after launch; monthly technical audit (broken links, redirects, headings, hreflang, schema)",
+    "CDS licence",
+    "SEO"
+   ],
+   [
+    "Lighthouse, PageSpeed Insights, CrUX",
+    "Technical",
+    "Lab and field performance; Lighthouse runs in CI on every release; CrUX field data in the Command Centre",
+    "Free / built into CI",
+    "tech"
+   ],
+   [
+    "axe-core",
+    "Technical",
+    "Accessibility checks in CI (WCAG 2.2 AA) — accessibility issues also hold back rankings",
+    "Free / built into CI",
+    "tech"
+   ],
+   [
+    "Schema validation — Google Rich Results Test, Schema.org validator",
+    "AEO",
+    "Every structured-data type validated before release and re-checked monthly",
+    "Free",
+    "AEO"
+   ],
+   [
+    "AI-visibility tooling — vendor-neutral (e.g. Semrush AI toolkit, Peec AI or Profound)",
+    "GEO",
+    "Tracks mentions and citations across assistants at scale alongside CDS's own prompt library; chosen at Day 30 on price and coverage",
+    "Subscription, 12 months, Vista-owned",
+    "GEO"
+   ],
+   [
+    "Prompt library via APIs — ChatGPT, Gemini, Perplexity, Claude; Copilot manual",
+    "GEO",
+    "~60 versioned patient prompts run monthly; results scored mentioned / cited / accurate and stored in the Command Centre",
+    "CDS-built; API usage in the retainer",
+    "GEO"
+   ],
+   [
+    "llms.txt + facts page",
+    "GEO",
+    "Machine-readable summary of Vista for AI assistants, generated from the CMS so it never goes stale",
+    "Built into the site",
+    "GEO"
+   ],
+   [
+    "Storyblok (headless CMS)",
+    "Platform",
+    "Required SEO fields on every page (title, description, alt text, FAQ, author, reviewer, review date); medical sign-off workflow; sitemap and schema generated on publish",
+    "Vista-owned subscription",
+    "tech"
+   ],
+   [
+    "Next.js (static generation) on AWS Malaysia, CloudFront CDN",
+    "Platform",
+    "Every page served as HTML; sub-1.5 s first paint; Malaysian hosting for local speed and PDPA",
+    "In the website build",
+    "tech"
+   ],
+   [
+    "Google Tag Manager (server-side) + Consent Management Platform",
+    "Measure",
+    "Tracking that respects consent and survives ad blockers, so organic enquiry numbers are real",
+    "In the website build",
+    "tech"
+   ],
+   [
+    "Command Centre + Looker Studio",
+    "Reporting",
+    "Search, local, AEO and GEO numbers beside leads and bookings, by centre and language, with confidence labels; Looker views for wider circulation",
+    "Vista-owned",
+    "Reporting"
+   ],
+   [
+    "Jira Service Management",
+    "Governance",
+    "Search tasks, content review SLAs and technical fixes tracked with Vista reviewers in the loop",
+    "CDS-run",
+    "Reporting"
+   ]
+  ],
+  "kpi": [
+   {
+    "k": "Organic search sessions",
+    "base": "Post-launch baseline (Month 4); 2025 reference ~121k in 20 months",
+    "m6": "+15%",
+    "m12": "+40% (RFP floor)",
+    "src": "GA4 / Search Console"
+   },
+   {
+    "k": "Organic enquiries and booked appointments",
+    "base": "Not attributed today (no web-chat channel)",
+    "m6": "Reported monthly by centre and language",
+    "m12": "Organic share of bookings reported; target set at Month 4",
+    "src": "GA4 → Respond.io → ledger"
+   },
+   {
+    "k": "Commercial keywords on page 1",
+    "base": "Brand-heavy; 'cataract surgery' out of top 100, 'lasik surgery' 21",
+    "m6": "≥ 50%",
+    "m12": "≥ 60%",
+    "src": "Rank tooling, agreed set"
+   },
+   {
+    "k": "Centre × service pairs in local top 3",
+    "base": "Not measured",
+    "m6": "≥ 8 pairs",
+    "m12": "≥ 16 pairs",
+    "src": "Local rank tooling"
+   },
+   {
+    "k": "Google Business Profile actions (calls, directions, clicks)",
+    "base": "13 listings; not reported",
+    "m6": "16 listings; reported per centre",
+    "m12": "+25% vs Month-4 baseline",
+    "src": "GBP Insights"
+   },
+   {
+    "k": "Answer-box / 'People also ask' appearances",
+    "base": "None recorded",
+    "m6": "Reported per service",
+    "m12": "Every core service with ≥ 1 owned answer",
+    "src": "Rank tooling SERP features"
+   },
+   {
+    "k": "AI assistants citing Vista (prompt library)",
+    "base": "Baseline at Day 30",
+    "m6": "≥ 3 engines",
+    "m12": "≥ 5 engines",
+    "src": "Prompt library, 5 engines"
+   },
+   {
+    "k": "AI-referred sessions",
+    "base": "134/month (Aug 2026)",
+    "m6": "Reported monthly",
+    "m12": "Trend reported; enquiries attributed",
+    "src": "GA4 channel"
+   },
+   {
+    "k": "Articles published (medically reviewed)",
+    "base": "0 since May 2026",
+    "m6": "24",
+    "m12": "52; ≥ 10% in top 10",
+    "src": "CMS + rank tooling"
+   },
+   {
+    "k": "Core Web Vitals (mobile, field p75)",
+    "base": "Not measurable today",
+    "m6": "Good",
+    "m12": "Good sustained",
+    "src": "CrUX"
+   },
+   {
+    "k": "Index health",
+    "base": "74 duplicate URLs; 52 posts missing from sitemap",
+    "m6": "0 duplicates; 100% of posts indexed",
+    "m12": "Sustained; checked weekly",
+    "src": "Search Console"
+   }
+  ],
+  "needs": [
+   [
+    "Access",
+    "Owner access to Google Search Console, Google Business Profile (all listings), GA4, Google Tag Manager, the current CMS and the domain registrar, under Vista-owned accounts",
+    "Week 1",
+    "Blocks the audit and the listing clean-up"
+   ],
+   [
+    "Centre data",
+    "Confirmed list of 16 centres with official names, addresses, phone numbers, hours, services offered and doctors on site",
+    "Week 2",
+    "One source of truth for pages, listings and markup"
+   ],
+   [
+    "Doctors",
+    "Names, qualifications, sub-specialties, centres and consented photographs for all 20 ophthalmologists; agreement to individual profile pages",
+    "Week 3",
+    "Physician entities and AEO/GEO authorship"
+   ],
+   [
+    "Clinical reviewers",
+    "Named ophthalmologists to review articles and service pages, with a 5-business-day turnaround",
+    "Week 2",
+    "Content cadence and the reviewed-by signal"
+   ],
+   [
+    "Prices and claims",
+    "Approved price ranges, instalment terms and the claims that may be published, with MAB approvals where needed",
+    "Day 45",
+    "Answer-box content on price questions"
+   ],
+   [
+    "Keyword set sign-off",
+    "Agreement of the commercial keyword set and the priority centre × service pairs",
+    "Day 45",
+    "What the KPIs are measured on"
+   ],
+   [
+    "Existing tool history",
+    "Export of the current Semrush project and any past audits; decision on which subscriptions Vista already holds",
+    "Day 30",
+    "Continuity of ranking history"
+   ],
+   [
+    "vistanow.com.my",
+    "Agreement to fold the second domain into the main site as a Happenings section, with the domain redirected",
+    "Day 45",
+    "Authority consolidation and one site to rank"
+   ]
+  ]
+ },
+ "MONTHS": [
+  "2026-11",
+  "2026-12",
+  "2027-01",
+  "2027-02",
+  "2027-03",
+  "2027-04",
+  "2027-05",
+  "2027-06",
+  "2027-07",
+  "2027-08",
+  "2027-09",
+  "2027-10"
+ ],
+ "MON": [
+  "M1 Nov",
+  "M2 Dec",
+  "M3 Jan",
+  "M4 Feb",
+  "M5 Mar",
+  "M6 Apr",
+  "M7 May",
+  "M8 Jun",
+  "M9 Jul",
+  "M10 Aug",
+  "M11 Sep",
+  "M12 Oct"
+ ]
+}

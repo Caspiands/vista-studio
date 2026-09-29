@@ -1,0 +1,398 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>img{max-width:100%}[hidden]{display:none!important}</style>
+<style>.tbtn#theme{display:none!important}html,body{overflow:hidden}</style>
+<script>
+(function(){
+  function h(){return Math.ceil(Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0));}
+  function post(){try{parent.postMessage({vistaHub:1,frame:window.name,height:h()},'*');}catch(e){}}
+  addEventListener('load',function(){post();try{new ResizeObserver(post).observe(document.body);}catch(e){setInterval(post,800);}});
+  addEventListener('resize',post);
+  document.addEventListener('toggle',post,true);
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(!a)return;var id=a.getAttribute('href').slice(1);var t=id&&document.getElementById(id);
+    if(t){e.preventDefault();try{parent.postMessage({vistaHub:1,frame:window.name,scrollTo:t.getBoundingClientRect().top},'*');}catch(x){t.scrollIntoView();}}
+  });
+  addEventListener('message',function(e){
+    var d=e.data;if(!d||!d.vistaTheme)return;
+    var root=document.documentElement,want=d.vistaTheme==='dark';
+    var cur=root.getAttribute('data-theme');var dark=cur?cur==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    var btn=document.getElementById('theme');
+    if(dark!==want){ if(btn){btn.click();} else {root.setAttribute('data-theme',d.vistaTheme);} }
+    setTimeout(post,50);
+  });
+})();
+</script>
+</head><body><title>Vista Search Visibility — SEO · AEO · GEO</title>
+<style>
+:root{
+  color-scheme:light;
+  --surface-1:#fcfcfb; --plane:#f5f5f2; --chip:#efeee9;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#7d7b75;
+  --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,0.10);
+  --accent:#2a78d6; --tint-1:#e8f0fb;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#8a63d2; --s5:#c7a008; --critical:#d03b3b;
+  --build:#2a78d6; --run:#1baf7a; --cadence:#8a63d2;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --surface-1:#1a1a19; --plane:#0f0f0e; --chip:#262624;
+    --text-primary:#f5f5f2; --text-secondary:#c3c2b7; --muted:#8f8d86;
+    --grid:#2c2c2a; --axis:#44443f; --border:rgba(255,255,255,0.10);
+    --accent:#4a93ea; --tint-1:#17263a;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9d7be0; --s5:#d9b32a; --critical:#e25555;
+    --build:#3987e5; --run:#199e70; --cadence:#9d7be0;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0f0f0e; --chip:#262624;
+  --text-primary:#f5f5f2; --text-secondary:#c3c2b7; --muted:#8f8d86;
+  --grid:#2c2c2a; --axis:#44443f; --border:rgba(255,255,255,0.10);
+  --accent:#4a93ea; --tint-1:#17263a;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9d7be0; --s5:#d9b32a; --critical:#e25555;
+  --build:#3987e5; --run:#199e70; --cadence:#9d7be0;
+}
+*{box-sizing:border-box}
+body{background:var(--plane);color:var(--text-primary);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-inline:16px;margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-block:28px 72px}
+header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding-bottom:20px;border-bottom:2px solid var(--accent);margin-bottom:22px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:29px;line-height:1.2;margin:6px 0;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+h1 span{color:var(--accent)}
+.sub{color:var(--text-secondary);max-width:760px}
+.meta{font-size:12px;color:var(--muted);margin-top:8px;max-width:780px}
+.tbtn{background:var(--surface-1);border:1px solid var(--border);color:var(--text-secondary);border-radius:999px;padding:7px 15px;font-size:12.5px;cursor:pointer;font-family:inherit;white-space:nowrap}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px}
+nav.toc a{color:var(--text-secondary);text-decoration:none;border-bottom:1px solid var(--grid)}
+nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
+section{margin-top:42px}
+h2{font-size:19px;margin:0 0 4px;font-weight:700;text-wrap:balance}
+h2 .num{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:8px}
+h3{font-size:15px;margin:0 0 6px}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:860px}
+.card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:22px}
+@media(max-width:1000px){.tiles{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.tile .lab{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.tile .val{font-size:24px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin-top:2px}
+.tile .note{font-size:11.5px;color:var(--text-secondary);line-height:1.4;margin-top:4px}
+.track{border-top:4px solid var(--s1)}
+.track.aeo{border-top-color:var(--s3)}.track.geo{border-top-color:var(--s4)}.track.local{border-top-color:var(--s2)}
+.track .k{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.track h3{font-size:17px;margin:2px 0 8px}
+.track p{margin:0 0 8px;font-size:13px;color:var(--text-secondary)}
+.track ul{margin:0;padding-left:16px;font-size:12.5px}
+.track li{margin:3px 0}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;color:#fff;background:var(--s1)}
+.pill.aeo{background:var(--s3)}.pill.geo{background:var(--s4)}.pill.local{background:var(--s2)}.pill.tech{background:var(--muted)}
+.chip{display:inline-block;font-size:11px;padding:1px 8px;border-radius:999px;background:var(--chip);border:1px solid var(--border);color:var(--text-primary);white-space:nowrap;margin:1px 2px 1px 0}
+.tscroll{overflow-x:auto}
+table.data{width:100%;border-collapse:collapse;font-size:12.5px}
+table.data th{text-align:left;font-weight:600;color:var(--text-secondary);border-bottom:1px solid var(--axis);padding:7px 9px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;cursor:pointer;user-select:none}
+table.data th.sorted::after{content:" ▾";color:var(--accent)}table.data th.sorted.asc::after{content:" ▴"}
+table.data td{padding:8px 9px;border-bottom:1px solid var(--grid);vertical-align:top}
+table.data tbody tr:hover{background:var(--chip)}
+table.data td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px;align-items:center}
+.filters button{background:var(--chip);border:1px solid var(--border);color:var(--text-secondary);border-radius:999px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:inherit}
+.filters button.on{background:var(--text-primary);color:var(--surface-1);border-color:var(--text-primary)}
+.filters .sep{color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-left:6px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--text-secondary)}.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+svg{display:block;width:100%;overflow:visible}.tick{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.tip{position:fixed;pointer-events:none;z-index:99;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:9px 11px;font-size:12px;box-shadow:0 6px 22px rgba(0,0,0,.16);opacity:0;transition:opacity .1s;max-width:300px;color:var(--text-primary)}.tip b{display:block;font-size:12.5px;margin-bottom:3px}.tip .r{color:var(--text-secondary);display:block}
+.month{border:1px solid var(--border);border-radius:12px;background:var(--surface-1);margin-bottom:10px}
+.month summary{cursor:pointer;padding:13px 18px;display:grid;grid-template-columns:150px 1fr auto;gap:14px;align-items:baseline;list-style:none}
+.month summary::-webkit-details-marker{display:none}
+.month summary .mm{font-weight:700;font-variant-numeric:tabular-nums}.month summary .th{font-weight:600}.month summary .ph{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.month .body{padding:0 18px 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+.month .body h4{margin:8px 0 4px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.month .body ul{margin:0;padding-left:16px;font-size:12.5px}.month .body li{margin-bottom:3px}
+@media(max-width:860px){.month .body{grid-template-columns:1fr}.month summary{grid-template-columns:1fr}}
+.chain{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.chain .step{background:var(--chip);border-radius:10px;padding:12px;font-size:12px;position:relative}.chain .step b{display:block;font-size:12.5px;margin-bottom:4px}.chain .step::after{content:"→";position:absolute;right:-12px;top:14px;color:var(--muted);font-size:14px}.chain .step:last-child::after{content:""}
+@media(max-width:900px){.chain{grid-template-columns:repeat(2,1fr)}.chain .step::after{content:""}}
+.note{font-size:12px;color:var(--text-secondary);margin-top:10px}
+ul.plain{margin:0;padding-left:16px;font-size:13px}ul.plain li{margin:4px 0}
+footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);font-size:12px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+@media print{.tbtn,.filters{display:none}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div>
+    <div class="eyebrow">Vista Eye Specialist · Digital Transformation RFP QHM/VES/DT/2026/003 · search scope · Caspian Digital Solutions</div>
+    <h1>Search Visibility — <span>SEO · AEO · GEO</span></h1>
+    <div class="sub">How Vista gets found — on Google, in answer boxes and in AI assistants — for the services it is known for and in every one of its 16 centres. One plan across three tracks plus local search, fed by the same content pillars as social and campaigns, built into the new website from day one, and measured on visitors and bookings rather than a ranking count.</div>
+    <div class="meta">Baseline figures from the Digital Asset Analysis tab (data captured 12–14 September 2026: GA4 Sep 2025–Aug 2026, agency SEO reports Jul 2025–Jul 2026, crawl of vista.com.my and vistanow.com.my, Google Business Profile listings). Keyword volumes are the agency-reported Malaysian monthly averages; the full keyword set is sized in the Day-30 audit. Prepared for Vista Eye Specialist.</div>
+  </div>
+  <button class="tbtn" id="theme" type="button">◐ Dark mode</button>
+</header>
+<nav class="toc">
+  <a href="#today">Where search stands today</a><a href="#terms">SEO, AEO, GEO in plain terms</a><a href="#tracks">The plan — four tracks</a><a href="#keywords">Keyword &amp; page plan</a><a href="#local">16 centres</a><a href="#aeo">Answer engines</a><a href="#geo">AI assistants</a><a href="#tech">Technical foundation</a><a href="#content">Content engine</a><a href="#roadmap">12-month roadmap</a><a href="#tools">Tools &amp; technologies</a><a href="#kpis">KPIs &amp; reporting</a><a href="#needs">What CDS needs from Vista</a>
+</nav>
+
+<div class="tiles">
+  <div class="tile"><div class="lab">"Cataract surgery" (3,600/mo)</div><div class="val">Not in top 100</div><div class="note">Was position 7 in 2025; Vista's largest enquiry category</div></div>
+  <div class="tile"><div class="lab">"LASIK surgery" (3,600/mo)</div><div class="val">5 → 21</div><div class="note">Position lost over the last year; "eye specialist" (4,400/mo) holds 4–6</div></div>
+  <div class="tile"><div class="lab">Organic search sessions</div><div class="val">Never reported</div><div class="note">~121k sessions in 20 months in GA4; the best-engaged channel (52 s average)</div></div>
+  <div class="tile"><div class="lab">Articles since May 2026</div><div class="val">0</div><div class="note">55 + 109 posts in two years, mostly in three batches; RFP asks for 4 a month</div></div>
+  <div class="tile"><div class="lab">Visits from AI assistants</div><div class="val">7 → 134</div><div class="note">Sessions per month, May → Aug 2026; nobody measures it yet</div></div>
+  <div class="tile"><div class="lab">Centre listings on Google</div><div class="val">13 + 1 dup</div><div class="note">For 16 centres; ~7,150 reviews at ~4.8★, keyword-stuffed names</div></div>
+</div>
+
+<section id="today">
+  <h2><span class="num">01</span>Where search stands today</h2>
+  <p class="lede">The only SEO measure Vista receives is a count of keywords in the top 3 / top 10 / top 100. That count went up while the commercial keywords went down, because most of the tracked terms are brand names or near-zero volume. Underneath, the site structure is working against the network: duplicated centre pages, a sitemap that misses two years of content, three languages on broken URLs, and none of the medical entity signals that answer engines and AI assistants look for.</p>
+  <div class="card"><div class="tscroll" id="t-findings"></div></div>
+</section>
+
+<section id="terms">
+  <h2><span class="num">02</span>SEO, AEO and GEO in plain terms</h2>
+  <p class="lede">Three ways a patient finds Vista before they ever visit the site. They share one content engine and one technical foundation; what differs is where the answer appears and what earns it.</p>
+  <div class="grid g3">
+    <div class="card track"><div class="k">SEO · search engine optimisation</div><h3>Being found on Google</h3><p>A patient types "cataract surgery" or "eye specialist Ipoh" and Vista's page appears in the results, and in the map pack for the nearest centre.</p><ul><li><b>What earns it:</b> a page for every service, every centre and every language; a fast, crawlable site; content that answers the question; other sites linking to Vista.</li><li><b>How it is measured:</b> organic visitors and enquiries, keywords on page 1, centre × service pairs in the local top 3.</li></ul></div>
+    <div class="card track aeo"><div class="k">AEO · answer engine optimisation</div><h3>Being the answer, not just a link</h3><p>Google increasingly answers directly — AI Overviews, featured snippets, "People also ask", Knowledge Panels. AEO makes Vista's content the one those answers are built from.</p><ul><li><b>What earns it:</b> question-led pages with short, direct answers; FAQ and medical structured data; doctor profiles as recognised entities; consistent facts everywhere.</li><li><b>How it is measured:</b> questions where Vista appears in the answer box, Knowledge Panel presence, FAQ rich results.</li></ul></div>
+    <div class="card track geo"><div class="k">GEO · generative engine optimisation</div><h3>Being cited by AI assistants</h3><p>Patients ask ChatGPT, Gemini, Perplexity, Claude or Copilot "where should I get LASIK in KL?". GEO is about Vista being named, described correctly and linked when they do.</p><ul><li><b>What earns it:</b> citation-ready content (who wrote it, who reviewed it, when, sources), clear facts about Vista on the sites AI reads, a machine-readable summary (llms.txt), consistent third-party mentions.</li><li><b>How it is measured:</b> a fixed set of patient prompts run monthly on five assistants: is Vista mentioned, cited, described correctly?</li></ul></div>
+  </div>
+</section>
+
+<section id="tracks">
+  <h2><span class="num">03</span>The plan — four tracks, one engine</h2>
+  <p class="lede">The same six content pillars that drive social and campaigns drive search. A pillar becomes a service page, an article, an FAQ block and a doctor's answer; the campaign lands on the page that ranks for the same question. Nothing is written twice and nothing is siloed.</p>
+  <div class="card"><div class="chain">
+    <div class="step"><b>Content pillars</b>Know Your Eyes · Weigh Your Options · Every Age, Every Eye · Screen Life · Inside Vista · Plan Your Visit</div>
+    <div class="step"><b>Keyword &amp; question map</b>Each pillar mapped to the searches and questions patients actually use, in EN, BM and ZH</div>
+    <div class="step"><b>Pages on the new site</b>Service, condition, centre, doctor and article pages — one page per intent, one H1, clean URL per language</div>
+    <div class="step"><b>Signals</b>Structured data, FAQ blocks, author and medical review, internal links, Google Business Profile, citations</div>
+    <div class="step"><b>Result</b>Found on Google, quoted in answer boxes, cited by AI assistants — and every visit tracked to an enquiry and a booking</div>
+  </div></div>
+  <div class="grid g4" style="margin-top:14px">
+    <div class="card track"><div class="k">Track 1</div><h3>SEO</h3><ul><li>Day-30 audit and keyword/entity map in three languages</li><li>Migration without loss: redirect map, one H1 per page, hreflang, sitemap with every post</li><li>Monthly on-page, technical and authority work</li><li>vistanow folded into the main site as a Happenings section</li></ul></div>
+    <div class="card track local"><div class="k">Track 2</div><h3>Local — 16 centres</h3><ul><li>One canonical page per centre, 74 duplicates redirected</li><li>Google Business Profile: 16 listings cleaned, duplicate HQ removed, names fixed</li><li>Centre × service pairs tracked in the local pack</li><li>Review request workflow tied to the visit</li></ul></div>
+    <div class="card track aeo"><div class="k">Track 3</div><h3>AEO</h3><ul><li>FAQ schema and "People also ask" coverage per service</li><li>MedicalOrganization, MedicalClinic, Physician and MedicalProcedure markup</li><li>Individual doctor profile pages (20 doctors, 0 profiles today)</li><li>Knowledge Panel and entity clean-up</li></ul></div>
+    <div class="card track geo"><div class="k">Track 4</div><h3>GEO</h3><ul><li>Prompt library run on five assistants; baseline by Day 30</li><li>Citation-ready article standard: author, reviewer, date, sources</li><li>llms.txt and a facts page AI can read</li><li>Quarterly benchmark against three competitors</li></ul></div>
+  </div>
+</section>
+
+<section id="keywords">
+  <h2><span class="num">04</span>Keyword and page plan</h2>
+  <p class="lede">The commercial head terms Vista must own, the pillar and audience each one serves, and the page on the new site that is built to win it. Volumes are agency-reported monthly averages for Malaysia where they exist; every other term is sized in the Day-30 audit, when the full set is agreed with Vista. Filter by track or language; select a heading to sort.</p>
+  <div class="filters" id="kw-filters"></div>
+  <div class="card"><div class="tscroll" id="t-kw"></div></div>
+  <div class="note">Language rule: EN and ZH for refractive and cataract (where the searches are); BM first for kids, dry eye and the northern and east-coast centres; every service page exists in all three languages with hreflang so Google shows the right one.</div>
+</section>
+
+<section id="local">
+  <h2><span class="num">05</span>Local search — the 16 centres</h2>
+  <p class="lede">"Eye specialist near me" and "&lt;city&gt; eye specialist" are the highest-intent searches Vista receives and the ones the current structure handles worst: 101 location URLs for 16 centres, no H1 on any of them, 9 centre pages under 110 words, and 13 Google listings for 16 centres with a duplicate HQ. Local is its own track because it is where a search turns into a visit.</p>
+  <div class="grid g2">
+    <div class="card"><h3>What changes on the website</h3><ul class="plain">
+      <li><b>One page per centre, per language</b> — 16 canonical pages with address, hours, parking, doctors on site, services offered, phone in one format, map and a booking button that pre-selects the centre. The 74 duplicate and legacy URLs redirect to them.</li>
+      <li><b>LocalBusiness / MedicalClinic markup</b> on every centre page, matching the Google listing exactly (name, address, phone, hours).</li>
+      <li><b>Centre × service pages</b> for the highest-value pairs (e.g. cataract surgery Ipoh, LASIK Penang, kids eye check Johor Bahru) — built from the sitemap's centre and service templates, not hand-written.</li>
+      <li><b>Personalised journey feeds local:</b> a visitor who says "Penang" is shown the Penang centre and its doctors, and that page is what Google indexes for Penang searches.</li>
+    </ul></div>
+    <div class="card"><h3>What changes on Google Business Profile</h3><ul class="plain">
+      <li><b>16 listings, verified and owned by Vista</b> — the three missing centres added, the duplicate HQ listing merged, keyword-stuffed names replaced with the real centre name (Google's rules), categories set to Eye care center / Ophthalmologist / LASIK surgeon.</li>
+      <li><b>One post per centre per month</b> (already in the content plan) plus services, Q&amp;A and photos kept current from the CMS.</li>
+      <li><b>Review workflow</b> — a request after the one-month review, routed by centre; replies within two business days; reviews about the facility only, per MAB 3/2023.</li>
+      <li><b>Tracking</b> — calls, direction requests and website clicks per listing into the Command Centre, so each centre sees its own numbers.</li>
+    </ul></div>
+  </div>
+  <div class="card" style="margin-top:14px"><h3>Priority centre × service pairs</h3><p style="font-size:13px;color:var(--text-secondary);margin:0 0 8px">Tracked in the local pack (top 3) from Month 4. Targets: ≥ 8 pairs by Month 6, ≥ 16 by Month 12. The list is confirmed with Vista at the Day-45 roadmap approval; the pairs below follow where enquiries and searches concentrate today.</p><div class="tscroll" id="t-pairs"></div></div>
+</section>
+
+<section id="aeo">
+  <h2><span class="num">06</span>Answer engines — being the answer Google shows</h2>
+  <p class="lede">Google now answers many eye-care questions on the results page itself. Vista is absent from those answers today because the site has no FAQ blocks worth quoting, no medical structured data and no doctor entities. The fix is editorial as much as technical: every service page carries the questions patients ask in chat, answered in two sentences, marked up so Google can lift them.</p>
+  <div class="grid g3">
+    <div class="card"><h3>Content pattern for every service page</h3><ul class="plain"><li>Question-led sub-headings in the patient's words ("Am I suitable for LASIK?", "How many days off work?")</li><li>A direct 40–60 word answer first, detail after</li><li>An FAQ block of 5–8 questions taken from the Respond.io chat sample</li><li>Approved price range where MAB allows it, instalment terms, what is included</li><li>Reviewed-by line naming the ophthalmologist, with date</li></ul></div>
+    <div class="card"><h3>Structured data added</h3><ul class="plain"><li><b>MedicalOrganization</b> for Vista; <b>MedicalClinic</b> per centre</li><li><b>Physician</b> per doctor — name, qualifications, sub-specialty, centre (facts only, no skill claims)</li><li><b>MedicalProcedure</b> per treatment; <b>FAQPage</b> per service; <b>BreadcrumbList</b></li><li>Consistent across the three languages; validated in CI before every release</li></ul></div>
+    <div class="card"><h3>Entity work</h3><ul class="plain"><li>Knowledge Panel claimed and corrected (name, logo, description, sameAs links)</li><li>20 doctor profiles as individual URLs (today: one shared page, empty alt text)</li><li>Consistent name/address/phone on every directory that Google and AI read</li><li>"People also ask" coverage tracked per service from Month 4</li></ul></div>
+  </div>
+  <div class="card" style="margin-top:14px"><h3>How AEO is implemented — step by step</h3><div class="tscroll"><table class="data"><thead><tr><th>Step</th><th>What is done</th><th>Who</th><th>When</th><th>Deliverable</th></tr></thead><tbody>
+   <tr><td><b>1. Question harvest</b></td><td>Every question patients ask is collected from the Respond.io chat sample, Search Console queries, "People also ask" boxes and Google autocomplete for each service, in EN, BM and ZH; grouped by service and audience</td><td>SEO/AEO/GEO Lead · Analytics Lead</td><td>Month 1</td><td>Question map (≈ 40 questions per core service)</td></tr>
+   <tr><td><b>2. Answer writing</b></td><td>Each question gets a 40–60 word direct answer approved by a Vista ophthalmologist, then the longer explanation; price and instalment answers use only the approved ranges</td><td>Content Lead · Vista clinical reviewer</td><td>Months 2–3, then monthly</td><td>Reviewed answer blocks per service page</td></tr>
+   <tr><td><b>3. Page templates</b></td><td>Service, condition, centre and doctor templates in the CMS carry an FAQ block, a "reviewed by" line and the fields the markup is generated from — editors fill fields, the code writes the schema</td><td>Technical Lead · UX/UI Lead</td><td>Month 2 (design) · Month 3 (build)</td><td>Templates with FAQPage, MedicalProcedure, Physician, MedicalClinic JSON-LD</td></tr>
+   <tr><td><b>4. Validation</b></td><td>Rich Results Test and schema validator run automatically on every release; any page failing validation cannot be published</td><td>QA &amp; Security Lead</td><td>From go-live</td><td>Validation step in the release checklist</td></tr>
+   <tr><td><b>5. Entity clean-up</b></td><td>Knowledge Panel claimed; Vista's name, logo, description and links corrected on Google, Wikidata-style sources, directories and panels; doctor profiles published with identical facts everywhere</td><td>SEO/AEO/GEO Lead</td><td>Months 4–6</td><td>Entity checklist closed; 20 doctor profiles live</td></tr>
+   <tr><td><b>6. Measure and expand</b></td><td>Answer-box, AI Overview and "People also ask" appearances tracked per service each month; questions with no owned answer are queued for the next content month</td><td>SEO/AEO/GEO Lead</td><td>Monthly from Month 5</td><td>AEO coverage table in the monthly report</td></tr>
+  </tbody></table></div></div>
+</section>
+
+<section id="geo">
+  <h2><span class="num">07</span>AI assistants — being cited by ChatGPT, Gemini, Perplexity, Claude and Copilot</h2>
+  <p class="lede">Visits referred by AI assistants grew from 7 to 134 a month between May and August 2026 with an 89–92% engagement rate — patients who arrive this way already trust the recommendation. Nobody at Vista measures it. GEO makes it measurable from Day 30 and then works on the things assistants reward: clear facts, credible authorship, and being mentioned consistently on the sources they read.</p>
+  <div class="grid g2">
+    <div class="card"><h3>How it is measured</h3><ul class="plain">
+      <li><b>Prompt library</b> — ~60 patient prompts in EN, BM and ZH ("best LASIK clinic in Kuala Lumpur", "cataract surgery cost Malaysia", "children's myopia control Penang"), version-controlled so results are comparable month to month.</li>
+      <li><b>Five engines</b> — ChatGPT, Gemini, Perplexity and Claude via API; Copilot checked manually. Run monthly; benchmarked quarterly against three competitors.</li>
+      <li><b>Three scores per prompt</b> — mentioned (Vista named), cited (Vista linked), accurate (services, centres and prices described correctly). Reported as raw counts, not a blended index.</li>
+      <li><b>Traffic</b> — the GA4 "AI Assistant" channel tidied so chatgpt.com, perplexity.ai, gemini and copilot are grouped once, and enquiries from that channel tracked in the ledger.</li>
+    </ul></div>
+    <div class="card"><h3>What earns citations</h3><ul class="plain">
+      <li><b>Citation-ready articles</b> — named author, named reviewing ophthalmologist, publish and review dates, references to clinical sources, a one-paragraph summary at the top. Assistants quote pages that show their sources.</li>
+      <li><b>A facts page and llms.txt</b> — one machine-readable page listing what Vista is, its 16 centres, services, doctors and accreditations, so an assistant does not guess.</li>
+      <li><b>Consistent third-party presence</b> — directories, hospital and insurer panels, press, association listings all saying the same thing; corrections requested where they do not.</li>
+      <li><b>Original data</b> — Vista's own figures (procedures a year, centres, years operating, patient-reported outcomes where approved) are what assistants cite over generic advice.</li>
+      <li><b>Compliance</b> — the same MAB 3/2023 rules apply: no superlatives, no outcome guarantees, no practitioner-skill claims in anything written for assistants to quote.</li>
+    </ul></div>
+  </div>
+  <div class="card" style="margin-top:14px"><h3>How GEO is implemented — step by step</h3><div class="tscroll"><table class="data"><thead><tr><th>Step</th><th>What is done</th><th>Who</th><th>When</th><th>Deliverable</th></tr></thead><tbody>
+   <tr><td><b>1. Prompt library</b></td><td>≈ 60 prompts written the way patients ask assistants, across the four audience groups and six pillars, in EN, BM and ZH; each tagged by service, centre and intent; stored under version control so the set does not drift</td><td>SEO/AEO/GEO Lead · Content Lead</td><td>Month 1</td><td>Prompt library v1</td></tr>
+   <tr><td><b>2. Baseline run</b></td><td>Prompts run through the ChatGPT, Gemini, Perplexity and Claude APIs and manually on Copilot; each answer scored mentioned / cited / accurate; competitors (three agreed with Vista) scored on the same prompts</td><td>SEO/AEO/GEO Lead · Analytics Lead</td><td>By Day 30</td><td>AI-visibility baseline report</td></tr>
+   <tr><td><b>3. Fix the facts</b></td><td>Every inaccurate answer traced to its source (an out-of-date directory, an old press item, a missing page); corrections requested; the facts page and llms.txt published so assistants have one authoritative summary of centres, services, doctors and accreditations</td><td>SEO/AEO/GEO Lead · Vista marketing</td><td>Months 2–5</td><td>Corrections log; facts page; llms.txt</td></tr>
+   <tr><td><b>4. Citation-ready content</b></td><td>The article standard adds a named author, a reviewing ophthalmologist, publish and review dates, a summary paragraph and references; existing top pages are upgraded to the standard first, new articles follow it from Month 2</td><td>Content Lead · Vista clinical reviewers</td><td>Month 2 onward</td><td>Content standard; upgraded top-20 pages by Month 6</td></tr>
+   <tr><td><b>5. Third-party presence</b></td><td>Hospital and insurer panels, medical directories, association listings and press are checked for consistency and coverage; missing listings created, wrong ones corrected; original Vista data (procedure volumes, centre count, years operating) offered for citation where approved</td><td>SEO/AEO/GEO Lead · Vista marketing</td><td>Months 4–9</td><td>Citation and directory log</td></tr>
+   <tr><td><b>6. Monthly run and quarterly benchmark</b></td><td>The library runs monthly; results by engine, language and service go into the Command Centre as raw counts; each quarter the competitor benchmark is repeated and the library extended with new questions from chat</td><td>SEO/AEO/GEO Lead</td><td>Monthly from Month 2; quarterly benchmarks Months 4, 7, 10, 12</td><td>GEO section of the monthly report; quarterly benchmark</td></tr>
+   <tr><td><b>7. Attribute the traffic</b></td><td>GA4 channel grouping merges chatgpt.com, perplexity.ai, gemini.google.com and copilot into one AI Assistant channel; enquiries and bookings from it flow into the lead ledger like any other source</td><td>Analytics Lead</td><td>Month 1 (grouping) · Month 5 (ledger)</td><td>AI-referred sessions, enquiries and bookings in the ledger</td></tr>
+  </tbody></table></div></div>
+</section>
+
+<section id="tech">
+  <h2><span class="num">08</span>Technical foundation — built into the new website</h2>
+  <p class="lede">Most of Vista's search problems are structural, so most of the fix ships with the website in Month 3 rather than as a separate SEO project. The concepts in the Website tab and the production stack in the Roadmap tab already carry these requirements; this is the search view of them.</p>
+  <div class="card"><div class="tscroll" id="t-tech"></div></div>
+  <div class="note">Migration safeguard: a full crawl of both current sites is taken before launch; every URL with traffic or a ranking is mapped to its new page; rankings and organic sessions are compared at Week 1, Week 4 and Week 12 after launch, and any page that loses more than 20% is investigated within five days.</div>
+</section>
+
+<section id="content">
+  <h2><span class="num">09</span>Content engine — four medically reviewed articles a month</h2>
+  <p class="lede">Content today arrives in batches (24 posts in one April, then nothing) and lives on a second domain nobody links to. The plan is a steady four articles a month on the main site, each planned from the keyword map, written for a persona, reviewed by a named ophthalmologist and published in the languages where the demand is.</p>
+  <div class="grid g3">
+    <div class="card"><h3>What gets written</h3><ul class="plain"><li><b>Condition guides</b> (Know Your Eyes) — cataract, myopia, presbyopia, glaucoma, dry eye: symptoms, when to get checked, what a check involves</li><li><b>Decision guides</b> (Weigh Your Options) — LASIK vs CLEAR PRO vs ICL, lens choices for cataract, recovery in days, paying for it</li><li><b>Caregiver guides</b> (Every Age, Every Eye) — taking a parent for cataract surgery, a 12-month myopia plan for a child</li><li><b>Centre and doctor content</b> (Inside Vista) — what each centre offers, the team, the equipment</li></ul></div>
+    <div class="card"><h3>How it is produced</h3><ul class="plain"><li>Rolling calendar at least one month ahead, agreed at the monthly meeting</li><li>Brief → draft → clinical review (named Vista reviewer, 5-business-day SLA) → compliance check → translation → publish</li><li>Medical review workflow lives inside the CMS, so the reviewer signs off on the page itself</li><li>Quarterly refresh of the ten best-performing pages; quarterly contributory article for press or partners</li></ul></div>
+    <div class="card"><h3>Targets</h3><ul class="plain"><li>First 4 articles published in Month 2; 16 by Month 4; 24 by Month 6; 52 by Month 12</li><li>≥ 10% of articles in Google's top 10 for their target term by Month 12</li><li>Every article in EN; BM and ZH where the keyword map shows demand (kids, cataract, dry eye first)</li><li>All 2025–2026 posts migrated, de-duplicated and in the sitemap by Month 5; vistanow.com.my redirected</li></ul></div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <h2><span class="num">10</span>12-month roadmap for search</h2>
+  <p class="lede">The search workstream from the programme roadmap, with the content workstream it depends on. Planned as durations from a Month-1 start (dates shown assume 2 November 2026). Blue bars are one-off build work, green is monthly execution, purple is a recurring cadence. Diamonds are milestones; hover any bar for dates.</p>
+  <div class="card">
+    <div class="filters" id="g-filters"></div>
+    <div class="tscroll"><svg id="c-gantt" viewBox="0 0 1240 100"></svg></div>
+    <div class="legend"><span><i style="background:var(--build)"></i>Build / one-off</span><span><i style="background:var(--run)"></i>Monthly execution</span><span><i style="background:var(--cadence)"></i>Cadence</span><span><i style="background:var(--critical);border-radius:1px;transform:rotate(45deg)"></i>Milestone</span></div>
+  </div>
+  <h3 style="margin-top:22px">Month by month</h3>
+  <p class="lede">What the search team delivers each month, what is measured and what Vista sees. Open any month.</p>
+  <div id="months"></div>
+</section>
+
+<section id="tools">
+  <h2><span class="num">11</span>Tools and technologies</h2>
+  <p class="lede">Every tool is either Vista-owned or vendor-neutral, so the data and the history stay with Vista whichever agency runs the work. Subscriptions run for the full 12 months and are part of the retainer commercials — nothing here is an add-on charge. Where two products do the same job, the choice is made at the Day-30 audit on Vista's existing licences and on price.</p>
+  <div class="filters" id="tool-filters"></div>
+  <div class="card"><div class="tscroll" id="t-tools"></div></div>
+</section>
+
+<section id="kpis">
+  <h2><span class="num">12</span>KPIs and reporting</h2>
+  <p class="lede">The ranking count Vista receives today can rise while the business falls. From Month 2 the search report leads with visitors and enquiries and shows rankings only for the agreed commercial set. Every figure carries a confidence label in the Command Centre: verified, modelled or estimated.</p>
+  <div class="card"><div class="tscroll" id="t-kpi"></div></div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>The monthly search report</h3><ul class="plain"><li>Organic sessions, enquiries and booked appointments from organic, by language and by centre — against last month and the post-launch baseline</li><li>Commercial keyword set: position, change, page that ranks (no brand-term padding)</li><li>Local pack: centre × service pairs in the top 3; GBP calls, directions and website clicks per centre</li><li>AEO: answer-box and "People also ask" appearances per service; rich-result status</li><li>GEO: prompt-library results — mentioned / cited / accurate per engine; AI-referred sessions and enquiries</li><li>Content published, reviewed and pending; technical health (crawl errors, Core Web Vitals, index coverage)</li><li>What CDS is doing next month and what it needs from Vista</li></ul></div>
+    <div class="card"><h3>Gates and checkpoints</h3><ul class="plain"><li><b>Day 30</b> — audit, keyword/entity map and AI-visibility baseline delivered</li><li><b>Day 45</b> — 12-month search roadmap and the commercial keyword set approved by Vista</li><li><b>Go-live (Month 3)</b> — pre-launch crawl frozen; redirect map verified; structured data validated</li><li><b>Month 4</b> — post-launch baseline locked; floors become binding from Month 5</li><li><b>Month 6</b> — KPI checkpoint: ≥ 50% commercial keywords on page 1, ≥ 8 local pairs, Vista cited on ≥ 3 engines</li><li><b>Month 12</b> — ≥ 60% on page 1, ≥ 16 local pairs, ≥ 5 engines, organic sessions +40%, 52 articles</li></ul></div>
+  </div>
+</section>
+
+<section id="needs">
+  <h2><span class="num">13</span>What CDS needs from Vista</h2>
+  <div class="card"><div class="tscroll" id="t-needs"></div></div>
+</section>
+
+<footer>Caspian Digital Solutions — prepared for Vista Eye Specialist, September 2026. Companion to the Vista Today, Content &amp; Campaigns, Website Concepts and Roadmap tabs. Keyword volumes and rankings are as reported in the agency SEO reports (Semrush, Malaysia) and are re-measured in the Day-30 audit.</footer>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+const S = /*__VISTA_DATA__:S*/;
+
+/* helpers */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const NS='http://www.w3.org/2000/svg';const el=(n,a={})=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const tip=$('tip');
+function bindTip(node,html){node.addEventListener('mousemove',e=>{tip.innerHTML=html;tip.style.opacity=1;let x=e.clientX+14,y=e.clientY+14;if(x+310>innerWidth)x=e.clientX-320;if(y+120>innerHeight)y=e.clientY-120;tip.style.left=x+'px';tip.style.top=y+'px';});node.addEventListener('mouseleave',()=>tip.style.opacity=0);}
+function table(id,cols,rows,opts={}){const c=$(id);let sk=opts.sort||null,asc=opts.asc||false;
+ function render(){const data=[...rows];if(sk){const col=cols.find(x=>x.k===sk);data.sort((a,b)=>{let va=a[sk],vb=b[sk];if(col.num){va=+va||0;vb=+vb||0;return asc?va-vb:vb-va;}return asc?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va));});}
+  let h='<table class="data"><thead><tr>'+cols.map(col=>`<th class="${sk===col.k?'sorted'+(asc?' asc':''):''}" data-k="${col.k}">${col.h}</th>`).join('')+'</tr></thead><tbody>';
+  data.forEach(r=>{h+='<tr>'+cols.map(col=>{let v=r[col.k];v=col.f?col.f(v,r):esc(v);return `<td class="${col.num?'n':''}">${v}</td>`;}).join('')+'</tr>';});
+  c.innerHTML=h+'</tbody></table>';c.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;if(sk===k)asc=!asc;else{sk=k;asc=false;}render();}));}
+ render();}
+const trackPill=t=>`<span class="pill ${t==='AEO'?'aeo':t==='GEO'?'geo':t==='Local'?'local':t==='tech'?'tech':''}">${t==='tech'?'Build':t}</span>`;
+
+/* theme */
+const root=document.documentElement,tb=$('theme');
+const isDark=()=>{const t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;};
+const syncBtn=()=>tb.textContent=isDark()?'◑ Light mode':'◐ Dark mode';
+tb.addEventListener('click',()=>{root.setAttribute('data-theme',isDark()?'light':'dark');syncBtn();drawGantt();});syncBtn();
+
+/* findings */
+table('t-findings',[{h:'Ref',k:'id'},{h:'Area',k:'area'},{h:'What is wrong',k:'what',f:v=>`<b>${esc(v)}</b>`},{h:'Evidence',k:'ev'},{h:'What changes',k:'fix'}],S.findings);
+
+/* keywords */
+let kwTrack='All',kwLang='All';
+function kwFilters(){const f=$('kw-filters');const tracks=['All','SEO','Local','AEO','GEO'],langs=['All','EN','BM','ZH'];
+ f.innerHTML='<span class="sep">Track</span>'+tracks.map(v=>`<button data-t="tr" data-v="${v}" class="${v===kwTrack?'on':''}">${v}</button>`).join('')+'<span class="sep">Language</span>'+langs.map(v=>`<button data-t="ln" data-v="${v}" class="${v===kwLang?'on':''}">${v}</button>`).join('');
+ f.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.t==='tr')kwTrack=b.dataset.v;else kwLang=b.dataset.v;kwFilters();kwTable();};}
+function kwTable(){const rows=S.kw.filter(r=>(kwTrack==='All'||r.track===kwTrack)&&(kwLang==='All'||r.lang.includes(kwLang)));
+ table('t-kw',[{h:'Search / question',k:'t',f:v=>`<b>${esc(v)}</b>`},{h:'Monthly searches',k:'vol',num:true,f:v=>v==null?'<span style="color:var(--muted)">sized at Day 30</span>':v.toLocaleString('en-US')},{h:'Language',k:'lang'},{h:'Track',k:'track',f:trackPill},{h:'Pillar',k:'pillar'},{h:'Audience',k:'aud'},{h:'Page that wins it',k:'page'},{h:'Position today',k:'now'},{h:'Note',k:'note'}],rows,{sort:'vol'});}
+kwFilters();kwTable();
+
+/* pairs */
+$('t-pairs').innerHTML='<table class="data"><thead><tr><th>Centre</th><th>Services to win locally</th><th>Why</th></tr></thead><tbody>'+S.pairs.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join('')+'</tbody></table>';
+
+/* tech */
+$('t-tech').innerHTML='<table class="data"><thead><tr><th>Area</th><th>Today</th><th>New site</th><th>Track</th></tr></thead><tbody>'+S.tech.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${trackPill(r[3])}</td></tr>`).join('')+'</tbody></table>';
+
+/* gantt */
+const T0=new Date('2026-11-01'),T1=new Date('2027-11-01');const dayN=s=>(new Date(s)-T0)/86400000;const TOTAL=(T1-T0)/86400000;
+const MONTHS=/*__VISTA_DATA__:MONTHS*/;
+const MON=/*__VISTA_DATA__:MON*/;
+const fdate=s=>{const d=new Date(s);return d.getDate()+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]+' '+d.getFullYear();};
+let gWS='All';
+function drawGantt(){const svg=$('c-gantt');svg.innerHTML='';const W=1240,L=340,R=16,pw=W-L-R;const X=d=>L+dayN(d)/TOTAL*pw;const rowH=22,hdr=34;
+ const ws=S.gantt.filter(w=>gWS==='All'||w.id===gWS);let rows=[];ws.forEach(w=>{rows.push({type:'ws',w});w.bars.forEach(b=>rows.push({type:'bar',w,b}));});
+ const H=hdr+rows.length*rowH+16;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+ MON.forEach((m,i)=>{const x=X(MONTHS[i]+'-01');svg.appendChild(el('line',{x1:x,x2:x,y1:hdr-8,y2:H-10,stroke:css('--grid')}));const t=el('text',{x:x+4,y:hdr-14,class:'tick'});t.textContent=m;svg.appendChild(t);});
+ const gl=X('2027-01-22');svg.appendChild(el('line',{x1:gl,x2:gl,y1:hdr-8,y2:H-10,stroke:css('--critical'),'stroke-width':1.5,'stroke-dasharray':'4 3'}));
+ rows.forEach((r,i)=>{const y=hdr+i*rowH;
+  if(r.type==='ws'){svg.appendChild(el('rect',{x:0,y:y-2,width:W,height:rowH,fill:css('--chip')}));const t=el('text',{x:8,y:y+13,'font-size':'12','font-weight':'700',fill:css('--text-primary')});t.textContent=r.w.id+' · '+r.w.name;svg.appendChild(t);const o=el('text',{x:L-8,y:y+13,'font-size':'11',fill:css('--muted'),'text-anchor':'end'});o.textContent=r.w.owner;svg.appendChild(o);
+   r.w.milestones.forEach(m=>{const x=X(m.d);const d=el('rect',{x:x-5,y:y+4,width:10,height:10,transform:`rotate(45 ${x} ${y+9})`,fill:m.t.includes('Go-live')?css('--critical'):css('--text-primary')});svg.appendChild(d);bindTip(d,`<b>${esc(m.t)}</b><span class="r">${fdate(m.d)}</span>`);});
+  }else{const b=r.b;const t=el('text',{x:16,y:y+14,'font-size':'11.5',fill:css('--text-secondary')});let lab=b.label;if(lab.length>54)lab=lab.slice(0,52)+'…';t.textContent=lab;svg.appendChild(t);
+   const x1=X(b.from),x2=X(b.to)+pw/TOTAL;const col=b.kind==='build'?'--build':b.kind==='run'?'--run':'--cadence';const rc=el('rect',{x:x1,y:y+4,width:Math.max(x2-x1,3),height:13,rx:3,fill:css(col),opacity:b.kind==='cadence'?.75:.95});svg.appendChild(rc);
+   if(b.kind==='cadence'){for(let x=x1+18;x<x2;x+=pw/TOTAL*30.4)svg.appendChild(el('line',{x1:x,x2:x,y1:y+4,y2:y+17,stroke:css('--surface-1'),'stroke-width':2}));}
+   bindTip(rc,`<b>${esc(b.label)}</b><span class="r">${fdate(b.from)} – ${fdate(b.to)}</span><span class="r">${esc(r.w.name)} · ${esc(r.w.owner)}</span>`);}
+ });}
+(function(){const f=$('g-filters');f.innerHTML='<span class="sep">Workstream</span>'+['All','F','G'].map(v=>`<button data-v="${v}" class="${v==='All'?'on':''}">${v==='All'?'Both':v==='F'?'F · SEO · AEO · GEO · local':'G · Content marketing'}</button>`).join('');
+ f.onclick=e=>{const b=e.target.closest('button');if(!b)return;gWS=b.dataset.v;f.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));drawGantt();};})();
+drawGantt();
+
+/* months */
+$('months').innerHTML=S.months.map((m,i)=>`<details class="month" ${i===0?'open':''}><summary><span class="mm">${esc(m.m)} <span style="color:var(--muted);font-weight:400">· ${esc(m.d)}</span></span><span class="th">${esc(m.phase)}</span><span class="ph">${m.out.length} outputs</span></summary><div class="body"><div><h4>What CDS does</h4><ul>${m.do.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div><h4>Outputs</h4><ul>${m.out.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div><h4>What Vista sees</h4><p style="font-size:12.5px;margin:6px 0 0">${esc(m.see)}</p></div></div></details>`).join('');
+
+/* tools */
+let toolCat='All';
+function toolFilters(){const f=$('tool-filters');const cats=['All','Measure','Local','Technical','AEO','GEO','Platform','Reporting','Governance'];
+ f.innerHTML='<span class="sep">Purpose</span>'+cats.map(v=>`<button data-v="${v}" class="${v===toolCat?'on':''}">${v}</button>`).join('');
+ f.onclick=e=>{const b=e.target.closest('button');if(!b)return;toolCat=b.dataset.v;toolFilters();toolTable();};}
+function toolTable(){const rows=S.tools.filter(r=>toolCat==='All'||r[1]===toolCat).map(r=>({tool:r[0],cat:r[1],use:r[2],own:r[3],track:r[4]}));
+ table('t-tools',[{h:'Tool / technology',k:'tool',f:v=>`<b>${esc(v)}</b>`},{h:'Purpose',k:'cat'},{h:'Used for',k:'use'},{h:'Ownership & cost basis',k:'own'},{h:'Track',k:'track',f:v=>v==='Reporting'?'<span class="pill tech">All</span>':trackPill(v)}],rows);}
+toolFilters();toolTable();
+
+/* kpi */
+table('t-kpi',[{h:'Measure',k:'k',f:v=>`<b>${esc(v)}</b>`},{h:'Baseline',k:'base'},{h:'Month 6',k:'m6'},{h:'Month 12',k:'m12'},{h:'Source',k:'src'}],S.kpi);
+
+/* needs */
+$('t-needs').innerHTML='<table class="data"><thead><tr><th>Item</th><th>What CDS needs</th><th>By</th><th>Why it matters</th></tr></thead><tbody>'+S.needs.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td style="white-space:nowrap">${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join('')+'</tbody></table>';
+</script>
+</body></html>

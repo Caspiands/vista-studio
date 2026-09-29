@@ -76,7 +76,7 @@ export function LoginForm({ next, meta, demo }: LoginFormProps) {
             <p className="font-semibold">
               {meta.docCode} {meta.version}
             </p>
-            <p className="text-xs text-white/60">{meta.brandTagline}</p>
+            <p className="text-xs text-white/60">{meta.preparedBy}</p>
           </div>
         </div>
 
@@ -85,7 +85,7 @@ export function LoginForm({ next, meta, demo }: LoginFormProps) {
             {meta.docCode} {meta.version} · {meta.edition}
           </p>
           <h1 className="text-4xl font-semibold leading-tight tracking-tight text-balance xl:text-5xl">{meta.docTitle}</h1>
-          <p className="mt-4 text-lg text-white/70">{meta.fiscalYear}</p>
+          <p className="mt-4 text-lg text-white/70">Prepared by {meta.preparedBy} · {meta.issueDate}</p>
           <dl className="mt-10 grid grid-cols-2 gap-6 border-t border-white/10 pt-8 text-sm">
             <div>
               <dt className="text-white/50">Prepared for</dt>
@@ -109,7 +109,7 @@ export function LoginForm({ next, meta, demo }: LoginFormProps) {
           <div className="mb-8 flex flex-col gap-3 lg:hidden">
             <BrandLogo height={44} priority />
             <p className="text-xs text-muted-foreground">
-              {meta.docCode} {meta.version} · {meta.docTitle} · {meta.fiscalYear}
+              {meta.docCode} {meta.version} · {meta.docTitle} · {meta.issueDate}
             </p>
           </div>
 

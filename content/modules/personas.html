@@ -1,0 +1,374 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>img{max-width:100%}[hidden]{display:none!important}@media(max-width:1000px){.grid4{grid-template-columns:1fr 1fr!important}}@media(max-width:600px){.grid4{grid-template-columns:1fr!important}}
+</style>
+<style>.tbtn#theme{display:none!important}html,body{overflow:hidden}@media(max-width:1000px){.grid4{grid-template-columns:1fr 1fr!important}}@media(max-width:600px){.grid4{grid-template-columns:1fr!important}}
+</style>
+<script>
+(function(){
+  function h(){return Math.ceil(Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0));}
+  function post(){try{parent.postMessage({vistaHub:1,frame:window.name,height:h()},'*');}catch(e){}}
+  addEventListener('load',function(){post();try{new ResizeObserver(post).observe(document.body);}catch(e){setInterval(post,800);}});
+  addEventListener('resize',post);
+  document.addEventListener('toggle',post,true);
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(!a)return;var id=a.getAttribute('href').slice(1);var t=id&&document.getElementById(id);
+    if(t){e.preventDefault();try{parent.postMessage({vistaHub:1,frame:window.name,scrollTo:t.getBoundingClientRect().top},'*');}catch(x){t.scrollIntoView();}}
+  });
+  addEventListener('message',function(e){
+    var d=e.data;if(!d||!d.vistaTheme)return;
+    var root=document.documentElement,want=d.vistaTheme==='dark';
+    var cur=root.getAttribute('data-theme');var dark=cur?cur==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    var btn=document.getElementById('theme');
+    if(dark!==want){ if(btn){btn.click();} else {root.setAttribute('data-theme',d.vistaTheme);} }
+    setTimeout(post,50);
+  });
+})();
+</script>
+</head><body><title>Vista Patient Personas</title>
+<style>
+:root{
+  color-scheme:light;
+  --surface-1:#fcfcfb; --plane:#f5f5f2; --chip:#efeee9;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#7d7b75;
+  --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,0.10);
+  --series-1:#2a78d6; --series-2:#eb6834; --series-3:#1baf7a; --series-4:#8a63d2;
+  --critical:#d03b3b; --good:#0ca30c;
+  --g-kids:#1baf7a; --g-young:#2a78d6; --g-mature:#8a63d2; --g-cross:#eb6834;
+  --tint-1:#e8f0fb;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --surface-1:#1a1a19; --plane:#0f0f0e; --chip:#262624;
+    --text-primary:#f5f5f2; --text-secondary:#c3c2b7; --muted:#8f8d86;
+    --grid:#2c2c2a; --axis:#44443f; --border:rgba(255,255,255,0.10);
+    --series-1:#4a93ea; --series-2:#e5703f; --series-3:#23b683; --series-4:#a283e6;
+    --critical:#e25555; --good:#3cc23c;
+    --g-kids:#23b683; --g-young:#4a93ea; --g-mature:#a283e6; --g-cross:#e5703f;
+    --tint-1:#17263a;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0f0f0e; --chip:#262624;
+  --text-primary:#f5f5f2; --text-secondary:#c3c2b7; --muted:#8f8d86;
+  --grid:#2c2c2a; --axis:#44443f; --border:rgba(255,255,255,0.10);
+  --series-1:#4a93ea; --series-2:#e5703f; --series-3:#23b683; --series-4:#a283e6;
+  --critical:#e25555; --good:#3cc23c;
+  --g-kids:#23b683; --g-young:#4a93ea; --g-mature:#a283e6; --g-cross:#e5703f;
+  --tint-1:#17263a;
+}
+*{box-sizing:border-box}
+body{background:var(--plane);color:var(--text-primary);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-inline:16px;margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-block:28px 72px}
+header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding-bottom:20px;border-bottom:2px solid var(--series-1);margin-bottom:22px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:29px;line-height:1.2;margin:6px 0;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+h1 span{color:var(--series-1)}
+.sub{color:var(--text-secondary);max-width:720px}
+.meta{font-size:12px;color:var(--muted);margin-top:8px;max-width:760px}
+.tbtn{background:var(--surface-1);border:1px solid var(--border);color:var(--text-secondary);border-radius:999px;padding:7px 15px;font-size:12.5px;cursor:pointer;font-family:inherit;white-space:nowrap}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px}
+nav.toc a{color:var(--text-secondary);text-decoration:none;border-bottom:1px solid var(--grid)}
+nav.toc a:hover{color:var(--series-1);border-color:var(--series-1)}
+section{margin-top:40px}
+h2{font-size:19px;margin:0 0 4px;font-weight:700;text-wrap:balance}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:820px}
+.card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:22px}
+@media(max-width:1000px){.tiles{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.tile .lab{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.tile .val{font-size:25px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin-top:2px}
+.tile .note{font-size:11.5px;color:var(--text-secondary);line-height:1.4;margin-top:4px}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.filters button{background:var(--chip);border:1px solid var(--border);color:var(--text-secondary);border-radius:999px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
+.filters button.on{background:var(--text-primary);color:var(--surface-1);border-color:var(--text-primary)}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+
+.roster{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:1100px){.roster{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.roster{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:430px){.roster{grid-template-columns:1fr}}
+.pc{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:14px 14px 12px;text-align:left;font-family:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:border-color .12s, box-shadow .12s}
+.pc:hover{border-color:var(--axis)}
+.pc.sel{border-color:var(--series-1);box-shadow:0 0 0 2px var(--series-1) inset}
+.pc .row{display:flex;gap:10px;align-items:center}
+.mono{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px;color:#fff;flex:none;font-variant-numeric:tabular-nums}
+.pc .pid{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.04em}
+.pc .grp{font-size:11px;color:var(--text-secondary)}
+.pc .ttl{font-weight:700;font-size:13.5px;line-height:1.3;text-wrap:balance}
+.pc .facts{font-size:11.5px;color:var(--text-secondary);display:grid;gap:1px}
+
+.detail{margin-top:16px}
+.dhead{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--grid)}
+.dhead .mono{width:54px;height:54px;font-size:15px}
+.dhead h3{margin:2px 0 4px;font-size:21px;line-height:1.25;text-wrap:balance}
+.quote{font-size:14.5px;color:var(--text-secondary);font-style:italic;max-width:680px}
+.nav2{margin-left:auto;display:flex;gap:6px}
+.nav2 button{background:var(--chip);border:1px solid var(--border);color:var(--text-secondary);border-radius:8px;padding:6px 11px;font-family:inherit;font-size:12px;cursor:pointer}
+.fields{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:4px}
+@media(max-width:1000px){.fields{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.fields{grid-template-columns:1fr}}
+.f{padding:14px 16px 14px 0;border-bottom:1px solid var(--grid)}
+.f .k{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px;display:flex;gap:6px}
+.f .k b{color:var(--series-1);font-variant-numeric:tabular-nums}
+.f .v{font-size:13px}
+.f ul{margin:0;padding-left:16px}
+.f li{margin:2px 0}
+.f.wide{grid-column:span 2}
+@media(max-width:560px){.f.wide{grid-column:span 1}}
+.plat{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:11.5px;padding:2px 9px;border-radius:999px;border:1px solid var(--border);background:var(--chip);color:var(--text-primary);white-space:nowrap}
+.tag.p{background:var(--series-1);border-color:var(--series-1);color:#fff}
+.hook{background:var(--tint-1);border-radius:8px;padding:10px 12px;font-size:13px}
+
+h4{font-size:14px;margin:22px 0 10px}
+.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+@media(max-width:900px){.journey{grid-template-columns:1fr 1fr;row-gap:14px}}
+@media(max-width:520px){.journey{grid-template-columns:1fr}}
+.stage{padding:0 12px 0 0}
+.stage .sh{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.stage .sn{width:24px;height:24px;border-radius:50%;background:var(--text-primary);color:var(--surface-1);font-size:11.5px;font-weight:700;display:grid;place-items:center;flex:none}
+.stage .st{font-weight:700;font-size:13px}
+.stage .line{flex:1;height:2px;background:var(--axis)}
+.stage:last-child .line{display:none}
+.box{border-radius:8px;padding:9px 11px;font-size:12.5px;margin-bottom:8px}
+.box .bl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-bottom:3px}
+.box.today{background:var(--chip);border-left:3px solid var(--critical)}
+.box.today .bl{color:var(--critical)}
+.box.plan{background:var(--tint-1);border-left:3px solid var(--series-1)}
+.box.plan .bl{color:var(--series-1)}
+
+.cds{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--grid);border-radius:10px;overflow:hidden}
+@media(max-width:800px){.cds{grid-template-columns:1fr}}
+.cds div{padding:11px 14px;border-bottom:1px solid var(--grid);border-right:1px solid var(--grid);font-size:12.5px}
+.cds div span{display:block;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:2px}
+.ev{font-size:12px;color:var(--text-secondary);margin-top:12px;padding-top:10px;border-top:1px dashed var(--grid)}
+.ev b{color:var(--text-primary)}
+
+.tscroll{overflow-x:auto}
+table.data{width:100%;border-collapse:collapse;font-size:12.5px}
+table.data th{text-align:left;font-weight:600;color:var(--text-secondary);border-bottom:1px solid var(--axis);padding:7px 9px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;vertical-align:bottom}
+table.data th.sortable{cursor:pointer;user-select:none;white-space:nowrap}
+table.data th.sorted::after{content:" ▾";color:var(--series-1)}
+table.data th.sorted.asc::after{content:" ▴"}
+table.data td{padding:7px 9px;border-bottom:1px solid var(--grid);vertical-align:top}
+table.data tbody tr:hover{background:var(--chip)}
+table.matrix th.pl{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;text-transform:none;letter-spacing:0;font-size:11.5px;padding:8px 4px;height:200px;text-align:left}
+table.matrix td.c{text-align:center;padding:7px 4px}
+table.matrix td.tot,table.matrix th.tot{background:var(--chip);font-variant-numeric:tabular-nums;text-align:center}
+.m1,.m2{display:inline-block;width:12px;height:12px;border-radius:50%}
+.m1{background:var(--series-1)}
+.m2{border:2px solid var(--series-1)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--text-secondary);margin-top:10px;align-items:center}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.plink{color:var(--series-1);cursor:pointer;background:none;border:none;font:inherit;padding:0;text-align:left;font-weight:600}
+
+.impl{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(max-width:800px){.impl{grid-template-columns:1fr}}
+.impl .card{padding:16px 18px}
+.impl .o{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--series-1);font-weight:700}
+.impl .t{font-weight:700;font-size:14.5px;margin:3px 0 4px}
+.impl .d{font-size:12.5px;color:var(--text-secondary)}
+.impl .ps{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px}
+.impl .ps button{font:inherit;font-size:11px;border-radius:999px;padding:1px 8px;border:1px solid var(--border);background:var(--chip);color:var(--text-primary);cursor:pointer}
+ol.val{margin:0;padding-left:18px}
+ol.val li{margin:5px 0;font-size:13px}
+footer{margin-top:52px;padding-top:16px;border-top:1px solid var(--grid);font-size:12px;color:var(--muted)}
+a{color:var(--series-1)}
+:focus-visible{outline:2px solid var(--series-1);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+@media print{.tbtn,.nav2,.filters{display:none}body{background:#fff}}
+@media(max-width:1000px){.grid4{grid-template-columns:1fr 1fr!important}}@media(max-width:600px){.grid4{grid-template-columns:1fr!important}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div>
+    <div class="eyebrow">Vista Eye Specialist · Digital Transformation RFP QHM/VES/DT/2026/003 · Caspian Digital Solutions</div>
+    <h1>Vista Eye Specialist — <span>Target Audiences &amp; Patient Personas</span></h1>
+    <div class="sub">Who Vista is speaking to. First the target audience groups by age and who makes the decision, then the ten patient and caregiver personas inside them: how each one hears about Vista, enquires, books and visits, where that journey breaks today, and what changes for them under the 12-month plan.</div>
+    <div class="meta" id="basis"></div>
+  </div>
+  <button class="tbtn" id="theme" type="button">◐ Dark mode</button>
+</header>
+<nav class="toc">
+  <a href="#audiences">Target audiences</a><a href="#roster">Personas</a><a href="#matrix">Platform matrix</a><a href="#compare">Comparison table</a><a href="#implications">What it means for the proposal</a><a href="#validate">Assumptions to validate</a><a href="#sources">Sources</a>
+</nav>
+
+<div class="tiles">
+  <div class="tile"><div class="lab">Kids eye-exam page sessions</div><div class="val">15,656</div><div class="note">EN 8,321 · BM 5,320 · ZH 2,015, Sep 25–Aug 26</div></div>
+  <div class="tile"><div class="lab">Refractive chats, Sep 25 → Aug 26</div><div class="val">437 → 2,370</div><div class="note">Conversations closed under the Refractive category, per month</div></div>
+  <div class="tile"><div class="lab">Booking rate, paid vs unpaid</div><div class="val">1.5% / 14.4%</div><div class="note">288 of 19,670 paid New Leads; 2,428 of 16,883 incoming, Dec–Aug</div></div>
+  <div class="tile"><div class="lab">Singapore users</div><div class="val">16,042</div><div class="note">Second-largest city after Kuala Lumpur; no Singapore campaign or content</div></div>
+  <div class="tile"><div class="lab">Users from cities with no branch</div><div class="val">19,266</div><div class="note">Kota Kinabalu 10,004 · Kuching 6,062 · Sandakan 3,200</div></div>
+</div>
+
+<section id="audiences">
+  <h2>Target audiences first</h2>
+  <p class="lede">Four audience groups, set by age and by who actually makes the decision. Every campaign and post targets one of these groups; the personas below are the people inside them.</p>
+  <div class="grid4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+    <div class="card" style="border-top:4px solid var(--g-young)"><h3 style="margin:0 0 4px;font-size:15px">Young adults 18–40</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Decides for themselves</div><div style="font-size:12.5px">Wants to be glasses-free, or has been told LASIK is not suitable and needs the alternatives explained. Services: iLASIK, CLEAR PRO, ICL.</div><div style="font-size:12px;margin-top:8px"><b>Personas:</b> P01, P02, P10</div></div>
+    <div class="card" style="border-top:4px solid var(--g-kids)"><h3 style="margin:0 0 4px;font-size:15px">Parents of children 5–17</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">The parent decides, the child is the patient</div><div style="font-size:12.5px">Worried that the child's myopia keeps rising. Services: kids eye examination, myopia control programme. Reached through parenting audiences, schools and optometrists — not through the child.</div><div style="font-size:12px;margin-top:8px"><b>Persona:</b> P03</div></div>
+    <div class="card" style="border-top:4px solid var(--g-mature)"><h3 style="margin:0 0 4px;font-size:15px">Adults 40+</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Decides for themselves, or arranges for a parent</div><div style="font-size:12.5px">The widest range of needs: presbyopia, cataract, glaucoma, dry eye. Includes the adult son or daughter arranging a parent's cataract surgery. Services: cataract, RLE, glaucoma, dry eye.</div><div style="font-size:12px;margin-top:8px"><b>Personas:</b> P04, P06, P07</div></div>
+    <div class="card" style="border-top:4px solid var(--g-mature)"><h3 style="margin:0 0 4px;font-size:15px">Seniors 60+</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Decides for themselves, often with family support</div><div style="font-size:12.5px">Wants to see the doctor, not type on a phone; comes on a neighbour's or family's recommendation. Services: cataract, glaucoma. Reached through Facebook, radio, Google Business Profile and the family member in the group above.</div><div style="font-size:12px;margin-top:8px"><b>Persona:</b> P05</div></div>
+  </div>
+  <p class="note" style="font-size:12px;color:var(--text-secondary);margin-top:12px">P07 (dry eye), P09 (traveller from a city with no centre) and P10 (promo-driven shopper) are situations, not separate audiences — they are reached inside the age groups above with a different message. P08 (Singapore cross-border) is not a primary target: Singapore cannot be targeted as a whole, so it is held back as an option for the Johor Bahru centre only, if Vista wants it.</p>
+</section>
+
+<section id="roster">
+  <h2>The ten personas</h2>
+  <p class="lede">The people inside each audience group. Select a persona to see the ten profile fields, the four-stage journey (today and with the new plan) and what CDS does for them.</p>
+  <div class="filters" id="gfilter"></div>
+  <div class="roster" id="cards"></div>
+  <div class="card detail" id="detail"></div>
+</section>
+
+<section id="matrix">
+  <h2>Where each persona hears about Vista</h2>
+  <p class="lede">Primary platforms are where the persona first meets Vista or decides; secondary platforms are where they check or compare. Column totals show how many personas each platform reaches.</p>
+  <div class="card"><div class="tscroll" id="mx"></div>
+  <div class="legend"><span><i class="m1"></i>Primary</span><span><i class="m2"></i>Secondary</span><span>Select a persona name to open its profile.</span></div></div>
+</section>
+
+<section id="compare">
+  <h2>Comparison table</h2>
+  <p class="lede">All ten personas side by side. Select a column heading to sort.</p>
+  <div class="card"><div class="filters" id="cfilter"></div><div class="tscroll" id="ct"></div></div>
+</section>
+
+<section id="implications">
+  <h2>What the personas mean for the proposal</h2>
+  <p class="lede">Each point maps to a roadmap objective and lists the personas it serves.</p>
+  <div class="impl" id="impl"></div>
+</section>
+
+<section id="validate">
+  <h2>Assumptions to validate in Phase 1</h2>
+  <p class="lede">Behaviour, platforms and pain points come from Vista's own data. Demographics do not: GA4 demographics were not pulled and Vista has not shared patient records.</p>
+  <div class="card"><ol class="val" id="val"></ol></div>
+</section>
+
+<section id="sources">
+  <h2>Sources</h2>
+  <div class="card" style="font-size:12.5px;color:var(--text-secondary)">
+    CDS VISTA Digital Asset Analysis, 14 Sep 2026 (GA4 property p265217204, Sep 2025–Aug 2026; Respond.io space 226510, lifecycle Dec 2025–Aug 2026; crawl of vista.com.my and vistanow.com.my; public social profiles; 29 sampled conversations) · Findings register F-01 to F-25, O-01 to O-05 · CDS roadmap Nov 2026–Oct 2027 (objectives O1–O6, KPIs) · <a href="https://www.vista.com.my/" target="_blank" rel="noopener">vista.com.my</a> service structure, booking channels, 0% instalment and trust claims (read 16 Sep 2026) · <a href="https://www.vista.com.my/myopia-shortsightness/" target="_blank" rel="noopener">Vista myopia control page</a> · DOSM Household Income Survey 2024 bands as reported by <a href="https://www.stashaway.my/r/b40-m40-t20-t15-malaysia" target="_blank" rel="noopener">StashAway Malaysia</a>.
+  </div>
+</section>
+
+<footer>Caspian Digital Solutions — prepared for the Vista Eye Specialist Digital Transformation proposal. Prepared for Vista Eye Specialist. Price figures in the messaging lines are placeholders pending Vista's current price list and MAB approval; age, gender and income bands are working assumptions to be confirmed with Vista's patient data in Phase 1.</footer>
+</div>
+
+<script>
+const PERSONA_DATA = /*__VISTA_DATA__:PERSONA_DATA*/;
+
+</script>
+<script>
+(function(){
+const D=PERSONA_DATA, P=D.personas, PL=Object.fromEntries(D.platforms.map(p=>[p.k,p.n]));
+const GC=/*__VISTA_DATA__:GC*/;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let group='all', sel='P01';
+try{const s=localStorage.getItem('vp-sel');if(s&&P.some(p=>p.id===s))sel=s;}catch(e){}
+$('basis').textContent='Prepared '+D.meta.prepared+'. '+D.meta.basis;
+
+function mono(p){return `<span class="mono" style="background:var(${GC[p.group]})">${p.id.replace('P','')}</span>`;}
+
+function filters(){
+  const opts=[['all','All ten',null]].concat(Object.entries(D.groups).map(([k,v])=>[k,v,GC[k]]));
+  $('gfilter').innerHTML=opts.map(([k,v,c])=>`<button type="button" data-g="${k}" class="${k===group?'on':''}">${c?`<i class="dot" style="background:var(${c})"></i>`:''}${v} (${k==='all'?P.length:P.filter(p=>p.group===k).length})</button>`).join('');
+  $('gfilter').onclick=e=>{const b=e.target.closest('button');if(!b)return;group=b.dataset.g;filters();cards();};
+}
+function cards(){
+  const list=P.filter(p=>group==='all'||p.group===group);
+  $('cards').innerHTML=list.map(p=>`<button type="button" class="pc ${p.id===sel?'sel':''}" data-id="${p.id}" aria-pressed="${p.id===sel}">
+    <div class="row">${mono(p)}<div><div class="pid">${p.id}</div><div class="grp">${D.groups[p.group]}</div></div></div>
+    <div class="ttl">${esc(p.title)}</div>
+    <div class="facts"><span>${esc(p.age)} · ${esc(p.gender)}</span><span>${esc(p.services[0])}</span></div></button>`).join('');
+  $('cards').onclick=e=>{const b=e.target.closest('.pc');if(b)select(b.dataset.id,false);};
+}
+function select(id,scroll){
+  sel=id;try{localStorage.setItem('vp-sel',id);}catch(e){}
+  cards();detail();
+  if(scroll)$('roster').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+}
+function li(a){return '<ul>'+a.map(x=>`<li>${esc(x)}</li>`).join('')+'</ul>';}
+function detail(){
+  const p=P.find(x=>x.id===sel), i=P.indexOf(p);
+  const plat=p.platforms.primary.map(k=>`<span class="tag p">${PL[k]}</span>`).join('')+p.platforms.secondary.map(k=>`<span class="tag">${PL[k]}</span>`).join('');
+  const F=(n,k,v,cls='')=>`<div class="f ${cls}"><div class="k"><b>${String(n).padStart(2,'0')}</b>${k}</div><div class="v">${v}</div></div>`;
+  $('detail').innerHTML=`
+  <div class="dhead">${mono(p)}<div style="flex:1;min-width:220px"><div class="eyebrow">${p.id} · ${D.groups[p.group]} · ${esc(p.location)}</div><h3>${esc(p.title)}</h3><div class="quote">“${esc(p.quote)}”</div></div>
+  <div class="nav2"><button type="button" id="prev" aria-label="Previous persona">← ${P[(i+P.length-1)%P.length].id}</button><button type="button" id="next" aria-label="Next persona">${P[(i+1)%P.length].id} →</button></div></div>
+  <div class="fields">
+    ${F(1,'Persona title',esc(p.title))}
+    ${F(2,'Age group',esc(p.age))}
+    ${F(3,'Gender',esc(p.gender))}
+    ${F(4,'Income range',esc(p.income))}
+    ${F(5,'Services interested in',li(p.services))}
+    ${F(6,'Pain points',li(p.pains))}
+    ${F(7,'Platforms (filled = primary)',`<div class="plat">${plat}</div>`)}
+    ${F(8,'Buying hook',`<div class="hook">${esc(p.hook)}</div>`)}
+    ${F(9,'Trust factors',li(p.trust),'wide')}
+    ${F(10,'What they look for in the service',li(p.wants),'wide')}
+  </div>
+  <div class="f" style="border-bottom:none;padding-bottom:0"><div class="k">Language</div><div class="v">${esc(p.language)}</div></div>
+  <h4>Journey: from first contact to visit</h4>
+  <div class="journey">${p.journey.map((j,n)=>`<div class="stage"><div class="sh"><span class="sn">${n+1}</span><span class="st">${j.s}</span><span class="line"></span></div>
+    <div class="box today"><div class="bl">Today</div>${esc(j.today)}</div>
+    <div class="box plan"><div class="bl">With CDS</div>${esc(j.plan)}</div></div>`).join('')}</div>
+  <h4>CDS plan for this persona</h4>
+  <div class="cds">
+    <div><span>Channels</span>${esc(p.cds.channels)}</div>
+    <div><span>Core message</span>${esc(p.cds.message)}</div>
+    <div><span>Content</span>${esc(p.cds.content)}</div>
+    <div><span>CRM handling (Respond.io)</span>${esc(p.cds.crm)}</div>
+    <div><span>KPI</span>${esc(p.cds.kpi)}</div>
+    <div><span>RFP scopes</span>${esc(p.cds.scope)}</div>
+  </div>
+  <div class="ev"><b>Evidence:</b> ${esc(p.evidence)}</div>`;
+  $('prev').onclick=()=>select(P[(i+P.length-1)%P.length].id,false);
+  $('next').onclick=()=>select(P[(i+1)%P.length].id,false);
+}
+function matrix(){
+  const ks=D.platforms.map(p=>p.k);
+  const tot=k=>P.filter(p=>p.platforms.primary.includes(k)||p.platforms.secondary.includes(k)).length;
+  const totP=k=>P.filter(p=>p.platforms.primary.includes(k)).length;
+  let h='<table class="data matrix"><thead><tr><th>Persona</th>'+D.platforms.map(p=>`<th class="pl">${p.n}</th>`).join('')+'<th class="tot">Primary</th><th class="tot">All</th></tr></thead><tbody>';
+  P.forEach(p=>{h+=`<tr><td><button type="button" class="plink" data-id="${p.id}">${p.id}</button> ${esc(p.title)}</td>`+ks.map(k=>`<td class="c">${p.platforms.primary.includes(k)?'<i class="m1" title="Primary"></i>':p.platforms.secondary.includes(k)?'<i class="m2" title="Secondary"></i>':''}</td>`).join('')+`<td class="tot">${p.platforms.primary.length}</td><td class="tot">${p.platforms.primary.length+p.platforms.secondary.length}</td></tr>`;});
+  h+='<tr><th class="tot" style="text-align:left">Personas reached — primary</th>'+ks.map(k=>`<td class="tot">${totP(k)}</td>`).join('')+'<td class="tot"></td><td class="tot"></td></tr>';
+  h+='<tr><th class="tot" style="text-align:left">Personas reached — all</th>'+ks.map(k=>`<td class="tot">${tot(k)}</td>`).join('')+'<td class="tot"></td><td class="tot"></td></tr>';
+  $('mx').innerHTML=h+'</tbody></table>';
+  $('mx').onclick=e=>{const b=e.target.closest('.plink');if(b)select(b.dataset.id,true);};
+}
+let sk='id',asc=true,cg='all';
+function compare(){
+  const opts=[['all','All']].concat(Object.entries(D.groups));
+  $('cfilter').innerHTML=opts.map(([k,v])=>`<button type="button" data-g="${k}" class="${k===cg?'on':''}">${v}</button>`).join('');
+  $('cfilter').onclick=e=>{const b=e.target.closest('button');if(!b)return;cg=b.dataset.g;compare();};
+  const cols=[['id','ID'],['title','Persona'],['grp','Segment'],['age','Age'],['gender','Gender'],['income','Income'],['svc','Services'],['pain','Top pain point'],['plat','Primary platforms'],['hook','Buying hook'],['trust','Lead trust factor'],['want','First thing they look for'],['kpi','KPI']];
+  const rows=P.filter(p=>cg==='all'||p.group===cg).map(p=>({id:p.id,title:p.title,grp:D.groups[p.group],age:p.age,gender:p.gender,income:p.income,svc:p.services.join('; '),pain:p.pains[0],plat:p.platforms.primary.map(k=>PL[k]).join(', '),hook:p.hook,trust:p.trust[0],want:p.wants[0],kpi:p.cds.kpi}));
+  rows.sort((a,b)=>asc?String(a[sk]).localeCompare(String(b[sk])):String(b[sk]).localeCompare(String(a[sk])));
+  let h='<table class="data"><thead><tr>'+cols.map(([k,l])=>`<th class="sortable ${k===sk?'sorted'+(asc?' asc':''):''}" data-k="${k}">${l}</th>`).join('')+'</tr></thead><tbody>';
+  rows.forEach(r=>{h+='<tr>'+cols.map(([k])=>k==='id'?`<td><button type="button" class="plink" data-id="${r.id}">${r.id}</button></td>`:`<td style="min-width:${k==='hook'||k==='pain'?'220':k==='title'?'170':'110'}px">${esc(r[k])}</td>`).join('')+'</tr>';});
+  $('ct').innerHTML=h+'</tbody></table>';
+  $('ct').querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(k===sk)asc=!asc;else{sk=k;asc=true;}compare();});
+  $('ct').onclick=e=>{const b=e.target.closest('.plink');if(b)select(b.dataset.id,true);};
+}
+function impl(){
+  $('impl').innerHTML=D.implications.map(x=>`<div class="card"><div class="o">${esc(x.o)}</div><div class="t">${esc(x.t)}</div><div class="d">${esc(x.d)}</div><div class="ps">${x.p.map(id=>`<button type="button" data-id="${id}" title="${esc(P.find(p=>p.id===id).title)}">${id}</button>`).join('')}</div></div>`).join('');
+  $('impl').onclick=e=>{const b=e.target.closest('button[data-id]');if(b)select(b.dataset.id,true);};
+  $('val').innerHTML=D.validation.map(v=>`<li>${esc(v)}</li>`).join('');
+}
+const root=document.documentElement,tb=$('theme');
+function isDark(){const t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;}
+function syncBtn(){tb.textContent=isDark()?'◑ Light mode':'◐ Dark mode';}
+tb.onclick=()=>{root.setAttribute('data-theme',isDark()?'light':'dark');syncBtn();};
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',syncBtn);
+syncBtn();filters();cards();detail();matrix();compare();impl();
+})();
+</script></body></html>

@@ -1,0 +1,974 @@
+{
+ "PERSONA_DATA": {
+  "meta": {
+   "title": "Vista Patient Personas",
+   "prepared": "16 September 2026",
+   "basis": "Evidence from the CDS Digital Asset Analysis (GA4 Sep 2025–Aug 2026, Respond.io Dec 2025–Aug 2026, site crawl, social profiles, 29 sampled conversations) and vista.com.my service structure. Age, gender and income are CDS working assumptions to validate against Vista's patient records in Phase 1 (Audit & Discovery)."
+  },
+  "platforms": [
+   {
+    "k": "GS",
+    "n": "Google Search"
+   },
+   {
+    "k": "GM",
+    "n": "Google Maps & reviews"
+   },
+   {
+    "k": "AI",
+    "n": "AI assistants"
+   },
+   {
+    "k": "FB",
+    "n": "Facebook & Messenger"
+   },
+   {
+    "k": "IG",
+    "n": "Instagram"
+   },
+   {
+    "k": "TT",
+    "n": "TikTok"
+   },
+   {
+    "k": "YT",
+    "n": "YouTube"
+   },
+   {
+    "k": "XHS",
+    "n": "Xiaohongshu"
+   },
+   {
+    "k": "LI",
+    "n": "LinkedIn"
+   },
+   {
+    "k": "FR",
+    "n": "Forums"
+   },
+   {
+    "k": "WA",
+    "n": "WhatsApp forwards"
+   },
+   {
+    "k": "WOM",
+    "n": "Family & friends"
+   },
+   {
+    "k": "REF",
+    "n": "Referrals (optometrist, school)"
+   },
+   {
+    "k": "EV",
+    "n": "Events & screenings"
+   },
+   {
+    "k": "PR",
+    "n": "Press, TV, radio"
+   },
+   {
+    "k": "PAN",
+    "n": "Insurer / employer panel"
+   }
+  ],
+  "groups": {
+   "young": "Young adults 18–40",
+   "kids": "Parents of children 5–17",
+   "mature": "Adults 40+ and seniors",
+   "cross": "Situational — reached within the groups above"
+  },
+  "personas": [
+   {
+    "id": "P01",
+    "group": "young",
+    "title": "The Glasses-Free Young Professional",
+    "quote": "I just want to know if I'm suitable, what it costs, and how many days I'll be off work.",
+    "age": "24–34",
+    "gender": "Mixed; slight female skew",
+    "income": "Personal RM4,000–9,000/month; M40 household",
+    "language": "English first, Mandarin second",
+    "location": "Klang Valley (PJ, KL, Subang, Puchong)",
+    "services": [
+     "iLASIK",
+     "CLEAR PRO",
+     "Pre-surgery suitability assessment"
+    ],
+    "pains": [
+     "Cannot get a price in chat — the assistant asks for name and number instead",
+     "Afraid of the procedure and of 'what if it goes wrong'",
+     "Weekday appointments clash with work; needs a weekend slot",
+     "Hard to compare LASIK, CLEAR PRO and ICL from the website alone"
+    ],
+    "platforms": {
+     "primary": [
+      "GS",
+      "IG",
+      "TT"
+     ],
+     "secondary": [
+      "FR",
+      "AI",
+      "YT",
+      "WOM"
+     ]
+    },
+    "hook": "A price range and a 24-month 0% instalment shown up front, plus a weekend suitability assessment that tells them yes or no in one visit.",
+    "trust": [
+     "Named surgeon with qualifications on an individual profile page",
+     "Google reviews from people their age",
+     "Plain explanation of recovery days",
+     "Friends or colleagues who already had it done"
+    ],
+    "wants": [
+     "Price transparency before they give a phone number",
+     "Side-by-side LASIK vs CLEAR PRO vs ICL",
+     "Downtime in days, not 'minimal'",
+     "Online booking into a real slot"
+    ],
+    "journey": [
+     {
+      "s": "Discover",
+      "today": "Sees a Meta or TikTok ad, or searches 'lasik price malaysia'. 'lasik surgery' (3,600/mo) slipped from position 5 to 21.",
+      "plan": "Search-first budget on refractive intent; TikTok explainers in EN/ZH, not only BM; comparison page ranking for 'lasik vs smile'."
+     },
+     {
+      "s": "Enquire",
+      "today": "Clicks to chat, asks the price; assistant withholds it and the chat auto-closes as Inactive after 8 h + 14 h.",
+      "plan": "Assistant answers with the approved price range and instalment, then offers two assessment slots in the same thread."
+     },
+     {
+      "s": "Book",
+      "today": "No self-service booking; a human callback is needed during office hours.",
+      "plan": "Web booking into branch calendars with WhatsApp confirmation; weekend slots visible."
+     },
+     {
+      "s": "Visit & after",
+      "today": "No structured follow-up content; no review request tied to the visit.",
+      "plan": "Pre-visit checklist (stop contact lenses), day-1/7/30 check-ins, review request after the 1-month review."
+     }
+    ],
+    "cds": {
+     "channels": "Google Search (refractive), Meta and TikTok to a tagged landing page, Instagram Reels",
+     "message": "Know if you're suitable in one visit. See the price before you book.",
+     "content": "Procedure comparison page, recovery-in-days explainer, surgeon profiles, FAQ with the price range",
+     "crm": "Price-answer intent in the assistant; slot offer; no auto-close before two follow-ups",
+     "kpi": "Paid booking rate (1.5% → ≥4% by M6); refractive cost per booked appointment",
+     "scope": "1, 2, 5, 6, 7"
+    },
+    "evidence": "LASIK landing pages 23,417 sessions (EN + /ilasik + ZH) Sep 25–Aug 26; Refractive-category conversations 437 (Sep 25) → 2,370 (Aug 26); price questions answered 0 of 5 in sample (F-14); paid booking rate 1.46% (F-03)."
+   },
+   {
+    "id": "P02",
+    "group": "young",
+    "title": "The High-Myopia Second-Opinion Seeker",
+    "quote": "Two clinics said LASIK isn't for me. I need someone to explain what is.",
+    "age": "22–40",
+    "gender": "Mixed",
+    "income": "Personal RM5,000–12,000/month; M40–T20 household",
+    "language": "English, Mandarin",
+    "location": "Klang Valley, Penang, Johor",
+    "services": [
+     "Implantable Contact Lens (EVO ICL / Toric ICL)",
+     "CLEAR PRO",
+     "Corneal assessment"
+    ],
+    "pains": [
+     "Told they are unsuitable for LASIK (thin cornea, high power) and feel out of options",
+     "Worried about lens implants and long-term safety",
+     "Needs detailed data, not marketing lines",
+     "Premium price needs justification"
+    ],
+    "platforms": {
+     "primary": [
+      "GS",
+      "YT",
+      "FR"
+     ],
+     "secondary": [
+      "AI",
+      "XHS",
+      "GM",
+      "REF"
+     ]
+    },
+    "hook": "A consultation framed as a second opinion with a written explanation of their corneal results and which options fit.",
+    "trust": [
+     "Surgeon qualifications stated factually on the profile page (skill claims are not permitted in advertising)",
+     "Clinical detail: vault, lens sizing, follow-up schedule",
+     "Independent content — forum threads, YouTube walk-throughs",
+     "AI assistants citing Vista as an ICL provider"
+    ],
+    "wants": [
+     "An ophthalmologist, not a counsellor, at first contact",
+     "Written results they can take home",
+     "Honest risks and follow-up plan",
+     "Instalment for a premium procedure"
+    ],
+    "journey": [
+     {
+      "s": "Discover",
+      "today": "Searches 'ICL malaysia' and asks ChatGPT; ICL page drew 2,482 sessions. No Physician or MedicalProcedure schema exists.",
+      "plan": "ICL hub page with surgeon entities and schema; AEO answers for 'can't do LASIK what else'; YouTube long-form."
+     },
+     {
+      "s": "Enquire",
+      "today": "Detailed clinical questions reach a general assistant menu.",
+      "plan": "Route 'ICL / thin cornea / high power' keywords straight to a refractive counsellor within business hours."
+     },
+     {
+      "s": "Book",
+      "today": "Books a general consult; no second-opinion framing.",
+      "plan": "'Second-opinion assessment' booking type that asks for previous results upfront."
+     },
+     {
+      "s": "Visit & after",
+      "today": "Long decision cycle with no nurture.",
+      "plan": "30-day nurture: written report, surgeon video, instalment breakdown, one call."
+     }
+    ],
+    "cds": {
+     "channels": "Google Search, YouTube, AI-visibility (GEO), forum listening",
+     "message": "Not suitable for LASIK? There are other options — here's how we assess them.",
+     "content": "ICL hub, surgeon Q&A videos, schema-marked procedure and physician pages",
+     "crm": "Keyword routing to a refractive counsellor; nurture sequence; 'Future Appointment' kept open, not closed",
+     "kpi": "ICL enquiries to assessment; AI visibility (≥3 engines by M6)",
+     "scope": "1, 2, 4, 7"
+    },
+    "evidence": "ICL page 2,482 sessions; CLEAR PRO 2,324; AI Assistant channel 7 (May 26) → 134 sessions (Aug 26) (O-05); no MedicalProcedure or Physician schema (F-19); 'EVO Toric ICL 2,000' milestone used in promotion (F-22 — needs compliance sign-off)."
+   },
+   {
+    "id": "P03",
+    "group": "kids",
+    "title": "The Worried Parent of a Myopic Child",
+    "quote": "His glasses got thicker again in six months. Is there something that stops this?",
+    "age": "32–45 (child 5–15)",
+    "gender": "Mostly mothers",
+    "income": "M40–T20 household (≈RM6,500–15,000/month)",
+    "language": "English, Mandarin, Bahasa Malaysia",
+    "location": "Klang Valley, Penang, Johor, Ipoh",
+    "services": [
+     "Kids eye examination",
+     "Myopia control (0.01% atropine, RLRL red-light therapy, control lenses)",
+     "Myopia Control Program bundle"
+    ],
+    "pains": [
+     "Child's prescription keeps rising",
+     "Unclear which treatment works and for how long",
+     "Appointments clash with school; needs weekend or school-holiday slots",
+     "Screen time guilt"
+    ],
+    "platforms": {
+     "primary": [
+      "FB",
+      "GS",
+      "REF"
+     ],
+     "secondary": [
+      "IG",
+      "TT",
+      "XHS",
+      "WA",
+      "WOM"
+     ]
+    },
+    "hook": "A school-holiday kids eye check with a clear progression chart and a 12-month control plan.",
+    "trust": [
+     "Paediatric-experienced ophthalmologist",
+     "Child-friendly clinic photos and staff",
+     "Other parents' experiences in parenting groups",
+     "Evidence explained simply (how much progression slows)"
+    ],
+    "wants": [
+     "Weekend and holiday slots",
+     "A plan with a follow-up schedule",
+     "Cost for the full year, not per visit",
+     "Home-therapy instructions they can follow"
+    ],
+    "journey": [
+     {
+      "s": "Discover",
+      "today": "School screening letter, optometrist referral or parenting-group post; kids pages drew 15,656 sessions across EN/BM/ZH.",
+      "plan": "School-holiday campaigns timed to the Malaysian school calendar; optometrist referral kit; ZH/BM parent content."
+     },
+     {
+      "s": "Enquire",
+      "today": "The 'Messenger Kid' channel carried 187 conversations in 12 months and is barely used.",
+      "plan": "Merge into one WhatsApp flow with a parent path: age, current power, last check date."
+     },
+     {
+      "s": "Book",
+      "today": "Weekday-biased slots; no child-specific booking type.",
+      "plan": "Kids booking type with weekend/holiday availability and reminders to both parents."
+     },
+     {
+      "s": "Visit & after",
+      "today": "Programme follow-up is manual.",
+      "plan": "3-month follow-up reminders, progression chart shared by WhatsApp, renewal prompt at month 11."
+     }
+    ],
+    "cds": {
+     "channels": "Facebook parenting audiences, Google Search, optometrist and school referrals, TikTok/IG reels",
+     "message": "Myopia can be slowed. Check your child during the school holidays.",
+     "content": "Parent guide in EN/BM/ZH, progression explainer, child-friendly clinic video",
+     "crm": "Parent path in WhatsApp; programme reminders; renewal workflow",
+     "kpi": "Kids assessments booked per school holiday; programme renewal rate",
+     "scope": "2, 4, 5, 6, 7"
+    },
+    "evidence": "/kids-eye-exam 8,321 + BM 5,320 + ZH 2,015 sessions; Messenger (Kid) 187 conversations in 12 months; UGC-style kid reel 293 likes against a 29-like average (F-21); 'child myopia treatment' dropped out of the top 100 in Jul 2026."
+   },
+   {
+    "id": "P04",
+    "group": "mature",
+    "title": "The Adult Child Arranging a Parent's Cataract Surgery",
+    "quote": "Mum won't go unless I take her. I need to know the cost, the insurance, and how many trips.",
+    "age": "35–55 (parent 60–80)",
+    "gender": "Mixed; daughters often lead",
+    "income": "M40–T20 household; often the payer",
+    "language": "English or Mandarin for the child; BM, Chinese dialects or Tamil for the parent",
+    "location": "Klang Valley, Penang, Ipoh, Johor",
+    "services": [
+     "No-blade (laser) cataract surgery",
+     "Lens options (monofocal, multifocal)",
+     "Pre-op assessment"
+    ],
+    "pains": [
+     "Insurance, panel and out-of-pocket split is unclear",
+     "Parent is anxious and hard of hearing on the phone",
+     "Number of visits and transport",
+     "Choosing a lens without understanding the difference"
+    ],
+    "platforms": {
+     "primary": [
+      "GS",
+      "GM",
+      "WA"
+     ],
+     "secondary": [
+      "FB",
+      "WOM",
+      "PAN",
+      "AI"
+     ]
+    },
+    "hook": "One coordinator who confirms insurance or panel coverage before the first visit and plans the whole journey in writing.",
+    "trust": [
+     "Senior surgeon and years in practice",
+     "Branch close to the parent's home with strong Google reviews",
+     "Clear lens comparison",
+     "Other families' experiences"
+    ],
+    "wants": [
+     "Cost and claim estimate in writing",
+     "Fewest trips possible",
+     "Updates sent to the child, not only the parent",
+     "Post-op care instructions in the parent's language"
+    ],
+    "journey": [
+     {
+      "s": "Discover",
+      "today": "Searches on the parent's behalf; 'cataract surgery' (3,600/mo) fell from 7 to outside the top 100.",
+      "plan": "Recover cataract rankings; branch pages with H1, LocalBusiness schema and the right phone; 'for your parent' content."
+     },
+     {
+      "s": "Enquire",
+      "today": "Chat asks for details the child doesn't have; insurance questions go unanswered.",
+      "plan": "Caregiver path: collects insurer/panel, parent's branch, preferred language; hands to a coordinator."
+     },
+     {
+      "s": "Book",
+      "today": "Booking is for one person; the sample showed a booked patient adding a second person got the welcome menu.",
+      "plan": "Book-on-behalf flow with two contacts on one record."
+     },
+     {
+      "s": "Visit & after",
+      "today": "Instructions given verbally at the clinic.",
+      "plan": "Post-op schedule and eye-drop reminders by WhatsApp in the parent's language, copied to the child."
+     }
+    ],
+    "cds": {
+     "channels": "Google Search (EN/ZH/BM), Google Maps, Facebook, family WhatsApp shareables",
+     "message": "We'll sort the insurance and the trips. You focus on your parent.",
+     "content": "Cataract guide for families, lens comparison, claim checklist, branch pages",
+     "crm": "Caregiver record with linked patient; coordinator ownership; post-op reminders",
+     "kpi": "Cataract assessments booked; enquiry-to-booking time",
+     "scope": "1, 2, 4, 7"
+    },
+    "evidence": "No-blade cataract pages 19,143 sessions (EN + BM); Cataract-category conversations 12,853 in 12 months; 0 of 75 location pages carry an H1 (F-11); cataract ranking lost (F-20); second-person booking failure in sample (F-14)."
+   },
+   {
+    "id": "P05",
+    "group": "mature",
+    "title": "The Senior Who Wants to See the Doctor in Person",
+    "quote": "My neighbour went to Vista. I want to see the doctor, not type on a phone.",
+    "age": "60–78",
+    "gender": "Mixed",
+    "income": "Retiree; pension, EPF savings or family support; B40–M40 household",
+    "language": "Bahasa Malaysia, Mandarin (Mandarin, Cantonese, Hokkien)",
+    "location": "Ipoh, Penang, Klang, Kajang, Kepong",
+    "services": [
+     "Cataract surgery",
+     "Eye screening",
+     "Glaucoma and retina check (referral)"
+    ],
+    "pains": [
+     "Small text and heavy pages on a phone",
+     "Prefers calling; the CRM has calls disabled",
+     "Fear of surgery and cost",
+     "Travel to the branch"
+    ],
+    "platforms": {
+     "primary": [
+      "WOM",
+      "EV",
+      "PR"
+     ],
+     "secondary": [
+      "FB",
+      "WA",
+      "YT",
+      "GM"
+     ]
+    },
+    "hook": "A community eye-screening day at the nearest branch, with the results explained the same day by the clinical team.",
+    "trust": [
+     "Recommendation from someone they know",
+     "Branch in their town",
+     "A doctor who speaks their language",
+     "Years in operation and media coverage"
+    ],
+    "wants": [
+     "A person on the phone",
+     "Large, simple information in their language",
+     "Help with transport or a nearby branch",
+     "Family able to join the consult"
+    ],
+    "journey": [
+     {
+      "s": "Discover",
+      "today": "Word of mouth, Carnival events, newspaper clippings, forwarded WhatsApp posts.",
+      "plan": "Branch-level screening days, community partnerships, BM/ZH print and radio-style video."
+     },
+     {
+      "s": "Enquire",
+      "today": "Calls 1-800-88-3937; calls are not logged in Respond.io, so these leads never reach the funnel.",
+      "plan": "Call tracking and call logging into the CRM; callback within the same working day."
+     },
+     {
+      "s": "Book",
+      "today": "Booked by phone; the offline booking rows in L10 are empty.",
+      "plan": "Phone bookings entered as CRM appointments with source 'phone' and branch."
+     },
+     {
+      "s": "Visit & after",
+      "today": "No reminders beyond the clinic.",
+      "plan": "SMS/WhatsApp reminders the day before, readable by a family member."
+     }
+    ],
+    "cds": {
+     "channels": "Events and screenings, Facebook (BM/ZH), YouTube shorts, branch Google profiles",
+     "message": "Come and have your eyes checked in [town]. Our doctors will explain everything.",
+     "content": "Screening-day posters, large-type pages, Mandarin/BM video explainers",
+     "crm": "Call tracking; phone and walk-in capture; family contact on file",
+     "kpi": "Offline bookings recorded (currently 0); screening-day conversion",
+     "scope": "1, 6, 7, 8"
+    },
+    "evidence": "Offline channel rows empty through Aug 2026 (Aug F-11 confirmed); calls disabled in Respond.io (F-24); Ipoh 5,743 users; Carnival 40,719 sessions; Mandarin 9% and Malay 6–10% of users (O-04); homepage 3.08 MB, 7.3 s (F-16)."
+   },
+   {
+    "id": "P06",
+    "group": "mature",
+    "title": "The Presbyopic Executive",
+    "quote": "I'm tired of reading glasses in every meeting. If there's one proper fix, I'll pay for it.",
+    "age": "45–60",
+    "gender": "Mixed; slight male skew",
+    "income": "T20 household (above ≈RM11,800/month); business owners, senior managers",
+    "language": "English, Mandarin",
+    "location": "PJ, KL, Penang, Johor Bahru",
+    "services": [
+     "Refractive Lens Exchange (reading vision)",
+     "Premium multifocal lenses",
+     "Dry eye assessment (often combined)"
+    ],
+    "pains": [
+     "Reading glasses for phone and documents",
+     "Little time; wants one decisive consultation",
+     "Unsure whether RLE or waiting for cataract makes sense",
+     "Expects a premium, private experience"
+    ],
+    "platforms": {
+     "primary": [
+      "GS",
+      "AI",
+      "LI"
+     ],
+     "secondary": [
+      "PR",
+      "WOM",
+      "YT",
+      "PAN"
+     ]
+    },
+    "hook": "A private, time-boxed consultation with the surgeon that ends with a clear recommendation and total price.",
+    "trust": [
+     "Awards and accreditation (Newsweek APAC, B Corp) — used with compliance approval",
+     "Surgeon seniority",
+     "Technology named and explained",
+     "Peers who had it done"
+    ],
+    "wants": [
+     "Priority scheduling",
+     "Total cost including lens choice",
+     "Recovery that fits a business trip",
+     "Discreet, fast communication"
+    ],
+    "journey": [
+     {
+      "s": "Discover",
+      "today": "Searches or asks an AI assistant; 'rle eye surgery' entered at position 1 in Jul 2026; LinkedIn page has 689 followers and ~1 post every 1–2 months.",
+      "plan": "RLE thought-leadership on LinkedIn, AI-answer content for 'reading glasses surgery', executive landing page."
+     },
+     {
+      "s": "Enquire",
+      "today": "Sent through the same menu as every other lead.",
+      "plan": "'Executive consult' request form with a named coordinator reply within 2 working hours."
+     },
+     {
+      "s": "Book",
+      "today": "Standard slots only.",
+      "plan": "Early-morning or late slots held for premium consultations."
+     },
+     {
+      "s": "Visit & after",
+      "today": "No referral mechanism.",
+      "plan": "Post-op check-ins and a peer-referral card after the 1-month review."
+     }
+    ],
+    "cds": {
+     "channels": "Google Search, LinkedIn, AI-visibility, selective press",
+     "message": "One procedure for reading vision — decided in one consultation.",
+     "content": "RLE vs cataract explainer, lens comparison, surgeon interviews",
+     "crm": "Premium tag; coordinator ownership; referral tracking",
+     "kpi": "RLE assessments booked; revenue per booked appointment (once measured)",
+     "scope": "2, 4, 5, 7"
+    },
+    "evidence": "/lens-exchange 1,576 + ZH 877 sessions; 'rle eye surgery' position 1 (Jul 2026 SEO report); LinkedIn 689 followers (F-21); Newsweek and B Corp claims on the homepage need an approval trail (F-22)."
+   },
+   {
+    "id": "P07",
+    "group": "cross",
+    "title": "The Screen-Weary Dry Eye Sufferer",
+    "quote": "I've tried every eye drop at the pharmacy. It keeps coming back.",
+    "age": "28–55",
+    "gender": "Female skew",
+    "income": "Personal RM3,500–10,000/month; M40 household",
+    "language": "English, Mandarin, Bahasa Malaysia",
+    "location": "Urban Klang Valley, Penang",
+    "services": [
+     "Dry Eye Assessment",
+     "Dry eye treatment programme",
+     "Follow-up care"
+    ],
+    "pains": [
+     "Burning, tired eyes after screen work",
+     "Pharmacy drops don't last",
+     "Unsure it's a medical issue worth a specialist",
+     "Worried treatment will be ongoing and costly"
+    ],
+    "platforms": {
+     "primary": [
+      "GS",
+      "TT",
+      "IG"
+     ],
+     "secondary": [
+      "AI",
+      "FB",
+      "PAN",
+      "REF"
+     ]
+    },
+    "hook": "A published-price Dry Eye Assessment with a same-visit treatment plan.",
+    "trust": [
+     "Diagnostic equipment shown and explained",
+     "Before-and-after symptom scores (not images)",
+     "Specialist rather than retail optical",
+     "Employer panel acceptance"
+    ],
+    "wants": [
+     "Relief that lasts",
+     "A clear programme length and cost",
+     "Lunch-hour or after-work slots",
+     "Home-care routine"
+    ],
+    "journey": [
+     {
+      "s": "Discover",
+      "today": "Searches symptoms; dry-eye pages drew 10,508 sessions. Content output stopped in May 2026.",
+      "plan": "Symptom-led articles monthly; TikTok 'screen eyes' series; symptom self-check tool."
+     },
+     {
+      "s": "Enquire",
+      "today": "Assessment price appears on a LinkedIn image but the assistant won't state it.",
+      "plan": "Assistant quotes the approved assessment price and offers slots."
+     },
+     {
+      "s": "Book",
+      "today": "No after-work booking visibility.",
+      "plan": "After-work slots in web booking; corporate panel check at booking."
+     },
+     {
+      "s": "Visit & after",
+      "today": "Programme follow-up is manual.",
+      "plan": "Programme reminders and symptom check-ins at weeks 2, 6 and 12."
+     }
+    ],
+    "cds": {
+     "channels": "Google Search, TikTok, Instagram, corporate wellness partnerships",
+     "message": "Tired, burning eyes aren't just screen time. Get them assessed.",
+     "content": "Symptom checker, dry-eye article cluster, office-worker reels",
+     "crm": "Assessment booking type; programme workflow; panel field",
+     "kpi": "Dry eye assessments booked; programme completion",
+     "scope": "2, 4, 5, 6, 7"
+    },
+    "evidence": "/dry-eyes-treatment 6,839 + /dry-eyes 3,669 sessions; the assessment price shown publicly (F-22); 0 posts since May 2026 (F-13); vistanow dry-eye cluster published Mar–May 2026."
+   },
+   {
+    "id": "P08",
+    "group": "cross",
+    "title": "The Singapore Cross-Border Patient",
+    "quote": "Same procedure, far lower price in JB. But how many times do I need to cross the causeway?",
+    "age": "28–55",
+    "gender": "Mixed",
+    "income": "SGD earner; personal S$4,500–12,000/month",
+    "language": "English, Mandarin",
+    "location": "Singapore and Johor Bahru",
+    "services": [
+     "iLASIK / CLEAR PRO / ICL",
+     "Cataract surgery",
+     "Myopia control for children"
+    ],
+    "pains": [
+     "Number of trips and follow-up visits across the border",
+     "Prices shown only in RM or not at all",
+     "Uncertain about Malaysian surgeon credentials",
+     "Weekend capacity at JB branches"
+    ],
+    "platforms": {
+     "primary": [
+      "GS",
+      "FR",
+      "XHS"
+     ],
+     "secondary": [
+      "GM",
+      "AI",
+      "FB",
+      "WOM"
+     ]
+    },
+    "hook": "A JB weekend plan that fits assessment, surgery and first review into a set number of trips, with the approved package price stated clearly.",
+    "trust": [
+     "Surgeon credentials comparable to Singapore",
+     "Google reviews from Singaporeans",
+     "JB branch location and parking",
+     "Clear follow-up plan, including what can be done in Singapore"
+    ],
+    "wants": [
+     "Trip count stated upfront",
+     "Weekend slots at Mount Austin or Sutera Utama",
+     "WhatsApp on a Singapore number",
+     "Package price stated clearly (no cross-border price comparison in ads)"
+    ],
+    "journey": [
+     {
+      "s": "Discover",
+      "today": "Singapore is Vista's second-largest city by users (15,529), with no Singapore-targeted content or campaign.",
+      "plan": "Singapore-geo search campaigns and a JB-for-Singaporeans landing page; HardwareZone and Xiaohongshu presence."
+     },
+     {
+      "s": "Enquire",
+      "today": "Gets the generic Malaysian flow.",
+      "plan": "Country detection in WhatsApp; cross-border path with trip plan."
+     },
+     {
+      "s": "Book",
+      "today": "No package booking.",
+      "plan": "Multi-visit package booking at JB branches with weekend priority."
+     },
+     {
+      "s": "Visit & after",
+      "today": "Follow-up expectations unclear.",
+      "plan": "Written follow-up plan, tele-review where clinically appropriate."
+     }
+    ],
+    "cds": {
+     "channels": "Google Search (SG geo), Xiaohongshu, forums, Google Maps (JB)",
+     "message": "Your procedure in JB, planned around your weekends.",
+     "content": "Cross-border guide (trips, parking, timings), JB branch pages",
+     "crm": "Country field; JB branch ownership; package workflow",
+     "kpi": "Singapore-origin bookings (new tracked source); JB branch utilisation",
+     "scope": "2, 4, 5, 7"
+    },
+    "evidence": "Singapore 16,042 users (country) and 15,529 (city) Sep 25–Aug 26; Johor Bahru 10,816 users; Mount Austin page 2,001 sessions and GBP 1,232 sessions; Mount Austin Google listing 646 reviews."
+   },
+   {
+    "id": "P09",
+    "group": "cross",
+    "title": "The Out-of-Network Traveller",
+    "quote": "There's no Vista in Kota Kinabalu. If I fly over, can it all be done in one trip?",
+    "age": "30–65",
+    "gender": "Mixed",
+    "income": "M40–T20 household; travel is part of the cost",
+    "language": "English, Bahasa Malaysia, Bahasa Indonesia, Mandarin",
+    "location": "Sabah, Sarawak, Kelantan; Brunei, Indonesia",
+    "services": [
+     "Cataract surgery",
+     "iLASIK / ICL",
+     "Second opinions"
+    ],
+    "pains": [
+     "No branch in their state",
+     "Flights, accommodation and time off",
+     "Follow-up care back home",
+     "Fear of being turned away after travelling"
+    ],
+    "platforms": {
+     "primary": [
+      "GS",
+      "FB",
+      "WOM"
+     ],
+     "secondary": [
+      "AI",
+      "YT",
+      "TT",
+      "WA"
+     ]
+    },
+    "hook": "A travel-ready plan: remote pre-screening, one trip with assessment and surgery on consecutive days, and a partner for follow-up at home.",
+    "trust": [
+     "Remote pre-screening before they book flights",
+     "Patient-coordinator contact by name",
+     "Hotel and transport guidance near the branch",
+     "Local follow-up arrangement"
+    ],
+    "wants": [
+     "Certainty before travel",
+     "Minimum days away",
+     "One point of contact",
+     "Total trip cost"
+    ],
+    "journey": [
+     {
+      "s": "Discover",
+      "today": "Kota Kinabalu (10,004), Kuching (6,062) and Sandakan (3,200) send 19,266 users with no branch; Indonesia 2,304; Brunei 244.",
+      "plan": "East Malaysia and Brunei search targeting; 'travel to Vista' page; Indonesian-language content test."
+     },
+     {
+      "s": "Enquire",
+      "today": "Treated as a local lead; branch picker shows no nearby option.",
+      "plan": "Traveller path: remote questionnaire and document upload before a slot is offered."
+     },
+     {
+      "s": "Book",
+      "today": "Separate bookings for assessment and surgery.",
+      "plan": "Linked consecutive-day booking at PJ HQ with coordinator ownership."
+     },
+     {
+      "s": "Visit & after",
+      "today": "No arrangement for follow-up at home.",
+      "plan": "Written discharge plan and tele-review; referral partner list by state."
+     }
+    ],
+    "cds": {
+     "channels": "Google Search (Sabah, Sarawak, Brunei, Indonesia), Facebook, YouTube",
+     "message": "Travelling for your eyes? We plan the trip with you.",
+     "content": "Traveller guide, remote pre-screening form, Indonesian FAQ",
+     "crm": "Traveller tag; document upload; coordinator; consecutive-day booking",
+     "kpi": "Out-of-network bookings; pre-screen to booking rate",
+     "scope": "1, 2, 5, 7"
+    },
+    "evidence": "GA4 city users Sep 25–Aug 26: Kota Kinabalu 10,004, Kuching 6,062, Sandakan 3,200, Kota Bharu 2,723; Indonesia 2,304; Brunei 244 users at 70 s engagement; branch list on vista.com.my has no East Malaysia or Kelantan location."
+   },
+   {
+    "id": "P10",
+    "group": "cross",
+    "title": "The Promo-Driven Comparison Shopper",
+    "quote": "Saw the promo. What's the actual price? Optimax quoted me already.",
+    "age": "20–35",
+    "gender": "Mixed",
+    "income": "Personal RM2,500–6,000/month; B40–M40 household",
+    "language": "Bahasa Malaysia, English",
+    "location": "Klang Valley, Johor, northern states",
+    "services": [
+     "iLASIK (promo)",
+     "Eye Carnival packages",
+     "Basic eye check"
+    ],
+    "pains": [
+     "Price is the first and only question",
+     "Gets a menu or a 'leave your number' reply",
+     "Comparing three clinics at once",
+     "Can't commit without a payment plan"
+    ],
+    "platforms": {
+     "primary": [
+      "TT",
+      "FB",
+      "IG"
+     ],
+     "secondary": [
+      "GS",
+      "WA",
+      "EV"
+     ]
+    },
+    "hook": "A clear promo price with instalment per month, valid for a date range, and a booking link in the same reply.",
+    "trust": [
+     "A real price in writing",
+     "Large review count (Facebook 7,357 reviews)",
+     "TikTok explainers in BM",
+     "Friends who used the same promo"
+    ],
+    "wants": [
+     "Instant price reply",
+     "Monthly instalment figure",
+     "Promo validity",
+     "Nearest branch"
+    ],
+    "journey": [
+     {
+      "s": "Discover",
+      "today": "Click-to-chat ads and Carnival; BM TikTok explainers reached 2.6M views.",
+      "plan": "Promo campaigns optimised to booked appointments (not chat starts); TikTok budget line."
+     },
+     {
+      "s": "Enquire",
+      "today": "Paid leads book at 1.46%; 4 of 8 Instagram ad leads got the 'returning contact' menu.",
+      "plan": "Ad-aware assistant: recognises the ad, answers the promo price and instalment, offers slots."
+     },
+     {
+      "s": "Book",
+      "today": "Meta optimises to a CAPI 'Purchase' fired on stage change, not on a booking.",
+      "plan": "CAPI event fired on a confirmed booking only."
+     },
+     {
+      "s": "Visit & after",
+      "today": "No-shows and 'Future Appointment' losses not followed up.",
+      "plan": "Deposit or reminder sequence; re-engage 'Future Appointment' at the next promo."
+     }
+    ],
+    "cds": {
+     "channels": "TikTok, Meta click-to-WhatsApp, Instagram, Carnival",
+     "message": "iLASIK from RM[x]/month. Promo until [date]. Book your slot here.",
+     "content": "Promo landing pages with UTM discipline, BM short video",
+     "crm": "Ad-source routing; price answer; booking-based CAPI; no-show workflow",
+     "kpi": "Paid booking rate; cost per booked appointment (baseline RM182)",
+     "scope": "5, 6, 7"
+    },
+    "evidence": "Paid Ads 19,670 New Leads → 288 booked (1.46%) Dec 25–Aug 26 (F-03); CAPI Purchase on stage change (F-03); TikTok the cheapest cost per result of any paid channel (O-02); public discount promotions (F-22); Carnival only fully tagged funnel (O-03)."
+   }
+  ],
+  "implications": [
+   {
+    "o": "O3 Turn enquiries into booked visits",
+    "t": "Answer the price question",
+    "d": "Seven of ten personas lead with cost. The assistant withholds price and the chat auto-closes. An approved price-range script, reviewed by the medical and compliance lead, is the single largest conversion fix.",
+    "p": [
+     "P01",
+     "P02",
+     "P04",
+     "P06",
+     "P07",
+     "P08",
+     "P10"
+    ]
+   },
+   {
+    "o": "O3 Turn enquiries into booked visits",
+    "t": "Build paths, not one menu",
+    "d": "Parent, caregiver, cross-border, traveller and executive enquiries need different first questions. Respond.io flows branch on intent and source instead of one welcome menu.",
+    "p": [
+     "P03",
+     "P04",
+     "P06",
+     "P08",
+     "P09"
+    ]
+   },
+   {
+    "o": "O1 One lead definition, one cost per patient",
+    "t": "Capture the offline and phone patient",
+    "d": "Seniors and caregivers phone or walk in, and none of it is recorded. Call tracking and offline capture are what make these personas measurable.",
+    "p": [
+     "P04",
+     "P05"
+    ]
+   },
+   {
+    "o": "O2 A new website built to convert",
+    "t": "Local, multilingual, light pages",
+    "d": "Branch pages without H1s, Mandarin pages on encoded slugs and a 3 MB homepage fail the senior, the parent and the Mandarin-speaking caregiver first.",
+    "p": [
+     "P03",
+     "P04",
+     "P05",
+     "P08"
+    ]
+   },
+   {
+    "o": "O4 Be found for cataract, LASIK and every centre",
+    "t": "Search and AI answers for considered procedures",
+    "d": "ICL, RLE and cataract decisions are researched, not impulse-bought. Surgeon entities, procedure schema and AI-visibility work serve P02, P04 and P06.",
+    "p": [
+     "P02",
+     "P04",
+     "P06",
+     "P09"
+    ]
+   },
+   {
+    "o": "O5 Media money where bookings come from",
+    "t": "Geography Vista already attracts",
+    "d": "Singapore and East Malaysia send more users than several branch cities. They get no campaign and no content. Test budgets are small and measurable.",
+    "p": [
+     "P08",
+     "P09"
+    ]
+   },
+   {
+    "o": "O5 Media money where bookings come from",
+    "t": "Optimise paid media to bookings",
+    "d": "The promo shopper is the persona paid media buys most. Moving the CAPI signal from stage change to confirmed booking changes what Meta finds.",
+    "p": [
+     "P01",
+     "P10"
+    ]
+   },
+   {
+    "o": "O6 Keep it fixed",
+    "t": "Compliance on every trust claim",
+    "d": "Awards, patient counts, 'painless' and milestone claims are the trust factors these personas respond to. Each needs a recorded medical and compliance approval before use.",
+    "p": [
+     "P02",
+     "P05",
+     "P06",
+     "P10"
+    ]
+   }
+  ],
+  "validation": [
+   "Age and gender splits: pull GA4 demographics (Google signals) and Vista's patient management system by procedure in Phase 1.",
+   "Income bands: DOSM Household Income Survey 2024 bands (B40 up to ≈RM5,351, M40 ≈RM6,560–11,161, T20 above ≈RM11,819 per month) applied as working assumptions; confirm with payment-mode data (instalment, insurance, cash).",
+   "Platform mix: add a 'How did you hear about us?' field at booking and in Respond.io from Gate 2.",
+   "Singapore and East Malaysia volumes: GA4 city data includes some non-patient traffic; confirm with enquiry origin (phone country code) before budgeting.",
+   "Prices, promotions and trust claims: every figure used in creative needs Vista's current price list and a Medicine Advertisements Board (MAB) approval record. MAB guideline 3/2023 does not permit free healthcare offers, gifts, price comparisons, treatment testimonials or promotion of an individual practitioner's skills."
+  ]
+ },
+ "GC": {
+  "kids": "--g-kids",
+  "young": "--g-young",
+  "mature": "--g-mature",
+  "cross": "--g-cross"
+ }
+}

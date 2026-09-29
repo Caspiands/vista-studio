@@ -1,21 +1,25 @@
 "use client";
 
 import * as React from "react";
-import { LogOut, Menu, X } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BrandLogo } from "@/components/brand-logo";
 import { useCms } from "@/components/cms/cms-provider";
-import { SECTION_LABELS, SECTION_ORDER, type SectionKey } from "@/lib/content";
+import { MODULE_KEYS, MODULE_LABELS } from "@/lib/modules-shared";
 import { cn } from "@/lib/utils";
+import { useTabs, type TabKey } from "./tabs-context";
+
+const TABS: { key: TabKey; label: string }[] = [
+  { key: "overview", label: "Overview" },
+  ...MODULE_KEYS.map((key) => ({ key, label: MODULE_LABELS[key] })),
+];
 
 export function SiteNav() {
-  const { content, role, username, logout, editing } = useCms();
-  const [open, setOpen] = React.useState(false);
-  const [active, setActive] = React.useState<string>("");
+  const { role, username, logout } = useCms();
+  const { active, setActive } = useTabs();
   const [scrolled, setScrolled] = React.useState(false);
-
-  const sections = SECTION_ORDER.filter((key) => content[key].visible || editing);
+  const listRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -25,19 +29,17 @@ export function SiteNav() {
   }, []);
 
   React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const hit = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (hit) setActive(hit.target.id);
-      },
-      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.2, 0.5] },
-    );
-    sections.forEach((key) => {
-      const el = document.getElementById(key);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, [sections]);
+    listRef.current?.querySelector<HTMLElement>(`[data-tab="${active}"]`)?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }, [active]);
+
+  const onKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    const index = TABS.findIndex((t) => t.key === active);
+    const next = TABS[(index + (event.key === "ArrowRight" ? 1 : TABS.length - 1)) % TABS.length];
+    setActive(next.key);
+    listRef.current?.querySelector<HTMLElement>(`[data-tab="${next.key}"]`)?.focus();
+  };
 
   return (
     <nav
@@ -47,71 +49,49 @@ export function SiteNav() {
         scrolled ? "border-slate-200/80 shadow-sm" : "border-slate-100",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6">
-        <a href="#top" className="group flex shrink-0 items-center" aria-label="Back to top">
-          <BrandLogo height={38} priority className="transition-transform duration-300 group-hover:scale-[1.04]" />
-        </a>
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-2 sm:px-6 lg:flex-nowrap lg:py-0">
+        <button type="button" onClick={() => setActive("overview")} className="group flex h-12 shrink-0 items-center" aria-label="Overview">
+          <BrandLogo height={36} priority className="transition-transform duration-300 group-hover:scale-[1.04]" />
+        </button>
 
-        <ul className="hidden items-center gap-5 lg:flex xl:gap-6">
-          {sections.map((key: SectionKey) => (
-            <li key={key}>
-              <a
-                href={`#${key}`}
-                aria-current={active === key ? "true" : undefined}
+        <div
+          ref={listRef}
+          role="tablist"
+          aria-label="Document tabs"
+          onKeyDown={onKeyDown}
+          className="order-3 -mx-4 flex w-[calc(100%+2rem)] gap-1 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:-mx-6 sm:w-[calc(100%+3rem)] sm:px-6 lg:order-none lg:mx-0 lg:w-auto lg:flex-1 lg:justify-center lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden"
+        >
+          {TABS.map((tab) => {
+            const selected = tab.key === active;
+            return (
+              <button
+                key={tab.key}
+                type="button"
+                role="tab"
+                data-tab={tab.key}
+                aria-selected={selected}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => setActive(tab.key)}
                 className={cn(
-                  "link-underline text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground",
-                  active === key && "text-foreground",
+                  "relative shrink-0 rounded-lg px-3 py-2 text-sm font-medium whitespace-nowrap transition-all duration-200",
+                  selected ? "bg-brand-deep text-white shadow-md shadow-brand-deep/20" : "text-muted-foreground hover:-translate-y-px hover:bg-brand-soft hover:text-brand-deep",
                 )}
               >
-                {SECTION_LABELS[key]}
-              </a>
-            </li>
-          ))}
-        </ul>
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <Badge variant={role === "editor" ? "default" : "outline"} className="capitalize">
+        <div className="ml-auto flex shrink-0 items-center gap-2 lg:ml-0">
+          <Badge variant={role === "editor" ? "default" : "outline"} className="hidden sm:inline-flex">
             {role === "editor" ? "Editor" : "View only"} · {username}
           </Badge>
           <Button variant="ghost" size="sm" onClick={() => void logout()}>
             <LogOut data-icon="inline-start" />
-            Sign out
+            <span className="hidden sm:inline">Sign out</span>
           </Button>
         </div>
-
-        <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Toggle navigation" onClick={() => setOpen((v) => !v)}>
-          {open ? <X /> : <Menu />}
-        </Button>
-      </div>
-
-      <div
-        className={cn(
-          "grid overflow-hidden border-t border-slate-200 bg-white/95 backdrop-blur-md transition-all duration-300 lg:hidden",
-          open ? "max-h-[32rem] opacity-100" : "max-h-0 border-t-0 opacity-0",
-        )}
-      >
-        <ul className="flex flex-col gap-1 px-6 py-4">
-          {sections.map((key) => (
-            <li key={key}>
-              <a
-                href={`#${key}`}
-                onClick={() => setOpen(false)}
-                className="block rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              >
-                {SECTION_LABELS[key]}
-              </a>
-            </li>
-          ))}
-          <li className="mt-2 flex items-center justify-between border-t pt-3">
-            <Badge variant={role === "editor" ? "default" : "outline"}>
-              {role === "editor" ? "Editor" : "View only"} · {username}
-            </Badge>
-            <Button variant="ghost" size="sm" onClick={() => void logout()}>
-              <LogOut data-icon="inline-start" />
-              Sign out
-            </Button>
-          </li>
-        </ul>
       </div>
     </nav>
   );

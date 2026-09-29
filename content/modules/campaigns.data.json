@@ -1,0 +1,1169 @@
+{
+ "PLAN": {
+  "meta": {
+   "title": "Vista Content & Campaign Plan",
+   "period": "November 2026 – October 2027",
+   "prepared": "17 September 2026",
+   "basis": "Built on the ten Vista patient personas (P01–P10), the CDS roadmap (Months 1–3 on a frozen media structure, booking signal live 12 Mar 2027, go-live 22 Jan 2027) and a flexible 5–8 posts a month (up to 4 reels, 2 carousels, 2 static). Budget weighting per campaign is set separately at the Day-30 media audit (1 Dec 2026)."
+  },
+  "personas": {
+   "P01": "Glasses-Free Young Professional",
+   "P02": "High-Myopia Second-Opinion Seeker",
+   "P03": "Worried Parent of a Myopic Child",
+   "P04": "Adult Child Arranging a Parent's Cataract Surgery",
+   "P05": "Senior Who Wants to See the Doctor in Person",
+   "P06": "Presbyopic Executive",
+   "P07": "Screen-Weary Dry Eye Sufferer",
+   "P08": "Singapore Cross-Border Patient",
+   "P09": "Out-of-Network Traveller",
+   "P10": "Promo-Driven Comparison Shopper"
+  },
+  "pillars": [
+   {
+    "id": "K",
+    "name": "Know Your Eyes",
+    "short": "Condition education",
+    "posts": 2,
+    "stage": "Educational",
+    "job": "Name the symptom before the patient names the procedure. Most personas start with a sign they have noticed, not a treatment they want.",
+    "personas": [
+     "P03",
+     "P04",
+     "P05",
+     "P06",
+     "P07"
+    ],
+    "formats": "Reels (symptom explainers), carousels (sign-by-sign), TikTok BM re-cuts",
+    "languages": "EN, BM, ZH — BM first on TikTok, ZH for cataract and myopia",
+    "series": [
+     {
+      "n": "60-Second Eye Check",
+      "d": "One symptom per reel: blurry night driving, glare, rising prescription, burning eyes. Ends with 'when to get it checked'."
+     },
+     {
+      "n": "Is This Normal?",
+      "d": "Carousel myth-and-fact on ageing eyes, screen use and children's vision."
+     },
+     {
+      "n": "Eye Health Days",
+      "d": "World Glaucoma Week (Mar), World Sight Day (14 Oct) — educational only."
+     }
+    ],
+    "examples": [
+     "Reel (BM): 'Silau bila memandu waktu malam? 3 tanda awal katarak'",
+     "Carousel (EN): 'Your child's glasses got thicker again — what that means'",
+     "Reel (ZH): 老花眼 vs 白内障 — 有什么不同？"
+    ],
+    "measure": "Reach, 3-second views, saves, shares",
+    "guard": "Educational content; no treatment claims, no outcome promises."
+   },
+   {
+    "id": "R",
+    "name": "Weigh Your Options",
+    "short": "Procedure clarity",
+    "posts": 2,
+    "stage": "Informational",
+    "job": "Answer the questions the chat assistant fails to answer today: suitability, recovery in days, how the options differ, what it costs to plan for.",
+    "personas": [
+     "P01",
+     "P02",
+     "P06",
+     "P10"
+    ],
+    "formats": "Reels (day-of-procedure walk-through), carousels (comparison of options by criteria, not by clinic), static (instalment explained)",
+    "languages": "EN, ZH; BM re-cuts for TikTok",
+    "series": [
+     {
+      "n": "LASIK, CLEAR PRO or ICL?",
+      "d": "Carousel set comparing the options by corneal thickness, prescription range, recovery and follow-up."
+     },
+     {
+      "n": "Day of Procedure, Step by Step",
+      "d": "Reel showing arrival to discharge in the clinic, with timings."
+     },
+     {
+      "n": "Recovery in Days",
+      "d": "What day 1, day 7 and day 30 look like, stated plainly."
+     },
+     {
+      "n": "Paying for It",
+      "d": "Static on the 0% instalment plan and panel/insurance options, with the approved price range."
+     }
+    ],
+    "examples": [
+     "Carousel (EN): 'Told you can't do LASIK? Three things we check next'",
+     "Reel (ZH): 'CLEAR PRO 手术当天 — 从到达到回家'",
+     "Static (EN): 'iLASIK on a 24-month 0% instalment plan — approved price shown'"
+    ],
+    "measure": "Saves, link clicks to procedure pages, WhatsApp starts with procedure keyword",
+    "guard": "Price and package posts need MAB approval; no price comparison with other providers; no 'painless' or guarantee language."
+   },
+   {
+    "id": "F",
+    "name": "Every Age, Every Eye",
+    "short": "Parents & caregivers",
+    "posts": 1,
+    "stage": "Educational",
+    "job": "Speak to the person making the decision for someone else — the parent of a myopic child and the adult child of a cataract patient.",
+    "personas": [
+     "P03",
+     "P04",
+     "P05"
+    ],
+    "formats": "Carousels (checklists), reels (clinic walk-through for kids and seniors), Facebook-first",
+    "languages": "EN, BM, ZH (Facebook and WhatsApp-shareable formats)",
+    "series": [
+     {
+      "n": "Parents' Myopia Guide",
+      "d": "Atropine, red-light therapy and control lenses explained; what a 12-month plan involves."
+     },
+     {
+      "n": "Taking Mum or Dad for Cataract Surgery",
+      "d": "Checklist: documents, insurance/panel, how many trips, aftercare at home."
+     },
+     {
+      "n": "School Holiday Eye Check",
+      "d": "Timed to Nov–Jan and mid-year holidays."
+     }
+    ],
+    "examples": [
+     "Carousel (BM): 'Bawa ibu untuk pembedahan katarak? Senarai semak 5 perkara'",
+     "Reel (EN): 'What happens at a kids' eye exam — from a child's height'",
+     "Static (ZH): 孩子近视加深太快？ 学校假期带来检查"
+    ],
+    "measure": "Shares (WhatsApp forwards), saves, kids and cataract WhatsApp starts",
+    "guard": "No child or patient testimonials about treatment; child imagery with guardian consent."
+   },
+   {
+    "id": "S",
+    "name": "Screen Life",
+    "short": "Everyday eye habits",
+    "posts": 1,
+    "stage": "Engagement",
+    "job": "Earn attention from younger audiences with relatable, low-effort habits — the reach engine for TikTok and Reels.",
+    "personas": [
+     "P01",
+     "P07",
+     "P10",
+     "P03"
+    ],
+    "formats": "Reels and TikTok natives, trend formats, office POV skits, static quote cards",
+    "languages": "BM and EN on TikTok; EN/ZH on Instagram",
+    "series": [
+     {
+      "n": "20-20-20 at Work",
+      "d": "Office POV reels on screen breaks, lighting and blinking."
+     },
+     {
+      "n": "Glasses Problems",
+      "d": "Humour: fogged masks, gym, swimming, rain — the everyday case for knowing your options."
+     },
+     {
+      "n": "Screen-Time Rules for Kids",
+      "d": "Short, practical guidance parents can apply tonight."
+     }
+    ],
+    "examples": [
+     "TikTok (BM): 'POV: cermin mata berkabus lepas keluar dari kereta'",
+     "Reel (EN): 'Burning eyes by 4 pm? Try this at your desk'",
+     "Static (EN): '20 minutes. 20 feet. 20 seconds.'"
+    ],
+    "measure": "Views, follows, shares; TikTok cost per result on boosted posts",
+    "guard": "Keep humour away from surgical outcomes; no influencer references to treatment received."
+   },
+   {
+    "id": "V",
+    "name": "Inside Vista",
+    "short": "Facility, team & technology",
+    "posts": 1,
+    "stage": "Brand & trust",
+    "job": "Build trust through what can lawfully be shown: the clinics, the process, the technology and the people, stated factually.",
+    "personas": [
+     "P02",
+     "P04",
+     "P05",
+     "P06",
+     "P08"
+    ],
+    "formats": "Reels (branch walk-throughs, technology explainers), carousels (meet the clinical team), LinkedIn quarterly",
+    "languages": "EN, ZH, BM",
+    "series": [
+     {
+      "n": "Branch Walk-through",
+      "d": "One branch a month from the 16 centres: parking, entrance, waiting area, hours."
+     },
+     {
+      "n": "Behind the Machine",
+      "d": "What a piece of diagnostic or surgical equipment does, in plain words."
+     },
+     {
+      "n": "Meet the Clinical Team",
+      "d": "Names, roles and qualifications stated factually — no skill or outcome claims."
+     },
+     {
+      "n": "Vista Milestones",
+      "d": "Award announcements and community work (award announcements are exempt from MAB approval; wording still reviewed)."
+     }
+    ],
+    "examples": [
+     "Reel (EN): 'Mount Austin JB — parking, entrance and where to check in'",
+     "Carousel (ZH): '认识我们的临床团队'",
+     "LinkedIn (EN): 'How we run a sterile theatre day'"
+    ],
+    "measure": "Profile visits, branch page clicks, direction requests on Google Business Profile",
+    "guard": "MAB 3/2023 does not permit promoting an individual practitioner's skills or experience; facility-hospitality comments are the only permitted testimonial type."
+   },
+   {
+    "id": "P",
+    "name": "Plan Your Visit",
+    "short": "Booking, offers & logistics",
+    "posts": 1,
+    "stage": "Promotional",
+    "job": "Remove the last reasons not to book: how to book, which branch, how many trips, what's on this month.",
+    "personas": [
+     "P08",
+     "P09",
+     "P10",
+     "P04",
+     "P01"
+    ],
+    "formats": "Static and stories (approved offers, branch hours, festive hours), reels (how to book on WhatsApp), pinned posts",
+    "languages": "EN, BM, ZH",
+    "series": [
+     {
+      "n": "How to Book in 3 Taps",
+      "d": "WhatsApp booking flow, weekend slots, what to bring."
+     },
+     {
+      "n": "Travelling to Vista",
+      "d": "For Singapore and East Malaysia patients: trips, stay, follow-up plan."
+     },
+     {
+      "n": "This Month at Vista",
+      "d": "Approved campaign offers (Carnival, Open House) and branch events."
+     }
+    ],
+    "examples": [
+     "Static (EN): 'Eye Carnival 2027 — register your slot, [dates], [branches]'",
+     "Reel (EN): 'Coming from Singapore? Plan your JB visit in two trips'",
+     "Story (BM): 'Waktu operasi cawangan sepanjang Hari Raya'"
+    ],
+    "measure": "WhatsApp starts, bookings attributed to social (from the booking signal, 12 Mar 2027)",
+    "guard": "Offers need MAB approval; free services and gifts are not permitted; screening events cannot be advertised as free."
+   }
+  ],
+  "monthlyMix": [
+   {
+    "slot": "Reel 1",
+    "pillar": "K",
+    "note": "Condition explainer — rotates cataract / myopia / dry eye / presbyopia"
+   },
+   {
+    "slot": "Reel 2",
+    "pillar": "R",
+    "note": "Procedure clarity — tied to the month's live campaign"
+   },
+   {
+    "slot": "Reel 3",
+    "pillar": "S",
+    "note": "Screen Life — TikTok-native, re-cut in BM. From Month 4: the trend slot — one quick-turnaround reel on a live trend, once same-day sign-off with Vista is in place"
+   },
+   {
+    "slot": "Reel 4",
+    "pillar": "V",
+    "note": "Inside Vista — branch walk-through or technology"
+   },
+   {
+    "slot": "Carousel 1",
+    "pillar": "F",
+    "note": "Family checklist or guide"
+   },
+   {
+    "slot": "Carousel 2",
+    "pillar": "R",
+    "note": "Comparison or recovery explainer"
+   },
+   {
+    "slot": "Static 1",
+    "pillar": "P",
+    "note": "Campaign, booking or branch hours"
+   },
+   {
+    "slot": "Static 2",
+    "pillar": "K",
+    "note": "Festive greeting or eye-health day (educational)"
+   }
+  ],
+  "extras": [
+   "TikTok: the 4 reels re-cut in BM each month, plus boosted posts inside campaign budgets",
+   "Google Business Profile: one post per branch per month (16) under local SEO",
+   "LinkedIn: one post per quarter (Inside Vista / RLE) until the Q1 demand validation decides otherwise",
+   "Community management: replies within 4 business hours; price questions routed to WhatsApp with the approved answer"
+  ],
+  "keyDates": [
+   {
+    "d": "2026-11-08",
+    "t": "Deepavali 2026",
+    "k": "fest"
+   },
+   {
+    "d": "2026-12-25",
+    "t": "Christmas",
+    "k": "fest"
+   },
+   {
+    "d": "2027-01-04",
+    "t": "School term starts (Group B)",
+    "k": "school"
+   },
+   {
+    "d": "2027-01-22",
+    "t": "Website go-live",
+    "k": "gate"
+   },
+   {
+    "d": "2027-02-06",
+    "t": "Chinese New Year",
+    "k": "fest"
+   },
+   {
+    "d": "2027-03-10",
+    "t": "Hari Raya Aidilfitri",
+    "k": "fest"
+   },
+   {
+    "d": "2027-03-12",
+    "t": "Booking signal live (Meta, Google)",
+    "k": "gate"
+   },
+   {
+    "d": "2027-05-17",
+    "t": "Hari Raya Haji",
+    "k": "fest"
+   },
+   {
+    "d": "2027-05-20",
+    "t": "Wesak",
+    "k": "fest"
+   },
+   {
+    "d": "2027-06-30",
+    "t": "Month-6 KPI checkpoint",
+    "k": "gate"
+   },
+   {
+    "d": "2027-08-31",
+    "t": "Merdeka",
+    "k": "fest"
+   },
+   {
+    "d": "2027-09-16",
+    "t": "Malaysia Day",
+    "k": "fest"
+   },
+   {
+    "d": "2027-10-14",
+    "t": "World Sight Day",
+    "k": "fest"
+   },
+   {
+    "d": "2027-10-28",
+    "t": "Deepavali 2027",
+    "k": "fest"
+   }
+  ],
+  "campaigns": [
+   {
+    "id": "C1",
+    "name": "Clear Choice",
+    "type": "Always-on",
+    "budgetKey": "refr",
+    "personas": [
+     "P01",
+     "P02",
+     "P10"
+    ],
+    "services": "iLASIK · CLEAR PRO · ICL",
+    "from": "2026-11-02",
+    "to": "2027-10-29",
+    "peaks": [
+     [
+      "2027-01-04",
+      "2027-01-31"
+     ],
+     [
+      "2027-07-01",
+      "2027-08-31"
+     ]
+    ],
+    "objective": "Turn refractive interest into booked suitability assessments; lift the paid booking rate from 1.5%.",
+    "insight": "Refractive conversations grew from 437 (Sep 2025) to 2,370 (Aug 2026) a month, yet every price question in the sample went unanswered.",
+    "message": "Know if you're suitable in one visit. See the price before you book.",
+    "channels": "Google Search (refractive × region × language) · Meta click-to-WhatsApp · TikTok (post-pilot) · Instagram Reels",
+    "pillars": [
+     "R",
+     "S",
+     "P"
+    ],
+    "creative": [
+     "'Three things we check before LASIK' carousel → comparison landing page",
+     "Day-of-procedure reel (EN/ZH), BM TikTok re-cut",
+     "Instalment static with the approved monthly figure",
+     "ICL-specific search ads for 'can't do LASIK' queries (P02)"
+    ],
+    "landing": "Refractive comparison hub with suitability check, price range and weekend slots",
+    "crm": "Ad-aware assistant answers price and instalment, offers two slots; ICL keywords routed to a refractive counsellor; two follow-ups before any auto-close",
+    "kpis": [
+     "Paid booking rate ≥ 2.5% (M4), ≥ 4% (M6), ≥ 6% (M12)",
+     "Refractive cost per booked appointment reported monthly",
+     "Assessment show rate"
+    ]
+   },
+   {
+    "id": "C2",
+    "name": "Bring Them Clarity",
+    "type": "Always-on",
+    "budgetKey": "cat",
+    "personas": [
+     "P04",
+     "P05"
+    ],
+    "services": "No-blade cataract surgery · lens options",
+    "from": "2026-11-02",
+    "to": "2027-10-29",
+    "peaks": [
+     [
+      "2027-02-22",
+      "2027-03-21"
+     ],
+     [
+      "2027-06-01",
+      "2027-06-30"
+     ]
+    ],
+    "objective": "Reach the adult child who decides and pays, and the senior who decides alone, with one clear path to a cataract assessment.",
+    "insight": "Cataract is the largest enquiry category (12,853 conversations in 12 months) while the 'cataract surgery' ranking fell out of the top 100.",
+    "message": "We'll sort the insurance and the trips. You focus on your parent.",
+    "channels": "Google Search (EN/ZH/BM) · Meta (Facebook-first, 30+ caregivers and 55+) · YouTube shorts · branch Google Business Profiles",
+    "pillars": [
+     "K",
+     "F",
+     "V"
+    ],
+    "creative": [
+     "'Taking Mum for cataract surgery' checklist carousel (BM/ZH), built to be forwarded on WhatsApp",
+     "'Glare when driving at night?' symptom reel for 55+",
+     "Branch walk-through videos for the parent's nearest centre",
+     "Raya creative in BM (Feb–Mar): 'Balik kampung, check mata mak'"
+    ],
+    "landing": "Cataract guide for families with insurance/panel checklist and branch finder",
+    "crm": "Caregiver path collects insurer/panel, parent's branch and language; coordinator owns the record; post-op reminders in the parent's language",
+    "kpis": [
+     "Cataract assessments booked per month",
+     "Enquiry-to-booking time",
+     "Phone bookings logged in the CRM (currently 0)"
+    ]
+   },
+   {
+    "id": "C3",
+    "name": "Slow the Blur",
+    "type": "Always-on (school holidays)",
+    "budgetKey": "kids",
+    "personas": [
+     "P03"
+    ],
+    "services": "Kids eye exam · Myopia Control Program",
+    "from": "2026-11-02",
+    "to": "2027-01-03",
+    "extra": [
+     [
+      "2027-05-17",
+      "2027-06-30"
+     ],
+     [
+      "2027-10-15",
+      "2027-10-29"
+     ]
+    ],
+    "objective": "Book kids' eye exams in the school holidays and enrol children into 12-month myopia control plans.",
+    "insight": "Kids pages drew 15,656 sessions in three languages; the separate kids Messenger channel handled only 187 conversations in a year.",
+    "message": "Myopia can be slowed. Check your child during the school holidays.",
+    "channels": "Meta (parents 30–45) · Google Search · TikTok BM · optometrist and school referral kit",
+    "pillars": [
+     "F",
+     "K",
+     "S"
+    ],
+    "creative": [
+     "'What happens at a kids' eye exam' reel filmed at child height",
+     "Parents' Myopia Guide carousel (EN/BM/ZH)",
+     "Screen-time rules for kids static",
+     "Referral leaflet and QR code for partner optometrists"
+    ],
+    "landing": "Kids eye exam page with weekend and holiday slots",
+    "crm": "Parent path (child's age, current power, last check); reminders to both parents; programme renewal prompt at month 11",
+    "kpis": [
+     "Kids exams booked per holiday window",
+     "Programme enrolments",
+     "Programme renewal rate (from Month 11)"
+    ]
+   },
+   {
+    "id": "C4",
+    "name": "Screen-Tired Eyes",
+    "type": "Always-on",
+    "budgetKey": "dry",
+    "personas": [
+     "P07",
+     "P06"
+    ],
+    "services": "Dry Eye Assessment · treatment programme",
+    "from": "2026-11-02",
+    "to": "2027-10-29",
+    "peaks": [
+     [
+      "2027-09-01",
+      "2027-09-30"
+     ]
+    ],
+    "objective": "Convert symptom searches into Dry Eye Assessments at the approved price.",
+    "insight": "Dry-eye pages drew 10,508 sessions, while 2025 procedure-style ads bought enquiries far above the network average.",
+    "message": "Tired, burning eyes aren't just screen time. Get them assessed.",
+    "channels": "Google Search (symptom terms) · Meta (office workers) · Instagram Reels · corporate wellness partners",
+    "pillars": [
+     "S",
+     "K"
+    ],
+    "creative": [
+     "'Burning eyes by 4 pm?' desk reel",
+     "Symptom self-check carousel",
+     "Assessment static with approved price and after-work slots"
+    ],
+    "landing": "Dry-eye symptom checker leading to assessment booking",
+    "crm": "Assessment booking type; panel field; programme check-ins at weeks 2, 6 and 12",
+    "kpis": [
+     "Dry Eye Assessments booked",
+     "Programme completion",
+     "Cost per booked assessment"
+    ]
+   },
+   {
+    "id": "C5",
+    "name": "Reading Freedom",
+    "type": "Always-on (from Feb)",
+    "budgetKey": "rle",
+    "personas": [
+     "P06"
+    ],
+    "services": "Refractive Lens Exchange · premium lenses",
+    "from": "2027-02-01",
+    "to": "2027-10-29",
+    "objective": "Capture high-value reading-vision demand through search and AI answers; decide LinkedIn on evidence.",
+    "insight": "'rle eye surgery' reached position 1 in Jul 2026 with no campaign behind it; LinkedIn has 689 followers.",
+    "message": "One procedure for reading vision — decided in one consultation.",
+    "channels": "Google Search · LinkedIn (only if the Q1 validation supports it) · AI-visibility content",
+    "pillars": [
+     "R",
+     "V"
+    ],
+    "creative": [
+     "'Reading glasses in every meeting?' search and LinkedIn copy",
+     "RLE vs waiting for cataract explainer",
+     "Executive consultation request form"
+    ],
+    "landing": "RLE page with executive consultation request",
+    "crm": "Premium tag; coordinator reply within 2 working hours; early/late slot holding",
+    "kpis": [
+     "RLE assessments booked",
+     "LinkedIn validation result (Mar 2027)"
+    ]
+   },
+   {
+    "id": "S1",
+    "name": "Clear Start (CNY 2027)",
+    "type": "Seasonal",
+    "budgetKey": "seas",
+    "personas": [
+     "P01",
+     "P04",
+     "P06"
+    ],
+    "services": "iLASIK · cataract · RLE",
+    "from": "2027-01-25",
+    "to": "2027-02-14",
+    "objective": "Run the first campaign on the new site's tagged funnel, in Mandarin first.",
+    "insight": "Mandarin speakers are 9% of users while 37 of 43 Mandarin pages sat on broken URLs.",
+    "message": "新年，看得更清楚 — plan your eye care for the Year of the Goat.",
+    "channels": "Meta · Google Search (ZH) · Xiaohongshu organic test · TikTok",
+    "pillars": [
+     "R",
+     "F",
+     "K"
+    ],
+    "creative": [
+     "ZH reel: family reunion, grandparent reading a red packet",
+     "Static greeting (6 Feb) — educational, no offer",
+     "Search ads on ZH cataract and LASIK terms to clean ZH landing pages"
+    ],
+    "landing": "ZH landing pages on the new site",
+    "crm": "ZH-language assistant path; festive branch hours",
+    "kpis": [
+     "ZH enquiries and bookings vs Jan baseline",
+     "Cost per booked appointment (first tagged read)"
+    ]
+   },
+   {
+    "id": "S2",
+    "name": "Eye Carnival 2027",
+    "type": "Seasonal",
+    "budgetKey": "seas",
+    "personas": [
+     "P10",
+     "P01",
+     "P05",
+     "P04"
+    ],
+    "services": "Carnival packages across services",
+    "from": "2027-02-22",
+    "to": "2027-04-30",
+    "objective": "Repeat Vista's only fully tagged funnel with booking attribution per branch.",
+    "insight": "The 2026 Carnival drew 40,664 sessions; its UTM, landing page and form + WhatsApp split become the standard for every campaign.",
+    "message": "Eye Carnival 2027 — register your slot at your nearest Vista.",
+    "channels": "Meta · Google Search · PMax (ring-fenced) · TikTok · opt-in WhatsApp broadcast",
+    "pillars": [
+     "P",
+     "R",
+     "V"
+    ],
+    "creative": [
+     "Branch-by-branch registration statics",
+     "Carnival explainer reel (what's included, how to register)",
+     "Countdown stories; TikTok BM version"
+    ],
+    "landing": "Carnival landing page with branch capacity and registration",
+    "crm": "Pre-registration → confirmation → reminder; broadcast only to opted-in contacts; imports never enter Warm Lead",
+    "kpis": [
+     "Registrations, show rate and bookings by branch",
+     "Cost per booked appointment by branch within 5 business days"
+    ]
+   },
+   {
+    "id": "S3",
+    "name": "Graduate to Glasses-Free",
+    "type": "Seasonal",
+    "budgetKey": "seas",
+    "personas": [
+     "P01",
+     "P10"
+    ],
+    "services": "iLASIK · CLEAR PRO · ICL",
+    "from": "2027-07-01",
+    "to": "2027-08-31",
+    "objective": "Meet the new-graduate and first-job window with refractive suitability assessments.",
+    "insight": "Roadmap refractive peak Jul–Aug; the persona's first question is cost and downtime.",
+    "message": "Starting work? Find out if you're suitable before your first day.",
+    "channels": "TikTok · Instagram · Meta · Google Search",
+    "pillars": [
+     "S",
+     "R",
+     "P"
+    ],
+    "creative": [
+     "'First-job glasses problems' TikTok series (BM/EN)",
+     "Recovery-in-days carousel",
+     "Instalment static"
+    ],
+    "landing": "Refractive hub, graduate variant",
+    "crm": "Same as Clear Choice; weekend slots prioritised",
+    "kpis": [
+     "Assessments booked by 20–27 age band (once captured)",
+     "Paid booking rate"
+    ]
+   },
+   {
+    "id": "S4",
+    "name": "Open House 2027",
+    "type": "Seasonal",
+    "budgetKey": "seas",
+    "personas": [
+     "P10",
+     "P01",
+     "P04",
+     "P05"
+    ],
+    "services": "All services, branch events",
+    "from": "2027-07-15",
+    "to": "2027-09-19",
+    "objective": "Fill per-branch Open House capacity with same-day booking confirmation.",
+    "insight": "2026 ran 29 Aug–19 Sep across 7 centres with no per-branch capacity or attribution.",
+    "message": "Visit Vista [branch] on [date] — meet the team and ask your questions.",
+    "channels": "Meta radius · Google Search · TikTok · organic social · GBP posts",
+    "pillars": [
+     "V",
+     "P"
+    ],
+    "creative": [
+     "Branch walk-through reels for the 7+ centres",
+     "Registration statics per branch",
+     "Merdeka creative in BM (31 Aug)"
+    ],
+    "landing": "Open House page with branch capacity",
+    "crm": "Pre-registration from mid-Jul; same-day confirmation; follow-up for attendees",
+    "kpis": [
+     "Registrations and attendance by branch",
+     "Cost per booked appointment per branch"
+    ]
+   },
+   {
+    "id": "S5",
+    "name": "World Sight Day 2027",
+    "type": "Seasonal",
+    "budgetKey": "seas",
+    "personas": [
+     "P05",
+     "P04",
+     "P03"
+    ],
+    "services": "Eye screening · community programme",
+    "from": "2027-10-01",
+    "to": "2027-10-17",
+    "objective": "Community eye-health education and branch screening days, feeding year-end kids and cataract programmes.",
+    "insight": "Seniors hear about Vista through community and word of mouth — channels no report currently captures.",
+    "message": "Love your eyes — know when to get them checked.",
+    "channels": "Facebook · YouTube · community partners · GBP posts",
+    "pillars": [
+     "K",
+     "F"
+    ],
+    "creative": [
+     "Educational reel series (BM/ZH)",
+     "Community partner posters",
+     "Year-end school holiday teaser"
+    ],
+    "landing": "Eye-health hub",
+    "crm": "Walk-in and phone capture with source 'community'",
+    "kpis": [
+     "Screening attendance recorded",
+     "Offline bookings logged"
+    ]
+   },
+   {
+    "id": "T1",
+    "name": "JB Weekend (Singapore)",
+    "type": "Test",
+    "budgetKey": "test",
+    "personas": [
+     "P08"
+    ],
+    "services": "Refractive · cataract · kids",
+    "from": "2027-03-15",
+    "to": "2027-10-29",
+    "objective": "Test whether Singapore traffic converts into JB bookings.",
+    "insight": "Singapore sends 16,042 users a year, the second-largest city after Kuala Lumpur, with no content or campaign.",
+    "message": "Your eye care in JB, planned around your weekends.",
+    "channels": "Google Search (Singapore geo) · Xiaohongshu organic · forum listening",
+    "pillars": [
+     "P",
+     "V"
+    ],
+    "creative": [
+     "'Plan your JB visit in two trips' reel",
+     "Mount Austin and Sutera Utama walk-throughs",
+     "Cross-border guide page"
+    ],
+    "landing": "JB-for-Singapore guide",
+    "crm": "Country field from phone code; JB branch ownership; package workflow",
+    "kpis": [
+     "Singapore-origin bookings (new source)",
+     "Cost per booked appointment vs Malaysia average"
+    ],
+    "gate": "Review at SteerCo 3 (26 Jul): scale, hold or stop"
+   },
+   {
+    "id": "T2",
+    "name": "Travel for Sight",
+    "type": "Test",
+    "budgetKey": "test",
+    "personas": [
+     "P09"
+    ],
+    "services": "Cataract · refractive · second opinions",
+    "from": "2027-05-03",
+    "to": "2027-10-29",
+    "objective": "Test demand from Sabah, Sarawak, Brunei and Indonesia for one-trip treatment plans.",
+    "insight": "Kota Kinabalu, Kuching and Sandakan send 19,266 users with no branch nearby.",
+    "message": "Travelling for your eyes? We plan the trip with you.",
+    "channels": "Google Search (East Malaysia, Brunei, Indonesia) · Facebook · YouTube",
+    "pillars": [
+     "P",
+     "K"
+    ],
+    "creative": [
+     "Traveller guide reel",
+     "Remote pre-screening form ad",
+     "Indonesian-language FAQ post"
+    ],
+    "landing": "Travelling to Vista page with pre-screening form",
+    "crm": "Traveller tag; document upload; coordinator; consecutive-day booking at PJ HQ",
+    "kpis": [
+     "Pre-screen submissions",
+     "Out-of-network bookings"
+    ],
+    "gate": "Review at SteerCo 4 (25 Oct)"
+   },
+   {
+    "id": "L1",
+    "name": "Branch Local",
+    "type": "Always-on (from May)",
+    "budgetKey": "local",
+    "personas": [
+     "P04",
+     "P05",
+     "P03"
+    ],
+    "services": "All services by centre",
+    "from": "2027-05-03",
+    "to": "2027-10-29",
+    "objective": "Win 'near me' demand for the top six centres once canonical branch pages and clean Google profiles are live.",
+    "insight": "Location pages had no H1 and 74 duplicates; Google profiles carry ~7,150 reviews at ~4.8★.",
+    "message": "Vista [branch] — [hours], [parking], book on WhatsApp.",
+    "channels": "Google Search + local · GBP posts · Meta radius",
+    "pillars": [
+     "V",
+     "P"
+    ],
+    "creative": [
+     "Branch walk-through reel per centre",
+     "GBP posts (16 a month)",
+     "Radius ads with branch hours"
+    ],
+    "landing": "Canonical branch pages",
+    "crm": "Branch field on every contact",
+    "kpis": [
+     "Local-pack top-3 pairs (≥ 8 by M6, ≥ 16 by M12)",
+     "Bookings by branch"
+    ]
+   }
+  ],
+  "calendar": [
+   {
+    "m": "2026-11",
+    "live": [
+     "C1",
+     "C2",
+     "C3",
+     "C4"
+    ],
+    "theme": "Hand-over month: establish the mix, no new spend",
+    "posts": [
+     "3 early signs of cataract (BM)",
+     "what a LASIK suitability check measures",
+     "20-20-20 at your desk",
+     "PJ HQ walk-through",
+     "school holiday kids eye check — what to expect",
+     "LASIK vs CLEAR PRO vs ICL (part 1)",
+     "book a holiday kids' check on WhatsApp",
+     "Deepavali greeting (8 Nov)"
+    ]
+   },
+   {
+    "m": "2026-12",
+    "live": [
+     "C1",
+     "C2",
+     "C3",
+     "C4"
+    ],
+    "theme": "School holidays; first full RFP mix",
+    "posts": [
+     "why myopia rises in children",
+     "recovery in days — iLASIK",
+     "screen-time rules for the holidays",
+     "Behind the Machine — eye scan",
+     "Parents' Myopia Guide (EN/BM/ZH)",
+     "LASIK vs CLEAR PRO vs ICL (part 2)",
+     "year-end branch hours",
+     "Christmas greeting"
+    ]
+   },
+   {
+    "m": "2027-01",
+    "live": [
+     "C1",
+     "C2",
+     "C3",
+     "C4",
+     "S1"
+    ],
+    "theme": "New year, new site (go-live 22 Jan), CNY build-up",
+    "posts": [
+     "老花眼 vs 白内障 (ZH)",
+     "day of procedure, step by step",
+     "new-year eye habits",
+     "the new vista.com.my — how to book",
+     "taking Mum or Dad for cataract surgery (ZH)",
+     "paying for it — 0% instalment",
+     "book in 3 taps (new site)",
+     "CNY teaser (educational)"
+    ]
+   },
+   {
+    "m": "2027-02",
+    "live": [
+     "C1",
+     "C2",
+     "C4",
+     "C5",
+     "S1",
+     "S2"
+    ],
+    "theme": "CNY; Carnival pre-registration opens 22 Feb",
+    "posts": [
+     "glare when driving at night",
+     "can't do LASIK? three things we check",
+     "glasses problems — fogged in the rain",
+     "Meet the Clinical Team (part 1)",
+     "Raya checklist — bringing parents in (BM)",
+     "RLE vs waiting for cataract",
+     "Eye Carnival 2027 registration",
+     "CNY greeting (6 Feb)"
+    ]
+   },
+   {
+    "m": "2027-03",
+    "live": [
+     "C1",
+     "C2",
+     "C4",
+     "C5",
+     "S2",
+     "T1"
+    ],
+    "theme": "Carnival; Raya; World Glaucoma Week",
+    "posts": [
+     "World Glaucoma Week — silent vision loss",
+     "Carnival — what's included",
+     "burning eyes by 4 pm?",
+     "Mount Austin JB walk-through",
+     "'Balik kampung, check mata mak' (BM)",
+     "recovery in days — ICL",
+     "coming from Singapore? two-trip plan",
+     "Hari Raya greeting (10 Mar)"
+    ]
+   },
+   {
+    "m": "2027-04",
+    "live": [
+     "C1",
+     "C2",
+     "C4",
+     "C5",
+     "S2",
+     "T1"
+    ],
+    "theme": "Carnival close; dry eye and ICL refresh",
+    "posts": [
+     "dry eye or allergy?",
+     "thin cornea — your options",
+     "blinking and screens",
+     "Behind the Machine — dry-eye diagnostics",
+     "kids and outdoor time",
+     "dry-eye programme explained",
+     "Carnival final weeks by branch",
+     "Is This Normal?: eye floaters (educational)"
+    ]
+   },
+   {
+    "m": "2027-05",
+    "live": [
+     "C1",
+     "C2",
+     "C3",
+     "C4",
+     "C5",
+     "T1",
+     "T2",
+     "L1"
+    ],
+    "theme": "Branch local launch; mid-year school holidays",
+    "posts": [
+     "myopia before the holidays",
+     "weekend suitability checks",
+     "holiday gaming and kids' eyes",
+     "Ipoh walk-through",
+     "Parents' Myopia Guide — treatment options",
+     "a 12-month myopia plan, explained",
+     "travelling from Sabah or Sarawak",
+     "Hari Raya Haji / Wesak greeting"
+    ]
+   },
+   {
+    "m": "2027-06",
+    "live": [
+     "C1",
+     "C2",
+     "C3",
+     "C4",
+     "C5",
+     "T1",
+     "T2",
+     "L1"
+    ],
+    "theme": "Cataract awareness for 40+; Month-6 checkpoint",
+    "posts": [
+     "cataract — when is it time? (BM/ZH)",
+     "lens options for cataract surgery",
+     "sunglasses aren't just for style",
+     "Air Itam Penang walk-through",
+     "aftercare at home after cataract surgery",
+     "how many visits for cataract surgery",
+     "insurance and panel — what to bring",
+     "Is This Normal?: reading small print at 45"
+    ]
+   },
+   {
+    "m": "2027-07",
+    "live": [
+     "C1",
+     "C2",
+     "C4",
+     "C5",
+     "S3",
+     "S4",
+     "T1",
+     "T2",
+     "L1"
+    ],
+    "theme": "Graduate season; Open House pre-registration",
+    "posts": [
+     "high myopia in young adults",
+     "starting work — suitability before day one",
+     "first-job glasses problems (TikTok series)",
+     "Meet the Clinical Team (part 2)",
+     "planning eye care for the whole family",
+     "recovery in days — CLEAR PRO",
+     "Open House pre-registration",
+     "Is This Normal?: eye strain after long drives"
+    ]
+   },
+   {
+    "m": "2027-08",
+    "live": [
+     "C1",
+     "C2",
+     "C4",
+     "C5",
+     "S3",
+     "S4",
+     "T1",
+     "T2",
+     "L1"
+    ],
+    "theme": "Open House; Merdeka",
+    "posts": [
+     "protecting eyes at outdoor events",
+     "what to ask at Open House",
+     "20-20-20 revisited",
+     "Open House branch walk-throughs",
+     "bring your parents to Open House",
+     "LASIK vs CLEAR PRO vs ICL (refresh)",
+     "Open House dates by branch",
+     "Merdeka greeting (31 Aug, BM)"
+    ]
+   },
+   {
+    "m": "2027-09",
+    "live": [
+     "C1",
+     "C2",
+     "C4",
+     "C5",
+     "S4",
+     "T1",
+     "T2",
+     "L1"
+    ],
+    "theme": "Open House close; dry eye push",
+    "posts": [
+     "dry eye season — air-conditioning and screens",
+     "dry-eye assessment step by step",
+     "office lighting and your eyes",
+     "Klang walk-through",
+     "dry eye in older parents",
+     "paying for it — panel and instalment",
+     "after-work assessment slots",
+     "Malaysia Day greeting (16 Sep)"
+    ]
+   },
+   {
+    "m": "2027-10",
+    "live": [
+     "C1",
+     "C2",
+     "C3",
+     "C4",
+     "C5",
+     "S5",
+     "T1",
+     "T2",
+     "L1"
+    ],
+    "theme": "World Sight Day; year-end kids preparation",
+    "posts": [
+     "World Sight Day — when to get checked",
+     "a year of questions answered",
+     "screen-time rules for the year-end holidays",
+     "community programme recap",
+     "year-end kids eye check is coming",
+     "myopia control — what parents asked most",
+     "year-end holiday slots open",
+     "Deepavali greeting (28 Oct)"
+    ]
+   }
+  ],
+  "guardrails": [
+   {
+    "r": "No free healthcare offers or gifts",
+    "d": "MAB guideline 3/2023 does not permit free offers of healthcare services or any form of gift. Screening days and Open House are advertised as events, not as free services.",
+    "src": "MAB 3/2023"
+   },
+   {
+    "r": "No price comparisons",
+    "d": "Individual prices and packages may be advertised with approval; comparing prices or packages with other providers is not permitted. Singapore creative talks about trips and planning, not savings.",
+    "src": "MAB 3/2023"
+   },
+   {
+    "r": "Testimonials only about the facility",
+    "d": "Patient comments may cover cleanliness and staff hospitality. Comments on treatment results or a doctor's skill are not permitted, including reposted reviews.",
+    "src": "MAB 3/2023"
+   },
+   {
+    "r": "No promotion of an individual practitioner's skills",
+    "d": "'Meet the Clinical Team' states names, roles and qualifications only. No case counts, 'most experienced' or outcome language.",
+    "src": "MAB 3/2023"
+   },
+   {
+    "r": "Influencers are treated as celebrities",
+    "d": "No creator may reference treatment they received. Screen Life creator content stays on habits and everyday life.",
+    "src": "MAB 3/2023"
+   },
+   {
+    "r": "Retire flagged claims",
+    "d": "'Top #1', 'Best #1', 'guaranteed', 'painless', '99% safety rate' and milestone counts come out of all creative until approved wording exists.",
+    "src": "CDS finding F-22"
+   },
+   {
+    "r": "Approval pipeline six weeks ahead",
+    "d": "Advertisements need MAB approval unless exempt (educational articles and award announcements are exempt). Seasonal creative is submitted six weeks before launch; approved evergreen runs if approval slips.",
+    "src": "MAB 3/2023 · CDS roadmap"
+   }
+  ],
+  "assumptions": [
+   "2027 school holiday dates were still 'TBA' at the time of writing (school starts 4 Jan 2027 for Group B). Kids windows follow the roadmap (to 3 Jan; late May–June) and move when KPM publishes the calendar.",
+   "2027 public holidays per the published calendar: CNY 6–7 Feb, Aidilfitri 10–11 Mar, Haji 17–18 May, Wesak 20 May, Malaysia Day 16 Sep, Deepavali 28 Oct. These may change on cabinet confirmation.",
+   "Campaign weighting is set at the Day-30 media audit (1 Dec 2026) and reviewed at the pilot evidence review (26 Mar 2027).",
+   "Offer figures shown as [approved] are placeholders until Vista's price list and MAB approval are in hand.",
+   "Xiaohongshu, Indonesian-language content and a LinkedIn pilot are tests outside the RFP social minimum; they proceed only if Vista agrees the scope."
+  ]
+ }
+}

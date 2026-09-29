@@ -1,0 +1,699 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>img{max-width:100%}[hidden]{display:none!important}</style>
+<style>.tbtn#theme{display:none!important}html,body{overflow:hidden}</style>
+<script>
+(function(){
+  function h(){return Math.ceil(Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0));}
+  function post(){try{parent.postMessage({vistaHub:1,frame:window.name,height:h()},'*');}catch(e){}}
+  addEventListener('load',function(){post();try{new ResizeObserver(post).observe(document.body);}catch(e){setInterval(post,800);}});
+  addEventListener('resize',post);
+  document.addEventListener('toggle',post,true);
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(!a)return;var id=a.getAttribute('href').slice(1);var t=id&&document.getElementById(id);
+    if(t){e.preventDefault();try{parent.postMessage({vistaHub:1,frame:window.name,scrollTo:t.getBoundingClientRect().top},'*');}catch(x){t.scrollIntoView();}}
+  });
+  addEventListener('message',function(e){
+    var d=e.data;if(!d||!d.vistaTheme)return;
+    var root=document.documentElement,want=d.vistaTheme==='dark';
+    var cur=root.getAttribute('data-theme');var dark=cur?cur==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    var btn=document.getElementById('theme');
+    if(dark!==want){ if(btn){btn.click();} else {root.setAttribute('data-theme',d.vistaTheme);} }
+    setTimeout(post,50);
+  });
+})();
+</script>
+</head><body><title>VISTA Digital Asset Analysis</title>
+<style>
+:root{
+  color-scheme:light;
+  --surface-1:#fcfcfb; --plane:#f9f9f7;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,0.10);
+  --series-1:#2a78d6; --series-2:#eb6834; --series-3:#1baf7a; --series-4:#8a63d2; --series-5:#c7a008;
+  --good:#0ca30c; --warning:#fab219; --serious:#ec835a; --critical:#d03b3b; --opp:#1baf7a;
+  --chip:#f0efec;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --surface-1:#1a1a19; --plane:#0d0d0d;
+    --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,0.10);
+    --series-1:#3987e5; --series-2:#d95926; --series-3:#199e70; --series-4:#9d7be0; --series-5:#d9b32a;
+    --chip:#262624;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,0.10);
+  --series-1:#3987e5; --series-2:#d95926; --series-3:#199e70; --series-4:#9d7be0; --series-5:#d9b32a;
+  --chip:#262624;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--plane);color:var(--text-primary);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-inline:16px}
+.wrap{max-width:1240px;margin:0 auto;padding-block:28px 80px}
+header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;padding-bottom:20px;border-bottom:2px solid var(--series-1);margin-bottom:26px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:29px;line-height:1.2;margin:6px 0 6px;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+h1 span{color:var(--series-1)}
+.sub{color:var(--text-secondary);font-size:14px;max-width:680px}
+.meta{font-size:12px;color:var(--muted);margin-top:10px}
+.tbtn{background:var(--surface-1);border:1px solid var(--border);color:var(--text-secondary);border-radius:999px;padding:7px 15px;font-size:12.5px;cursor:pointer;font-family:inherit;white-space:nowrap}
+.tbtn:hover{border-color:var(--muted)}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;margin:-8px 0 8px}
+nav.toc a{color:var(--text-secondary);text-decoration:none;border-bottom:1px solid var(--grid)}
+nav.toc a:hover{color:var(--series-1);border-color:var(--series-1)}
+section{margin:44px 0 0}
+h2{font-size:19px;margin:0 0 4px;font-weight:700;letter-spacing:-.005em}
+h2 .num{color:var(--series-1);font-variant-numeric:tabular-nums;margin-right:8px}
+h3{font-size:14.5px;margin:22px 0 6px;font-weight:700}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 18px;max-width:820px}
+.card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+.grid{display:grid;gap:14px}
+.g6{grid-template-columns:repeat(6,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1000px){.g6,.g4{grid-template-columns:repeat(3,1fr)}.g3,.g2{grid-template-columns:1fr}}
+@media(max-width:620px){.g6,.g4{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:2px;min-height:118px}
+.tile .lab{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.tile .val{font-size:29px;font-weight:700;line-height:1.1;margin-top:4px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tile .note{font-size:11.5px;color:var(--text-secondary);margin-top:auto;line-height:1.4}
+.tile.crit{border-left:4px solid var(--critical)}
+.tile.warn{border-left:4px solid var(--warning)}
+.tile.ok{border-left:4px solid var(--good)}
+.tile.info{border-left:4px solid var(--series-1)}
+.chart-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:2px;flex-wrap:wrap}
+.chart-title{font-size:14.5px;font-weight:700}
+.chart-sub{font-size:12.5px;color:var(--text-secondary);margin:2px 0 14px}
+svg{display:block;width:100%;overflow:visible}
+.gridline{stroke:var(--grid);stroke-width:1}
+.tick{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.dlabel{fill:var(--text-secondary);font-size:10.5px;font-weight:600;font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--text-secondary)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend i.line{height:3px;border-radius:2px;vertical-align:3px}
+.hit{fill:transparent;cursor:pointer}
+.tip{position:fixed;pointer-events:none;z-index:99;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:9px 11px;font-size:12px;box-shadow:0 6px 22px rgba(0,0,0,.16);opacity:0;transition:opacity .1s;max-width:280px;color:var(--text-primary)}
+.tip b{display:block;font-size:12.5px;margin-bottom:3px}
+.tip .r{color:var(--text-secondary);font-variant-numeric:tabular-nums;display:block}
+.tv{font-size:11.5px;color:var(--series-1);background:none;border:none;cursor:pointer;font-family:inherit;padding:0;text-decoration:underline;text-underline-offset:2px}
+.tscroll{overflow-x:auto;margin-top:14px}
+table.data{width:100%;border-collapse:collapse;font-size:12.5px}
+table.data th{text-align:left;font-weight:600;color:var(--text-secondary);border-bottom:1px solid var(--axis);padding:7px 9px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;cursor:pointer;user-select:none}
+table.data th.n{text-align:right}
+table.data th.sorted::after{content:" ▾";color:var(--series-1)}
+table.data th.sorted.asc::after{content:" ▴"}
+table.data td{padding:7px 9px;border-bottom:1px solid var(--grid);vertical-align:top}
+table.data td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.data tbody tr:hover{background:var(--chip)}
+table.data td.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;word-break:break-all}
+.hidden{display:none}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;color:#fff;white-space:nowrap}
+.pill.Critical{background:var(--critical)}.pill.High{background:var(--serious)}.pill.Medium{background:var(--warning);color:#1a1a19}.pill.Opportunity{background:var(--opp)}
+.pill.C{background:var(--good)}.pill.P{background:var(--warning);color:#1a1a19}.pill.M{background:var(--critical)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px;align-items:center}
+.filters button{background:var(--chip);border:1px solid var(--border);color:var(--text-secondary);border-radius:999px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:inherit}
+.filters button.on{background:var(--series-1);color:#fff;border-color:var(--series-1)}
+.filters input{background:var(--surface-1);border:1px solid var(--border);color:var(--text-primary);border-radius:8px;padding:6px 10px;font-size:12.5px;font-family:inherit;min-width:220px}
+.finding{border-bottom:1px solid var(--grid);padding:14px 0;display:grid;grid-template-columns:110px 1fr;gap:14px}
+.finding:last-child{border-bottom:none}
+.finding .id{font-weight:700;font-variant-numeric:tabular-nums;font-size:13px}
+.finding .id small{display:block;color:var(--muted);font-weight:500;font-size:11px;margin-top:4px}
+.finding .t{font-weight:700;font-size:14px;margin-bottom:4px}
+.finding .e{font-size:12.5px;color:var(--text-primary);margin-bottom:5px}
+.finding .i{font-size:12.5px;color:var(--text-secondary)}
+.finding .s{font-size:11px;color:var(--muted);margin-top:5px}
+@media(max-width:700px){.finding{grid-template-columns:1fr}}
+.kv{display:grid;grid-template-columns:1fr auto;gap:6px 14px;font-size:12.5px}
+.kv div:nth-child(even){text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.kv .h{grid-column:1/-1;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:10px;text-align:left}
+.note{font-size:12px;color:var(--text-secondary);margin-top:10px}
+footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);font-size:12px;color:var(--muted)}
+a{color:var(--series-1)}
+:focus-visible{outline:2px solid var(--series-1);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div>
+    <div class="eyebrow">Vista Eye Specialist · Digital Transformation RFP QHM/VES/DT/2026/003 · Caspian Digital Solutions</div>
+    <h1>VISTA Eye Specialist — <span>Digital Asset Analysis</span></h1>
+    <div class="sub">End-to-end analysis of every digital asset Vista operates or is measured by — website, tracking, GA4, Respond.io, paid media, agency reporting, social, governance — read against the RFP. This is the starting point (stage zero): raw numbers, sortable and filterable, so the baseline every later target is measured against is visible to everyone. One note on the words used: a lead here is a chat or a form, not a patient.</div>
+    <div class="meta">Data captured 12–14 September 2026 · Baseline: CDS audit of 16 August 2026 · Prepared for Vista Eye Specialist</div>
+  </div>
+  <button class="tbtn" id="theme">◐ Dark mode</button>
+</header>
+<nav class="toc">
+  <a href="#s1">Lead truth</a><a href="#s2">Spend & cost per appointment</a><a href="#s3">GA4</a><a href="#s4">Respond.io funnel</a><a href="#s5">Website</a><a href="#s6">Paid media reporting</a><a href="#s7">SEO</a><a href="#s8">Social</a><a href="#s10">Findings register</a><a href="#s11">August audit cross-check</a><a href="#s12">Sources & limits</a>
+</nav>
+
+<div class="grid g6" style="margin-top:22px">
+  <div class="tile crit"><div class="lab">Lead counts in circulation</div><div class="val">5</div><div class="note">73,193 · 73,069 · 50,079 · 61,063 · 3,094 for the same twelve months, depending on the source</div></div>
+  <div class="tile crit"><div class="lab">Cost per booked appointment</div><div class="val">RM182</div><div class="note">Digital spend ÷ 3,065 appointments booked, Jan–Aug 2026; the cost per lead in management use is ten to twenty times lower</div></div>
+  <div class="tile crit"><div class="lab">Paid vs unpaid booking rate</div><div class="val">1.5% / 14.4%</div><div class="note">Paid Ads 288 of 19,670 New Leads booked; Incoming Message 2,428 of 16,883</div></div>
+  <div class="tile crit"><div class="lab">Contacts deleted Jul–Aug</div><div class="val">23,616</div><div class="note">34% of the year's intake, by one account; 2 merges in 12 months</div></div>
+  <div class="tile warn"><div class="lab">Location URLs for 16 branches</div><div class="val">101</div><div class="note">74 indexable duplicates; 0 of 75 location pages carry an H1</div></div>
+  <div class="tile warn"><div class="lab">Posts published since May 2026</div><div class="val">0</div><div class="note">Across both domains; 15 of the last 24 months had no output</div></div>
+</div>
+
+<div class="card" style="margin-top:14px">
+  <div class="chart-title">The central finding</div>
+  <p style="margin:6px 0 0;font-size:13.5px;max-width:900px">Nothing found in August has been repaired, and the twelve-month view makes two things visible that the two-week window could not. First, the leads Vista pays for almost never become patients: a paid-ads enquiry books at 1.5%, an unpaid one at 14.4%, and the only figure that connects spend to a patient — RM182 per appointment — appears in no report. Second, the measurement layer has been edited rather than fixed: GA4 key events were redefined twice, a third of the year's CRM contacts were deleted in two months, and the agency's 44 monthly reports contain no analysis, no revenue and no lead definition. The website, meanwhile, fails the RFP's own acceptance criteria on structure, performance, accessibility, consent and content cadence. What follows is the evidence, asset by asset.</p>
+</div>
+
+<!-- 1 LEAD TRUTH -->
+<section id="s1">
+  <h2><span class="num">01</span>Lead truth — five counts, one business</h2>
+  <p class="lede">The same twelve months, counted five ways. Each line is a legitimate number from a live system; none is reconciled to another. The bottom line — appointments booked in Respond.io — is the only one a patient stands behind.</p>
+  <div class="card">
+    <div class="chart-head"><div class="chart-title">Monthly lead counts by source of truth, Sep 2025 – Aug 2026</div><button class="tv" data-toggle="t-leads">Show data table</button></div>
+    <div class="chart-sub">L10 = client scorecard "Total Leads" (sum of Respond.io channels). Platform = Google Ads conversions + Meta results as reported by the agency (Aug 2026 SEM report not yet issued). Net new contacts = Respond.io contacts added minus CSV imports. Booked = contacts entering "Appointment Booked" (populated from Jan 2026).</div>
+    <svg id="c-leads" viewBox="0 0 900 340"></svg>
+    <div class="legend"><span><i class="line" style="background:var(--series-1)"></i>L10 total leads</span><span><i class="line" style="background:var(--series-4)"></i>Respond.io conversations opened</span><span><i class="line" style="background:var(--series-3)"></i>Net new contacts</span><span><i class="line" style="background:var(--series-2)"></i>Platform-reported (Google + Meta)</span><span><i class="line" style="background:var(--critical)"></i>Appointments booked</span></div>
+    <div id="t-leads" class="hidden tscroll"></div>
+  </div>
+</section>
+
+<!-- 2 SPEND -->
+<section id="s2">
+  <h2><span class="num">02</span>The cost of a patient</h2>
+  <p class="lede">What a booked appointment actually costs, once the CRM's own count of appointments is used as the denominator.</p>
+    <div class="card">
+      <div class="chart-head"><div class="chart-title">Cost per booked appointment (RM)</div></div>
+      <div class="chart-sub">Digital spend divided by appointments booked in Respond.io, month by month. Dec 2025 omitted (the Won stage was populated from 21 Jan 2026). This is the only figure that ties marketing to a patient; the cost-per-lead figure in management use is ten to twenty times lower.</div>
+      <svg id="c-cpa" viewBox="0 0 600 320"></svg>
+      <div class="legend"><span><i class="line" style="background:var(--critical)"></i>Cost per booked appointment</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 GA4 -->
+<section id="s3">
+  <h2><span class="num">03</span>GA4 — traffic is stable, the conversion metric is not</h2>
+  <p class="lede">Property p265217204, 100% of data, no sampling. Twenty months of monthly pulls show ~21–41k sessions a month with one Carnival outlier, and a key-event rate that moves only when someone changes which events count.</p>
+  <div class="card">
+    <div class="chart-head"><div class="chart-title">Sessions by default channel group and session key-event rate, Jan 2025 – Aug 2026</div><button class="tv" data-toggle="t-ga4m">Show data table</button></div>
+    <div class="chart-sub">Stacked sessions (left axis). Line: share of sessions with a key event (right axis). The rate steps 8% → 90% → 10% with no change in traffic — engagement events were flagged as key events from Jul/Aug 2025 and unflagged around Jun 2026.</div>
+    <svg id="c-ga4" viewBox="0 0 900 360"></svg>
+    <div class="legend" id="l-ga4"></div>
+    <div id="t-ga4m" class="hidden tscroll"></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card">
+      <div class="chart-title">Enquiry-type events by range</div>
+      <div class="chart-sub">Named conversion events only — the closest thing GA4 has to an enquiry. Compare with the "Key events" totals the reports quote.</div>
+      <div class="tscroll" id="t-events"></div>
+      <div class="note">WhatsApp Conversion per user rose from 1.39 (2025) to 2.12 (2026) — consistent with a double-firing tag. 2025 key events total 342,076 against ~40k named enquiry events.</div>
+    </div>
+    <div class="card">
+      <div class="chart-title">First-user channel, Sep 2025 – Aug 2026</div>
+      <div class="chart-sub">Where new users came from. Paid Social is 105 users for the year; Meta traffic sits in Cross-network, Organic Social and Referral.</div>
+      <div class="tscroll" id="t-channels"></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="chart-title">Landing pages, Sep 2025 – Aug 2026 (top 40 by sessions)</div>
+    <div class="chart-sub">Key-event rate should not be read as conversion. Note the parallel EN / BM / ZH / "-2" / "/pages/" URL sets for the same locations, and the "(not set)" row.</div>
+    <div class="tscroll" id="t-landing"></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card">
+      <div class="chart-title">Source / medium, Sep 2025 – Aug 2026 (top 40)</div>
+      <div class="chart-sub">Non-standard mediums (centers, center, fb, social, cny) fall into Unassigned; chatgpt.com appears under four mediums.</div>
+      <div class="tscroll" id="t-sm"></div>
+    </div>
+    <div class="card">
+      <div class="chart-title">Audience — device, language, city (Sep 2025 – Aug 2026)</div>
+      <div class="chart-sub">Cities with near-zero engagement and 90–99% key-event rates are data-centre traffic; no filter is applied.</div>
+      <div class="tscroll" id="t-aud"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 RESPOND.IO -->
+<section id="s4">
+  <h2><span class="num">04</span>Respond.io — where leads go</h2>
+  <p class="lede">Twelve months of reports (the platform's maximum) and nine months of lifecycle data. 95,031 contacts, 73,069 conversations, four human agents and one AI agent that takes 57% of assignments.</p>
+  <div class="grid g2">
+    <div class="card">
+      <div class="chart-head"><div class="chart-title">Lifecycle funnel by month of entry</div><button class="tv" data-toggle="t-funnel">Show data table</button></div>
+      <div class="chart-sub">Contacts entering each stage in the month. Appointment Booked exists from 21 Jan 2026; Sep–Nov 2025 lifecycle did not render.</div>
+      <svg id="c-funnel" viewBox="0 0 600 320"></svg>
+      <div class="legend"><span><i style="background:var(--series-1)"></i>New Lead</span><span><i style="background:var(--series-4)"></i>Warm Lead</span><span><i style="background:var(--series-2)"></i>Hot Prospect</span><span><i style="background:var(--critical)"></i>Appointment Booked</span><span><i class="line" style="background:var(--text-primary)"></i>Overall drop-off %</span></div>
+      <div id="t-funnel" class="hidden tscroll"></div>
+    </div>
+    <div class="card">
+      <div class="chart-head"><div class="chart-title">Paid Ads vs Incoming Message — stage progression, Dec 2025 – Aug 2026</div></div>
+      <div class="chart-sub">Contacts reaching each stage, by lead source. The gap widens at every step.</div>
+      <svg id="c-src" viewBox="0 0 600 320"></svg>
+      <div class="legend"><span><i style="background:var(--series-2)"></i>Paid Ads (Meta click-to-chat)</span><span><i style="background:var(--series-3)"></i>Incoming Message (unpaid)</span></div>
+      <div class="tscroll" id="t-src"></div>
+    </div>
+  </div>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="card">
+      <div class="chart-head"><div class="chart-title">Contacts added vs deleted</div></div>
+      <div class="chart-sub">Adds split into paid, incoming and CSV import. Deletions: 23,616 in Jul–Aug 2026.</div>
+      <svg id="c-contacts" viewBox="0 0 600 300"></svg>
+      <div class="legend"><span><i style="background:var(--series-2)"></i>Paid Ads</span><span><i style="background:var(--series-3)"></i>Incoming</span><span><i style="background:var(--series-5)"></i>Import</span><span><i style="background:var(--critical)"></i>Deleted</span></div>
+    </div>
+    <div class="card">
+      <div class="chart-title">Conversations opened by channel and source</div>
+      <div class="chart-sub">Twelve-month totals; monthly detail in the table.</div>
+      <div class="tscroll" id="t-chan"></div>
+    </div>
+    <div class="card">
+      <div class="chart-title">Contact base today (13 Sep 2026)</div>
+      <div class="chart-sub">Lifecycle stage counts across all 95,031 contacts.</div>
+      <div class="tscroll" id="t-stages"></div>
+    </div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card">
+      <div class="chart-title">Handling — response, resolution, closure</div>
+      <div class="tscroll" id="t-handling"></div>
+      <div class="note">Sep 2025 is a partial month (14–30 Sep). First response is dominated by the AI agent's sub-30-second replies; "closed by User" is mostly humans applying a category to an AI-run conversation.</div>
+    </div>
+    <div class="card">
+      <div class="chart-title">What 29 sampled conversations showed</div>
+      <div class="kv">
+        <div class="h">Flow</div>
+        <div>Workflows triggered on every inbound chat</div><div>4</div>
+        <div>AI first reply</div><div>seconds, EN/BM/ZH</div>
+        <div>Auto-close after silence</div><div>8 h + 14 h → Inactive</div>
+        <div class="h">Defects observed</div>
+        <div>Price/promo questions answered</div><div>0 of 5</div>
+        <div>Instagram ad leads given "returning" menu instead of an answer</div><div>4 of 8</div>
+        <div>Open after-hours conversations handled by a human</div><div>0 of 23</div>
+        <div>Red-flag symptom case assigned 9:27 PM, still unread</div><div>11:45 PM</div>
+        <div>Meta away-message fires before AI reply</div><div>every Meta chat</div>
+        <div>CAPI "Purchase" observed on a lead later marked Inactive</div><div>yes</div>
+        <div class="h">Setup</div>
+        <div>Workflows (published / stopped / draft)</div><div>10 / 10 / 3</div>
+        <div>Human agents active · deleted accounts</div><div>4 · 3</div>
+        <div>Broadcasts · messages · failed</div><div>35 · 19,247 · 14.5%</div>
+        <div>Web-chat / GBM / call channel</div><div>none</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 WEBSITE -->
+<section id="s5">
+  <h2><span class="num">05</span>Website — vista.com.my and vistanow.com.my</h2>
+  <p class="lede">Both on WordPress 7.1 + Elementor + WPML + Yoast. Crawled 12 September from the user's own browser (the cloud shell was blocked); PageSpeed Insights hit its daily quota, so Lighthouse and CrUX are absent — a gap to close before any performance baseline is signed.</p>
+  <div class="grid g6">
+    <div class="tile warn"><div class="lab">Homepage weight</div><div class="val">3.08 MB</div><div class="note">151 requests · 7.3 s load · TTFB 0.9–1.3 s, HTML never edge-cached</div></div>
+    <div class="tile warn"><div class="lab">Scripts per page</div><div class="val">91–99</div><div class="note">36–46 stylesheets; reCAPTCHA (347 KB) loaded twice</div></div>
+    <div class="tile crit"><div class="lab">Images with empty alt</div><div class="val">95.8%</div><div class="note">17,650 of 18,419 img tags; 79.7% on vistanow</div></div>
+    <div class="tile crit"><div class="lab">axe serious violations</div><div class="val">12–38</div><div class="note">per template; no main landmark; focus outline suppressed</div></div>
+    <div class="tile crit"><div class="lab">Consent management</div><div class="val">None</div><div class="note">GA4 ×2, 2 Meta pixels, Ads remarketing, Hotjar fire on load</div></div>
+    <div class="tile crit"><div class="lab">2025–26 posts in sitemap</div><div class="val">0 / 52</div><div class="note">Only 2016–2024 press clippings submitted</div></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><div class="chart-title">URL estate and structure</div><div class="tscroll" id="t-site1"></div></div>
+    <div class="card"><div class="chart-title">Tracking tags found in source</div><div class="tscroll" id="t-site2"></div></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><div class="chart-title">SEO hygiene and structured data</div><div class="tscroll" id="t-site3"></div></div>
+    <div class="card"><div class="chart-title">Content velocity — posts per month, both domains</div><div class="chart-sub">Publishing arrives in three batches and stopped in May 2026.</div><svg id="c-vel" viewBox="0 0 600 240"></svg><div class="legend"><span><i style="background:var(--series-1)"></i>vista.com.my</span><span><i style="background:var(--series-3)"></i>vistanow.com.my</span></div></div>
+  </div>
+</section>
+
+<!-- 6 PAID MEDIA REPORTING -->
+<section id="s6">
+  <h2><span class="num">06</span>Paid media as reported by the agency</h2>
+  <p class="lede">Nineteen Google Ads reports and twelve Meta/TikTok decks, read line by line: what each set contains, what it leaves out, and the inconsistencies logged inside it.</p>
+  <div class="card">
+    <div class="chart-title">What the 44 reports contain — and do not</div>
+    <div class="tscroll" id="t-reports"></div>
+  </div>
+</section>
+
+<!-- 7 SEO -->
+<section id="s7">
+  <h2><span class="num">07</span>Search — rankings reported, traffic not</h2>
+  <p class="lede">Semrush position tracking on 201 keywords is the only SEO measure the client receives. GA4 is the only place organic sessions exist.</p>
+  <div class="grid g2">
+    <div class="card">
+      <div class="chart-head"><div class="chart-title">Keywords in Top 3 / Top 10 / Top 100 (Semrush, month end)</div><button class="tv" data-toggle="t-seo">Show data table</button></div>
+      <div class="chart-sub">Keyword set expanded from 150 to 201 in Aug 2025. May 2026 report tracked a single day (7 Jun).</div>
+      <svg id="c-seo" viewBox="0 0 600 300"></svg>
+      <div class="legend"><span><i class="line" style="background:var(--series-1)"></i>Top 3</span><span><i class="line" style="background:var(--series-4)"></i>Top 10</span><span><i class="line" style="background:var(--muted)"></i>Top 100</span></div>
+      <div id="t-seo" class="hidden tscroll"></div>
+    </div>
+    <div class="card">
+      <div class="chart-head"><div class="chart-title">Organic Search sessions per month (GA4)</div></div>
+      <div class="chart-sub">Never reported by the agency. Organic Search has the longest engagement of any channel (52 s average).</div>
+      <svg id="c-org" viewBox="0 0 600 300"></svg>
+      <div class="tscroll" id="t-heads"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 SOCIAL -->
+<section id="s8">
+  <h2><span class="num">08</span>Social and local presence</h2>
+  <p class="lede">Public profiles read on 14 September 2026. The agency decks contain no organic social metrics, so this is the first consolidated view.</p>
+  <div class="card"><div class="tscroll" id="t-social"></div>
+  <div class="note">Instagram last 90 days: 32 posts (16 static, 10 reels, 6 carousels) — 0 posts 6–23 Aug, 18 posts 24 Aug–11 Sep. Last 20 posts: average 29 likes (median 27, range 10–67), 9 comments in total; one UGC-style kid reel 293 likes. FB and IG carry identical creative and captions on the same day; LinkedIn reuses the copy; TikTok runs BM re-cuts. No page replies to comments were observed. RFP minimum: 8 counting posts a month, of which 4 reels, 2 carousels, 2 static.</div></div>
+  <div class="card" style="margin-top:14px"><div class="chart-title">Google Business Profile — branch listings</div><div class="chart-sub">13 listings plus a duplicate HQ listing "Vista Laser Eye Center Sdn Bhd" (5.0, 8 reviews). Names carry "| LASIK, Cataract Eye Surgery Malaysia" suffixes.</div><div class="tscroll" id="t-gbp"></div></div>
+</section>
+
+<!-- 10 FINDINGS -->
+<section id="s10">
+  <h2><span class="num">09</span>Findings register</h2>
+  <p class="lede">Thirty findings with evidence and source. Filter by severity or area, or search the text. Scope numbers refer to the RFP's nine scopes.</p>
+  <div class="card">
+    <div class="filters" id="f-sev"></div>
+    <div class="filters" id="f-area"><input id="f-q" placeholder="Search findings…" aria-label="Search findings"></div>
+    <div id="findings"></div>
+  </div>
+</section>
+
+<!-- 11 XCHECK -->
+<section id="s11">
+  <h2><span class="num">10</span>Cross-check against the 16 August audit</h2>
+  <p class="lede">Each August finding re-tested on the wider window. Two are closed or changed, one cannot be reproduced from the shared workbook, the rest hold or are larger than first measured.</p>
+  <div class="card"><div class="tscroll" id="t-xcheck"></div></div>
+</section>
+
+<!-- 12 SOURCES -->
+<section id="s12">
+  <h2><span class="num">11</span>Sources and limits</h2>
+  <div class="grid g2">
+    <div class="card"><div class="chart-title">Sources read</div><div class="kv">
+      <div>RFP QHM/VES/DT/2026/003 (DOCX, 1,398 lines)</div><div>1</div>
+      
+      <div>Xedea SEO reports Jul 2025–Jul 2026</div><div>13</div>
+      <div>Xedea SEM reports Jan 2025–Jul 2026</div><div>19</div>
+      <div>Xedea Meta/TikTok decks Aug 2025–Jul 2026</div><div>12</div>
+      <div>Vista annual reports 2023–2025</div><div>3</div>
+      <div>L10 VISTA Eye workbook (10 tabs)</div><div>1</div>
+      <div>GA4 report pulls (monthly ×20, three ranges ×9)</div><div>45</div>
+      <div>Respond.io report captures</div><div>60+</div>
+      <div>Pages crawled (vista.com.my / vistanow.com.my)</div><div>427 / 398</div>
+      <div>Social posts sampled (IG / FB / TikTok / LinkedIn)</div><div>47 / 14 / 19 / 5</div>
+      <div>Conversations sampled, no identifiers recorded</div><div>29</div>
+    </div></div>
+    <div class="card"><div class="chart-title">What could not be read</div><div class="kv">
+      <div>GA4 Admin: key-event flags, data streams, retention, product links</div><div>extension disconnected</div>
+      <div>PageSpeed Insights / Lighthouse / CrUX</div><div>API quota 429</div>
+      <div>Respond.io Settings, Channels, Users, Integrations</div><div>access denied</div>
+      <div>Respond.io Lifecycle Sep–Nov 2025</div><div>report did not render</div>
+      <div>Respond.io history beyond 12 months</div><div>platform limit</div>
+      <div>Facebook timeline beyond 3 posts; Page Transparency</div><div>did not paginate</div>
+      <div>L10 channel-contribution % rows (Aug F-01)</div><div>not in shared export</div>
+      
+      <div>Aug 2026 SEM and Meta reports</div><div>not yet issued</div>
+      <div>Actual revenue, appointments attended, procedures</div><div>not supplied by Vista</div>
+    </div></div>
+  </div>
+</section>
+
+<footer>Caspian Digital Solutions — Digital Solutions arm of Qualitas Health Malaysia. Evidence files retained in the Vista DTR project: extracts/ (proposals, reports, L10), ga4/, respondio/, site/, social/. Prepared 14 September 2026.</footer>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+const FINDINGS = /*__VISTA_DATA__:FINDINGS*/;
+
+const AUG_XCHECK = /*__VISTA_DATA__:AUG_XCHECK*/;
+
+</script>
+<script>
+const DATA=/*__VISTA_DATA__:DATA*/;
+
+</script>
+<script>
+/* ===================== helpers ===================== */
+const NS='http://www.w3.org/2000/svg';
+const el=(n,a={})=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const fmt=n=>n==null||isNaN(n)?'–':Math.round(n).toLocaleString('en-US');
+const fmt1=n=>n==null||isNaN(n)?'–':Number(n).toLocaleString('en-US',{maximumFractionDigits:1,minimumFractionDigits:1});
+const fmt2=n=>n==null||isNaN(n)?'–':Number(n).toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
+const pct=n=>n==null||isNaN(n)?'–':Number(n).toFixed(1)+'%';
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const tip=document.getElementById('tip');
+function bindTip(node,html){
+  node.addEventListener('mousemove',e=>{tip.innerHTML=html;tip.style.opacity=1;let x=e.clientX+14,y=e.clientY+14;if(x+290>innerWidth)x=e.clientX-300;if(y+120>innerHeight)y=e.clientY-120;tip.style.left=x+'px';tip.style.top=y+'px';});
+  node.addEventListener('mouseleave',()=>tip.style.opacity=0);
+}
+const MONTHS12=/*__VISTA_DATA__:MONTHS12*/;
+const MONTHS20=/*__VISTA_DATA__:MONTHS20*/;for(let m=1;m<=12;m++)MONTHS20.push('2025-'+String(m).padStart(2,'0'));for(let m=1;m<=8;m++)MONTHS20.push('2026-'+String(m).padStart(2,'0'));
+const ML=m=>{const [y,mo]=m.split('-');return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+mo-1]+' '+y.slice(2);};
+const NICE=max=>{const p=Math.pow(10,Math.floor(Math.log10(max)));const f=max/p;const n=f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10;return n*p;};
+
+/* generic frame */
+function frame(svg,W,H,m,maxL,maxR,opts={}){
+  svg.innerHTML='';
+  const pw=W-m.l-m.r,ph=H-m.t-m.b;
+  const yL=v=>m.t+ph-(v/maxL)*ph;
+  const ticks=opts.ticks||5;
+  for(let i=0;i<=ticks;i++){const v=maxL*i/ticks;svg.appendChild(el('line',{x1:m.l,x2:W-m.r,y1:yL(v),y2:yL(v),class:'gridline'}));const t=el('text',{x:m.l-8,y:yL(v)+4,class:'tick','text-anchor':'end'});t.textContent=opts.fmtL?opts.fmtL(v):fmt(v);svg.appendChild(t);}
+  let yR=null;
+  if(maxR){yR=v=>m.t+ph-(v/maxR)*ph;for(let i=0;i<=ticks;i++){const v=maxR*i/ticks;const t=el('text',{x:W-m.r+8,y:yR(v)+4,class:'tick'});t.textContent=opts.fmtR?opts.fmtR(v):fmt(v);svg.appendChild(t);}}
+  return {pw,ph,yL,yR};
+}
+function xLabels(svg,labels,m,W,H,pw){
+  const bw=pw/labels.length;const step=bw<34?2:1;
+  labels.forEach((l,i)=>{if(i%step)return;const t=el('text',{x:m.l+bw*i+bw/2,y:H-m.b+16,class:'tick','text-anchor':'middle'});t.textContent=l;svg.appendChild(t);});
+  return bw;
+}
+function linePath(pts){let d='';pts.forEach((p,i)=>{if(p==null)return;d+=(d===''||pts[i-1]==null?'M':'L')+p[0]+','+p[1];});return d;}
+function drawLine(svg,pts,color,w=2.5,dash){const p=el('path',{d:linePath(pts),fill:'none',stroke:color,'stroke-width':w,'stroke-linejoin':'round','stroke-linecap':'round'});if(dash)p.setAttribute('stroke-dasharray',dash);svg.appendChild(p);pts.forEach(pt=>{if(pt)svg.appendChild(el('circle',{cx:pt[0],cy:pt[1],r:3,fill:color}));});}
+function rect(svg,x,y,w,h,fill,extra={}){const r=el('rect',{x,y,width:Math.max(w,0),height:Math.max(h,0),fill,...extra});svg.appendChild(r);return r;}
+
+/* sortable table */
+function table(container,cols,rows,opts={}){
+  const c=typeof container==='string'?document.getElementById(container):container;
+  let sortKey=opts.sort||null,asc=opts.asc||false;
+  function render(){
+    const data=[...rows];
+    if(sortKey){const col=cols.find(x=>x.k===sortKey);data.sort((a,b)=>{let va=a[sortKey],vb=b[sortKey];if(col.num){va=va==null||va===''?-Infinity:+va;vb=vb==null||vb===''?-Infinity:+vb;return asc?va-vb:vb-va;}va=String(va??'');vb=String(vb??'');return asc?va.localeCompare(vb):vb.localeCompare(va);});}
+    let h='<table class="data"><thead><tr>'+cols.map(col=>`<th class="${col.num?'n':''} ${sortKey===col.k?'sorted'+(asc?' asc':''):''}" data-k="${col.k}">${col.h}</th>`).join('')+'</tr></thead><tbody>';
+    data.forEach(r=>{h+='<tr>'+cols.map(col=>{let v=r[col.k];if(col.f)v=col.f(v,r);else if(col.num)v=fmt(v);return `<td class="${col.num?'n':''}${col.mono?' mono':''}">${v??'–'}</td>`;}).join('')+'</tr>';});
+    c.innerHTML=h+'</tbody></table>';
+    c.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;if(sortKey===k)asc=!asc;else{sortKey=k;asc=false;}render();}));
+  }
+  render();
+}
+document.querySelectorAll('[data-toggle]').forEach(b=>b.addEventListener('click',()=>{const t=document.getElementById(b.dataset.toggle);t.classList.toggle('hidden');b.textContent=t.classList.contains('hidden')?'Show data table':'Hide data table';}));
+
+/* theme */
+const root=document.documentElement,tb=document.getElementById('theme');
+function isDark(){const t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;}
+function syncBtn(){tb.textContent=isDark()?'◑ Light mode':'◐ Dark mode';}
+tb.addEventListener('click',()=>{root.setAttribute('data-theme',isDark()?'light':'dark');syncBtn();drawAll();});
+syncBtn();
+
+/* ===================== derived series ===================== */
+const R=DATA.respondio;
+const L10=Object.fromEntries(DATA.l10.map(r=>[r.m,r]));
+const SEM=Object.fromEntries(DATA.sem.map(r=>[r.m,r]));
+const META=Object.fromEntries(DATA.meta.filter(r=>r.platform.startsWith('Meta')).map(r=>[r.m,r]));
+const LC=Object.fromEntries(R.lifecycle.map(r=>[r.m,r]));
+const imp=m=>R.added_by_source['Contact Import'][m]||0;
+const leadRows=MONTHS12.map(m=>({m,l10:L10[m].total_leads,conv:R.conv_opened[m],net:R.contacts_added[m]-imp(m),imports:imp(m),google:SEM[m]?SEM[m].conv:null,meta:META[m]?META[m].leads:null,platform:(SEM[m]&&META[m])?SEM[m].conv+META[m].leads:null,won:LC[m]?LC[m].won:null,spend:L10[m].spend,cpl:L10[m].cpl,cpa:(LC[m]&&m!=='2025-12')?L10[m].spend/LC[m].won:null}));
+
+/* ===================== charts ===================== */
+function drawLeads(){
+  const svg=document.getElementById('c-leads'),W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,m={l:56,r:16,t:16,b:40};
+  const max=NICE(Math.max(...leadRows.map(r=>r.l10)));
+  const {pw,ph,yL}=frame(svg,W,H,m,max);
+  const bw=xLabels(svg,MONTHS12.map(ML),m,W,H,pw);
+  const X=i=>m.l+bw*i+bw/2;
+  const series=[['l10','--series-1'],['conv','--series-4'],['net','--series-3'],['platform','--series-2'],['won','--critical']];
+  series.forEach(([k,c])=>drawLine(svg,leadRows.map((r,i)=>r[k]==null?null:[X(i),yL(r[k])]),css(c)));
+  leadRows.forEach((r,i)=>{const h=el('rect',{x:X(i)-bw/2,y:m.t,width:bw,height:ph,class:'hit'});bindTip(h,`<b>${ML(r.m)}</b><span class="r">L10 total leads ${fmt(r.l10)}</span><span class="r">Conversations opened ${fmt(r.conv)}</span><span class="r">Net new contacts ${fmt(r.net)} (imports ${fmt(r.imports)})</span><span class="r">Platform: Google ${fmt(r.google)} + Meta ${fmt(r.meta)}</span><span class="r">Appointments booked ${fmt(r.won)}</span>`);svg.appendChild(h);});
+  table('t-leads',[{h:'Month',k:'m',f:ML},{h:'L10 total leads',k:'l10',num:1},{h:'Conversations opened',k:'conv',num:1},{h:'Contacts added (net of imports)',k:'net',num:1},{h:'Imports',k:'imports',num:1},{h:'Google Ads conv.',k:'google',num:1},{h:'Meta leads',k:'meta',num:1},{h:'Platform total',k:'platform',num:1},{h:'Appointments booked',k:'won',num:1}],leadRows);
+}
+function drawCpa(){
+  const svg=document.getElementById('c-cpa'),W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,m={l:56,r:16,t:16,b:40};
+  const max=NICE(Math.max(...leadRows.map(r=>r.cpa||0)));
+  const {pw,ph,yL}=frame(svg,W,H,m,max,null,{fmtL:v=>'RM'+fmt(v)});
+  const bw=xLabels(svg,MONTHS12.map(ML),m,W,H,pw);const X=i=>m.l+bw*i+bw/2;
+  drawLine(svg,leadRows.map((r,i)=>r.cpa==null?null:[X(i),yL(r.cpa)]),css('--critical'));
+  leadRows.forEach((r,i)=>{if(r.cpa){const t=el('text',{x:X(i),y:yL(r.cpa)-9,class:'dlabel','text-anchor':'middle'});t.textContent='RM'+fmt(r.cpa);t.setAttribute('fill',css('--critical'));svg.appendChild(t);}
+    const h=el('rect',{x:X(i)-bw/2,y:m.t,width:bw,height:ph,class:'hit'});bindTip(h,`<b>${ML(r.m)}</b><span class="r">Cost per appointment ${r.cpa?'RM'+fmt(r.cpa)+' ('+fmt(r.won)+' booked)':(r.won?'not comparable — Won stage populated from 21 Jan 2026':'no lifecycle data')}</span>`);svg.appendChild(h);});
+}
+const CHANNELS=/*__VISTA_DATA__:CHANNELS*/;
+const CHCOL=/*__VISTA_DATA__:CHCOL*/;
+function drawGA4(){
+  const svg=document.getElementById('c-ga4'),W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,m={l:56,r:52,t:16,b:40};
+  const tot=MONTHS20.map(mm=>DATA.ga4_monthly[mm].Total.sessions);
+  const max=NICE(Math.max(...tot));
+  const {pw,ph,yL,yR}=frame(svg,W,H,m,max,100,{fmtL:v=>(v/1000)+'k',fmtR:v=>v+'%'});
+  const bw=xLabels(svg,MONTHS20.map(mm=>ML(mm).replace(' ',' ')),m,W,H,pw);const bar=bw*0.66;
+  MONTHS20.forEach((mm,i)=>{let y=yL(0);const d=DATA.ga4_monthly[mm];let tt=`<b>${ML(mm)}</b><span class="r">Sessions ${fmt(d.Total.sessions)} · key events ${fmt(d.Total.key_events)} · rate ${pct(d.Total.ker)}</span>`;
+    CHANNELS.forEach((ch,j)=>{const v=d[ch]?d[ch].sessions:0;if(!v)return;const hh=yL(0)-yL(v);rect(svg,m.l+bw*i+bw/2-bar/2,y-hh,bar,hh,css(CHCOL[j]));y-=hh;tt+=`<span class="r">${ch} ${fmt(v)}</span>`;});
+    const h=el('rect',{x:m.l+bw*i,y:m.t,width:bw,height:ph,class:'hit'});bindTip(h,tt);svg.appendChild(h);});
+  drawLine(svg,MONTHS20.map((mm,i)=>[m.l+bw*i+bw/2,yR(DATA.ga4_monthly[mm].Total.ker)]),css('--text-primary'),2.5);
+  document.getElementById('l-ga4').innerHTML=CHANNELS.slice(0,9).map((c,j)=>`<span><i style="background:${css(CHCOL[j])}"></i>${c}</span>`).join('')+'<span><i class="line" style="background:var(--text-primary)"></i>Session key-event rate</span>';
+  const cols=[{h:'Month',k:'m',f:ML},{h:'Sessions',k:'s',num:1}].concat(CHANNELS.slice(0,7).map(c=>({h:c,k:c,num:1}))).concat([{h:'Key events',k:'ke',num:1},{h:'Key-event rate',k:'ker',num:1,f:pct},{h:'Engagement rate',k:'eng',num:1,f:pct}]);
+  table('t-ga4m',cols,MONTHS20.map(mm=>{const d=DATA.ga4_monthly[mm];const r={m:mm,s:d.Total.sessions,ke:d.Total.key_events,ker:d.Total.ker,eng:d.Total.eng};CHANNELS.slice(0,7).forEach(c=>r[c]=d[c]?d[c].sessions:0);return r;}));
+}
+function drawFunnel(){
+  const svg=document.getElementById('c-funnel'),W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,m={l:56,r:48,t:16,b:40};
+  const L=R.lifecycle;const max=NICE(Math.max(...L.map(r=>r.nl+r.wl+r.hp+r.won)));
+  const {pw,ph,yL,yR}=frame(svg,W,H,m,max,100,{fmtL:v=>(v/1000)+'k',fmtR:v=>v+'%'});
+  const bw=xLabels(svg,L.map(r=>ML(r.m)),m,W,H,pw);const bar=bw*0.6;
+  L.forEach((r,i)=>{let y=yL(0);[['nl','--series-1'],['wl','--series-4'],['hp','--series-2'],['won','--critical']].forEach(([k,c])=>{const hh=yL(0)-yL(r[k]);rect(svg,m.l+bw*i+bw/2-bar/2,y-hh,bar,hh,css(c));y-=hh;});
+    const h=el('rect',{x:m.l+bw*i,y:m.t,width:bw,height:ph,class:'hit'});bindTip(h,`<b>${ML(r.m)}</b><span class="r">New Lead ${fmt(r.nl)} · Warm ${fmt(r.wl)} · Hot ${fmt(r.hp)} · Booked ${fmt(r.won)}</span><span class="r">NL→WL ${r.nl_wl}% · WL→HP ${r.wl_hp}% · HP→Booked ${r.hp_won}%</span><span class="r">Overall conversion ${r.conv}% · drop-off ${r.drop}% · lost ${fmt(r.lost)}</span>`);svg.appendChild(h);});
+  drawLine(svg,L.map((r,i)=>[m.l+bw*i+bw/2,yR(r.drop)]),css('--text-primary'),2.5);
+  table('t-funnel',[{h:'Month',k:'m',f:ML},{h:'New Lead',k:'nl',num:1},{h:'Warm Lead',k:'wl',num:1},{h:'Hot Prospect',k:'hp',num:1},{h:'Booked',k:'won',num:1},{h:'NL→WL',k:'nl_wl',num:1,f:v=>v+'%'},{h:'WL→HP',k:'wl_hp',num:1,f:v=>v+'%'},{h:'HP→Booked',k:'hp_won',num:1,f:v=>v+'%'},{h:'Overall conv.',k:'conv',num:1,f:v=>v+'%'},{h:'Drop-off',k:'drop',num:1,f:v=>v+'%'},{h:'Lost',k:'lost',num:1}],L);
+}
+function drawSrc(){
+  const svg=document.getElementById('c-src'),W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,m={l:56,r:16,t:16,b:40};
+  const F=R.funnel_by_source;const sum=k=>[0,1,2,3].map(i=>F.reduce((a,x)=>a+x[k][i],0));
+  const P=sum('paid'),O=sum('organic');const stages=['New Lead','Warm Lead','Hot Prospect','Booked'];
+  const max=NICE(Math.max(...P,...O));const {pw,ph,yL}=frame(svg,W,H,m,max,null,{fmtL:v=>(v/1000)+'k'});
+  const bw=xLabels(svg,stages,m,W,H,pw);const bar=bw*0.3;
+  stages.forEach((s,i)=>{const cx=m.l+bw*i+bw/2;rect(svg,cx-bar-4,yL(P[i]),bar,yL(0)-yL(P[i]),css('--series-2'));rect(svg,cx+4,yL(O[i]),bar,yL(0)-yL(O[i]),css('--series-3'));
+    [[P[i],cx-bar/2-4,'--series-2'],[O[i],cx+bar/2+4,'--series-3']].forEach(([v,x,c])=>{const t=el('text',{x,y:yL(v)-6,class:'dlabel','text-anchor':'middle'});t.textContent=fmt(v)+(i?` (${(v/(i?[P,O][c==='--series-2'?0:1][0]:1)*100).toFixed(1)}%)`:'');svg.appendChild(t);});});
+  table('t-src',[{h:'Month',k:'m',f:ML},{h:'Paid NL',k:'p0',num:1},{h:'Paid WL',k:'p1',num:1},{h:'Paid HP',k:'p2',num:1},{h:'Paid booked',k:'p3',num:1},{h:'Paid book %',k:'pr',num:1,f:v=>v.toFixed(1)+'%'},{h:'Unpaid NL',k:'o0',num:1},{h:'Unpaid WL',k:'o1',num:1},{h:'Unpaid HP',k:'o2',num:1},{h:'Unpaid booked',k:'o3',num:1},{h:'Unpaid book %',k:'or',num:1,f:v=>v.toFixed(1)+'%'}],F.map(x=>({m:x.m,p0:x.paid[0],p1:x.paid[1],p2:x.paid[2],p3:x.paid[3],pr:x.paid[3]/x.paid[0]*100,o0:x.organic[0],o1:x.organic[1],o2:x.organic[2],o3:x.organic[3],or:x.organic[3]/x.organic[0]*100})));
+}
+function drawContacts(){
+  const svg=document.getElementById('c-contacts'),W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,m={l:52,r:10,t:14,b:36};
+  const rows=MONTHS12.map(mm=>({m:mm,p:R.added_by_source['Paid Ads'][mm],i:R.added_by_source['Incoming Message'][mm],im:imp(mm),d:R.contacts_deleted[mm]}));
+  const max=NICE(Math.max(...rows.map(r=>Math.max(r.p+r.i+r.im,r.d))));
+  const {pw,ph,yL}=frame(svg,W,H,m,max,null,{fmtL:v=>(v/1000)+'k',ticks:4});
+  const bw=xLabels(svg,MONTHS12.map(mm=>ML(mm).split(' ')[0]),m,W,H,pw);const bar=bw*0.32;
+  rows.forEach((r,i)=>{const cx=m.l+bw*i+bw/2;let y=yL(0);[['p','--series-2'],['i','--series-3'],['im','--series-5']].forEach(([k,c])=>{const hh=yL(0)-yL(r[k]);rect(svg,cx-bar-2,y-hh,bar,hh,css(c));y-=hh;});rect(svg,cx+2,yL(r.d),bar,yL(0)-yL(r.d),css('--critical'));
+    const h=el('rect',{x:m.l+bw*i,y:m.t,width:bw,height:ph,class:'hit'});bindTip(h,`<b>${ML(r.m)}</b><span class="r">Added: paid ${fmt(r.p)} · incoming ${fmt(r.i)} · import ${fmt(r.im)}</span><span class="r">Deleted ${fmt(r.d)}</span>`);svg.appendChild(h);});
+}
+function drawVel(){
+  const svg=document.getElementById('c-vel'),W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,m={l:36,r:10,t:14,b:36};
+  const V=/*__VISTA_DATA__:V*/;
+  const {pw,ph,yL}=frame(svg,W,H,m,40,null,{ticks:4});
+  const bw=xLabels(svg,V.map((v,i)=>i%3===0?ML(v[0]):''),m,W,H,pw);const bar=bw*0.36;
+  V.forEach((v,i)=>{const cx=m.l+bw*i+bw/2;rect(svg,cx-bar-1,yL(v[1]),bar,yL(0)-yL(v[1]),css('--series-1'));rect(svg,cx+1,yL(v[2]),bar,yL(0)-yL(v[2]),css('--series-3'));const h=el('rect',{x:m.l+bw*i,y:m.t,width:bw,height:ph,class:'hit'});bindTip(h,`<b>${ML(v[0])}</b><span class="r">vista.com.my ${v[1]} · vistanow EN ${v[2]}</span>`);svg.appendChild(h);});
+}
+function drawSeo(){
+  const svg=document.getElementById('c-seo'),W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,m={l:40,r:16,t:16,b:40};
+  const S=DATA.seo.map(r=>({m:r.month,t3:+r.keywords_top3,t10:+r.keywords_top10,t100:+r.keywords_top100,kw:r.keywords_tracked,win:r.position_tracking_window,imp:r.keywords_improved,dec:r.keywords_declined}));
+  const {pw,ph,yL}=frame(svg,W,H,m,200,null,{ticks:4});
+  const bw=xLabels(svg,S.map(r=>ML(r.m)),m,W,H,pw);const X=i=>m.l+bw*i+bw/2;
+  drawLine(svg,S.map((r,i)=>[X(i),yL(r.t100)]),css('--muted'),2,'5 4');drawLine(svg,S.map((r,i)=>[X(i),yL(r.t10)]),css('--series-4'));drawLine(svg,S.map((r,i)=>[X(i),yL(r.t3)]),css('--series-1'));
+  S.forEach((r,i)=>{const t=el('text',{x:X(i),y:yL(r.t3)+16,class:'dlabel','text-anchor':'middle'});t.textContent=r.t3;svg.appendChild(t);const h=el('rect',{x:X(i)-bw/2,y:m.t,width:bw,height:ph,class:'hit'});bindTip(h,`<b>${ML(r.m)}</b><span class="r">Top 3 ${r.t3} · Top 10 ${r.t10} · Top 100 ${r.t100} of ${r.kw} tracked</span><span class="r">Improved ${r.imp} · declined ${r.dec}</span><span class="r">${r.win}</span>`);svg.appendChild(h);});
+  table('t-seo',[{h:'Month',k:'m',f:ML},{h:'Tracked',k:'kw',num:1},{h:'Top 3',k:'t3',num:1},{h:'Top 10',k:'t10',num:1},{h:'Top 100',k:'t100',num:1},{h:'Improved',k:'imp',num:1},{h:'Declined',k:'dec',num:1},{h:'Tracking window',k:'win'}],S);
+}
+function drawOrg(){
+  const svg=document.getElementById('c-org'),W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,m={l:52,r:16,t:16,b:40};
+  const v=MONTHS20.map(mm=>DATA.ga4_monthly[mm]['Organic Search']?DATA.ga4_monthly[mm]['Organic Search'].sessions:0);
+  const {pw,ph,yL}=frame(svg,W,H,m,NICE(Math.max(...v)),null,{fmtL:x=>(x/1000)+'k',ticks:4});
+  const bw=xLabels(svg,MONTHS20.map(mm=>ML(mm).replace(' ',' ')),m,W,H,pw);const bar=bw*0.62;
+  v.forEach((x,i)=>{rect(svg,m.l+bw*i+bw/2-bar/2,yL(x),bar,yL(0)-yL(x),css('--series-3'));const h=el('rect',{x:m.l+bw*i,y:m.t,width:bw,height:ph,class:'hit'});bindTip(h,`<b>${ML(MONTHS20[i])}</b><span class="r">Organic Search sessions ${fmt(x)}</span>`);svg.appendChild(h);});
+}
+
+/* ===================== static tables ===================== */
+function staticTables(){
+  const ev=rg=>Object.fromEntries(DATA.ga4_events[rg].map(e=>[e.e,e.count]));
+  const E25=ev('R2025'),E26=ev('R2026');
+  table('t-events',[{h:'Event',k:'e'},{h:'2025 (12 mo)',k:'a',num:1},{h:'2026 Jan–Aug',k:'b',num:1}],['Whatsapp Conversion','Phone Click Conversion','Thank You Page Conversion','Email Conversion','Carnival','click','scroll','file_download','user_engagement','page_view'].map(e=>({e,a:E25[e],b:E26[e]})).concat([{e:'Key events (as reported)',a:342076,b:429596},{e:'Sessions',a:312600,b:287864}]));
+  table('t-channels',[{h:'First-user channel',k:'ch'},{h:'Users',k:'users',num:1},{h:'New users',k:'new',num:1},{h:'Share',k:'sh',num:1,f:pct}],DATA.ga4_channels.L12.filter(r=>r.ch!=='Total').map(r=>({...r,sh:r.users/305555*100})),{sort:'users'});
+  table('t-landing',[{h:'Landing page',k:'lp',mono:1},{h:'Sessions',k:'sessions',num:1},{h:'Users',k:'users',num:1},{h:'Avg engagement (s)',k:'eng',num:1},{h:'Key events',k:'ke',num:1},{h:'Key-event rate',k:'ker',num:1,f:pct}],DATA.ga4_landing.filter(r=>r.lp!=='Total'),{sort:'sessions'});
+  table('t-sm',[{h:'Source / medium',k:'sm',mono:1},{h:'Sessions',k:'sessions',num:1},{h:'Avg engagement (s)',k:'eng',num:1},{h:'Key events',k:'ke',num:1},{h:'Key-event rate',k:'ker',num:1,f:pct}],DATA.ga4_sm.filter(r=>r.sm!=='Total'),{sort:'sessions'});
+  const dev=DATA.ga4_tech.filter(r=>r.dim==='Device category').map(r=>({d:'Device',v:r.v,users:r.users,eng:r.eng,ker:null}));
+  const lang=DATA.ga4_demo.filter(r=>r.dim==='Language').slice(0,6).map(r=>({d:'Language',v:r.v,users:r.users,eng:r.eng,ker:r.ker}));
+  const city=DATA.ga4_demo.filter(r=>r.dim==='City').slice(0,18).map(r=>({d:'City',v:r.v,users:r.users,eng:r.eng,ker:r.ker}));
+  table('t-aud',[{h:'Dimension',k:'d'},{h:'Value',k:'v'},{h:'Users',k:'users',num:1},{h:'Avg engagement (s)',k:'eng',num:1},{h:'User key-event rate',k:'ker',num:1,f:v=>v==null?'–':pct(v)}],dev.concat(lang,city));
+  // respondio channel table
+  const chan=Object.entries(R.conv_by_channel).map(([k,v])=>({k:'Channel: '+k,t:Object.values(v).reduce((a,b)=>a+b,0),m:MONTHS12.map(mm=>v[mm]).join(' · ')}));
+  const src=Object.entries(R.conv_by_source).map(([k,v])=>({k:'Source: '+k,t:Object.values(v).reduce((a,b)=>a+b,0),m:MONTHS12.map(mm=>v[mm]).join(' · ')}));
+  const typ=Object.entries(R.conv_by_type).map(([k,v])=>({k:'Contact type: '+k,t:Object.values(v).reduce((a,b)=>a+b,0),m:MONTHS12.map(mm=>v[mm]).join(' · ')}));
+  table('t-chan',[{h:'Breakdown',k:'k'},{h:'12-month',k:'t',num:1},{h:'Sep 25 → Aug 26',k:'m',mono:1}],chan.concat(src,typ),{sort:'t'});
+  table('t-stages',[{h:'Stage',k:'s'},{h:'Contacts',k:'n',num:1}],Object.entries(R.stage_counts).map(([s,n])=>({s,n})),{sort:'n'});
+  const cat=R.closed_by_category,cb=R.closed_by;
+  table('t-handling',[{h:'Month',k:'m',f:ML},{h:'Avg first response',k:'fr'},{h:'Avg resolution',k:'rs'},{h:'Closed by User',k:'u',num:1},{h:'AI agent',k:'ai',num:1},{h:'Blocked',k:'bl',num:1},{h:'Spam closes',k:'sp',num:1},{h:'Refractive',k:'rf',num:1},{h:'Cataract',k:'ct',num:1}],MONTHS12.map(mm=>({m:mm,fr:R.first_response[mm],rs:R.resolution[mm],u:cb.User[mm],ai:cb['AI Agent'][mm],bl:cb.Blocked[mm],sp:cat.Spam[mm],rf:cat.Refractive[mm],ct:cat.Cataract[mm]})));
+  // site
+  table('t-site1',[{h:'Item',k:'a'},{h:'vista.com.my',k:'b',num:0},{h:'vistanow.com.my',k:'c'}],[
+    {a:'URLs crawled (200 / 404 / redirects)',b:'427 (419 / 8 / 40)',c:'398 (396 / 2 / 2)'},
+    {a:'URLs in XML sitemap',b:'224 (52 recent posts missing)',c:'302 (2 return 404)'},
+    {a:'Location URLs for 16 branches',b:'101 (74 indexable duplicates)',c:'–'},
+    {a:'Location pages with an H1',b:'0 of 75',c:'–'},
+    {a:'hreflang link tags in HTML',b:'0 (sitemap only; ?lang= query strings)',c:'present; 156 BM/ZH canonical → EN'},
+    {a:'Mandarin pages on percent-encoded slugs',b:'37 of 43',c:'31 of 39 ZH posts untranslated'},
+    {a:'Pages without meta description',b:'176 of 379',c:'205 of 394'},
+    {a:'Pages without H1 / with duplicate titles',b:'131 / 67 in 14 groups',c:'73 with three H1s / 202 in 47 groups'},
+    {a:'Doctor profiles',b:'20 doctors on one page, no profile URLs',c:'–'},
+    {a:'Posts, last 24 months',b:'55 (24 in Apr 2026)',c:'109 EN (83 in Mar–May 2026)'},
+    {a:'Stack',b:'WP 7.1, Elementor 4.2.4, WPML, Yoast; Elementor Cloud + Cloudflare + NitroPack',c:'WP 7.1, Elementor 3.13.1, WPML 4.6.3; LiteSpeed origin, no CDN'},
+    {a:'TTFB / homepage weight / load',b:'0.9–1.3 s / 3.08 MB / 7.3 s',c:'1.4 s / 2.18 MB / 8.7 s'},
+    {a:'Security headers',b:'HSTS 180 d only; no CSP, XFO, XCTO, Referrer-Policy',c:'none; wp-login and xmlrpc exposed'}
+  ]);
+  table('t-site2',[{h:'Tag',k:'a'},{h:'ID / detail',k:'b',mono:1},{h:'Observation',k:'c'}],[
+    {a:'Google Tag Manager',b:'GTM-PQ9TCR4 (main) · GTM-P8TXLHL (hub)',c:'No dataLayer events; no conversion labels in source'},
+    {a:'GA4',b:'G-YKLZKC1WCE (main) · G-FRRQLS6P8C (hub)',c:'Main site loads GA4 hard-coded and again via GTM — two page_view hits'},
+    {a:'Google Ads',b:'AW-1071140050',c:'Remarketing on every page incl. thank-you pages'},
+    {a:'Meta Pixel',b:'760750721361681 · 1655751015569796',c:'Both hard-coded, PageView on every page'},
+    {a:'Hotjar / Popupsmart / Cloudflare RUM / NitroPack',b:'5010474 / – / – / –',c:'All fire on load'},
+    {a:'Consent management platform',b:'none',c:'No Consent Mode; PDPA §19 requirement unmet'},
+    {a:'WhatsApp click-to-chat',b:'601155853937 (main) · 60377113937 (hub widget, 13 branches)',c:'No UTM or click parameters; hub widget lists a branch absent from the main site'},
+    {a:'Forms',b:'FormAssembly dbFormId 5057405',c:'Embedded twice per page; reCAPTCHA Enterprise loaded twice; thank-you pages indexable'},
+    {a:'Respond.io web-chat widget',b:'none',c:'Website leads cannot carry page URL into the CRM'}
+  ]);
+  table('t-site3',[{h:'Check',k:'a'},{h:'Result',k:'b'}],[
+    {a:'Structured data types found',b:'Organization, WebPage, Breadcrumb, Article (Yoast default); Service on 6 pages; FAQPage on 4 (one duplicated); LocalBusiness on EN homepage only'},
+    {a:'Medical schema (MedicalOrganization, Physician, MedicalProcedure, MedicalClinic)',b:'None on either domain'},
+    {a:'Images with empty alt',b:'17,650 of 18,419 (95.8%) main · 79.7% hub'},
+    {a:'axe-core serious violations per template',b:'Home 22 · LASIK 19 · Cataract 17 · PJ location 12 · Doctors 12 · vistanow home 38'},
+    {a:'Landmarks / focus',b:'No <main> on vista.com.my pages; :focus{outline:none} on both; 83 focusable elements inside aria-hidden on homepage; no skip link on hub'},
+    {a:'Broken internal links',b:'8 internal 404s (old Kepong / Bukit Mertajam slugs, two /pages/ links); 40 redirecting internal links'},
+    {a:'Legacy /pages/ estate (Aug audit F-05)',b:'15 of 15 tested URLs 301-redirect to canonical — no live duplicates'},
+    {a:'NAP consistency',b:'Phone format differs on 3 of 16 branch pages; enquiry form lists 14 of 16 branches; BM/ZH pages use retired branch names'},
+    {a:'Patient-count claim',b:'455,000 (titles) · 460,000 (body) · 255,000 (Air Itam title)'},
+    {a:'Advertising-sensitive copy',b:'"Top #1" / "Best #1" in 8 titles; "guaranteed"; "painless"; "99% safety rate"; KKLIU 0945 EXP 31.12.2027 in footer'},
+    {a:'Cross-domain duplication',b:'≥10 press-clipping posts with identical slugs on both domains; hub → main CTA untagged; main site does not link to hub'}
+  ]);
+  table('t-reports',[{h:'Report set',k:'a'},{h:'Count',k:'b',num:1},{h:'Contains',k:'c'},{h:'Does not contain',k:'d'},{h:'Anomalies',k:'e'}],[
+    {a:'SEO (Semrush export)',b:13,c:'Top-N keyword counts, 150–200-row ranking table, GSC/GA4 widgets as charts',d:'Organic sessions, clicks, CTR, leads, ranking URLs, backlinks, work done, commentary, targets',e:'May 2026 tracks a single day; keyword set 150→201 Aug 2025; GA4 counts blank in every issue'},
+    {a:'SEM (Looker export)',b:19,c:'Headline spend, clicks and conversions, 9 regional accounts × 6–7 campaigns, PMax, top keywords',d:'Impression share, quality score, lead definition, lead quality, revenue, landing pages, targets, commentary',e:'Tables ≠ headline in Jan 25, Feb 26, Jun 26, Jul 26; conversion-action change Jul 2025; PMax 23–52% of conversions'},
+    {a:'Meta / TikTok (PPTX)',b:12,c:'Evergreen + ad hoc campaign tiles, insights/hypothesis/actions, goal vs actual, TikTok tiles',d:'ROAS, revenue, sales (blank), organic page metrics, de-duplicated reach, lead definition beyond "results"',e:'Dec 2025 segments ≠ total; Oct/Nov promo double-count; KPI excludes ad hoc from May 2026 with unchanged goal; 14 inconsistencies'},
+    {a:'Annual reports (PDF/PPTX)',b:3,c:'Year-in-review KPIs 2022–2025 per channel',d:'Revenue, appointments, lead quality',e:'2024 report reuses 2023 Meta pages; lead definition changes each year'}
+  ]);
+  table('t-heads',[{h:'Head keyword',k:'a'},{h:'Volume / mo',k:'b',num:1},{h:'Jul 2025',k:'c'},{h:'Jul 2026',k:'d'}],[
+    {a:'eye specialist',b:4400,c:'11',d:'6'},{a:'lasik surgery',b:3600,c:'5',d:'21'},{a:'cataract surgery',b:3600,c:'17',d:'not in top 100'},{a:'eye clinic near me',b:3600,c:'not tracked',d:'7'},{a:'ipoh eye specialist',b:2900,c:'not tracked',d:'12'},{a:'eye doctor',b:1600,c:'18',d:'4'}
+  ]);
+  table('t-social',[{h:'Platform',k:'a'},{h:'Handle',k:'b',mono:1},{h:'Audience',k:'c',num:1},{h:'Output, last 90 days',k:'d'},{h:'Engagement',k:'e'},{h:'Notes',k:'f'}],[
+    {a:'Facebook',b:'vista.eye',c:84000,d:'Mirrors Instagram (identical posts); Reels/Videos tabs active',e:'3–18 reactions per post; 0 comments on visible posts; videos 0.6–4.9K views',f:'7,357 reviews, 100% recommend; not verified; featured discount promotion, Compumed panel, Newsweek #23'},
+    {a:'Instagram',b:'vista.eye',c:21300,d:'32 posts: 16 static, 10 reels, 6 carousels; gap 6–23 Aug',e:'avg 29 likes (0.14% of followers); 9 comments across 20 posts',f:'994 posts; linktr.ee; 3 pinned promos; 88% EN captions; Mandarin cluster in May'},
+    {a:'TikTok',b:'vista.eye',c:14200,d:'16 BM videos 17 Aug–11 Sep (~4–5/week)',e:'0.2–4.1K views each; pinned explainers 1.1M / 820K / 711K',f:'44.7K likes; 100% Bahasa Malaysia; cheapest cost per result of any paid channel'},
+    {a:'LinkedIn',b:'vista-laser-eye-center',c:689,d:'~1 post per 1–2 months',e:'1–11 reactions',f:'51–200 employees; RFP-quoted /vista-eye-specialist/ URL is dead; image shows a priced assessment offer'},
+    {a:'YouTube',b:'vistaeyespecialist1963',c:45,d:'Eye Carnival 2026 shorts',e:'7K–203K views on shorts; "I AM VISTA" 407K (2017)',f:'10 videos; otherwise dormant; only KKLIU reference (0366/2017) on the 2017 video'},
+    {a:'Google Business Profile',b:'13 listings',c:7150,d:'–',e:'weighted ~4.8★',f:'Duplicate HQ listing; keyword-stuffed names; no GBP row populated in L10'}
+  ]);
+  table('t-gbp',[{h:'Branch listing',k:'a'},{h:'Rating',k:'b',num:1,f:v=>v.toFixed(1)},{h:'Reviews',k:'c',num:1}],[
+    {a:'PJ The Curve (HQ)',b:4.8,c:1015},{a:'Air Itam, Penang',b:4.9,c:1215},{a:'Ipoh Bond Square',b:5.0,c:632},{a:'Straits Residence, Penang',b:5.0,c:405},{a:'Kajang',b:4.8,c:685},{a:'Mount Austin, JB',b:4.7,c:646},{a:'Klang',b:4.7,c:503},{a:'Cheras',b:4.8,c:482},{a:'Sutera Utama, JB',b:4.8,c:474},{a:'Puchong',b:4.7,c:383},{a:'Bukit Mertajam',b:4.8,c:373},{a:'Kepong',b:4.8,c:335},{a:'Vista Laser Eye Center Sdn Bhd (duplicate HQ)',b:5.0,c:8}
+  ],{sort:'c'});
+  table('t-xcheck',[{h:'Aug ID',k:'a'},{h:'August finding',k:'b'},{h:'Status',k:'c'},{h:'What the wider window shows',k:'d'}],AUG_XCHECK.map(([a,b,c,d])=>({a,b,c,d})));
+}
+
+/* ===================== findings ===================== */
+function findings(){
+  const sevs=['All','Critical','High','Medium','Opportunity'];const areas=['All areas',...new Set(FINDINGS.map(f=>f.area))];
+  let sev='All',area='All areas',q='';
+  const fs=document.getElementById('f-sev'),fa=document.getElementById('f-area'),qi=document.getElementById('f-q');
+  fs.innerHTML=sevs.map(s=>`<button data-v="${s}" class="${s==='All'?'on':''}">${s}${s==='All'?'':' ('+FINDINGS.filter(f=>f.sev===s).length+')'}</button>`).join('');
+  areas.forEach(a=>{const b=document.createElement('button');b.textContent=a;b.dataset.v=a;if(a===area)b.classList.add('on');fa.insertBefore(b,qi);});
+  fs.addEventListener('click',e=>{if(e.target.tagName!=='BUTTON')return;sev=e.target.dataset.v;fs.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===sev));render();});
+  fa.addEventListener('click',e=>{if(e.target.tagName!=='BUTTON')return;area=e.target.dataset.v;fa.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===area));render();});
+  qi.addEventListener('input',()=>{q=qi.value.toLowerCase();render();});
+  function render(){const list=FINDINGS.filter(f=>(sev==='All'||f.sev===sev)&&(area==='All areas'||f.area===area)&&(!q||(f.title+f.evidence+f.impact+f.source+f.id).toLowerCase().includes(q)));
+    document.getElementById('findings').innerHTML=list.length?list.map(f=>`<div class="finding"><div class="id">${f.id}<span class="pill ${f.sev}" style="margin-left:8px">${f.sev}</span><small>${f.area}<br>RFP scope ${f.scope}</small></div><div><div class="t">${f.title}</div><div class="e">${f.evidence}</div><div class="i">${f.impact}</div><div class="s">Source: ${f.source}</div></div></div>`).join(''):'<div class="note">No findings match.</div>';}
+  render();
+}
+
+function drawAll(){drawLeads();drawCpa();drawGA4();drawFunnel();drawSrc();drawContacts();drawVel();drawSeo();drawOrg();}
+drawAll();staticTables();findings();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{syncBtn();drawAll();});
+
+</script>
+
+</body></html>

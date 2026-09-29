@@ -1,0 +1,1707 @@
+{
+ "ROADMAP": {
+  "meta": {
+   "title": "Vista Eye Specialist — Digital Transformation Roadmap",
+   "period": "1 November 2026 – 31 October 2027",
+   "start": "2026-11-02",
+   "prepared": "Caspian Digital Solutions · September 2026",
+   "premise": "Planned on CDS being appointed for all nine RFP scopes from 1 November 2026; delivery team defined by role, with named people assigned at mobilisation. Everything in the retainer scopes is covered by the retainer — no add-on charges for reaching the targets set here."
+  },
+  "months": [
+   "2026-11",
+   "2026-12",
+   "2027-01",
+   "2027-02",
+   "2027-03",
+   "2027-04",
+   "2027-05",
+   "2027-06",
+   "2027-07",
+   "2027-08",
+   "2027-09",
+   "2027-10"
+  ],
+  "objectives": [
+   {
+    "id": "O1",
+    "name": "One lead definition, one cost per patient",
+    "why": "Today there are five different lead counts, the website conversion metric has been redefined twice, and no revenue is recorded against any campaign. Until one lead definition exists and cost per booked appointment and cost per attended visit are reported side by side, nothing else can be judged fairly.",
+    "measure": "One reconciled lead ledger (platform → Respond.io → booking system) published monthly from Month 2; cost per booked appointment reported from Month 2 (baseline RM182, Jan–Aug 2026) and cost per attended visit from the moment the booking-system link is live.",
+    "owner": "Analytics Lead · sponsor: Head of Digital Solutions"
+   },
+   {
+    "id": "O2",
+    "name": "A new website that is fast, trilingual and built to convert",
+    "why": "101 location URLs for 16 branches, no consent layer, 3.08 MB homepage, 12–38 serious accessibility violations per template, 0 posts in the sitemap since 2024. The current site cannot pass the RFP's own acceptance criteria. One site, not two: the same website ranks separately for every page it has, and a Happenings section carries news and updates without a second domain or a second KKLIU licence.",
+    "measure": "Headless site live 22 January 2027 on AWS Malaysia: 16 canonical branch pages, EN/BM/ZH with hreflang, CMP live, Lighthouse ≥ 90, WCAG 2.2 AA audited, CWV field p75 Good by Month 6.",
+    "owner": "Technical Lead · UX/UI Lead"
+   },
+   {
+    "id": "O3",
+    "name": "Turn the enquiries Vista already gets into booked visits",
+    "why": "Unpaid enquiries book at 14.4%, paid at 1.5%. Warm→Hot sits at 21–33% every month; the AI assistant cannot answer a price question and the auto-close manufactures 'Inactive' losses.",
+    "measure": "Paid Ads booking rate from 1.5% to ≥ 4% by Month 6 and ≥ 6% by Month 12; Warm→Hot ≥ 40% by Month 6; zero after-hours red-flag cases unread past 9 am next day.",
+    "owner": "Account Manager with Vista CS lead · Analytics Lead"
+   },
+   {
+    "id": "O4",
+    "name": "Be found for cataract, LASIK and every centre",
+    "why": "Organic Search is the best-engaged channel and the one nobody reports on. Content arrives in batches and stopped in May 2026. AI-referral traffic has started (282 sessions) with no one measuring it.",
+    "measure": "Organic sessions +40% on the post-launch baseline by Month 12; 52 medically reviewed articles; ≥ 60% of tracked keywords on page 1; local-pack top-3 for priority centre × service pairs; AI visibility on ≥ 5 engines by Month 12.",
+    "owner": "SEO/AEO/GEO Lead · Content Lead"
+   },
+   {
+    "id": "O5",
+    "name": "Put media money where the bookings come from",
+    "why": "The annual media budget is allocated on Google 'conversions' that are 23–52% PMax, bought at a fraction of the cost of a real enquiry, and Meta 'results' that book at 1.5%. The cheapest channel, TikTok, has no plan at all.",
+    "measure": "Every campaign optimised to a CRM-verified booking signal by Month 4; cost per appointment −25% by Month 12 versus the Month-4 baseline; TikTok and LinkedIn decided on pilot evidence, not opinion.",
+    "owner": "Paid Media Lead"
+   },
+   {
+    "id": "O6",
+    "name": "Keep it fixed — one monthly meeting that closes actions",
+    "why": "345 open action items with no closure state and monthly reports without analysis. Findings recur because nobody owns closing them.",
+    "measure": "Monthly strategy meeting with pre-read 2 days before and minutes 1 day after; action closure ≥ 90%; quarterly SteerCo with market research; Command Centre live at go-live.",
+    "owner": "Programme Manager · Head of Digital Solutions"
+   }
+  ],
+  "phases": [
+   {
+    "id": "P0",
+    "name": "Mobilise",
+    "dur": "2 weeks · Month 1",
+    "from": "2026-11-02",
+    "to": "2026-11-13",
+    "gate": "Gate 0 — access confirmed, credentials rotated, budget shifts frozen",
+    "summary": "Two weeks to take over every account and asset, freeze measurement changes, and sit down with the Vista team for a joint strategy session: Vista knows its patients and services, CDS knows the digital side, and the plan is agreed together before anything is built."
+   },
+   {
+    "id": "P1",
+    "name": "Audit, baseline & Discovery",
+    "dur": "6 weeks · Months 1–2",
+    "from": "2026-11-09",
+    "to": "2026-12-18",
+    "gate": "Gate 1 (20 Nov) Discovery · Gate 2 (27 Nov) Design · Day 45 (16 Dec) roadmap & baselines",
+    "summary": "A full audit with the access CDS did not have before, so the baseline for every target is set on complete data. Measurement plan, single lead definition, GA4 rebuild, Respond.io clean-up, SEO and AI-visibility baselines, site structure and design approved. Social posting and the first small campaigns run in parallel from Month 1."
+   },
+   {
+    "id": "P2",
+    "name": "Build the website & tracking",
+    "dur": "8 weeks · Months 1–3",
+    "from": "2026-11-30",
+    "to": "2027-01-22",
+    "gate": "Week 9 (1 Jan) feature complete · Gate 5 (15 Jan) UAT · Go-live Fri 22 Jan 2027",
+    "summary": "Headless build on Storyblok + Next.js on AWS Malaysia with server-side tagging and CMP; content migration and redirects; paid media restructured onto the new landing pages."
+   },
+   {
+    "id": "P3",
+    "name": "Hypercare & CNY",
+    "dur": "5 weeks · Months 3–4",
+    "from": "2027-01-25",
+    "to": "2027-02-26",
+    "gate": "Gate 6 (19 Feb) hypercare exit · post-launch baseline locked 26 Feb",
+    "summary": "Four weeks of intensive stabilisation through Chinese New Year (6–7 Feb). Post-launch KPI baseline captured; floors become binding from Month 5."
+   },
+   {
+    "id": "P4",
+    "name": "Optimise",
+    "dur": "4 months · Months 5–8",
+    "from": "2027-03-01",
+    "to": "2027-06-30",
+    "gate": "SteerCo 2 (Apr) · Month-6 KPI checkpoint (30 Jun)",
+    "summary": "CRO on the live site, Eye Carnival on a fully tagged funnel, lead-handling redesign with Vista CS, local SEO across 16 centres, content at cadence, GEO on five engines."
+   },
+   {
+    "id": "P5",
+    "name": "Scale & renew",
+    "dur": "4 months · Months 9–12",
+    "from": "2027-07-01",
+    "to": "2027-10-29",
+    "gate": "SteerCo 3 (Jul) · renewal terms tabled 30 Jul · Month-12 review & SteerCo 4 (Oct)",
+    "summary": "Scale what the evidence supports (TikTok, branch-level local campaigns, Open House), retire what it does not, and close Year 1 with the Year-2 plan and renewal decision made three months early."
+   }
+  ],
+  "workstreams": [
+   {
+    "id": "A",
+    "name": "Programme & governance",
+    "owner": "Programme Manager",
+    "support": "Account Manager · Delivery Coordinator · Head of Digital Solutions",
+    "scope": "9",
+    "bars": [
+     {
+      "label": "Mobilisation & access takeover",
+      "from": "2026-11-02",
+      "to": "2026-11-13",
+      "kind": "build"
+     },
+     {
+      "label": "Weekly build status (RAG) & RAID log",
+      "from": "2026-11-02",
+      "to": "2027-02-19",
+      "kind": "run"
+     },
+     {
+      "label": "Monthly strategy meeting (pre-read −2d, minutes +1d)",
+      "from": "2026-11-23",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     },
+     {
+      "label": "SteerCo quarterly deep-dives",
+      "from": "2027-01-25",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     },
+     {
+      "label": "Renewal & Year-2 plan",
+      "from": "2027-07-01",
+      "to": "2027-08-27",
+      "kind": "build"
+     }
+    ],
+    "milestones": [
+     {
+      "d": "2026-11-02",
+      "t": "Kick-off"
+     },
+     {
+      "d": "2026-11-13",
+      "t": "Gate 0"
+     },
+     {
+      "d": "2027-01-25",
+      "t": "SteerCo 1"
+     },
+     {
+      "d": "2027-04-26",
+      "t": "SteerCo 2"
+     },
+     {
+      "d": "2027-07-26",
+      "t": "SteerCo 3"
+     },
+     {
+      "d": "2027-07-30",
+      "t": "Renewal terms tabled"
+     },
+     {
+      "d": "2027-10-25",
+      "t": "SteerCo 4 / Year-1 review"
+     }
+    ]
+   },
+   {
+    "id": "B",
+    "name": "Measurement & analytics",
+    "owner": "Analytics Lead",
+    "support": "Technical Lead (server-side tagging) · QA & Security Lead (QA)",
+    "scope": "7",
+    "bars": [
+     {
+      "label": "Measurement plan & single lead definition (Days 1–20)",
+      "from": "2026-11-02",
+      "to": "2026-11-20",
+      "kind": "build"
+     },
+     {
+      "label": "GA4 rebuild: key events = enquiries only, bot filter, channel groups, UTM standard",
+      "from": "2026-11-09",
+      "to": "2026-12-04",
+      "kind": "build"
+     },
+     {
+      "label": "Server-side GTM (Malaysia), CMP + Consent Mode, CAPI, Enhanced Conversions",
+      "from": "2026-11-23",
+      "to": "2027-01-15",
+      "kind": "build"
+     },
+     {
+      "label": "Call & WhatsApp attribution; common enquiry reference into Respond.io",
+      "from": "2026-12-07",
+      "to": "2027-01-22",
+      "kind": "build"
+     },
+     {
+      "label": "Reconciled lead ledger (platform → CRM → appointment), monthly",
+      "from": "2026-12-07",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     },
+     {
+      "label": "Vista Growth Command Centre build",
+      "from": "2026-12-07",
+      "to": "2027-01-22",
+      "kind": "build"
+     },
+     {
+      "label": "Command Centre live, daily refresh; monthly report by the 7th",
+      "from": "2027-01-25",
+      "to": "2027-10-29",
+      "kind": "run"
+     },
+     {
+      "label": "Quarterly executive report",
+      "from": "2027-01-25",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     }
+    ],
+    "milestones": [
+     {
+      "d": "2026-11-20",
+      "t": "Lead definition signed"
+     },
+     {
+      "d": "2026-12-16",
+      "t": "Pre-launch baselines (Day 45)"
+     },
+     {
+      "d": "2027-01-22",
+      "t": "Tracking verified at go-live"
+     },
+     {
+      "d": "2027-02-26",
+      "t": "Post-launch baseline locked"
+     }
+    ]
+   },
+   {
+    "id": "C",
+    "name": "Website revamp (headless)",
+    "owner": "Technical Lead",
+    "support": "UX/UI Lead · Engineers A/B · QA & Security Lead",
+    "scope": "1",
+    "bars": [
+     {
+      "label": "Discovery: workshops, heuristic & competitor review, requirements",
+      "from": "2026-11-09",
+      "to": "2026-11-20",
+      "kind": "build"
+     },
+     {
+      "label": "IA, sitemap (16 canonical branch pages, EN/BM/ZH), wireframes",
+      "from": "2026-11-16",
+      "to": "2026-11-27",
+      "kind": "build"
+     },
+     {
+      "label": "UI design system & interactive prototype",
+      "from": "2026-11-23",
+      "to": "2026-12-11",
+      "kind": "build"
+     },
+     {
+      "label": "Storyblok schema, Next.js build, AWS ap-southeast-5 infra (CDK)",
+      "from": "2026-11-30",
+      "to": "2027-01-01",
+      "kind": "build"
+     },
+     {
+      "label": "Content migration, translation QA, 301 map (825 crawled URLs)",
+      "from": "2026-12-14",
+      "to": "2027-01-15",
+      "kind": "build"
+     },
+     {
+      "label": "QA: functional, axe/WCAG 2.2 AA, Lighthouse ≥ 90, security review + pen test",
+      "from": "2027-01-04",
+      "to": "2027-01-20",
+      "kind": "build"
+     },
+     {
+      "label": "UAT, training, go-live",
+      "from": "2027-01-11",
+      "to": "2027-01-22",
+      "kind": "build"
+     },
+     {
+      "label": "Hypercare",
+      "from": "2027-01-25",
+      "to": "2027-02-19",
+      "kind": "run"
+     },
+     {
+      "label": "CRO programme (included first 3 months)",
+      "from": "2027-03-01",
+      "to": "2027-05-28",
+      "kind": "run"
+     },
+     {
+      "label": "Phase-2 features: doctor profiles v2, branch booking flows, campaign page templates",
+      "from": "2027-04-05",
+      "to": "2027-06-25",
+      "kind": "build"
+     }
+    ],
+    "milestones": [
+     {
+      "d": "2026-11-20",
+      "t": "Gate 1 Discovery"
+     },
+     {
+      "d": "2026-11-27",
+      "t": "Gate 2 Design"
+     },
+     {
+      "d": "2027-01-01",
+      "t": "Feature complete (Wk 9)"
+     },
+     {
+      "d": "2027-01-15",
+      "t": "Gate 5 UAT"
+     },
+     {
+      "d": "2027-01-22",
+      "t": "GO-LIVE"
+     },
+     {
+      "d": "2027-02-19",
+      "t": "Gate 6 hypercare exit"
+     }
+    ]
+   },
+   {
+    "id": "D",
+    "name": "Maintenance & SLA",
+    "owner": "Technical Lead",
+    "support": "QA & Security Lead (security) · Engineers A/B (on-call rota)",
+    "scope": "3",
+    "bars": [
+     {
+      "label": "Interim: harden legacy WordPress (headers, wp-login, xmlrpc, plugin updates)",
+      "from": "2026-11-09",
+      "to": "2026-11-27",
+      "kind": "build"
+     },
+     {
+      "label": "Retained maintenance under SLA (P1 ≤ 30 min / 4 h, 24×7)",
+      "from": "2027-01-25",
+      "to": "2027-10-29",
+      "kind": "run"
+     },
+     {
+      "label": "Quarterly DR drill, vulnerability assessment, DB optimisation",
+      "from": "2027-04-05",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     },
+     {
+      "label": "Legacy WordPress & vistanow decommission / redirect",
+      "from": "2027-03-01",
+      "to": "2027-04-30",
+      "kind": "build"
+     }
+    ],
+    "milestones": [
+     {
+      "d": "2027-01-25",
+      "t": "SLA clock starts"
+     },
+     {
+      "d": "2027-04-30",
+      "t": "vistanow folded into main site"
+     }
+    ]
+   },
+   {
+    "id": "E",
+    "name": "CRM & lead handling (Respond.io)",
+    "owner": "Account Manager",
+    "support": "Analytics Lead · Vista CS lead · Vista CRM owner",
+    "scope": "7 (with 5)",
+    "bars": [
+     {
+      "label": "Immediate: stop bulk deletion, freeze CAPI 'Purchase' on lifecycle change, request admin access",
+      "from": "2026-11-02",
+      "to": "2026-11-13",
+      "kind": "build"
+     },
+     {
+      "label": "Lifecycle redesign: stage definitions, non-lead routing (spam/HR/supplier), merge policy",
+      "from": "2026-11-16",
+      "to": "2026-12-11",
+      "kind": "build"
+     },
+     {
+      "label": "AI assistant knowledge: price bands, promos, Open House, branch hours; returning-contact fix",
+      "from": "2026-11-23",
+      "to": "2026-12-18",
+      "kind": "build"
+     },
+     {
+      "label": "Human SLA: after-hours red-flag queue, 9 am next-day rule, Warm-Lead call-back script",
+      "from": "2026-12-07",
+      "to": "2027-01-15",
+      "kind": "build"
+     },
+     {
+      "label": "Web-chat channel + page-URL capture; ad-campaign ID on every paid contact",
+      "from": "2026-12-14",
+      "to": "2027-01-22",
+      "kind": "build"
+     },
+     {
+      "label": "De-duplication pass; offline channels (GBP, walk-in, call-in) into the ledger",
+      "from": "2027-02-01",
+      "to": "2027-03-26",
+      "kind": "build"
+     },
+     {
+      "label": "Booking signal to Meta CAPI & Google Enhanced Conversions",
+      "from": "2027-02-01",
+      "to": "2027-03-12",
+      "kind": "build"
+     },
+     {
+      "label": "Monthly conversation QC (30-chat sample) & AI reply audit",
+      "from": "2026-12-07",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     }
+    ],
+    "milestones": [
+     {
+      "d": "2026-11-13",
+      "t": "Deletion & CAPI freeze"
+     },
+     {
+      "d": "2026-12-18",
+      "t": "AI assistant v2 live"
+     },
+     {
+      "d": "2027-03-12",
+      "t": "Booking signal live on Meta + Google"
+     }
+    ]
+   },
+   {
+    "id": "F",
+    "name": "SEO · AEO · GEO · local",
+    "owner": "SEO/AEO/GEO Lead",
+    "support": "Content Lead · Analytics Lead",
+    "scope": "2",
+    "bars": [
+     {
+      "label": "Day 1–30 audit: crawl, EN/BM/ZH keyword & entity map, backlinks, 16-centre local baseline",
+      "from": "2026-11-02",
+      "to": "2026-12-01",
+      "kind": "build"
+     },
+     {
+      "label": "AI-visibility baseline (prompt library, 5 engines) by Day 30",
+      "from": "2026-11-09",
+      "to": "2026-12-01",
+      "kind": "build"
+     },
+     {
+      "label": "12-month search roadmap approved (Day 45)",
+      "from": "2026-12-01",
+      "to": "2026-12-16",
+      "kind": "build"
+     },
+     {
+      "label": "Migration SEO: redirect map, schema (MedicalOrganization, Physician, LocalBusiness, FAQ), hreflang",
+      "from": "2026-12-07",
+      "to": "2027-01-22",
+      "kind": "build"
+     },
+     {
+      "label": "GBP: 16 listings cleaned, duplicate HQ removed, review workflow",
+      "from": "2026-12-01",
+      "to": "2027-02-26",
+      "kind": "build"
+     },
+     {
+      "label": "Monthly on-page, technical, authority & local execution",
+      "from": "2027-02-01",
+      "to": "2027-10-29",
+      "kind": "run"
+     },
+     {
+      "label": "AEO: FAQ schema, PAA coverage, entity/Knowledge Panel work",
+      "from": "2027-03-01",
+      "to": "2027-10-29",
+      "kind": "run"
+     },
+     {
+      "label": "GEO: quarterly AI-visibility benchmark; llms.txt; citation-ready content",
+      "from": "2027-02-01",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     }
+    ],
+    "milestones": [
+     {
+      "d": "2026-12-01",
+      "t": "AI baseline (Day 30)"
+     },
+     {
+      "d": "2026-12-16",
+      "t": "Roadmap approved"
+     },
+     {
+      "d": "2027-01-22",
+      "t": "Pre/post crawl comparison"
+     },
+     {
+      "d": "2027-06-30",
+      "t": "AI ≥ 3 engines (M6)"
+     },
+     {
+      "d": "2027-10-29",
+      "t": "AI ≥ 5 engines (M12)"
+     }
+    ]
+   },
+   {
+    "id": "G",
+    "name": "Content marketing",
+    "owner": "Content Lead",
+    "support": "SEO/AEO/GEO Lead · Vista clinical reviewers · translator (sub-processor)",
+    "scope": "4",
+    "bars": [
+     {
+      "label": "Set-up: editorial standards, medical review workflow in CMS, keyword-cluster map",
+      "from": "2026-11-09",
+      "to": "2026-11-27",
+      "kind": "build"
+     },
+     {
+      "label": "Rolling calendar ≥ 1 month ahead; 4 articles/month EN/BM/ZH as demand supports",
+      "from": "2026-12-01",
+      "to": "2027-10-29",
+      "kind": "run"
+     },
+     {
+      "label": "Quarterly contributory article + refresh of top performers",
+      "from": "2027-02-01",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     },
+     {
+      "label": "Migration: consolidate vistanow content, remove cross-domain duplicates",
+      "from": "2026-12-14",
+      "to": "2027-03-26",
+      "kind": "build"
+     }
+    ],
+    "milestones": [
+     {
+      "d": "2026-12-31",
+      "t": "First 4 articles published"
+     },
+     {
+      "d": "2027-10-29",
+      "t": "52 articles; ≥ 10% in top 10"
+     }
+    ]
+   },
+   {
+    "id": "H",
+    "name": "Paid media",
+    "owner": "Paid Media Lead",
+    "support": "UX/UI Lead · Social Media Lead (creatives, B6a)",
+    "scope": "5",
+    "bars": [
+     {
+      "label": "Day-30 media audit; freeze budget shifts; conversion actions rebuilt to enquiry-only",
+      "from": "2026-11-02",
+      "to": "2026-12-01",
+      "kind": "build"
+     },
+     {
+      "label": "Account restructure: Google search by service × region × language; PMax ring-fenced ≤ 10% of media",
+      "from": "2026-12-01",
+      "to": "2027-01-15",
+      "kind": "build"
+     },
+     {
+      "label": "Meta rebuilt on click-to-WhatsApp with booking-optimised CAPI; creative library (10/month)",
+      "from": "2026-12-01",
+      "to": "2027-10-29",
+      "kind": "run"
+     },
+     {
+      "label": "TikTok controlled pilot → evidence review → scale/hold",
+      "from": "2027-01-04",
+      "to": "2027-03-26",
+      "kind": "build"
+     },
+     {
+      "label": "LinkedIn demand validation (Q1) → pilot only if evidence supports",
+      "from": "2027-01-04",
+      "to": "2027-03-26",
+      "kind": "build"
+     },
+     {
+      "label": "Evergreen: Cataract · LASIK · ICL/CLEAR Pro · Kids · Dry Eye — continuous optimisation to cost per booking",
+      "from": "2027-01-25",
+      "to": "2027-10-29",
+      "kind": "run"
+     },
+     {
+      "label": "Branch-level local campaigns (top 6 centres) once local pages are live",
+      "from": "2027-05-03",
+      "to": "2027-10-29",
+      "kind": "run"
+     }
+    ],
+    "milestones": [
+     {
+      "d": "2026-12-01",
+      "t": "Media audit & plan"
+     },
+     {
+      "d": "2027-01-22",
+      "t": "Campaigns on new landing pages"
+     },
+     {
+      "d": "2027-03-26",
+      "t": "Pilot evidence review"
+     },
+     {
+      "d": "2027-06-30",
+      "t": "Cost-per-booking baseline −15%"
+     }
+    ]
+   },
+   {
+    "id": "I",
+    "name": "Social media",
+    "owner": "Social Media Lead",
+    "support": "UX/UI Lead (motion) · Content Lead (copy)",
+    "scope": "6",
+    "bars": [
+     {
+      "label": "Channel audit, brand set-up, motion-graphics library",
+      "from": "2026-11-09",
+      "to": "2026-11-27",
+      "kind": "build"
+     },
+     {
+      "label": "Monthly: 4 reels · 2 carousels · 2 static on IG, cross-published to FB; TikTok BM re-cuts",
+      "from": "2026-12-01",
+      "to": "2027-10-29",
+      "kind": "run"
+     },
+     {
+      "label": "Community management ≤ 4 business hours; monthly report",
+      "from": "2026-12-01",
+      "to": "2027-10-29",
+      "kind": "run"
+     },
+     {
+      "label": "Doctor-led and patient-education series (KKLIU-checked); LinkedIn quarterly",
+      "from": "2027-02-01",
+      "to": "2027-10-29",
+      "kind": "run"
+     }
+    ],
+    "milestones": [
+     {
+      "d": "2026-12-31",
+      "t": "First full monthly mix"
+     },
+     {
+      "d": "2027-10-29",
+      "t": "Engagement +30% vs Month-1"
+     }
+    ]
+   },
+   {
+    "id": "J",
+    "name": "Research & strategy",
+    "owner": "Head of Digital Solutions",
+    "support": "Strategy & Research Lead · Delivery Coordinator · Executive Sponsor",
+    "scope": "8 · 9",
+    "bars": [
+     {
+      "label": "Competitor set agreed (KPJ CfS, Optimax, OasisEye, Sunway Eye, ISEC, IKONIK)",
+      "from": "2026-11-09",
+      "to": "2026-11-27",
+      "kind": "build"
+     },
+     {
+      "label": "Q1 market research & benchmark (12-week cycle)",
+      "from": "2026-11-30",
+      "to": "2027-01-22",
+      "kind": "build"
+     },
+     {
+      "label": "Q2 research cycle",
+      "from": "2027-02-01",
+      "to": "2027-04-23",
+      "kind": "build"
+     },
+     {
+      "label": "Q3 research cycle",
+      "from": "2027-05-03",
+      "to": "2027-07-23",
+      "kind": "build"
+     },
+     {
+      "label": "Q4 research cycle & Year-2 strategy",
+      "from": "2027-08-02",
+      "to": "2027-10-22",
+      "kind": "build"
+     },
+     {
+      "label": "Advisory (up to 5 h/quarter)",
+      "from": "2026-11-02",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     }
+    ],
+    "milestones": [
+     {
+      "d": "2027-01-25",
+      "t": "Q1 report at SteerCo 1"
+     },
+     {
+      "d": "2027-04-26",
+      "t": "Q2 report"
+     },
+     {
+      "d": "2027-07-26",
+      "t": "Q3 report"
+     },
+     {
+      "d": "2027-10-25",
+      "t": "Q4 report + Year-2 roadmap"
+     }
+    ]
+   }
+  ],
+  "monthly": [
+   {
+    "m": "2026-11",
+    "phase": "P0 → P1",
+    "theme": "Take control, define the lead, open Discovery",
+    "deliverables": [
+     "Access takeover: GA4, GTM, Ads, Meta, TikTok, Respond.io admin, registrar, Cloudflare, CMS; credentials rotated into a password manager (Aug audit F-06)",
+     "Measurement plan and single lead definition signed by Vista (20 Nov)",
+     "Respond.io: bulk-deletion stopped, CAPI Purchase-on-lifecycle paused, non-lead routing designed",
+     "GA4 key events reduced to WhatsApp / phone / form / email; bot exclusions; UTM standard published",
+     "Discovery report, IA and sitemap approved (Gate 1, 20 Nov); wireframes and design direction approved (Gate 2, 27 Nov)",
+     "SEO / AI-visibility baselines started; competitor set agreed; social channel audit; content standards"
+    ],
+    "campaigns": "Evergreen continues under freeze — no budget reallocation between Meta and Google; Deepavali greeting only (8 Nov); year-end school-holiday Kids Eye Exam creative refreshed on existing pages",
+    "kpi": "No KPI claims this month; every number carries a confidence label from the first ledger run",
+    "gates": "Gate 0 (13 Nov) · Gate 1 (20 Nov) · Gate 2 (27 Nov) · first monthly strategy meeting (23 Nov)"
+   },
+   {
+    "m": "2026-12",
+    "phase": "P1 → P2",
+    "theme": "Baselines locked, build under way, retained scopes running",
+    "deliverables": [
+     "Day-30 media audit and 2027 media plan (1 Dec); Day-30 AI-visibility baseline on 5 engines",
+     "Day-45 (16 Dec): 12-month search roadmap, pre-launch KPI baselines, Performance Baseline & Targets document",
+     "First reconciled lead ledger for November (platform → CRM → appointment)",
+     "UI design system and prototype signed off (11 Dec); Storyblok schema and AWS environment stood up",
+     "AI assistant v2 with price bands, promos and branch data live (18 Dec); returning-contact branch fixed",
+     "First 4 articles published; first full social mix (4 reels / 2 carousels / 2 static)",
+     "Server-side GTM and CMP built on staging; Command Centre data model agreed"
+    ],
+    "campaigns": "Year-end Kids Eye Exam (school holidays to 3 Jan) on Google + Meta; Christmas greeting only; no new ad-hoc spend — budget held for CNY",
+    "kpi": "Baseline set: cost per appointment, paid vs unpaid booking rate, Warm→Hot, organic sessions, key events (new definition), AI visibility",
+    "gates": "Day 30 (1 Dec) · Day 45 (16 Dec) · Day 60 (31 Dec) baseline document · Christmas/New Year build buffer (21 Dec–1 Jan)"
+   },
+   {
+    "m": "2027-01",
+    "phase": "P2 → P3",
+    "theme": "Go-live before Chinese New Year",
+    "deliverables": [
+     "Feature complete 1 Jan; content migration, translation QA and 301 map complete 15 Jan",
+     "QA pass: axe-core in CI, manual NVDA/VoiceOver audit, Lighthouse ≥ 90 on every template, external security review and penetration test",
+     "Gate 5 UAT sign-off (15 Jan); CMS training and documentation; go-live Friday 22 Jan 2027",
+     "Tracking verified live at go-live: sGTM, CMP, CAPI, Enhanced Conversions, call and WhatsApp attribution, Command Centre",
+     "Paid campaigns cut over to new landing pages on go-live weekend; TikTok pilot and LinkedIn demand validation begin",
+     "SteerCo 1 (25 Jan) with Q1 market research report"
+    ],
+    "campaigns": "CNY 2027 campaign (launch 25 Jan, festival 6–7 Feb) in EN/ZH/BM on the new site — the first campaign on a tagged funnel; Kids Eye Exam wraps 3 Jan",
+    "kpi": "Go-live acceptance: zero critical/high defects, CWV lab Good, WCAG audit passed, structured data valid, sitemap submitted, tracking verified",
+    "gates": "Wk 9 feature complete (1 Jan) · Gate 5 (15 Jan) · GO-LIVE (22 Jan) · SteerCo 1 (25 Jan). Fallback: if Gate 5 fails, go-live moves to 22 Feb after CNY — decision by Head of Digital Solutions on 15 Jan"
+   },
+   {
+    "m": "2027-02",
+    "phase": "P3",
+    "theme": "Hypercare through CNY; post-launch baseline",
+    "deliverables": [
+     "Hypercare to 19 Feb: daily defect triage, performance and index monitoring, pre/post crawl comparison (825 URLs)",
+     "Post-launch KPI baseline captured 26 Feb — floors binding from Month 5",
+     "Lifecycle de-duplication pass begun; offline channels (GBP, walk-in, call-in) added to the ledger",
+     "Booking signal wired to Meta CAPI and Google Enhanced Conversions (live 12 Mar)",
+     "GBP: 16 listings cleaned, duplicate HQ listing removed, review-response workflow live",
+     "Q2 research cycle opens; first quarterly contributory article"
+    ],
+    "campaigns": "CNY through 14 Feb; Eye Carnival 2027 pre-registration opens 22 Feb on a UTM-disciplined form + WhatsApp path (the 2026 Carnival was the only fully tagged funnel — now the standard)",
+    "kpi": "Hypercare exit: no unresolved P1/P2; uptime ≥ 99.9%; CWV field data collecting; organic index parity with legacy within 2 weeks",
+    "gates": "Gate 6 hypercare exit (19 Feb) · post-launch baseline (26 Feb)"
+   },
+   {
+    "m": "2027-03",
+    "phase": "P4",
+    "theme": "Carnival on a clean funnel; optimise to bookings",
+    "deliverables": [
+     "Eye Carnival 2027 (Mar–Apr) run end-to-end with booking attribution; Carnival conversion mechanics templated for evergreen pages",
+     "CRO programme month 1: appointment-request journey, price-enquiry path, branch pages",
+     "TikTok pilot and LinkedIn evidence review (26 Mar): scale, hold or stop decision on data",
+     "Legacy WordPress and vistanow decommission plan; content consolidation completed 26 Mar",
+     "AEO work begins: FAQ schema across services and conditions, PAA coverage"
+    ],
+    "campaigns": "Eye Carnival 2027 (main push); Raya 2027 (festival ~9 Mar) greeting and Cataract-for-parents creative in BM; evergreen continues",
+    "kpi": "Cost per booking per campaign visible in Command Centre; paid booking rate ≥ 2.5% (from 1.5%)",
+    "gates": "Pilot evidence review (26 Mar) · monthly strategy meeting"
+   },
+   {
+    "m": "2027-04",
+    "phase": "P4",
+    "theme": "Lead handling with Vista CS; local pages",
+    "deliverables": [
+     "Warm-Lead call-back SLA and script operating with Vista CS; after-hours red-flag queue reviewed by 9 am",
+     "vistanow folded into the main site (30 Apr); redirects verified",
+     "Phase-2 site features begin: doctor profile v2 with Physician schema, branch booking flows",
+     "Quarterly DR drill and vulnerability assessment",
+     "SteerCo 2 (26 Apr): Q2 market research, CRO results, media reallocation on evidence",
+     "Month-1 of branch-level local SEO execution across 16 centres"
+    ],
+    "campaigns": "Carnival wraps; Dry Eye and ICL/CLEAR Pro evergreen refreshed with 10 new creatives; Labour Day greeting only",
+    "kpi": "Warm→Hot ≥ 35%; paid booking rate ≥ 3%; first quarterly AI-visibility benchmark (≥ 3 engines citing)",
+    "gates": "SteerCo 2 (26 Apr)"
+   },
+   {
+    "m": "2027-05",
+    "phase": "P4",
+    "theme": "Local at scale; school-holiday Kids",
+    "deliverables": [
+     "Branch-level local campaigns live for the top 6 centres (PJ, Air Itam, Ipoh, Kajang, Mount Austin, Klang)",
+     "Command Centre v1.1: branch view, campaign cost-per-booking view, data-confidence labels",
+     "CRO month 3 (last included month); backlog handed to change-control",
+     "Content: 20 articles cumulative; first top-10 rankings from Dec–Feb articles reviewed"
+    ],
+    "campaigns": "Mid-year school holidays (late May–June): Kids Eye Exam and Myopia Control in EN/BM/ZH; Hari Raya Haji (~17 May) greeting",
+    "kpi": "Local-pack top-3 for ≥ 8 priority centre × service pairs; organic sessions +15% on post-launch baseline",
+    "gates": "Monthly strategy meeting"
+   },
+   {
+    "m": "2027-06",
+    "phase": "P4",
+    "theme": "Month-6 checkpoint",
+    "deliverables": [
+     "Month-6 KPI checkpoint (30 Jun) against binding floors: CWV field p75 Good, conversion uplift, organic, AI engines",
+     "Phase-2 features complete (25 Jun): campaign page templates, booking flows",
+     "Half-year reconciled ledger review: platform vs CRM vs appointments variance < 10%",
+     "Q3 research cycle in progress; renewal preparation begins"
+    ],
+    "campaigns": "Kids/Myopia continues to end of school holidays; Cataract awareness (World Cataract awareness tie-in) for 40+ in BM/ZH",
+    "kpi": "Cost per booking −15% vs Month-4 baseline; paid booking rate ≥ 4%; Warm→Hot ≥ 40%; AI visibility ≥ 3 engines",
+    "gates": "Month-6 checkpoint (30 Jun)"
+   },
+   {
+    "m": "2027-07",
+    "phase": "P5",
+    "theme": "Scale the evidence",
+    "deliverables": [
+     "SteerCo 3 (26 Jul): Q3 market research, half-year results, scale/stop decisions per channel",
+     "Renewal terms and Year-2 scope tabled (30 Jul) — three months before contract end",
+     "Open House 2027 plan (Aug–Sep) built on 2026 learnings with per-branch booking capacity",
+     "Quarterly DR drill; security patch cycle; AI reply audit"
+    ],
+    "campaigns": "Open House pre-registration opens mid-Jul; LASIK/ICL for graduates and young professionals; evergreen",
+    "kpi": "Organic sessions +25% on post-launch baseline; ≥ 50% tracked keywords on page 1",
+    "gates": "SteerCo 3 (26 Jul) · renewal terms (30 Jul)"
+   },
+   {
+    "m": "2027-08",
+    "phase": "P5",
+    "theme": "Open House & Merdeka",
+    "deliverables": [
+     "Open House 2027 across 7+ centres with branch-level attribution and same-day booking confirmation",
+     "Year-2 roadmap draft; contract renewal decision requested from Qualitas by 31 Aug",
+     "Content: 36 articles cumulative; refresh of Year-1 top performers",
+     "Second AI-visibility benchmark; entity/Knowledge Panel work"
+    ],
+    "campaigns": "Open House 2027 (29 Aug–19 Sep pattern); Merdeka (31 Aug) creative in BM; evergreen",
+    "kpi": "Open House cost per booking reported per branch within 5 business days of close",
+    "gates": "Renewal decision requested (31 Aug)"
+   },
+   {
+    "m": "2027-09",
+    "phase": "P5",
+    "theme": "Close the loop",
+    "deliverables": [
+     "Open House close-out; learnings templated",
+     "Q4 research cycle; competitor benchmark refresh",
+     "Phase-3 backlog priced under change control for Year 2",
+     "Annual accessibility re-audit; penetration test #2"
+    ],
+    "campaigns": "Open House to 19 Sep; Malaysia Day (16 Sep) greeting; Dry Eye season creative",
+    "kpi": "Paid booking rate ≥ 5%; organic +35%",
+    "gates": "Monthly strategy meeting"
+   },
+   {
+    "m": "2027-10",
+    "phase": "P5",
+    "theme": "Year-1 review and Year-2 start",
+    "deliverables": [
+     "Month-12 review: every KPI floor reported against baseline with confidence labels",
+     "SteerCo 4 (25 Oct): Q4 research, Year-2 roadmap, media plan 2028, renewal executed",
+     "Handover pack refreshed (repository, documentation, accounts) as the RFP requires — whether or not renewed",
+     "World Sight Day (14 Oct) content and community programme"
+    ],
+    "campaigns": "World Sight Day (14 Oct); Deepavali 2027 (~29 Oct) greeting; year-end Kids Eye Exam prepared for Nov launch",
+    "kpi": "Month-12 floors: organic +40%, conversion uplift +25%, engagement ≥ 60%, AI ≥ 5 engines, branded +20%, page-1 ≥ 60%, cost per booking −25%, paid booking rate ≥ 6%",
+    "gates": "SteerCo 4 / Year-1 review (25 Oct)"
+   }
+  ],
+  "campaigns": [
+   {
+    "name": "Evergreen — Cataract (40+)",
+    "platforms": "Google Search (EN/CN/BM) · Meta CTWA · TikTok BM",
+    "window": "All year",
+    "owner": "Paid Media Lead",
+    "note": "Largest Respond.io category (19%); optimised to cost per booking from Mar 2027"
+   },
+   {
+    "name": "Evergreen — LASIK / ICL / CLEAR Pro",
+    "platforms": "Google Search · Meta · TikTok",
+    "window": "All year, peaks Jan and Jul–Aug",
+    "owner": "Paid Media Lead",
+    "note": "Refractive is 20% of conversations and the fastest-growing category (2,370 closes Aug 2026)"
+   },
+   {
+    "name": "Evergreen — Kids Eye Exam & Myopia Control",
+    "platforms": "Google · Meta · TikTok BM",
+    "window": "School holidays: Nov–Jan, late May–Jun",
+    "owner": "Paid Media Lead",
+    "note": "The most expensive enquiries Vista buys today — moves to branch-level targeting"
+   },
+   {
+    "name": "Evergreen — Dry Eye",
+    "platforms": "Google Search · Meta",
+    "window": "All year, Sep push",
+    "owner": "Paid Media Lead",
+    "note": "Cost per enquiry ran far above the network average in 2025 — rebuilt on condition content, not procedure ads"
+   },
+   {
+    "name": "CNY 2027",
+    "platforms": "Meta · Google · TikTok",
+    "window": "25 Jan – 14 Feb 2027",
+    "owner": "Paid Media Lead · Social Media Lead",
+    "note": "First campaign on the new site; ZH landing pages on clean URLs"
+   },
+   {
+    "name": "Eye Carnival 2027",
+    "platforms": "Google PMax (ring-fenced) · Meta · WhatsApp broadcast (opt-in only)",
+    "window": "22 Feb – 30 Apr 2027",
+    "owner": "Paid Media Lead · Account Manager",
+    "note": "2026 Carnival drove 40,664 sessions at 93% key-event rate; 2027 runs with booking attribution per branch"
+   },
+   {
+    "name": "Branch-level local campaigns",
+    "platforms": "Google Search + Local Services · GBP posts · Meta radius",
+    "window": "May – Oct 2027",
+    "owner": "Paid Media Lead · SEO/AEO/GEO Lead",
+    "note": "Top 6 centres first; requires canonical branch pages and clean GBP"
+   },
+   {
+    "name": "Open House 2027",
+    "platforms": "Meta · Google · TikTok · organic social",
+    "window": "Jul (pre-reg) – 19 Sep 2027",
+    "share": "Seasonal",
+    "owner": "Paid Media Lead · Social Media Lead",
+    "note": "2026 pattern: 29 Aug–19 Sep, 7 centres; 2027 adds per-branch capacity and same-day confirmation"
+   },
+   {
+    "name": "TikTok pilot → evergreen",
+    "platforms": "TikTok",
+    "window": "Pilot Jan–Mar 2027; scale if cost per result and booking rate hold",
+    "owner": "Paid Media Lead",
+    "note": "Cheapest cost per result of any paid channel in 2026; three BM explainers 2.6M views"
+   },
+   {
+    "name": "LinkedIn demand validation",
+    "platforms": "LinkedIn",
+    "window": "Q1 2027 validation; pilot only on evidence",
+    "owner": "Paid Media Lead",
+    "note": "689 followers today; corporate panel (Compumed, Prudential, Great Eastern) is the only plausible angle"
+   },
+   {
+    "name": "PMax & remarketing",
+    "platforms": "Google PMax",
+    "window": "All year",
+    "owner": "Paid Media Lead",
+    "note": "Was 23–52% of 'conversions' at a fraction of the cost of a real enquiry; now reports separately and only on enquiry actions"
+   },
+   {
+    "name": "Reserve",
+    "platforms": "—",
+    "window": "—",
+    "owner": "Head of Digital Solutions",
+    "note": "Seasonal top-ups and pilots; unspent reserve returns to evergreen quarterly"
+   }
+  ],
+  "team": [
+   {
+    "role": "Head of Digital Solutions — engagement lead",
+    "tier": "L3",
+    "alloc": [
+     4,
+     4,
+     5,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     4,
+     3,
+     4
+    ],
+    "core": "Single accountable owner of the engagement and its outcomes; chairs SteerCo; owns renewal, Year-2 scope and commercial decisions; final escalation for the client",
+    "shared": "Q1–Q4 market research narrative and Growth Territory calls with the Strategy Lead; go/no-go at Gate 5; media reallocation decisions with the Paid Media Lead"
+   },
+   {
+    "role": "Digital Solutions Lead — strategy & research",
+    "tier": "L3",
+    "alloc": [
+     2,
+     2,
+     3,
+     1,
+     2,
+     3,
+     1,
+     1,
+     3,
+     1,
+     1,
+     3
+    ],
+    "core": "Author of the quarterly market research and competitive benchmark (Scope 8); competitor set, positioning matrix, strategic roadmap updates",
+    "shared": "Pre-read packs for SteerCo with the Programme Manager; AI-visibility benchmark interpretation with the SEO Lead; advisory hours (C2)"
+   },
+   {
+    "role": "Executive Sponsor (CEO)",
+    "tier": "L3",
+    "alloc": [
+     1,
+     1,
+     1,
+     0.5,
+     0.5,
+     1,
+     0.5,
+     0.5,
+     1,
+     1,
+     0.5,
+     1
+    ],
+    "core": "Executive relationship with Qualitas leadership; SteerCo attendance; L3 escalation point named in the governance charter",
+    "shared": "Renewal negotiation and contract variations with the Head of Digital Solutions"
+   },
+   {
+    "role": "Account Manager — single point of contact",
+    "tier": "L1",
+    "alloc": [
+     12,
+     12,
+     12,
+     10,
+     10,
+     10,
+     10,
+     10,
+     10,
+     10,
+     10,
+     10
+    ],
+    "core": "Day-to-day client interface; owns the CRM & lead-handling workstream with Vista CS; approvals, access requests and clinical-review turnaround; monthly strategy meeting facilitation",
+    "shared": "Monthly conversation QC with the Analytics Lead; campaign approvals and KKLIU trail with Paid Media and Social; action-log closure with the Programme Manager"
+   },
+   {
+    "role": "Delivery Coordinator",
+    "tier": "L1",
+    "alloc": [
+     8,
+     8,
+     8,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6
+    ],
+    "core": "Reporting calendar; minutes within one business day; action log and RAID hygiene; scheduling of gates, SteerCos and reviews; document control",
+    "shared": "Monthly consolidated report assembly with the Analytics Lead; content and social calendar coordination with the Content and Social Leads"
+   },
+   {
+    "role": "Programme Manager",
+    "tier": "L2",
+    "alloc": [
+     14,
+     14,
+     16,
+     10,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8
+    ],
+    "core": "Owns the plan, gates and critical path; weekly RAG status in the build; change control (8 hours/month); RAID log; resource allocation and capacity",
+    "shared": "Gate 5 go/no-go recommendation with the Technical Lead; hypercare exit criteria with QA; renewal preparation with the Head of Digital Solutions"
+   },
+   {
+    "role": "Technical Lead / Solution Architect",
+    "tier": "L2",
+    "alloc": [
+     12,
+     16,
+     18,
+     10,
+     6,
+     8,
+     6,
+     6,
+     5,
+     5,
+     5,
+     5
+    ],
+    "core": "Architecture and build of the headless platform (Storyblok, Next.js, AWS Malaysia); infrastructure as code; server-side tagging; P1 on-call; SLA ownership from go-live; DR drills",
+    "shared": "Measurement plan implementation with the Analytics Lead; security reviews and pen test with QA & Security; Respond.io web-chat and CAPI integrations with the Account Manager and Analytics Lead"
+   },
+   {
+    "role": "UX/UI Lead",
+    "tier": "—",
+    "alloc": [
+     10,
+     14,
+     8,
+     4,
+     6,
+     6,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4
+    ],
+    "core": "Discovery workshops, IA and sitemap, wireframes, design system, interactive prototype; accessibility by design; CRO experiments after launch",
+    "shared": "Paid creative library (10/month) and motion assets with the Social Media Lead; landing-page templates with the Paid Media Lead; branch-page and doctor-profile templates with the SEO Lead"
+   },
+   {
+    "role": "Front-end / CMS Engineer (A)",
+    "tier": "—",
+    "alloc": [
+     8,
+     18,
+     20,
+     10,
+     6,
+     8,
+     8,
+     6,
+     4,
+     4,
+     4,
+     4
+    ],
+    "core": "Next.js templates and components; Storyblok schemas and editorial workflow; content migration tooling; 301 map implementation; on-call rota",
+    "shared": "Structured data and hreflang with the SEO Lead; Command Centre front end with the Analytics Lead; Phase-2 features under change control"
+   },
+   {
+    "role": "Front-end / CMS Engineer (B)",
+    "tier": "—",
+    "alloc": [
+     8,
+     18,
+     20,
+     10,
+     6,
+     8,
+     8,
+     6,
+     4,
+     4,
+     4,
+     4
+    ],
+    "core": "Second engineer on every component (no single-person dependency); translation QA for BM/ZH; performance budget (Lighthouse ≥ 90 in CI); on-call rota",
+    "shared": "Consent Management Platform and tag integration with the Analytics Lead; vistanow consolidation with the Content Lead"
+   },
+   {
+    "role": "QA & Security Lead",
+    "tier": "—",
+    "alloc": [
+     4,
+     8,
+     14,
+     6,
+     3,
+     4,
+     3,
+     3,
+     3,
+     4,
+     4,
+     3
+    ],
+    "core": "Test strategy and UAT; axe-core and Lighthouse in CI; manual screen-reader audit; coordination of the external security review and penetration test; quarterly vulnerability assessment",
+    "shared": "Pre/post migration crawl comparison with the SEO Lead; tracking verification at go-live with the Analytics Lead; hypercare defect triage with the Programme Manager"
+   },
+   {
+    "role": "Analytics Lead",
+    "tier": "—",
+    "alloc": [
+     14,
+     14,
+     14,
+     10,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8
+    ],
+    "core": "Measurement plan and single lead definition; GA4 rebuild; reconciled lead ledger (platform → CRM → appointment); Command Centre data model and reports; confidence labels; monthly report by the 7th; quarterly executive report",
+    "shared": "Server-side GTM, CMP and CAPI with the Technical Lead; booking signal to Meta/Google with the Paid Media Lead; Respond.io lifecycle and QC with the Account Manager"
+   },
+   {
+    "role": "SEO / AEO / GEO Lead",
+    "tier": "—",
+    "alloc": [
+     12,
+     12,
+     10,
+     10,
+     10,
+     10,
+     10,
+     10,
+     10,
+     10,
+     10,
+     10
+    ],
+    "core": "Day 1–30 audit and 12-month roadmap; EN/BM/ZH keyword and entity map; migration SEO; 16-centre local SEO and GBP; AEO (FAQ/PAA/entity) and GEO (prompt library, 5-engine benchmark); monthly execution logs",
+    "shared": "Keyword-cluster map and briefs with the Content Lead; schema and hreflang with the engineers; local campaign targeting with the Paid Media Lead; AI-visibility interpretation with the Strategy Lead"
+   },
+   {
+    "role": "Content Lead",
+    "tier": "—",
+    "alloc": [
+     6,
+     10,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8
+    ],
+    "core": "Editorial standards and medical-review workflow in the CMS; rolling calendar one month ahead; 52 articles/year (EN/BM/ZH as demand supports); quarterly refresh; vistanow consolidation",
+    "shared": "Article briefs and optimisation with the SEO Lead; social copy with the Social Media Lead; clinical-review scheduling with the Account Manager and clinical advisor"
+   },
+   {
+    "role": "Paid Media Lead",
+    "tier": "—",
+    "alloc": [
+     10,
+     12,
+     12,
+     10,
+     12,
+     10,
+     10,
+     10,
+     10,
+     12,
+     10,
+     10
+    ],
+    "core": "Day-30 media audit; account restructure; evidence-before-scale pilots (TikTok, LinkedIn); evergreen and seasonal campaigns; optimisation to cost per booking; monthly paid report and lead-quality analysis",
+    "shared": "Creative library with UX/UI and Social; conversion actions and booking signal with the Analytics Lead; landing pages with the engineers; KKLIU approval trail with the Account Manager"
+   },
+   {
+    "role": "Social Media Lead",
+    "tier": "—",
+    "alloc": [
+     6,
+     10,
+     10,
+     10,
+     10,
+     10,
+     10,
+     10,
+     10,
+     12,
+     10,
+     10
+    ],
+    "core": "Channel audit and brand set-up; monthly mix (4 reels, 2 carousels, 2 static) on IG cross-published to FB; TikTok BM re-cuts; community management within 4 business hours; monthly social report",
+    "shared": "Motion and design assets with the UX/UI Lead; doctor-led series and copy with the Content Lead; boosting and paid creative with the Paid Media Lead"
+   }
+  ],
+  "solution": {
+   "stack": [
+    [
+     "Content platform",
+     "Storyblok (headless CMS), visual editor, roles and medical sign-off workflow; editorial region Asia-Pacific where available"
+    ],
+    [
+     "Front end",
+     "Next.js (TypeScript), static generation with incremental revalidation; SSR only for the authenticated Command Centre"
+    ],
+    [
+     "Hosting",
+     "AWS Asia Pacific (Malaysia) ap-southeast-5, 3 AZs; CloudFront + WAF + Shield; Amplify Hosting (ECS Fargate fallback); RDS PostgreSQL Multi-AZ; daily encrypted backups ≥ 30 days; DR to Singapore only with Vista consent"
+    ],
+    [
+     "Security",
+     "TLS/HSTS/CSP, SSO/MFA + RBAC, SAST and CVE checks on every merge, critical patches ≤ 7 days; external architecture/security review at end of Discovery and pre-launch including a penetration test"
+    ],
+    [
+     "Accessibility & performance",
+     "WCAG 2.2 AA with axe-core in CI and manual screen-reader audit; Lighthouse ≥ 90 on every PR; CWV Good at go-live (lab), field p75 Good by Month 6"
+    ],
+    [
+     "Measurement",
+     "GA4 (enquiry-only key events), GTM client + server-side in Malaysia, Consent Management Platform with Consent Mode, Meta Pixel + CAPI, TikTok and LinkedIn pixels, Google Enhanced Conversions, call and WhatsApp attribution, UTM standard"
+    ],
+    [
+     "CRM",
+     "Respond.io: web-chat channel, page-URL and campaign capture, lifecycle redesign, booking signal to Meta/Google, monthly QC; Salesforce/booking-system link to confirm attended appointments"
+    ],
+    [
+     "Command Centre",
+     "Vista-owned management app: five RFP role views, reconciled lead ledger, cost per booking by campaign and branch, data-confidence labels; Looker Studio views for wider circulation"
+    ],
+    [
+     "Search tooling",
+     "Rank and AI-visibility tooling (vendor-neutral, Vista-owned), version-controlled prompt library, ChatGPT/Gemini/Perplexity/Claude via API, Copilot manual"
+    ],
+    [
+     "Governance tooling",
+     "Jira Service Management (SLA tickets), shared RAID log, action log in Command Centre"
+    ]
+   ],
+   "integrations": [
+    "Respond.io ↔ website (web-chat, WhatsApp click with reference)",
+    "Respond.io → Meta CAPI (booking event)",
+    "Respond.io → Google Ads Enhanced Conversions",
+    "Booking system / Salesforce → Command Centre (attended appointments)",
+    "GA4 + Ads + Meta + TikTok + GSC → Command Centre (daily)",
+    "Storyblok → Next.js (webhooks, ISR)",
+    "Call tracking → GA4 + Respond.io reference"
+   ],
+   "chain": [
+    [
+     "Ad / search / social impression",
+     "Platform IDs (gclid, fbclid, ttclid) preserved through CMP consent"
+    ],
+    [
+     "Landing page on new site",
+     "Server-side GTM stamps enquiry reference; page URL and campaign recorded"
+    ],
+    [
+     "Enquiry (WhatsApp, form, call, chat)",
+     "One enquiry = one person = one reference; non-leads routed out"
+    ],
+    [
+     "Respond.io lifecycle",
+     "New → Warm → Hot → Appointment Booked; stage changes timestamped"
+    ],
+    [
+     "Booking system",
+     "Attended appointment confirmed; reference closed"
+    ],
+    [
+     "Command Centre",
+     "Cost per booking by campaign, branch, language; confidence label on every figure"
+    ]
+   ]
+  },
+  "kpis": [
+   {
+    "k": "Cost per booked appointment",
+    "baseline": "RM182 per booked appointment (Jan–Aug 2026)",
+    "m4": "Post-launch baseline set",
+    "m6": "−15% vs Month-4",
+    "m12": "−25% vs Month-4",
+    "src": "Digital spend ÷ Respond.io Appointment Booked → Command Centre"
+   },
+   {
+    "k": "Cost per attended visit (patient who actually came in)",
+    "baseline": "Not measured today — a booked appointment is a scheduled visit, not a paid one",
+    "m4": "Baseline from the booking system / Salesforce export",
+    "m6": "Reported monthly by campaign and centre",
+    "m12": "Target set at the Month-4 review",
+    "src": "Booking system or Salesforce → Command Centre; Excel export if the Salesforce tier has no webhooks"
+   },
+   {
+    "k": "Paid Ads → Appointment Booked",
+    "baseline": "1.5% (Dec 2025–Aug 2026)",
+    "m4": "≥ 2.5%",
+    "m6": "≥ 4%",
+    "m12": "≥ 6%",
+    "src": "Respond.io Lifecycle by source"
+   },
+   {
+    "k": "Warm Lead → Hot Prospect",
+    "baseline": "21–33% monthly",
+    "m4": "≥ 35%",
+    "m6": "≥ 40%",
+    "m12": "≥ 45%",
+    "src": "Respond.io Lifecycle"
+   },
+   {
+    "k": "Website conversion rate (enquiry key events ÷ sessions)",
+    "baseline": "Set at post-launch baseline (26 Feb 2027)",
+    "m4": "Baseline",
+    "m6": "+15%",
+    "m12": "+25% (RFP floor)",
+    "src": "GA4, enquiry-only key events"
+   },
+   {
+    "k": "Organic sessions",
+    "baseline": "Post-launch baseline; 2025 ref 121k/20 mo",
+    "m4": "Index parity",
+    "m6": "+15%",
+    "m12": "+40% (RFP floor)",
+    "src": "GA4 / GSC"
+   },
+   {
+    "k": "Tracked keywords on page 1",
+    "baseline": "Semrush 156/201 top-10 (Jul 2026), brand-heavy",
+    "m4": "Commercial head terms mapped",
+    "m6": "≥ 50%",
+    "m12": "≥ 60%",
+    "src": "Rank tooling, new keyword set"
+   },
+   {
+    "k": "Local pack top-3 (priority centre × service)",
+    "baseline": "Not measured today",
+    "m4": "Baseline per centre",
+    "m6": "≥ 8 pairs",
+    "m12": "≥ 16 pairs",
+    "src": "Local rank tooling"
+   },
+   {
+    "k": "AI visibility (engines citing Vista)",
+    "baseline": "Baseline taken at Day 30",
+    "m4": "Benchmark 1",
+    "m6": "≥ 3 engines",
+    "m12": "≥ 5 engines",
+    "src": "Prompt library, 5 engines"
+   },
+   {
+    "k": "Core Web Vitals (mobile, field p75)",
+    "baseline": "Not measurable (PSI quota); lab CLS 0.167",
+    "m4": "Lab Good at go-live",
+    "m6": "Field Good",
+    "m12": "Field Good sustained",
+    "src": "CrUX / PSI"
+   },
+   {
+    "k": "Uptime",
+    "baseline": "Not measured",
+    "m4": "≥ 99.9%",
+    "m6": "≥ 99.9%",
+    "m12": "≥ 99.9%",
+    "src": "CloudWatch Synthetics"
+   },
+   {
+    "k": "Content published",
+    "baseline": "0 since May 2026",
+    "m4": "16 articles",
+    "m6": "24",
+    "m12": "52; ≥ 10% in top 10",
+    "src": "CMS + rank tooling"
+   },
+   {
+    "k": "Social minimum mix",
+    "baseline": "32 posts / 90 days, lumpy",
+    "m4": "100% mix from Month 2",
+    "m6": "Engagement +15%",
+    "m12": "Engagement +30% vs Month 1",
+    "src": "Platform insights"
+   },
+   {
+    "k": "Ledger variance (platform vs CRM vs appointments)",
+    "baseline": "Unreconciled (5 counts)",
+    "m4": "< 20%",
+    "m6": "< 10%",
+    "m12": "< 10%, investigated in 5 days",
+    "src": "Command Centre"
+   },
+   {
+    "k": "Action closure (strategy meeting)",
+    "baseline": "345 open items, none closed",
+    "m4": "≥ 80%",
+    "m6": "≥ 90%",
+    "m12": "≥ 90%",
+    "src": "Action log"
+   }
+  ],
+  "risks": [
+   {
+    "r": "Handover from the current agency, which holds GA4, Ads, Meta, GTM and Respond.io admin access and the reporting",
+    "owner": "Head of Digital Solutions",
+    "mit": "Access checklist in the award letter; Gate 0 blocks Discovery until Vista-owned accounts are confirmed; the current agency kept on a 30-day read-only handover if needed",
+    "fallback": "Rebuild GA4 property and ad accounts from scratch under Vista ownership; accept 2–3 weeks' history gap"
+   },
+   {
+    "r": "Go-live (22 Jan) collides with CNY campaign (6–7 Feb)",
+    "owner": "Programme Manager",
+    "mit": "Gate 5 on 15 Jan is a hard decision point; CNY landing pages built on both legacy and new site",
+    "fallback": "Go-live moves to 22 Feb; CNY runs on hardened legacy site with new tracking already live via GTM"
+   },
+   {
+    "r": "Vista clinical review latency stalls content and site copy",
+    "owner": "Account Manager",
+    "mit": "Named reviewers and 5-business-day SLA in the governance charter; calendar one month ahead; clinical advisor pre-reviews",
+    "fallback": "Publish non-clinical content (branch, doctor, FAQ) first; escalate at monthly meeting"
+   },
+   {
+    "r": "The media budget reduces materially against the current run-rate — lead volume optics fall before quality shows",
+    "owner": "Paid Media Lead · Head of Digital Solutions",
+    "mit": "Reporting switches to cost per booked appointment from Month 2; reserve and seasonal top-ups pre-agreed",
+    "fallback": "Vista tops up evergreen from the seasonal reserve; cost per lead is never reported without the booking rate beside it"
+   },
+   {
+    "r": "Respond.io admin access refused or delayed",
+    "owner": "Account Manager",
+    "mit": "Gate 0 condition; owner-level access requested in writing on award",
+    "fallback": "Vista CRM owner executes changes from CDS specifications under a change log"
+   },
+   {
+    "r": "KKLIU approval cycle delays campaigns and creative",
+    "owner": "Social Media Lead · Paid Media Lead",
+    "mit": "Approval-trail workflow; creative pipeline 6 weeks ahead; compliant claim library replaces 'Top #1', 'guaranteed', 'painless'",
+    "fallback": "Run approved evergreen creative; hold seasonal until approved"
+   },
+   {
+    "r": "Key-person dependency in the build",
+    "owner": "Technical Lead",
+    "mit": "Two engineers on every component; IaC and documentation from Week 2",
+    "fallback": "CDS bench developer added within 5 business days"
+   },
+   {
+    "r": "Storyblok editorial region outside Malaysia; PDPA sensitivity",
+    "owner": "Technical Lead · QA & Security Lead",
+    "mit": "Editorial content only in Storyblok; all lead and patient data in AWS Malaysia; sub-processor list disclosed",
+    "fallback": "Self-hosted CMS option priced at Gate 1 if Vista requires"
+   },
+   {
+    "r": "Bot and data-centre traffic distorts the new baseline",
+    "owner": "Analytics Lead",
+    "mit": "Exclusions and bot filter in GA4 rebuild; confidence labels",
+    "fallback": "Baseline restated with exclusions documented"
+   },
+   {
+    "r": "Renewal decision left to the last month",
+    "owner": "Head of Digital Solutions",
+    "mit": "Terms tabled 30 Jul; decision requested 31 Aug; Year-2 plan at SteerCo 4",
+    "fallback": "Month-to-month extension clause; 30-day transition-out already in the proposal"
+   }
+  ]
+ },
+ "MON": [
+  "Nov 26",
+  "Dec 26",
+  "Jan 27",
+  "Feb 27",
+  "Mar 27",
+  "Apr 27",
+  "May 27",
+  "Jun 27",
+  "Jul 27",
+  "Aug 27",
+  "Sep 27",
+  "Oct 27"
+ ],
+ "HOLIDAYS": [
+  [
+   "2026-11-08",
+   "Deepavali"
+  ],
+  [
+   "2026-12-25",
+   "Christmas"
+  ],
+  [
+   "2027-01-01",
+   "New Year"
+  ],
+  [
+   "2027-02-06",
+   "CNY"
+  ],
+  [
+   "2027-02-07",
+   "CNY"
+  ],
+  [
+   "2027-03-09",
+   "Hari Raya"
+  ],
+  [
+   "2027-03-10",
+   "Hari Raya"
+  ],
+  [
+   "2027-05-01",
+   "Labour Day"
+  ],
+  [
+   "2027-05-17",
+   "Raya Haji"
+  ],
+  [
+   "2027-06-07",
+   "Agong's birthday"
+  ],
+  [
+   "2027-08-31",
+   "Merdeka"
+  ],
+  [
+   "2027-09-16",
+   "Malaysia Day"
+  ],
+  [
+   "2027-10-29",
+   "Deepavali"
+  ]
+ ],
+ "SHORT": {
+  "P0": "Mobilise",
+  "P1": "Audit & Discovery",
+  "P2": "Build",
+  "P3": "Hypercare",
+  "P4": "Optimise",
+  "P5": "Scale & renew"
+ }
+}
