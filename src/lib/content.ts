@@ -86,7 +86,7 @@ export const defaultContent: Content = {
     preparedFor: "Vista Eye Specialist · Qualitas Health Malaysia",
     preparedBy: "Caspian Digital Solutions",
     issueDate: "September 2026",
-    confidentiality: "Client edition v4 · Commercial figures are in the separate commercial proposal",
+    confidentiality: "",
   },
   hero: {
     eyebrow: "Vista Eye Specialist · Digital Transformation RFP QHM/VES/DT/2026/003 · Qualitas Health Malaysia · Caspian Digital Solutions",

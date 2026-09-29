@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Eye, EyeOff, KeyRound, Loader2, LockKeyhole, PencilLine, ShieldCheck } from "lucide-react";
+import { ArrowRight, Eye, EyeOff, KeyRound, Loader2, LockKeyhole, PencilLine } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -61,7 +61,7 @@ export function LoginForm({ next, meta, demo }: LoginFormProps) {
 
   return (
     <div className="grid min-h-screen lg:grid-cols-[1.1fr_0.9fr]">
-      <aside className="relative hidden overflow-hidden bg-brand-deep text-white lg:flex lg:flex-col lg:justify-between lg:p-14">
+      <aside className="relative hidden overflow-hidden bg-brand-deep text-white lg:flex lg:flex-col lg:p-14">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="float-slow absolute -top-24 -right-24 size-[30rem] rounded-full bg-brand/30 blur-3xl" />
           <div className="float-slow absolute -bottom-32 -left-20 size-[26rem] rounded-full bg-vista-green/15 blur-3xl [animation-delay:-5s]" />
@@ -80,7 +80,7 @@ export function LoginForm({ next, meta, demo }: LoginFormProps) {
           </div>
         </div>
 
-        <div className="relative fade-up">
+        <div className="relative my-auto fade-up">
           <p className="eyebrow mb-4 text-brand-light">
             {meta.docCode} {meta.version} · {meta.edition}
           </p>
@@ -97,11 +97,6 @@ export function LoginForm({ next, meta, demo }: LoginFormProps) {
             </div>
           </dl>
         </div>
-
-        <p className="relative flex items-center gap-2 text-xs text-white/55">
-          <ShieldCheck className="size-3.5 text-brand-light" />
-          {meta.confidentiality}
-        </p>
       </aside>
 
       <main className="flex items-center justify-center bg-background px-6 py-12">

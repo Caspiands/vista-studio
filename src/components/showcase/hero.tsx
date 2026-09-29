@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, FileDown, ShieldCheck } from "lucide-react";
+import { ArrowRight, FileDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Editable } from "@/components/cms/editable";
 import { useTabs } from "./tabs-context";
@@ -77,13 +77,6 @@ export function Hero() {
               </dd>
             </div>
           </dl>
-        </div>
-      </div>
-
-      <div className="border-t border-white/10 bg-black/10">
-        <div className="mx-auto flex max-w-7xl items-center gap-2 px-6 py-3 text-xs text-white/55">
-          <ShieldCheck className="size-3.5 shrink-0 text-brand-light" />
-          <Editable path="meta.confidentiality" />
         </div>
       </div>
     </header>
