@@ -60,10 +60,6 @@ export function authenticate(username: string, password: string): Account | null
   return match ?? null;
 }
 
-export function isValidAccessCode(code: string) {
-  return constantTimeEqual(code, ACCESS_CODE);
-}
-
 /** Fixed showcase access code. Checked only after a password has been accepted. */
 export function accessCodeMatches(code: string) {
   return constantTimeEqual(code, DEFAULTS.accessCode);
