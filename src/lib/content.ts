@@ -100,8 +100,8 @@ export const defaultContent: Content = {
   tiles: {
     visible: true,
     eyebrow: "At a glance",
-    heading: "Six numbers that frame the plan",
-    intro: "The baseline Vista shared, the first milestone, and the size of the plan that answers it.",
+    heading: "Where Vista is today, and where we're taking it",
+    intro: "Vista's current baseline, our first milestone, and the plan.",
     items: [
       { label: "Cost per booked appointment", value: "RM182", note: "Jan–Aug 2026 baseline; reported CPL is RM10–19" },
       { label: "Booking rate, paid vs unpaid", value: "1.5% / 14.4%", note: "Dec 2025–Aug 2026, Respond.io lifecycle" },
