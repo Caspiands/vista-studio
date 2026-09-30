@@ -26,9 +26,9 @@ npm install
 npm run dev
 ```
 
-Open <http://localhost:4721>. You'll be redirected to `/login`.
+Open <http://localhost:4721>. You'll be redirected to `/login`. Sign in with a username and password, then enter the access code.
 
-Default demo credentials (shown on the login page until you override them):
+Default accounts (override these before sharing the site):
 
 | Role   | Username | Password            |
 | ------ | -------- | ------------------- |
@@ -45,7 +45,6 @@ Copy `.env.example` to `.env.local` and set:
 | `CMS_VIEWER_USERNAME` / `CMS_VIEWER_PASSWORD` | Client (view-only) account                                                               |
 | `CMS_SESSION_SECRET`                          | Long random string used to sign session cookies                                          |
 | `CMS_DATA_DIR`                                | Directory for published edits (default `./data`); use a persistent volume in production |
-| `CMS_HIDE_DEMO_CREDENTIALS`                   | `true` to hide the demo panel on the login page                                          |
 
 Change all defaults before sharing the site with a client.
 
