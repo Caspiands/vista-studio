@@ -3,6 +3,11 @@
 import * as React from "react";
 import { isModuleKey, type ModuleKey } from "@/lib/modules-shared";
 
+/** Old hashes that should still open a tab. The app always writes the canonical key. */
+const HASH_ALIASES: Record<string, ModuleKey> = {
+  creative: "creatives",
+};
+
 export type TabKey = "overview" | ModuleKey;
 
 interface TabsContextValue {
@@ -21,7 +26,8 @@ export function useTabs() {
 
 function tabFromHash(): TabKey {
   const hash = window.location.hash.replace(/^#/, "");
-  return isModuleKey(hash) ? hash : "overview";
+  if (isModuleKey(hash)) return hash;
+  return HASH_ALIASES[hash] ?? "overview";
 }
 
 function subscribe(callback: () => void) {
@@ -36,6 +42,19 @@ function subscribe(callback: () => void) {
 export function TabsProvider({ children }: { children: React.ReactNode }) {
   // The active tab lives in the URL hash (as in the original document) so links and reloads keep their place.
   const active = React.useSyncExternalStore(subscribe, tabFromHash, () => "overview" as TabKey);
+
+  React.useEffect(() => {
+    const canonicalise = () => {
+      const hash = window.location.hash.replace(/^#/, "");
+      const canonical = HASH_ALIASES[hash];
+      if (!canonical) return;
+      window.history.replaceState(null, "", `#${canonical}`);
+      window.dispatchEvent(new Event(TAB_EVENT));
+    };
+    canonicalise();
+    window.addEventListener("hashchange", canonicalise);
+    return () => window.removeEventListener("hashchange", canonicalise);
+  }, []);
 
   const setActive = React.useCallback((tab: TabKey) => {
     const url = tab === "overview" ? window.location.pathname : `#${tab}`;

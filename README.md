@@ -8,9 +8,9 @@ The client-facing web edition of the **Vista DTR 2026-27 v4 Client Edition** pro
   - `editor` — turns on *Edit mode*, edits text in place, reorders/adds/removes list entries and table rows, hides or shows sections, publishes, discards, or restores the original; also edits every tab's data and markup.
   - `viewer` — read-only access to the published document.
 - **Overview hub** (native, fully editable): hero, the six at-a-glance tiles, the seven-step reading order, the twelve-month targets table with group headings, working principles and first-weeks agreements, the tab guide, and the footer.
-- **Seven tabs carried over from the source document** — *Vista Today, Audiences, Content, SEO · AEO · GEO, Creative, Website, Roadmap* — rendered exactly as authored (charts, Gantt, sortable tables, sample creative) inside the app. Each is editable:
+- **Seven tabs carried over from the source document** — *Vista Today, Audiences, Content, SEO · AEO · GEO, Creatives, Website, Roadmap* — rendered exactly as authored (charts, Gantt, sortable tables, sample creative) inside the app. Each is editable:
   - **Data & text** — the figures, labels and paragraphs each tab renders are extracted into structured data and edited through a folding tree editor; the tab redraws on publish.
-  - **Edit text in page** — for the image-led tabs (Creative, Website) the page itself becomes editable; click and type, then publish.
+  - **Edit text in page** — for the image-led tabs (Creatives, Website) the page itself becomes editable; click and type, then publish.
   - **HTML source** — the full markup of any tab, for advanced changes.
 - **Hover animations** throughout the hub: card lifts, tab and link transitions, button shine, icon rotations.
 - **Print / Save as PDF** for the overview with a print-optimised layout.

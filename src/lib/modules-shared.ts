@@ -1,4 +1,4 @@
-export const MODULE_KEYS = ["analysis", "personas", "campaigns", "search", "creative", "website", "roadmap"] as const;
+export const MODULE_KEYS = ["analysis", "personas", "campaigns", "search", "creatives", "website", "roadmap"] as const;
 export type ModuleKey = (typeof MODULE_KEYS)[number];
 
 export const MODULE_LABELS: Record<ModuleKey, string> = {
@@ -6,7 +6,7 @@ export const MODULE_LABELS: Record<ModuleKey, string> = {
   personas: "Audiences",
   campaigns: "Content",
   search: "SEO · AEO · GEO",
-  creative: "Creative",
+  creatives: "Creatives",
   website: "Technical",
   roadmap: "Roadmap",
 };

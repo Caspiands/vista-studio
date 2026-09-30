@@ -160,8 +160,8 @@ export const defaultContent: Content = {
         ],
       },
       {
-        tab: "creative",
-        title: "Creative & production",
+        tab: "creatives",
+        title: "Creatives",
         stage: "What it looks like",
         summary: "Finished sample posts and ads on Vista's identity, the templates behind them, and the production rhythm.",
         bullets: ["8 sample posts, 6 sample ads with the reason each exists", "12 templates on Vista's CI", "Brief-to-post workflow and approvals"],
@@ -258,7 +258,7 @@ export const defaultContent: Content = {
         covers:
           "Where search stands today, SEO/AEO/GEO in plain terms, keyword and page plan, the 16 centres, answer-engine and AI-assistant implementation, technical foundation, content engine, 12-month search roadmap, tools and technologies, KPIs and reporting",
       },
-      { tab: "creative", covers: "Sample posts and ads on Vista's identity, the 12 templates, production workflow, what CDS needs from Vista, first-quarter calendars" },
+      { tab: "creatives", covers: "Sample posts and ads on Vista's identity, the 12 templates, production workflow, what CDS needs from Vista, first-quarter calendars" },
       { tab: "website", covers: "Two website concepts compared with the live site, measurements, recommendation, what is being tightened, the full sitemap, and the solution requirements" },
       { tab: "roadmap", covers: "Objectives, six phases as durations, Gantt, month by month, team by role, KPI ladder, risks and fallbacks" },
     ],
