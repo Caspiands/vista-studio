@@ -23,6 +23,7 @@ export function LoginForm({ next, meta }: LoginFormProps) {
   const [showPassword, setShowPassword] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [pending, setPending] = React.useState(false);
+  const [leaving, setLeaving] = React.useState(false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -80,11 +81,18 @@ export function LoginForm({ next, meta }: LoginFormProps) {
     }
   }
 
-  function handleBack() {
-    setStep("credentials");
-    setCode("");
+  async function handleBack() {
     setError(null);
-    void fetch("/api/auth/otp", { method: "DELETE" }).catch(() => {});
+    setLeaving(true);
+    try {
+      await fetch("/api/auth/otp", { method: "DELETE" });
+    } catch {
+      // The pending challenge expires on its own if this request does not land.
+    } finally {
+      setCode("");
+      setStep("credentials");
+      setLeaving(false);
+    }
   }
 
   return (
@@ -238,7 +246,7 @@ export function LoginForm({ next, meta }: LoginFormProps) {
               <Button
                 type="submit"
                 size="lg"
-                disabled={pending}
+                disabled={pending || leaving}
                 className="btn-shine h-11 w-full rounded-xl bg-brand-deep text-base text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg hover:shadow-brand-deep/25"
               >
                 {pending ? <Loader2 className="animate-spin" /> : <KeyRound />}
@@ -247,13 +255,14 @@ export function LoginForm({ next, meta }: LoginFormProps) {
               </Button>
               <Button
                 type="button"
-                variant="ghost"
+                variant="outline"
                 size="lg"
-                disabled={pending}
-                onClick={handleBack}
-                className="h-11 w-full rounded-xl text-base"
+                disabled={pending || leaving}
+                onClick={() => void handleBack()}
+                className="h-11 w-full rounded-xl text-base text-foreground"
               >
-                Back
+                {leaving ? <Loader2 className="animate-spin" /> : null}
+                Back to password
               </Button>
             </form>
           )}
