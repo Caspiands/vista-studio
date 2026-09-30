@@ -2,29 +2,24 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Eye, EyeOff, KeyRound, Loader2, LockKeyhole, PencilLine } from "lucide-react";
+import { ArrowRight, Eye, EyeOff, KeyRound, Loader2, LockKeyhole } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { Content } from "@/lib/content";
-import { cn } from "@/lib/utils";
-
-interface DemoAccounts {
-  editor: { username: string; password: string };
-  viewer: { username: string; password: string };
-}
 
 interface LoginFormProps {
   next: string;
   meta: Content["meta"];
-  demo: DemoAccounts | null;
 }
 
-export function LoginForm({ next, meta, demo }: LoginFormProps) {
+export function LoginForm({ next, meta }: LoginFormProps) {
   const router = useRouter();
+  const [step, setStep] = React.useState<"credentials" | "otp">("credentials");
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [code, setCode] = React.useState("");
   const [showPassword, setShowPassword] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [pending, setPending] = React.useState(false);
@@ -39,9 +34,41 @@ export function LoginForm({ next, meta, demo }: LoginFormProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
-      const data = (await response.json().catch(() => ({}))) as { error?: string };
+      const data = (await response.json().catch(() => ({}))) as { error?: string; otpRequired?: boolean };
       if (!response.ok) {
         setError(data.error ?? "Sign in failed. Please try again.");
+        return;
+      }
+      if (!data.otpRequired) {
+        setError("Sign in could not be completed. Please try again.");
+        return;
+      }
+      setCode("");
+      setStep("otp");
+    } catch {
+      setError("We could not reach the server. Check your connection and try again.");
+    } finally {
+      setPending(false);
+    }
+  }
+
+  async function handleOtp(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError(null);
+    if (!/^\d{6}$/.test(code)) {
+      setError("Enter the 6-digit access code.");
+      return;
+    }
+    setPending(true);
+    try {
+      const response = await fetch("/api/auth/otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code }),
+      });
+      const data = (await response.json().catch(() => ({}))) as { error?: string };
+      if (!response.ok) {
+        setError(data.error ?? "That access code was not recognised.");
         return;
       }
       router.push(next);
@@ -53,10 +80,11 @@ export function LoginForm({ next, meta, demo }: LoginFormProps) {
     }
   }
 
-  function fill(account: { username: string; password: string }) {
-    setUsername(account.username);
-    setPassword(account.password);
+  function handleBack() {
+    setStep("credentials");
+    setCode("");
     setError(null);
+    void fetch("/api/auth/otp", { method: "DELETE" }).catch(() => {});
   }
 
   return (
@@ -110,122 +138,127 @@ export function LoginForm({ next, meta, demo }: LoginFormProps) {
 
           <div className="mb-8">
             <span className="mb-4 inline-grid size-12 place-items-center rounded-2xl bg-brand-soft text-brand">
-              <LockKeyhole className="size-5" />
+              {step === "otp" ? <KeyRound className="size-5" /> : <LockKeyhole className="size-5" />}
             </span>
-            <h2 className="text-2xl font-semibold tracking-tight">Sign in to continue</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">
+              {step === "otp" ? "Enter your access code" : "Sign in to continue"}
+            </h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Access to this roadmap is restricted. Editors can update content in place; client accounts have read-only access.
+              {step === "otp"
+                ? "Your password was accepted. Enter the 6-digit access code to open the showcase."
+                : "Access to this roadmap is restricted. Editors can update content in place; client accounts have read-only access."}
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-            <div className="space-y-2">
-              <Label htmlFor="username">Username</Label>
-              <Input
-                id="username"
-                name="username"
-                autoComplete="username"
-                autoFocus
-                required
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="your.username"
-                className="h-11"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <div className="relative">
+          {step === "credentials" ? (
+            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+              <div className="space-y-2">
+                <Label htmlFor="username">Username</Label>
                 <Input
-                  id="password"
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="current-password"
+                  id="username"
+                  name="username"
+                  autoComplete="username"
+                  autoFocus
                   required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••••"
-                  className="h-11 pr-11"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="your.username"
+                  className="h-11"
                 />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword((v) => !v)}
-                  aria-label={showPassword ? "Hide password" : "Show password"}
-                  className="absolute top-1/2 right-2 grid size-8 -translate-y-1/2 place-items-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                >
-                  {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-                </button>
               </div>
-            </div>
-
-            {error && (
-              <p role="alert" className="rounded-lg border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive">
-                {error}
-              </p>
-            )}
-
-            <Button
-              type="submit"
-              size="lg"
-              disabled={pending}
-              className="btn-shine h-11 w-full rounded-xl bg-brand-deep text-base text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg hover:shadow-brand-deep/25"
-            >
-              {pending ? <Loader2 className="animate-spin" /> : <KeyRound />}
-              {pending ? "Signing in…" : "Sign in"}
-              {!pending && <ArrowRight className="transition-transform duration-300 group-hover/button:translate-x-1" />}
-            </Button>
-          </form>
-
-          {demo && (
-            <div className="mt-8 rounded-2xl border border-dashed border-amber-300 bg-amber-50/60 p-4">
-              <p className="text-xs font-semibold tracking-wide text-amber-900 uppercase">Demo access</p>
-              <p className="mt-1 text-xs text-amber-900/80">
-                Default credentials are active. Set <code className="rounded bg-amber-100 px-1">CMS_*</code> environment variables before sharing this with a client.
-              </p>
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                <DemoAccountButton icon={PencilLine} title="Editor" subtitle="Can edit & publish" account={demo.editor} onSelect={fill} />
-                <DemoAccountButton icon={Eye} title="Client" subtitle="View only" account={demo.viewer} onSelect={fill} />
+              <div className="space-y-2">
+                <Label htmlFor="password">Password</Label>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    autoComplete="current-password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••••"
+                    className="h-11 pr-11"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((v) => !v)}
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                    className="absolute top-1/2 right-2 grid size-8 -translate-y-1/2 place-items-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  >
+                    {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                  </button>
+                </div>
               </div>
-            </div>
+
+              {error && (
+                <p role="alert" className="rounded-lg border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive">
+                  {error}
+                </p>
+              )}
+
+              <Button
+                type="submit"
+                size="lg"
+                disabled={pending}
+                className="btn-shine h-11 w-full rounded-xl bg-brand-deep text-base text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg hover:shadow-brand-deep/25"
+              >
+                {pending ? <Loader2 className="animate-spin" /> : <KeyRound />}
+                {pending ? "Signing in…" : "Sign in"}
+                {!pending && <ArrowRight className="transition-transform duration-300 group-hover/button:translate-x-1" />}
+              </Button>
+            </form>
+          ) : (
+            <form onSubmit={handleOtp} className="space-y-5" noValidate>
+              <div className="space-y-2">
+                <Label htmlFor="access-code">Access code</Label>
+                <Input
+                  id="access-code"
+                  name="code"
+                  inputMode="numeric"
+                  autoComplete="one-time-code"
+                  autoFocus
+                  required
+                  maxLength={6}
+                  pattern="[0-9]{6}"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                  placeholder="••••••"
+                  aria-invalid={error ? true : undefined}
+                  className="h-11 font-mono tracking-[0.4em]"
+                />
+              </div>
+
+              {error && (
+                <p role="alert" className="rounded-lg border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive">
+                  {error}
+                </p>
+              )}
+
+              <Button
+                type="submit"
+                size="lg"
+                disabled={pending}
+                className="btn-shine h-11 w-full rounded-xl bg-brand-deep text-base text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg hover:shadow-brand-deep/25"
+              >
+                {pending ? <Loader2 className="animate-spin" /> : <KeyRound />}
+                {pending ? "Checking…" : "Continue"}
+                {!pending && <ArrowRight className="transition-transform duration-300 group-hover/button:translate-x-1" />}
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                size="lg"
+                disabled={pending}
+                onClick={handleBack}
+                className="h-11 w-full rounded-xl text-base"
+              >
+                Back
+              </Button>
+            </form>
           )}
         </div>
       </main>
     </div>
-  );
-}
-
-function DemoAccountButton({
-  icon: Icon,
-  title,
-  subtitle,
-  account,
-  onSelect,
-}: {
-  icon: React.ElementType;
-  title: string;
-  subtitle: string;
-  account: { username: string; password: string };
-  onSelect: (account: { username: string; password: string }) => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={() => onSelect(account)}
-      className={cn(
-        "group flex items-start gap-3 rounded-xl border border-amber-200 bg-white p-3 text-left transition-all duration-300",
-        "hover:-translate-y-0.5 hover:border-amber-400 hover:shadow-md hover:shadow-amber-900/10",
-      )}
-    >
-      <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-amber-100 text-amber-800 transition-colors group-hover:bg-amber-500 group-hover:text-white">
-        <Icon className="size-4" />
-      </span>
-      <span className="min-w-0">
-        <span className="block text-sm font-semibold">{title}</span>
-        <span className="block text-xs text-muted-foreground">{subtitle}</span>
-        <span className="mt-1 block truncate font-mono text-[11px] text-foreground/70">
-          {account.username} / {account.password}
-        </span>
-      </span>
-    </button>
   );
 }

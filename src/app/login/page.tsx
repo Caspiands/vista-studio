@@ -1,5 +1,4 @@
 import { redirect } from "next/navigation";
-import { demoCredentials, usingDefaultCredentials } from "@/lib/auth";
 import { readStoredContent } from "@/lib/content-store";
 import { getSession } from "@/lib/session";
 import { LoginForm } from "./login-form";
@@ -17,13 +16,6 @@ export default async function LoginPage({
   const params = await searchParams;
   const nextParam = typeof params.next === "string" && params.next.startsWith("/") ? params.next : "/";
   const { content } = await readStoredContent();
-  const showDemo = usingDefaultCredentials() && process.env.CMS_HIDE_DEMO_CREDENTIALS !== "true";
 
-  return (
-    <LoginForm
-      next={nextParam}
-      meta={content.meta}
-      demo={showDemo ? demoCredentials() : null}
-    />
-  );
+  return <LoginForm next={nextParam} meta={content.meta} />;
 }

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { authenticate, createSessionToken, SESSION_COOKIE, sessionCookieOptions } from "@/lib/auth";
+import { authenticate, createPendingToken, PENDING_COOKIE, pendingCookieOptions } from "@/lib/auth";
 
 export async function POST(request: Request) {
   let body: { username?: unknown; password?: unknown };
@@ -20,11 +20,13 @@ export async function POST(request: Request) {
   if (!account) {
     // Small fixed delay blunts brute-force attempts without hurting real users.
     await new Promise((resolve) => setTimeout(resolve, 400));
-    return NextResponse.json({ error: "Those credentials were not recognised." }, { status: 401 });
+    const response = NextResponse.json({ error: "Those credentials were not recognised." }, { status: 401 });
+    response.cookies.set(PENDING_COOKIE, "", { ...pendingCookieOptions, maxAge: 0 });
+    return response;
   }
 
-  const token = await createSessionToken(account.username, account.role);
-  const response = NextResponse.json({ username: account.username, role: account.role });
-  response.cookies.set(SESSION_COOKIE, token, sessionCookieOptions);
+  const token = await createPendingToken(account.username, account.role);
+  const response = NextResponse.json({ otpRequired: true });
+  response.cookies.set(PENDING_COOKIE, token, pendingCookieOptions);
   return response;
 }

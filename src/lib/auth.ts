@@ -7,7 +7,9 @@ export interface Session {
 }
 
 export const SESSION_COOKIE = "vista_dtr_session";
+export const PENDING_COOKIE = "vista_dtr_pending";
 const SESSION_TTL_SECONDS = 60 * 60 * 12;
+const PENDING_TTL_SECONDS = 60 * 5;
 
 interface Account {
   username: string;
@@ -21,6 +23,7 @@ const DEFAULTS = {
   viewerUser: "client",
   viewerPassword: "vista-client-2027",
   secret: "change-me-in-production-vista-dtr",
+  accessCode: "345126",
 };
 
 function env(name: string, fallback: string) {
@@ -43,24 +46,6 @@ export function getAccounts(): Account[] {
   ];
 }
 
-/** True when any account still uses a built-in default credential. */
-export function usingDefaultCredentials() {
-  const accounts = getAccounts();
-  return (
-    accounts[0].password === DEFAULTS.editorPassword ||
-    accounts[1].password === DEFAULTS.viewerPassword ||
-    env("CMS_SESSION_SECRET", DEFAULTS.secret) === DEFAULTS.secret
-  );
-}
-
-export function demoCredentials() {
-  const [editor, viewer] = getAccounts();
-  return {
-    editor: { username: editor.username, password: editor.password },
-    viewer: { username: viewer.username, password: viewer.password },
-  };
-}
-
 function constantTimeEqual(a: string, b: string) {
   if (a.length !== b.length) return false;
   let diff = 0;
@@ -73,6 +58,15 @@ export function authenticate(username: string, password: string): Account | null
     (account) => constantTimeEqual(account.username, username) && constantTimeEqual(account.password, password),
   );
   return match ?? null;
+}
+
+export function isValidAccessCode(code: string) {
+  return constantTimeEqual(code, ACCESS_CODE);
+}
+
+/** Fixed showcase access code. Checked only after a password has been accepted. */
+export function accessCodeMatches(code: string) {
+  return constantTimeEqual(code, DEFAULTS.accessCode);
 }
 
 const encoder = new TextEncoder();
@@ -99,27 +93,68 @@ async function hmacKey() {
   );
 }
 
-export async function createSessionToken(username: string, role: Role) {
-  const payload: Session = { username, role, exp: Math.floor(Date.now() / 1000) + SESSION_TTL_SECONDS };
+async function signToken(payload: object) {
   const body = toBase64Url(encoder.encode(JSON.stringify(payload)));
   const signature = await crypto.subtle.sign("HMAC", await hmacKey(), encoder.encode(body));
   return `${body}.${toBase64Url(new Uint8Array(signature))}`;
 }
 
-export async function verifySessionToken(token: string | undefined | null): Promise<Session | null> {
+async function readSignedPayload(token: string | undefined | null): Promise<Record<string, unknown> | null> {
   if (!token) return null;
   const [body, signature] = token.split(".");
   if (!body || !signature) return null;
   try {
     const valid = await crypto.subtle.verify("HMAC", await hmacKey(), fromBase64Url(signature), encoder.encode(body));
     if (!valid) return null;
-    const payload = JSON.parse(new TextDecoder().decode(fromBase64Url(body))) as Session;
+    const payload = JSON.parse(new TextDecoder().decode(fromBase64Url(body))) as Record<string, unknown>;
     if (typeof payload.exp !== "number" || payload.exp * 1000 < Date.now()) return null;
-    if (payload.role !== "editor" && payload.role !== "viewer") return null;
     return payload;
   } catch {
     return null;
   }
+}
+
+export async function createSessionToken(username: string, role: Role) {
+  const payload: Session = { username, role, exp: Math.floor(Date.now() / 1000) + SESSION_TTL_SECONDS };
+  return signToken(payload);
+}
+
+export async function verifySessionToken(token: string | undefined | null): Promise<Session | null> {
+  const payload = await readSignedPayload(token);
+  if (!payload) return null;
+  // Pending OTP tokens share the signing key but must never open the app.
+  if (payload.purpose !== undefined) return null;
+  if (payload.role !== "editor" && payload.role !== "viewer") return null;
+  if (typeof payload.username !== "string" || payload.username.length === 0) return null;
+  return { username: payload.username, role: payload.role, exp: payload.exp as number };
+}
+
+interface PendingAuth {
+  username: string;
+  role: Role;
+  exp: number;
+  purpose: "otp";
+}
+
+export async function createPendingToken(username: string, role: Role) {
+  const payload: PendingAuth = {
+    username,
+    role,
+    exp: Math.floor(Date.now() / 1000) + PENDING_TTL_SECONDS,
+    purpose: "otp",
+  };
+  return signToken(payload);
+}
+
+export async function verifyPendingToken(
+  token: string | undefined | null,
+): Promise<Pick<PendingAuth, "username" | "role"> | null> {
+  const payload = await readSignedPayload(token);
+  if (!payload) return null;
+  if (payload.purpose !== "otp") return null;
+  if (payload.role !== "editor" && payload.role !== "viewer") return null;
+  if (typeof payload.username !== "string" || payload.username.length === 0) return null;
+  return { username: payload.username, role: payload.role };
 }
 
 export const sessionCookieOptions = {
@@ -128,4 +163,12 @@ export const sessionCookieOptions = {
   secure: process.env.NODE_ENV === "production",
   path: "/",
   maxAge: SESSION_TTL_SECONDS,
+};
+
+export const pendingCookieOptions = {
+  httpOnly: true,
+  sameSite: "lax" as const,
+  secure: process.env.NODE_ENV === "production",
+  path: "/",
+  maxAge: PENDING_TTL_SECONDS,
 };
