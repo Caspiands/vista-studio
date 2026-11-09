@@ -1,0 +1,150 @@
+ <p class="lede">Planned days per role per month, with each role's core and shared responsibilities. People are assigned against these roles at mobilisation; these are the planning figures CDS commits to at contract.</p>
+ <div class="card"><div class="chart-title">Allocation heatmap (days/month by role)</div><div class="tscroll" id="t-team"></div></div>
+diff --git a/content/modules/search.data.json b/content/modules/search.data.json
+index 96ef4fc..989c0ca 100644
+--- a/content/modules/search.data.json
++++ b/content/modules/search.data.json
+@@ -11,15 +11,15 @@
+    {
+     "id": "F-11",
+     "area": "Local",
+-    "what": "16 centres, 101 location URLs, no H1 on any of them",
+-    "ev": "74 duplicate, legacy or copied location URLs return 200 and sit in the sitemap (5 PJ-HQ copies in BM and 5 in ZH, hub copies, /locations-old/, EN pages under a Chinese slug). 0 of 75 location pages carry an H1; none has LocalBusiness markup; 9 of 16 centre pages have 78–109 words. Phone formats differ on 3 pages; the enquiry form lists 14 of 16 centres. Google Business Profile: 13 listings plus a duplicate HQ listing, keyword-stuffed names.",
+-    "fix": "One canonical page per centre per language with markup; 74 URLs redirected; 16 verified listings with real names; centre × service tracking."
++    "what": "15 branches in the 2027 plan; the live site still has 16 centre pages and 101 location URLs",
++    "ev": "74 duplicate, legacy or copied location URLs return 200 and sit in the sitemap (5 PJ-HQ copies in BM and 5 in ZH, hub copies, /locations-old/, EN pages under a Chinese slug). 0 of 75 location pages carry an H1; none has LocalBusiness markup; 9 of 16 centre pages have 78–109 words. Phone formats differ on 3 pages; the enquiry form lists 14 of 16 centres. Google Business Profile: 13 listings plus a duplicate HQ listing, keyword-stuffed names. Crawl 9 Nov 2026: 214 sitemap URLs. The 2027 plan says 15 branches (list to confirm). Google Business Profile remains 13 listings plus one duplicate.",
++    "fix": "One canonical page per branch per language. The branch that is relocating is marked once Vista confirms it. 13 listings plus the duplicate stay the baseline until the missing listings are verified."
+    },
+    {
+     "id": "F-12",
+     "area": "Structure",
+     "what": "Sitemap omits two years of website articles; a Mandarin search does not reliably reach the site without hreflang",
+-    "ev": "The sitemap lists 224 URLs but none of the 52 website articles published in 2025–2026. 0 hreflang tags on 379 pages; languages served on ?lang= query strings; 37 of 43 Mandarin pages on percent-encoded slugs. A Mandarin search does not reliably reach the site without hreflang. On vistanow.com.my, 156 BM/ZH pages canonicalise to the English URL and 31 of 39 ZH website articles are untranslated English.",
++    "ev": "The sitemap lists 224 URLs but none of the 52 website articles published in 2025–2026. 0 hreflang tags on 379 pages; languages served on ?lang= query strings; 37 of 43 Mandarin pages on percent-encoded slugs. A Mandarin search does not reliably reach the site without hreflang. On vistanow.com.my, 156 BM/ZH pages canonicalise to the English URL and 31 of 39 ZH website articles are untranslated English. Crawl 9 Nov 2026, kept beside the September baseline: 214 sitemap URLs; 62 without a meta description; 112 without an H1; 5 with two H1s; 0 hreflang; 9,302 of 9,897 image tags without alt; 30 duplicate URLs to redirect; 35 titles or H1s with flagged wording.",
+     "fix": "Clean /ms/ and /zh/ routes with hreflang on the new site; every website article in the sitemap; vistanow content migrated and the domain redirected."
+    },
+    {
+@@ -33,7 +33,7 @@
+     "id": "F-19",
+     "area": "Entities",
+     "what": "No medical structured data; 20 doctors share one page",
+-    "ev": "Markup is the CMS default (Organization, WebPage, Breadcrumb, Article); LocalBusiness on the English home page only. No MedicalOrganization, MedicalClinic, Physician or MedicalProcedure on either domain. 20 ophthalmologists listed on one /doctors page with no individual URLs, portraits with empty alt text. 176 of 379 pages have no meta description.",
++    "ev": "Markup is the CMS default (Organization, WebPage, Breadcrumb, Article); LocalBusiness on the English home page only. No MedicalOrganization, MedicalClinic, Physician or MedicalProcedure on either domain. 20 ophthalmologists listed on one /doctors page with no individual URLs, portraits with empty alt text. 176 of 379 pages have no meta description. The 9 Nov crawl is the newer count (62 pages without a description, 112 without an H1). The September figure (176 of 379) stays as the earlier baseline.",
+     "fix": "Full medical schema set; a profile page per doctor; FAQ blocks per service; meta data generated from the CMS with a check in CI."
+    },
+    {
+@@ -249,6 +249,61 @@
+     "page": "Centre pages + Physician profiles",
+     "now": "–",
+     "note": "Doctor entities per centre"
++   },
++   {
++    "t": "corporate eye screening",
++    "vol": null,
++    "lang": "EN",
++    "track": "SEO",
++    "pillar": "Inside Vista",
++    "aud": "P11 · corporate",
++    "page": "Corporate eye-check package",
++    "now": "No dedicated page",
++    "note": "Q2 Screen Time, Eye Time. Wins the HR buyer."
++   },
++   {
++    "t": "eye check insurance benefits",
++    "vol": null,
++    "lang": "EN",
++    "track": "SEO",
++    "pillar": "Plan Your Visit",
++    "aud": "Adults 40+ · Seniors",
++    "page": "Insurance and benefits",
++    "now": "No dedicated page",
++    "note": "Q4. Sentence case. One benefit per page section."
++   },
++   {
++    "t": "diabetic eye screening",
++    "vol": null,
++    "lang": "EN",
++    "track": "SEO",
++    "pillar": "Know Your Eyes",
++    "aud": "Adults 40+ · Seniors",
++    "page": "Diabetic eye screening",
++    "now": "Folded into retina",
++    "note": "World Diabetes Day, 14 Nov."
++   },
++   {
++    "t": "eye specialist Johor Bahru Singapore",
++    "vol": null,
++    "lang": "EN",
++    "track": "Local",
++    "pillar": "Plan Your Visit",
++    "aud": "P08",
++    "page": "JB for Singapore guide",
++    "now": "No guide",
++    "note": "Scope decision. Medical tourism, not a price comparison."
++   },
++   {
++    "t": "eye specialist Penang Medan",
++    "vol": null,
++    "lang": "EN",
++    "track": "Local",
++    "pillar": "Plan Your Visit",
++    "aud": "P09",
++    "page": "Penang medical-tourism guide",
++    "now": "No guide",
++    "note": "Scope decision. Medan → Penang, MM2H and expats."
+    }
+   ],
+   "pairs": [
+@@ -303,8 +358,8 @@
+    ],
+    [
+     "Sitemap & indexing",
+-    "224 URLs, none of the 2025–26 website articles; 74 duplicate location URLs",
+-    "Sitemap generated from the CMS on publish; duplicates redirected; index coverage checked weekly in Search Console",
++    "224 URLs, none of the 2025–26 website articles; 74 duplicate location URLs Yoast also lists thank-you pages, a footer fragment and the iLASIK landing page.",
++    "Sitemap generated from the CMS on publish; duplicates redirected; index coverage checked weekly in Search Console Those three are noindex on the current site before January, and stay out of the new sitemap.",
+     "SEO"
+    ],
+    [
+@@ -360,6 +415,18 @@
+     "PageSpeed and Lighthouse could not be read during the audit (API quota)",
+     "Core Web Vitals field data (CrUX), uptime and crawl errors in the Command Centre; alerts to the maintenance team",
+     "tech"
++   ],
++   [
++    "Event schema",
++    "Carnival, Open House and World Sight Day pages have no Event markup",
++    "Event schema on each event page: name, date, location, registration URL",
++    "AEO"
++   ],
++   [
++    "Doctor profiles",
++    "20 ophthalmologists on one page, no Physician schema",
++    "20 doctor profile URLs, each with Physician schema (facts only)",
++    "AEO"
+    ]
+   ],
+   "gantt": [
+@@ -369,7 +436,7 @@
+     "owner": "SEO/AEO/GEO Lead",
+     "bars": [
+      {
+-      "label": "Day 1–30 audit: crawl, EN/BM/ZH keyword & entity map, backlinks, 16-centre local baseline",
++      "label": "Pre-launch (Nov–Dec 2026) on the current WordPress site: P1 titles, descriptions and H1s. Then the Day 1–30 audit from January.",
+       "from": "2026-11-02",
+       "to": "2026-12-01",
+       "kind": "build"
+diff --git a/content/modules/search.html b/content/modules/search.html
+index f44f7e4..4413407 100644
+--- a/content/modules/search.html
++++ b/content/modules/search.html
+@@ -146,7 +146,7 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);font-si
+   <button class="tbtn" id="theme" type="button">◐ Dark mode</button>
+ </header>
+ <nav class="toc">
+-  <a href="#today">Where search stands today</a><a href="#terms">SEO, AEO, GEO in plain terms</a><a href="#tracks">The plan — four tracks</a><a href="#keywords">Keyword &amp; page plan</a><a href="#local">16 centres</a><a href="#aeo">Answer engines</a><a href="#geo">AI assistants</a><a href="#tech">Technical foundation</a><a href="#content">Content engine</a><a href="#roadmap">12-month roadmap</a><a href="#tools">Tools &amp; technologies</a><a href="#kpis">KPIs &amp; reporting</a><a href="#needs">What CDS needs from Vista</a>
++  <a href="#today">Where search stands today</a><a href="#terms">SEO, AEO, GEO in plain terms</a><a href="#tracks">The plan — four tracks</a><a href="#keywords">Keyword &amp; page plan</a><a href="#local">15 branches</a><a href="#aeo">Answer engines</a><a href="#geo">AI assistants</a><a href="#tech">Technical foundation</a><a href="#content">Content engine</a><a href="#roadmap">12-month roadmap</a><a href="#tools">Tools &amp; technologies</a><a href="#kpis">KPIs &amp; reporting</a><a href="#needs">What CDS needs from Vista</a>
+ </nav>
+ 
+ <div class="tiles">
+@@ -155,13 +155,28 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);font-si
