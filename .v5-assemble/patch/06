@@ -1,0 +1,165 @@
++    "evidence": "Vista Marketing Plan 2027, Q2 Screen Time, Eye Time. Named accounts in the SOI tracker (Intel/AIM, KLK Land, DIALOG, Surian Tower, TNB, JCorp) are examples, not a confirmed target list."
+    }
+   ],
+   "implications": [
+@@ -962,7 +1063,8 @@
+      "P10"
+     ]
+    }
+-  ]
++  ],
++  "personas_count_note": "Eleven personas. P11 is the corporate buyer."
+  },
+  "GC": {
+   "a18": "--g-young",
+diff --git a/content/modules/personas.html b/content/modules/personas.html
+index 795cd36..73e2d54 100644
+--- a/content/modules/personas.html
++++ b/content/modules/personas.html
+@@ -216,11 +216,11 @@ a{color:var(--series-1)}
+     <div class="card" style="border-top:4px solid var(--g-mature)"><h3 style="margin:0 0 4px;font-size:15px">Adults 40+</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Decides for themselves, or arranges for a parent</div><div style="font-size:12.5px">Presbyopia, cataract, glaucoma and dry eye. Includes the adult son or daughter arranging a parent's cataract surgery. Services: cataract, RLE, glaucoma, dry eye.</div><div style="font-size:12px;margin-top:8px"><b>Personas:</b> P04, P06, P07</div></div>
+     <div class="card" style="border-top:4px solid var(--g-60)"><h3 style="margin:0 0 4px;font-size:15px">Seniors</h3><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Decides for themselves, often with family support</div><div style="font-size:12.5px">Wants to see the doctor, not type on a phone; comes on a neighbour's or family's recommendation. Services: cataract, glaucoma. Reached through Facebook, radio, Google Business Profile and the family member in the Adults 40+ group.</div><div style="font-size:12px;margin-top:8px"><b>Personas:</b> P05, P06</div></div>
+   </div>
+-  <p class="note" style="font-size:12px;color:var(--text-secondary);margin-top:12px">P08 and P09 are in the persona list below. They are not missing. P07 (dry eye), P09 (traveller from a city with no centre) and P10 (promo-driven shopper) are situations, not extra age groups — the same person can sit in more than one, and they are reached inside the age groups above with a different message. P01 (24–34) and P02 (22–40) cross 30, so both are linked to Gen Z 18–30 and Young Adults 30–40. P06 (45–60) is linked to Adults 40+ and Seniors. P08 (Singapore cross-border) is not a primary target: Singapore cannot be targeted as a whole, so it is held as an explore option for the Johor Bahru centre only, if Vista wants it. High screen time is how Gen Z 18–30 meets Vista, and it is also a dry-eye concern for Young Adults 30–40 and Adults 40+.</p>
++  <p class="note" style="font-size:12px;color:var(--text-secondary);margin-top:12px">P08 and P09 are in the persona list below. They are not missing. P07 (dry eye), P09 (traveller from a city with no centre) and P10 (promo-driven shopper) are situations, not extra age groups — the same person can sit in more than one, and they are reached inside the age groups above with a different message. P01 (24–34) and P02 (22–40) cross 30, so both are linked to Gen Z 18–30 and Young Adults 30–40. P06 (45–60) is linked to Adults 40+ and Seniors. Vista's Q1 audiences map onto these groups: adult children 30–50 onto the caregiver (P04) and Seniors (P05); active adults 55–75 onto Seniors (P05); young families onto Gen Z 18–30 (P01) and parents (P03). P11, the HR / wellness lead, sits in the situational group and is also linked to Young Adults 30–40 and Adults 40+. Vista's plan confirms the cataract age bands 30–50 and 55–75; income bands remain assumptions. P08 (Singapore cross-border) is not a primary target: Singapore cannot be targeted as a whole, so it is held as an explore option for the Johor Bahru centre only, if Vista wants it. High screen time is how Gen Z 18–30 meets Vista, and it is also a dry-eye concern for Young Adults 30–40 and Adults 40+.</p>
+ </section>
+ 
+ <section id="roster">
+-  <h2>The ten personas</h2>
++  <h2>The eleven personas</h2>
+   <p class="lede">The people inside each audience group. Select a persona to see the ten profile fields, the four-stage journey (today and with the new plan) and what CDS does for them.</p>
+   <div class="filters" id="gfilter"></div>
+   <div class="roster" id="cards"></div>
+@@ -236,7 +236,7 @@ a{color:var(--series-1)}
+ 
+ <section id="compare">
+   <h2>Comparison table</h2>
+-  <p class="lede">All ten personas side by side. Select a column heading to sort.</p>
++  <p class="lede">All eleven personas side by side. Select a column heading to sort.</p>
+   <div class="card"><div class="filters" id="cfilter"></div><div class="tscroll" id="ct"></div></div>
+ </section>
+ 
+@@ -263,7 +263,7 @@ try{const s=localStorage.getItem('vp-sel');if(s&&P.some(p=>p.id===s))sel=s;}catc
+ function mono(p){return `<span class="mono" style="background:var(${GC[p.group]})">${p.id.replace('P','')}</span>`;}
+ 
+ function filters(){
+-  const opts=[['all','All ten',null]].concat(Object.entries(D.groups).map(([k,v])=>[k,v,GC[k]]));
++  const opts=[['all','All eleven',null]].concat(Object.entries(D.groups).map(([k,v])=>[k,v,GC[k]]));
+   const inGroup=(p,k)=>p.group===k||(p.also||[]).includes(k);
+   $('gfilter').innerHTML=opts.map(([k,v,c])=>`<button type="button" data-g="${k}" class="${k===group?'on':''}">${c?`<i class="dot" style="background:var(${c})"></i>`:''}${v} (${k==='all'?P.length:P.filter(p=>inGroup(p,k)).length})</button>`).join('');
+   $('gfilter').onclick=e=>{const b=e.target.closest('button');if(!b)return;group=b.dataset.g;filters();cards();};
+diff --git a/content/modules/roadmap.data.json b/content/modules/roadmap.data.json
+index c9e39cb..5793736 100644
+--- a/content/modules/roadmap.data.json
++++ b/content/modules/roadmap.data.json
+@@ -2,10 +2,10 @@
+  "ROADMAP": {
+   "meta": {
+    "title": "Vista Eye Specialist — Digital Transformation Roadmap",
+-   "period": "1 November 2026 – 31 October 2027",
++   "period": "Pre-launch 9 Nov–31 Dec 2026 · in-market January–December 2027",
+    "start": "2026-11-02",
+-   "prepared": "Caspian Digital Solutions · September 2026",
+-   "premise": "Planned on CDS being appointed for all nine RFP scopes from 1 November 2026; delivery team defined by role, with named people assigned at mobilisation. Everything in the retainer scopes is covered by the retainer — no add-on charges for reaching the targets set here."
++   "prepared": "Caspian Digital Solutions · September 2026 · revised 9 November 2026",
++   "premise": "Pre-launch runs 9 November to 31 December 2026. In-market Month 1 is January 2027. Website go-live is 22 January 2027, with a fallback of 22 February. Delivery team defined by role."
+   },
+   "months": [
+    "2026-11",
+@@ -68,21 +68,21 @@
+   "phases": [
+    {
+     "id": "P0",
+-    "name": "Mobilise",
++    "name": "Pre-launch — mobilise",
+     "dur": "2 weeks · Month 1",
+     "from": "2026-11-02",
+     "to": "2026-11-13",
+     "gate": "Gate 0 — access confirmed, credentials rotated, budget shifts frozen",
+-    "summary": "Two weeks to take over every account and asset, freeze measurement changes, and sit down with the Vista team for a joint strategy session: Vista knows its patients and services, CDS knows the digital side, and the plan is agreed together before anything is built."
++    "summary": "Pre-launch (November 2026). Take over every account, freeze measurement changes, and sit down with Vista before anything is built."
+    },
+    {
+     "id": "P1",
+-    "name": "Audit, baseline & Discovery",
++    "name": "Pre-launch — audit and discovery",
+     "dur": "6 weeks · Months 1–2",
+     "from": "2026-11-09",
+     "to": "2026-12-18",
+     "gate": "Gate 1 (20 Nov) Discovery · Gate 2 (27 Nov) Design · Day 45 (16 Dec) roadmap & baselines",
+-    "summary": "A full audit with the access CDS did not have before, so the baseline for every target is set on complete data. Measurement plan, single lead definition, GA4 rebuild, Respond.io clean-up, SEO and AI-visibility baselines, site structure and design approved. Social posting and the first small campaigns run in parallel from Month 1."
++    "summary": "Pre-launch through December 2026. Full audit, single lead definition, GA4 rebuild, SEO and AI-visibility baselines, site structure approved. January P1 fixes on the current WordPress site happen in this window."
+    },
+    {
+     "id": "P2",
+@@ -771,6 +771,66 @@
+       "t": "Q4 report + Year-2 roadmap"
+      }
+     ]
++   },
++   {
++    "id": "K",
++    "name": "Workshops — capacity building",
++    "owner": "Programme Manager",
++    "support": "Vista reviewers",
++    "scope": "9",
++    "bars": [
++     {
++      "label": "One workshop per quarter",
++      "from": "2027-01-17",
++      "to": "2027-10-29",
++      "kind": "cadence"
++     }
++    ]
++   },
++   {
++    "id": "L",
++    "name": "Patient reactivation",
++    "owner": "Account Manager",
++    "support": "Vista CS",
++    "scope": "4",
++    "bars": [
++     {
++      "label": "PJ 1,000/month and Ipoh ≥ 30/week, only where PDPA consent is on file",
++      "from": "2027-02-01",
++      "to": "2027-10-29",
++      "kind": "run"
++     }
++    ]
++   },
++   {
++    "id": "M",
++    "name": "B2B corporate stream",
++    "owner": "Account Manager",
++    "support": "Vista corporate-sales owner",
++    "scope": "2",
++    "bars": [
++     {
++      "label": "Q2 Screen Time, Eye Time — corporate screening",
++      "from": "2027-04-01",
++      "to": "2027-06-30",
++      "kind": "build"
++     }
++    ]
++   },
++   {
++    "id": "N",
++    "name": "Doctor explainer filming",
++    "owner": "Content Lead",
++    "support": "Vista clinical",
++    "scope": "3",
++    "bars": [
++     {
++      "label": "One filming day per region per quarter",
++      "from": "2027-01-17",
++      "to": "2027-10-29",
++      "kind": "cadence"
++     }
++    ]
+    }
+   ],
+   "monthly": [
+@@ -1039,7 +1099,7 @@
+     "platforms": "—",
+     "window": "—",
+     "owner": "Head of Digital Solutions",
