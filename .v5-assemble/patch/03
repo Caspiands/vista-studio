@@ -1,0 +1,71 @@
++  const months=[];for(let i=0;i<14;i++){const dt=new Date(Date.UTC(2026,10+i,1));months.push(dt.toISOString().slice(0,7));}
++  months.forEach((m,i)=>{const x=X(m+'-01');svg.appendChild(el('line',{x1:x,x2:x,y1:top-8,y2:H-26,class:'gl'}));const nx=X((i<13?months[i+1]:'2028-01')+'-01');const t=el('text',{x:(x+nx)/2,y:top-14,class:'tick','text-anchor':'middle'});t.textContent=ML(m);svg.appendChild(t);});
+   D.campaigns.forEach((c,i)=>{
+     const y=top+i*rh;const col=css(colOf(c));
+     if(i%2===0)svg.appendChild(el('rect',{x:0,y:y,width:W,height:rh,fill:css('--chip'),opacity:.45}));
+diff --git a/content/modules/creatives.html b/content/modules/creatives.html
+index fe2972c..1e91fd6 100644
+--- a/content/modules/creatives.html
++++ b/content/modules/creatives.html
+@@ -67,11 +67,11 @@ footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--grid);font-si
+ <header class="top">
+ <div class="eyebrow">Vista Eye Specialist · Content &amp; Campaign Plan — creative layer · Caspian Digital Solutions</div>
+ <h1>Creatives &amp; <span>Production</span></h1>
+-<nav class="toc"><a href="#ci">Corporate identity</a><a href="#finals-organic">Finished posts</a><a href="#finals-paid">Finished ads + rationale</a><a href="#organic">Content templates</a><a href="#paid">Ad templates</a><a href="#workflow">Production workflow</a><a href="#assets">What we need from Vista</a><a href="#timeline">Oct–Dec mobilisation</a><a href="#calendar">Nov–Dec calendars</a><a href="#decisions">Points to agree</a></nav>
++<nav class="toc"><a href="#ci">Corporate identity</a><a href="#finals-organic">Finished posts</a><a href="#finals-paid">Finished ads + rationale</a><a href="#organic">Content templates</a><a href="#paid">Ad templates</a><a href="#concepts">Ad concepts</a><a href="#quarters">Quarterly directions</a><a href="#workflow">Production workflow</a><a href="#assets">What we need from Vista</a><a href="#timeline">Oct–Dec mobilisation</a><a href="#calendar">Nov–Dec calendars</a><a href="#decisions">Points to agree</a></nav>
+ </header>
+ 
+ <section id="ci"><h2>Corporate identity applied</h2>
+-<p class="lede">Every template uses the three logo colours plus white and one dark ink for text. The logo is never recoloured; on blue or dark backgrounds it sits on a white plate.</p>
++<p class="lede">Vista's CI, received 5 Nov 2026. Colours: #009FFF Vista Blue (Pantone 3005 C), #62BBFF Sky (Pantone 2915 C), #A6E700 Lime (Pantone 390 C). The logo is never recoloured; safe area at least 0.5 cm; on blue or photography it sits on a white plate.</p>
+ <div class="ci">
+ <div class="logo"><img src="/modules/creative/img-01.png" alt="Vista Eye Specialist logo"></div>
+ <div class="card"><h3>Palette and rules</h3>
+@@ -84,14 +84,14 @@ footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--grid);font-si
+ </div>
+ <ul style="margin-top:12px">
+ <li><b>Logo</b> — vectorised from the supplied PNG as the Figma component <i>Logo / Vista</i>; clear space at least the height of the swoosh; minimum width 240 px on 1080 canvases, 120 px on display ads.</li>
+-<li><b>Type</b> — Inter (Bold for headlines, Semi Bold for tags and CTAs, Regular for body) as a stand-in until Vista's brand typeface arrives with the brand files. Swap once, everywhere, through the Figma text styles.</li>
++<li><b>Type</b> — Heading: Jost Bold. Sub-heading: Acumin Variable Concept SemiCondensed Medium and Medium Italic. Body: Jost Regular and Italic. The sample PNGs on this page are still the Inter renders. They are re-exported from Figma once the font licences are in the brand files. Swap once, through the text styles.</li>
+ <li><b>Motif</b> — concentric lens rings at 20–40% opacity, drawn from the concept site, never over the logo.</li>
+-<li><b>Compliance furniture</b> — every ad carries a KKLIU line; every comparison slide carries the MAB 3/2023 line; image placeholders state the photography rule (Vista-approved, consented, no before/after).</li>
++<li><b>Photography</b> — appealing, fresh, clean; Asian, localised models unless the brief says otherwise; no AI-generated or cartoon imagery in anything that publishes.</li><li><b>Copy limits</b> — caption ≤ 125, headline ≤ 25, link description ≤ 30; highlight the benefit; less than 20% of the image is text; always a call to action (Book Now, Sign Up, or Learn More). No results-driven lines and no all-caps.</li><li><b>Compliance furniture</b> — every ad carries a KKLIU line; image placeholders state the photography rule (Vista-approved, consented, no before/after).</li>
+ </ul></div></div>
+ </section>
+ 
+ <section id="finals-organic"><h2>Finished posts — November and December</h2>
+-<p class="lede">Calendar posts composed on the templates with photography. The images are AI-generated concept photography in Malaysian settings so the posts read as real; before publication each is replaced with Vista's own consented photography or shot to the same brief (the asset checklist below). Every line of copy is written to sit in the MAB-exempt educational lane unless marked.</p>
++<p class="lede">Calendar posts composed on the templates with photography. Concept photography — to be replaced with Vista's consented shoot before publication. These frames are not cleared to publish. Every line of copy is written to sit in the MAB-exempt educational lane unless marked.</p>
+ <div class="stack"><figure class="fin"><div class="im"><img src="/modules/creative/img-02.jpg" alt="Deepavali greeting" loading="lazy"></div>
+ <figcaption><h3>Deepavali greeting</h3><div class="spec"><span>1080 × 1080 · IG + FB</span></div><div class="when">Sun 8 Nov · Static 2 · Plan Your Visit</div>
+ <p class="copy">"May you see every moment clearly this Deepavali." Festive branch hours in bio.</p><h4>Why it works in the DTR</h4><p>Greeting posts are exempt from KKLIU and cost nothing to approve, so they publish on the festival date itself even in a ramp month. The line is a sight metaphor rather than an offer, which keeps it inside MAB 3/2023. Deepavali is the first date in the contract where Vista is visible at all: the profiles published nothing between 6 and 23 August and 15 of the last 24 months had no output, so a dated, on-time post is itself evidence of the cadence changing.</p></figcaption></figure><figure class="fin"><div class="im"><img src="/modules/creative/img-03.jpg" alt="World Diabetes Day fact card" loading="lazy"></div>
+@@ -175,6 +175,25 @@ footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--grid);font-si
+ <a class="fig" href="https://www.figma.com/design/OLOzJABanHF8wyWsWBsv6C?node-id=21-143" target="_blank" rel="noopener">Open in Figma →</a></figcaption></figure></div>
+ </section>
+ 
++<section id="concepts"><h2>Always-on ad concepts</h2>
++<p class="lede">Five directions from the concept deck. Each one is a hook, a picture, a format and a landing page. Prices appear only after Vista confirms the figure and the KKLIU number.</p>
++<div class="tscroll"><table class="data"><thead><tr><th>Concept</th><th>Hook</th><th>Visual</th><th>Formats</th><th>Landing</th><th>KPI</th></tr></thead><tbody>
++<tr><td>Bring Them Clarity</td><td>Dad, are the road signs blurry?</td><td>Adult child and parent, local, not a result shot</td><td>Reel, carousel</td><td>Cataract page</td><td>Family bookings</td></tr>
++<tr><td>Clear Choice</td><td>High degree? You still have an option.</td><td>Consultation, not a procedure</td><td>Carousel, search</td><td>Suitability / ICL</td><td>Assessments booked</td></tr>
++<tr><td>Slow the Blur</td><td>The glasses got thicker again.</td><td>Parent and child, school-term light</td><td>Reel, TikTok</td><td>Kids eye exam</td><td>Kids checks booked</td></tr>
++<tr><td>Screen-Tired Eyes</td><td>Burning by 4 pm is a reason to book, not a joke about surgery.</td><td>Desk, daylight, no cartoon</td><td>Static, reel</td><td>Dry eye</td><td>Dry-eye bookings</td></tr>
++<tr><td>Love your eyes. Use your benefits.</td><td>Your benefits renew in January. Your eyes don't.</td><td>Sentence case, one benefit, no exclamation</td><td>Static</td><td>Insurance and benefits</td><td>Benefit-led bookings</td></tr>
++</tbody></table></div>
++</section>
++<section id="quarters"><h2>Quarterly directions</h2>
++<p class="lede">What the quarter looks like in market. Branch actions follow the theme; the offer is the one Vista has approved for that quarter.</p>
++<div class="grid" style="display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
++<div class="card"><h3>Q1 · Moments Worth Seeing</h3><p>CNY and Raya greetings, Eye Carnival registration, school-reopening checks. LASIK RM1,998 and Cataract RM5,998 only on creatives that carry the KKLIU number.</p></div>
++<div class="card"><h3>Q2 · Screen Time, Eye Time</h3><p>Workplace Eye Wellness Day (7 Apr, proposed), the corporate pack for P11, Parents' Day, Dry Eye Spa / BlephEx RM198 once confirmed.</p></div>
++<div class="card"><h3>Q3 · See the World</h3><p>Merdeka 70, the Eye Fair in Merdeka week if Vista wants it, travel-ready checks. JB-for-Singapore and Penang guides only if that scope is confirmed.</p></div>
++<div class="card"><h3>Q4 · World Sight Day</h3><p>14 Oct drive, the benefits line, World Diabetes Day, 12.12 as one approved day, second-eye reminder. August stays light for Hungry Ghost Month.</p></div>
++</div>
++</section>
+ <section id="workflow"><h2>Production workflow</h2>
+ <p class="lede">At full pace three streams run at once. From brief to first post is about five weeks, which is why November is the ramp month.</p>
+ <div class="three">
+@@ -185,8 +204,8 @@ footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--grid);font-si
+ <h3 style="margin:22px 0 10px;font-size:15px">The pipeline for every monthly batch</h3>
+ <div class="pipe">
+ <div><b>1 · Brief &amp; plan</b><small>3 working days</small><p>Slots filled against the weekly rhythm: Attract → Educate → Build trust → Convert.</p></div>
