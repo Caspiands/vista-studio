@@ -1,0 +1,147 @@
++     "branch hours before the school break",
++     "glaucoma week follow-up",
++     "what to bring to a cataract visit",
++     "book the diabetic-eye slot",
++     "Deepavali is past; year-end greeting prep"
++    ]
++   },
++   {
++    "m": "2027-12",
++    "live": [
++     "C1",
++     "C2",
++     "C3",
++     "L1",
++     "I1",
++     "E1"
++    ],
++    "theme": "School break, 12.12 one-day, Christmas, second eye",
++    "posts": [
++     "school-break kids check",
++     "12.12 — the approved one-day offer",
++     "second-eye reminder",
++     "year-end branch hours",
++     "Christmas greeting",
++     "what the new year eye check includes",
++     "book before benefits renew",
++     "Merdeka-year lookback, facts only"
++    ]
+    }
+   ],
+   "guardrails": [
+@@ -1156,6 +1355,21 @@
+     "r": "Approval pipeline six weeks ahead",
+     "d": "Advertisements need MAB approval unless exempt (educational articles and award announcements are exempt). Seasonal creative is submitted six weeks before launch; approved evergreen runs if approval slips.",
+     "src": "MAB 3/2023 · CDS roadmap"
++   },
++   {
++    "r": "Vista's own best-practice limits",
++    "d": "Caption ≤ 125 characters, headline ≤ 25, description ≤ 30. Less than 20% of the image is text. Always a call to action. No results-driven lines and no all-caps copy.",
++    "src": "Vista Digital Asset Guideline"
++   },
++   {
++    "r": "Referral rewards are not advertised",
++    "d": "The scheme is a referral card with a code and a thank-you follow-up. It is not an advertisement.",
++    "src": "Vista Marketing Plan 2027"
++   },
++   {
++    "r": "Screenings are registered slots",
++    "d": "Screenings and Open House are advertised as registered event slots, never as free healthcare.",
++    "src": "MAB 3/2023 · Vista Marketing Plan 2027"
+    }
+   ],
+   "assumptions": [
+@@ -1163,7 +1377,36 @@
+    "2027 public holidays per the published calendar: CNY 6–7 Feb, Aidilfitri 10–11 Mar, Haji 17–18 May, Wesak 20 May, Malaysia Day 16 Sep, Deepavali 28 Oct. These may change on cabinet confirmation.",
+    "Campaign weighting is set at the Day-30 media audit (1 Dec 2026) and reviewed at the pilot evidence review (26 Mar 2027).",
+    "Offer figures shown as [approved] are placeholders until Vista's price list and MAB approval are in hand.",
+-   "Xiaohongshu, Indonesian-language content and a LinkedIn pilot are tests outside the RFP social minimum; they proceed only if Vista agrees the scope."
++   "Xiaohongshu, Indonesian-language content and a LinkedIn pilot are tests outside the RFP social minimum; they proceed only if Vista agrees the scope.",
++   "Vista Marketing Plan 2027 (5 Nov 2026) and the Vista Digital Asset Guideline & CI are sources for the 2027 themes, prices and copy limits.",
++   "Ramadan 8 Feb 2027 and Hari Raya 10 Mar 2027 are tentative until the moon sighting.",
++   "Prices (LASIK RM1,998 / RM2,198 Cheras, Cataract RM5,998, No-Blade RM6,196, CLEAR Pro, BlephEx RM198) are Vista's figures, inserted once confirmed. Branch conflicts are marked, not averaged."
++  ],
++  "themes": [
++   {
++    "q": "Q1",
++    "when": "Jan–Mar 2027",
++    "name": "Moments Worth Seeing",
++    "exec": "S1 Clear Start · S2 Eye Carnival · C1 Clear Choice · C2 Bring Them Clarity · C3 Slow the Blur"
++   },
++   {
++    "q": "Q2",
++    "when": "Apr–Jun 2027",
++    "name": "Screen Time, Eye Time",
++    "exec": "C4 Screen-Tired Eyes · C2 · C5 Reading Freedom · L1 Branch Local · B1 Corporate stream"
++   },
++   {
++    "q": "Q3",
++    "when": "Jul–Sep 2027",
++    "name": "See the World",
++    "exec": "S3 Graduate to Glasses-Free · S4 Open House · T1 JB Weekend · T2 Travel for Sight"
++   },
++   {
++    "q": "Q4",
++    "when": "Oct–Dec 2027",
++    "name": "World Sight Day",
++    "exec": "S5 World Sight Day · C2 · C3 · L1 · I1 Benefits push · D1 Diabetic eye"
++   }
+   ]
+  }
+ }
+diff --git a/content/modules/campaigns.html b/content/modules/campaigns.html
+index 0029993..908ad71 100644
+--- a/content/modules/campaigns.html
++++ b/content/modules/campaigns.html
+@@ -227,8 +227,18 @@ a{color:var(--accent)}
+   <div class="card"><div class="tscroll" id="pxptable"></div></div>
+ </section>
+ 
++<section id="themes">
++  <h2>Vista's 2027 themes, and the campaigns that execute them</h2>
++  <p class="lede">The four quarterly themes in Vista's Marketing Plan 2027 are the top layer. The CDS campaigns stay, and each one sits under the theme it carries out.</p>
++  <div class="card"><div class="tscroll"><table class="data"><thead><tr><th>Quarter · Vista theme</th><th>Big event and promotions</th><th>Vista audiences</th><th>CDS campaigns</th></tr></thead><tbody>
++  <tr><td>Q1 Jan–Mar · Moments Worth Seeing</td><td>Eye Carnival (end Feb) · LASIK RM1,998 · Cataract RM5,998 · CNY and Raya · school-reopening screenings</td><td>Adult children 30–50 · active adults 55–75 · young families</td><td>S1 · S2 · C1 · C2 · C3</td></tr>
++  <tr><td>Q2 Apr–Jun · Screen Time, Eye Time</td><td>Workplace Eye Wellness Day (7 Apr, proposed) · corporate eye-check · Parents' Day · Dry Eye Spa / BlephEx RM198</td><td>Corporate HR · working adults 25–55 · insurance holders · adult children</td><td>C4 · C2 · C5 · L1 · B1</td></tr>
++  <tr><td>Q3 Jul–Sep · See the World</td><td>Eye Fair, Merdeka week (proposed) · Merdeka 70 · travel-ready check · medical tourism package</td><td>Malaysians 55+ travelling · Singapore, Batam and Medan · expats and MM2H</td><td>S3 · S4 · T1 · T2</td></tr>
++  <tr><td>Q4 Oct–Dec · World Sight Day</td><td>World Sight Day (14 Oct) · year-end benefits · Deepavali · World Diabetes Day · 12.12 · second eye</td><td>Policyholders · unused benefits · school-break families · people with diabetes</td><td>S5 · C2 · C3 · L1 · I1 · D1</td></tr>
++  </tbody></table></div></div>
++</section>
+ <section id="gantt">
+-  <h2>Campaign calendar, Nov 2026 – Oct 2027</h2>
++  <h2>Campaign calendar — pre-launch, then Jan–Dec 2027</h2>
+   <p class="lede">Always-on programmes run all year with heavier weeks shaded darker; seasonal and explore campaigns sit on their own rows. “Explore” is a scoped trial Vista can scale, hold or stop — it is not a test of whether the work matters. Vertical lines mark festivals and programme gates. Hover a bar for dates; select a row to open its brief.</p>
+   <div class="card"><div class="tscroll"><svg id="g" role="img" aria-label="Campaign Gantt chart"></svg></div>
+   <div class="legend"><span><i style="background:var(--s1)"></i>Always-on</span><span><i style="background:var(--s1);opacity:.45"></i>Always-on, lighter weeks</span><span><i style="background:var(--s5)"></i>Seasonal</span><span><i style="background:var(--s6)"></i>Explore</span><span><i class="ln" style="background:var(--fest)"></i>Festival or eye-health day</span><span><i class="ln" style="background:var(--gate)"></i>Programme gate</span></div></div>
+@@ -245,6 +255,18 @@ a{color:var(--accent)}
+   <h2>Monthly content plan — indicative topics</h2>
+   <p class="lede">Topic ideas for each month, in slot order, with the campaigns live that month. We call this our content. A piece written here may later be boosted, so the plan is not labelled organic or paid. These are the angles, not final posts: the month's posts are agreed with Vista at the monthly planning meeting. A trending slot for Gen Z can be turned around within 48 hours, because a trend is gone after that. Every piece still clears MAB 3/2023 or carries its KKLIU number.</p>
+   <div class="months" id="months"></div>
++<div class="card" style="margin-top:14px"><h3>Key dates 2027</h3><p style="font-size:13px;color:var(--text-secondary)">Ramadan (8 Feb) and Hari Raya (10 Mar) are tentative until the moon sighting. Hungry Ghost Month in August is a lighter month.</p><div class="tscroll"><table class="data"><thead><tr><th>Date</th><th>Moment</th><th>What it triggers</th></tr></thead><tbody>
++<tr><td>1 Jan · 4 Jan</td><td>New Year · school term</td><td>Kids “see the board”; holiday-check push closes</td></tr>
++<tr><td>22 Jan</td><td>Website go-live · Thaipusam</td><td>Go-live; educational greeting</td></tr>
++<tr><td>6 Feb · 8 Feb</td><td>Chinese New Year · Ramadan (tentative)</td><td>ZH reunion reel; BM Ramadan series; adjusted hours</td></tr>
++<tr><td>end Feb</td><td>Vista Eye Carnival</td><td>Registration per branch</td></tr>
++<tr><td>10 Mar</td><td>Hari Raya (tentative) · Glaucoma Week</td><td>Raya push; glaucoma carousel</td></tr>
++<tr><td>7 Apr</td><td>Workplace Eye Wellness Day (proposed)</td><td>Corporate screening launch</td></tr>
++<tr><td>Aug</td><td>Hungry Ghost Month</td><td>Lighter activity</td></tr>
++<tr><td>31 Aug</td><td>Merdeka 70 · Eye Fair (proposed)</td><td>BM creative; travel-ready check</td></tr>
++<tr><td>14 Oct · 14 Nov · 12 Dec</td><td>World Sight Day · World Diabetes Day · 12.12</td><td>Screening drive; diabetic eye; one approved day</td></tr>
++</tbody></table></div></div>
++
+   <div class="card" id="cal"></div>
+ </section>
+ 
+@@ -326,14 +348,14 @@ function pxp(){
+ }
+ 
+ /* gantt */
+-const T0=Date.parse('2026-11-01'),T1=Date.parse('2027-11-01');
++const T0=Date.parse('2026-11-01'),T1=Date.parse('2028-01-01');
+ function gantt(){
+   const svg=$('g');svg.innerHTML='';
+   const L=230,R=16,top=40,rh=30,W=Math.max(900,svg.parentElement.clientWidth||900),rows=D.campaigns.length,H=top+rows*rh+34;
+   svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);
+   const X=d=>L+(Date.parse(d)-T0)/(T1-T0)*(W-L-R);
+-  const months=[];for(let i=0;i<12;i++){const dt=new Date(Date.UTC(2026,10+i,1));months.push(dt.toISOString().slice(0,7));}
+-  months.forEach((m,i)=>{const x=X(m+'-01');svg.appendChild(el('line',{x1:x,x2:x,y1:top-8,y2:H-26,class:'gl'}));const nx=X((i<11?months[i+1]:'2027-11')+'-01');const t=el('text',{x:(x+nx)/2,y:top-14,class:'tick','text-anchor':'middle'});t.textContent=ML(m);svg.appendChild(t);});
