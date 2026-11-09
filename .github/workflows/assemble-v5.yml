@@ -1,0 +1,56 @@
+name: Assemble v5 content
+on:
+  push:
+    paths:
+      - ".v5-assemble/GO"
+permissions:
+  contents: write
+jobs:
+  assemble:
+    if: hashFiles('.v5-assemble/GO') != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply v5 patch
+        run: |
+          set -euo pipefail
+          cat .v5-assemble/patch/00 .v5-assemble/patch/01 .v5-assemble/patch/02 .v5-assemble/patch/03 .v5-assemble/patch/04 .v5-assemble/patch/05 .v5-assemble/patch/06 .v5-assemble/patch/07 .v5-assemble/patch/08 .v5-assemble/patch/09 .v5-assemble/patch/10 > /tmp/v5-rest.patch
+          git checkout 6996339e417e7e66dc6834d91133d7124951e11e -- \
+            content/modules/personas.html \
+            content/modules/roadmap.html \
+            content/modules/campaigns.html \
+            content/modules/creatives.html \
+            content/modules/search.html \
+            content/modules/personas.data.json \
+            content/modules/campaigns.data.json \
+            content/modules/search.data.json \
+            content/modules/roadmap.data.json \
+            content/modules/analysis.html \
+            content/modules/analysis.data.json
+          git apply --whitespace=nowarn /tmp/v5-rest.patch
+          python3 - << 'PY'
+          import subprocess, sys
+          expected = {
+            "content/modules/personas.html": "73e2d549d38915283bf5b44ddd8916090507370a",
+            "content/modules/roadmap.html": "fead8c139d49b216926423bb9120f96252af639b",
+            "content/modules/campaigns.html": "908ad7172ef232ac2b2019334c287996ac600d0f",
+            "content/modules/creatives.html": "1e91fd6517e2b200666543a7c2277a3b04ddb6f2",
+            "content/modules/search.html": "441340784f758870f5df7d1b3555e85e0c2263cb",
+            "content/modules/personas.data.json": "03e43fc1cded1f82bd975760bafdd5290fd14133",
+            "content/modules/campaigns.data.json": "b78fd87daa58438cfc31a8e7edd8f8c0f8583a03",
+            "content/modules/search.data.json": "989c0caee1e618798c52a2dcad24634d1c3f82fa",
+            "content/modules/roadmap.data.json": "57937362e2229ab0d1b4f5a75ec1e891e7108a50",
+            "content/modules/analysis.html": "e185064441532d808e1f7e9c21c18fc092bbcaf7",
+            "content/modules/analysis.data.json": "aa42f90dfabdf93e6c399beb3e17c65745ca2279",
+          }
+          for path, want in expected.items():
+              got = subprocess.check_output(["git", "hash-object", path], text=True).strip()
+              if got != want:
+                  sys.exit(f"mismatch {path} {got}")
+          PY
+          rm -rf .v5-assemble
+          git add -A
+          git -c user.name=Caspiands -c user.email=129266209+Caspiands@users.noreply.github.com commit -m "Revise the client edition to v5 from the 9 Nov update guide."
+          git push origin HEAD:main
