@@ -1,0 +1,273 @@
+   },
+   "personas": {
+    "P01": "Glasses-Free Young Professional",
+@@ -16,7 +16,8 @@
+    "P07": "Screen-Weary Dry Eye Sufferer",
+    "P08": "Singapore Cross-Border Patient",
+    "P09": "Out-of-Network Traveller",
+-   "P10": "Promo-Driven Comparison Shopper"
++   "P10": "Promo-Driven Comparison Shopper",
++   "P11": "HR / Wellness Lead"
+   },
+   "pillars": [
+    {
+@@ -190,7 +191,7 @@
+     "series": [
+      {
+       "n": "Branch Walk-through",
+-      "d": "One branch a month from the 16 centres: parking, entrance, waiting area, hours."
++      "d": "One branch a month from the 15 branches (list to confirm): parking, entrance, waiting area, hours."
+      },
+      {
+       "n": "Behind the Machine",
+@@ -370,6 +371,31 @@
+     "d": "2027-10-28",
+     "t": "Deepavali 2027",
+     "k": "fest"
++   },
++   {
++    "d": "2027-02-08",
++    "t": "Ramadan begins (tentative)",
++    "k": "fest"
++   },
++   {
++    "d": "2027-04-07",
++    "t": "Workplace Eye Wellness Day (proposed)",
++    "k": "fest"
++   },
++   {
++    "d": "2027-08-01",
++    "t": "Hungry Ghost Month — lighter activity",
++    "k": "fest"
++   },
++   {
++    "d": "2027-11-14",
++    "t": "World Diabetes Day",
++    "k": "fest"
++   },
++   {
++    "d": "2027-12-12",
++    "t": "12.12 one-day",
++    "k": "fest"
+    }
+   ],
+   "campaigns": [
+@@ -398,7 +424,7 @@
+     ],
+     "objective": "Turn refractive interest into booked suitability assessments; lift the paid booking rate from 1.5%.",
+     "insight": "Refractive conversations grew from 437 (Sep 2025) to 2,370 (Aug 2026) a month, yet every price question in the sample went unanswered.",
+-    "message": "Know if you're suitable in one visit. See the price before you book.",
++    "message": "Know if you're suitable in one visit. See the price before you book. Price lines, once Vista confirms them: LASIK RM1,998 (RM2,198 Cheras), CLEAR Pro RM2,998 / RM3,998.",
+     "channels": "Google Search (refractive × region × language) · Meta click-to-WhatsApp · TikTok (post-pilot) · Instagram Reels",
+     "pillars": [
+      "R",
+@@ -409,7 +435,8 @@
+      "'Three things we check before LASIK' carousel → comparison landing page",
+      "Day-of-procedure reel (EN/ZH), BM TikTok re-cut",
+      "Instalment static with the approved monthly figure",
+-     "ICL-specific search ads for 'can't do LASIK' queries (P02)"
++     "ICL-specific search ads for 'can't do LASIK' queries (P02)",
++     "Hooks from Vista's own ads: 'High degree? You still have an option' (ICL); 'Clear vision, with less dry eye concern' (CLEAR Pro)."
+     ],
+     "landing": "Refractive comparison hub with suitability check, price range and weekend slots",
+     "crm": "Ad-aware assistant answers price and instalment, offers two slots; ICL keywords routed to a refractive counsellor; two follow-ups before any auto-close",
+@@ -443,7 +470,7 @@
+     ],
+     "objective": "Reach the adult child who decides and pays, and the senior who decides alone, with one clear path to a cataract assessment.",
+     "insight": "Cataract is the largest enquiry category (12,853 conversations in 12 months) while the 'cataract surgery' ranking fell out of the top 100.",
+-    "message": "We'll sort the insurance and the trips. You focus on your parent.",
++    "message": "We'll sort the insurance and the trips. You focus on your parent. Price lines, once Vista confirms them: Cataract RM5,998, No-Blade RM6,196.",
+     "channels": "Google Search (EN/ZH/BM) · Meta (Facebook-first, 30+ caregivers and 55+) · YouTube shorts · branch Google Business Profiles",
+     "pillars": [
+      "K",
+@@ -454,7 +481,8 @@
+      "'Taking Mum for cataract surgery' checklist carousel (BM/ZH), built to be forwarded on WhatsApp",
+      "'Glare when driving at night?' symptom reel for 55+",
+      "Branch walk-through videos for the parent's nearest centre",
+-     "Raya creative in BM (Feb–Mar): 'Balik kampung, check mata mak'"
++     "Raya creative in BM (Feb–Mar): 'Balik kampung, check mata mak'",
++     "Family hook from Vista's revision copies: 'Dad, are the road signs blurry?'"
+     ],
+     "landing": "Cataract guide for families with insurance/panel checklist and branch finder",
+     "crm": "Caregiver path collects insurer/panel, parent's branch and language; coordinator owns the record; post-op reminders in the parent's language",
+@@ -528,7 +556,7 @@
+     ],
+     "objective": "Convert symptom searches into Dry Eye Assessments at the approved price.",
+     "insight": "Dry-eye pages drew 10,508 sessions, while 2025 procedure-style ads bought enquiries far above the network average.",
+-    "message": "Tired, burning eyes aren't just screen time. Get them assessed.",
++    "message": "Tired, burning eyes aren't just screen time. Get them assessed. Price lines to confirm: BlephEx RM198; dry-eye package RM388.",
+     "channels": "Google Search (symptom terms) · Meta (office workers) · Instagram Reels · corporate wellness partners",
+     "pillars": [
+      "S",
+@@ -843,6 +871,133 @@
+      "Local-pack top-3 pairs (≥ 8 by M6, ≥ 16 by M12)",
+      "Bookings by branch"
+     ]
++   },
++   {
++    "type": "Seasonal",
++    "budgetKey": "seasonal",
++    "services": "Corporate eye-check package",
++    "peaks": [],
++    "pillars": [
++     "V",
++     "P"
++    ],
++    "channels": "LinkedIn pilot · HR email · insurer briefing",
++    "creative": [
++     "HR pitch pack",
++     "Screening-day kit"
++    ],
++    "landing": "Corporate eye-check page with a request form",
++    "crm": "Source code corporate on every lead",
++    "kpis": [
++     "Companies signed",
++     "Screenings held",
++     "Qualified leads per screening"
++    ],
++    "gate": "Confirm with Vista before it is briefed",
++    "id": "B1",
++    "name": "Corporate screening stream",
++    "personas": [
++     "P11"
++    ],
++    "from": "2027-04-01",
++    "to": "2027-06-30",
++    "objective": "Give HR a screening day that runs itself, and count the leads.",
++    "insight": "Branch outreach to corporates is ad hoc. Q2 of Vista's plan names this buyer.",
++    "message": "A screening day with a clear package. Registered slots, never advertised as free."
++   },
++   {
++    "type": "Seasonal",
++    "budgetKey": "seasonal",
++    "services": "Cataract · eye check",
++    "peaks": [],
++    "pillars": [
++     "P",
++     "K"
++    ],
++    "channels": "Meta · Google · organic",
++    "creative": [
++     "One benefit per creative, sentence case, no exclamation marks"
++    ],
++    "landing": "Insurance and benefits page",
++    "crm": "Source tagged; no referral-reward advertising",
++    "kpis": [
++     "Booked checks from the benefits audience"
++    ],
++    "gate": "Confirm with Vista before it is briefed",
++    "id": "I1",
++    "name": "Year-end benefits push",
++    "personas": [
++     "P04",
++     "P05",
++     "P10"
++    ],
++    "from": "2027-10-01",
++    "to": "2027-12-31",
++    "objective": "Replace the all-caps insurance ads with one sentence-case benefit.",
++    "insight": "The 2026 insurance-reminder ads use all caps and urgency, against Vista's own guideline.",
++    "message": "Your benefits renew in January. Your eyes don't."
++   },
++   {
++    "type": "Seasonal",
++    "budgetKey": "seasonal",
++    "services": "Diabetic eye screening",
++    "peaks": [],
++    "pillars": [
++     "K",
++     "P"
++    ],
++    "channels": "Meta · Google · GP and diabetes-group partners",
++    "creative": [
++     "Educational fact card",
++     "Partner briefing"
++    ],
++    "landing": "Diabetic eye screening page",
++    "crm": "Source code diabetes",
++    "kpis": [
++     "Booked diabetic-eye checks"
++    ],
++    "gate": "Confirm with Vista before it is briefed",
++    "id": "D1",
++    "name": "Diabetic eye",
++    "personas": [
++     "P04",
++     "P05"
++    ],
++    "from": "2027-11-01",
++    "to": "2027-11-30",
++    "objective": "Put a diabetic-eye check on the calendar around World Diabetes Day.",
++    "insight": "Vista's Q4 plan names people with diabetes. The check is a registered slot.",
++    "message": "Diabetes can change your sight quietly. Book the annual check."
++   },
++   {
++    "type": "Seasonal",
++    "budgetKey": "seasonal",
++    "services": "Approved one-day offer",
++    "peaks": [],
++    "pillars": [
++     "P"
++    ],
++    "channels": "Meta · static",
++    "creative": [
++     "One static, sentence case, KKLIU on the ad"
++    ],
++    "landing": "The offer's treatment page",
++    "crm": "Source code 1212",
++    "kpis": [
++     "Bookings on 12 December"
++    ],
++    "gate": "Confirm with Vista before it is briefed",
++    "id": "E1",
++    "name": "12.12 one-day",
++    "personas": [
++     "P10",
++     "P01"
++    ],
++    "from": "2027-12-12",
++    "to": "2027-12-12",
++    "objective": "One approved offer for a single day, with the KKLIU number on the creative.",
++    "insight": "Vista's Q4 plan includes a 12.12 moment. The offer is confirmed before it is written.",
++    "message": "One day. The approved offer, stated once."
+    }
+   ],
+   "calendar": [
+@@ -854,7 +1009,7 @@
+      "C3",
+      "C4"
+     ],
+-    "theme": "Hand-over month: establish the mix, no new spend",
++    "theme": "Pre-launch. Deepavali greeting published 8 Nov. Establish the mix.",
+     "posts": [
+      "3 early signs of cataract (BM)",
+      "what a LASIK suitability check measures",
+@@ -874,7 +1029,7 @@
+      "C3",
+      "C4"
+     ],
+-    "theme": "School holidays; first full RFP mix",
++    "theme": "Pre-launch. School holidays and the January batch.",
+     "posts": [
+      "why myopia rises in children",
+      "recovery in days — iLASIK",
+@@ -1119,6 +1274,50 @@
+      "year-end holiday slots open",
+      "Deepavali greeting (28 Oct)"
+     ]
++   },
++   {
++    "m": "2027-11",
++    "live": [
++     "C1",
++     "C2",
++     "C4",
++     "L1",
++     "I1",
++     "D1"
++    ],
++    "theme": "World Diabetes Day (14 Nov); second-eye reminder; benefits push",
++    "posts": [
++     "diabetic eye — the annual check",
++     "second eye, explained for families",
++     "benefits renew in January",
