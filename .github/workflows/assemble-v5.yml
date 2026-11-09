@@ -7,7 +7,6 @@ permissions:
   contents: write
 jobs:
   assemble:
-    if: hashFiles('.v5-assemble/GO') != ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,6 +15,10 @@ jobs:
       - name: Apply v5 patch
         run: |
           set -euo pipefail
+          if [ ! -f .v5-assemble/GO ]; then
+            echo "Nothing to assemble."
+            exit 0
+          fi
           cat .v5-assemble/patch/00 .v5-assemble/patch/01 .v5-assemble/patch/02 .v5-assemble/patch/03 .v5-assemble/patch/04 .v5-assemble/patch/05 .v5-assemble/patch/06 .v5-assemble/patch/07 .v5-assemble/patch/08 .v5-assemble/patch/09 .v5-assemble/patch/10 > /tmp/v5-rest.patch
           git checkout 6996339e417e7e66dc6834d91133d7124951e11e -- \
             content/modules/personas.html \
