@@ -353,7 +353,8 @@ function impl(){
 const root=document.documentElement,tb=$('theme');
 function isDark(){const t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;}
 function syncBtn(){tb.textContent=isDark()?'◑ Light mode':'◐ Dark mode';}
-syncBtn();
-filters();cards();detail();matrix();compare();impl();
+tb.onclick=()=>{root.setAttribute('data-theme',isDark()?'light':'dark');syncBtn();};
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',syncBtn);
+syncBtn();filters();cards();detail();matrix();compare();impl();
 })();
 </script></body></html>

@@ -2,10 +2,10 @@
  "ROADMAP": {
   "meta": {
    "title": "Vista Eye Specialist — Digital Transformation Roadmap",
-   "period": "1 November 2026 – 31 October 2027",
+   "period": "Pre-launch 9 Nov–31 Dec 2026 · in-market January–December 2027",
    "start": "2026-11-02",
-   "prepared": "Caspian Digital Solutions · September 2026",
-   "premise": "Planned on CDS being appointed for all nine RFP scopes from 1 November 2026; delivery team defined by role, with named people assigned at mobilisation. Everything in the retainer scopes is covered by the retainer — no add-on charges for reaching the targets set here."
+   "prepared": "Caspian Digital Solutions · September 2026 · revised 9 November 2026",
+   "premise": "Pre-launch runs 9 November to 31 December 2026. In-market Month 1 is January 2027. Website go-live is 22 January 2027, with a fallback of 22 February. Delivery team defined by role."
   },
   "months": [
    "2026-11",
@@ -68,21 +68,21 @@
   "phases": [
    {
     "id": "P0",
-    "name": "Mobilise",
+    "name": "Pre-launch — mobilise",
     "dur": "2 weeks · Month 1",
     "from": "2026-11-02",
     "to": "2026-11-13",
     "gate": "Gate 0 — access confirmed, credentials rotated, budget shifts frozen",
-    "summary": "Two weeks to take over every account and asset, freeze measurement changes, and sit down with the Vista team for a joint strategy session: Vista knows its patients and services, CDS knows the digital side, and the plan is agreed together before anything is built."
+    "summary": "Pre-launch (November 2026). Take over every account, freeze measurement changes, and sit down with Vista before anything is built."
    },
    {
     "id": "P1",
-    "name": "Audit, baseline & Discovery",
+    "name": "Pre-launch — audit and discovery",
     "dur": "6 weeks · Months 1–2",
     "from": "2026-11-09",
     "to": "2026-12-18",
     "gate": "Gate 1 (20 Nov) Discovery · Gate 2 (27 Nov) Design · Day 45 (16 Dec) roadmap & baselines",
-    "summary": "A full audit with the access CDS did not have before, so the baseline for every target is set on complete data. Measurement plan, single lead definition, GA4 rebuild, Respond.io clean-up, SEO and AI-visibility baselines, site structure and design approved. Social posting and the first small campaigns run in parallel from Month 1."
+    "summary": "Pre-launch through December 2026. Full audit, single lead definition, GA4 rebuild, SEO and AI-visibility baselines, site structure approved. January P1 fixes on the current WordPress site happen in this window."
    },
    {
     "id": "P2",
@@ -771,6 +771,66 @@
       "t": "Q4 report + Year-2 roadmap"
      }
     ]
+   },
+   {
+    "id": "K",
+    "name": "Workshops — capacity building",
+    "owner": "Programme Manager",
+    "support": "Vista reviewers",
+    "scope": "9",
+    "bars": [
+     {
+      "label": "One workshop per quarter",
+      "from": "2027-01-17",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     }
+    ]
+   },
+   {
+    "id": "L",
+    "name": "Patient reactivation",
+    "owner": "Account Manager",
+    "support": "Vista CS",
+    "scope": "4",
+    "bars": [
+     {
+      "label": "PJ 1,000/month and Ipoh ≥ 30/week, only where PDPA consent is on file",
+      "from": "2027-02-01",
+      "to": "2027-10-29",
+      "kind": "run"
+     }
+    ]
+   },
+   {
+    "id": "M",
+    "name": "B2B corporate stream",
+    "owner": "Account Manager",
+    "support": "Vista corporate-sales owner",
+    "scope": "2",
+    "bars": [
+     {
+      "label": "Q2 Screen Time, Eye Time — corporate screening",
+      "from": "2027-04-01",
+      "to": "2027-06-30",
+      "kind": "build"
+     }
+    ]
+   },
+   {
+    "id": "N",
+    "name": "Doctor explainer filming",
+    "owner": "Content Lead",
+    "support": "Vista clinical",
+    "scope": "3",
+    "bars": [
+     {
+      "label": "One filming day per region per quarter",
+      "from": "2027-01-17",
+      "to": "2027-10-29",
+      "kind": "cadence"
+     }
+    ]
    }
   ],
   "monthly": [
@@ -1039,7 +1099,7 @@
     "platforms": "—",
     "window": "—",
     "owner": "Head of Digital Solutions",
-    "note": "Seasonal top-ups and pilots; unspent reserve returns to evergreen quarterly"
+    "note": "Vista's Q1 2027 plan proposes RM180,000, of which digital lines are RM99,000 (media RM54,000 = search RM30,000 + social RM24,000; creative RM24,000; website/SEO RM12,000; tracking RM9,000). That is about RM18,000 of media a month, against the RM50,000/month planning assumption in this roadmap and a 2026 run-rate of about RM75,000. Weighting is set at the Day-30 audit once Vista confirms which figure governs 2027. Both figures are shown until then. These are Vista's own plan figures, not CDS fees."
    }
   ],
   "team": [
@@ -1362,6 +1422,46 @@
     ],
     "core": "Channel audit and brand set-up; monthly social mix on Instagram, cross-published to Facebook; TikTok BM re-cuts; community management within 4 business hours; monthly social report",
     "shared": "Motion and design assets with the UX/UI Lead; doctor-led series and copy with the Content Lead; boosting and paid creative with the Paid Media Lead"
+   },
+   {
+    "role": "Vista named reviewer — one per language",
+    "tier": "Client",
+    "alloc": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "core": "Same-day or agreed-SLA sign-off on EN, BM and ZH copy before it is scheduled",
+    "shared": "Clinical review with the Medical Director"
+   },
+   {
+    "role": "Vista corporate-sales owner",
+    "tier": "Client",
+    "alloc": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "core": "Owns the Q2 corporate screening stream and the company list",
+    "shared": "With the Account Manager on the pitch pack and the source code"
    }
   ],
   "kpis": [
@@ -1484,6 +1584,22 @@
     "m6": "≥ 90%",
     "m12": "≥ 90%",
     "src": "Action log"
+   },
+   {
+    "k": "Revenue pace vs RM9.2m / month",
+    "baseline": "Vista's 2027 target across 15 branches (moonshot RM11.96m). Not linked to campaigns today.",
+    "m4": "Read monthly by region",
+    "m6": "Read monthly by region (KV 50 · North 27 · JB 15 · other 8)",
+    "m12": "Read monthly",
+    "src": "Vista finance. Marketing owns qualified leads and bookings; Operations owns attendance and conversion."
+   },
+   {
+    "k": "Leads with a known source (SOI tracker)",
+    "baseline": "Vista's reported split does not add to 100% (15% unaccounted)",
+    "m4": "Source code on every new lead",
+    "m6": "Reported monthly",
+    "m12": "Reported monthly",
+    "src": "Respond.io source field"
    }
   ],
   "risks": [
@@ -1546,6 +1662,63 @@
     "owner": "Head of Digital Solutions",
     "mit": "Terms tabled 30 Jul; decision requested 31 Aug; Year-2 plan at SteerCo 4",
     "fallback": "Month-to-month extension clause; 30-day transition-out already in the proposal"
+   },
+   {
+    "r": "Price conflicts between branches (LASIK RM1,998 vs RM2,198 Cheras, and others)",
+    "owner": "Account Manager",
+    "mit": "One confirmed price list with inclusions before any price is published",
+    "fallback": "Run without a price line until Vista confirms the figure for that branch"
+   },
+   {
+    "r": "Doctor availability over CNY, Raya and ESCRS",
+    "owner": "Account Manager",
+    "mit": "Filming days and campaign talent booked around those windows",
+    "fallback": "Facility and equipment stories, not doctor-led, in those weeks"
+   },
+   {
+    "r": "A branch relocation (Kuantan / SES) changes the 15-branch list",
+    "owner": "Programme Manager",
+    "mit": "Branch list confirmed in the first weeks; pages are data, not hard-coded",
+    "fallback": "Keep the live page live until the new address is confirmed"
+   },
+   {
+    "r": "Hungry Ghost Month (August) is a low season",
+    "owner": "Paid Media Lead",
+    "mit": "Lighter August activity in the calendar",
+    "fallback": "Shift that week's weight into July or September"
+   },
+   {
+    "r": "Reactivation lists used without consent",
+    "owner": "Account Manager",
+    "mit": "PDPA check before any reactivation send",
+    "fallback": "Do not send. Build the consented list forward."
+   }
+  ],
+  "checkpoints": [
+   {
+    "id": "CP0",
+    "when": "17 Jan 2027",
+    "what": "Vista quarterly checkpoint — campaign ready"
+   },
+   {
+    "id": "CP1",
+    "when": "31 Jan 2027",
+    "what": "First in-market read"
+   },
+   {
+    "id": "CP2",
+    "when": "21 Feb 2027",
+    "what": "Mid-campaign review; reserve released here in Vista's Q1 plan"
+   },
+   {
+    "id": "CP3",
+    "when": "14 Mar 2027",
+    "what": "Quarterly checkpoint"
+   },
+   {
+    "id": "CP4",
+    "when": "end Mar 2027",
+    "what": "Quarter close"
    }
   ]
  },

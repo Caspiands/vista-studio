@@ -1,4 +1,0 @@
-+  <p class="lede">The search workstream from the programme roadmap, with the content workstream it depends on. In-market Month 1 is January 2027. November and December 2026 are pre-launch fixes on the current WordPress site (titles, descriptions, H1s). Dates on the bars still show that pre-launch work. Blue bars are one-off build work, green is monthly execution, purple is a recurring cadence. Diamonds are milestones; hover any bar for dates.</p>
-   <div class="card">
-     <div class="filters" id="g-filters"></div>
-     <div class="tscroll"><svg id="c-gantt" viewBox="0 0 1240 100"></svg></div>

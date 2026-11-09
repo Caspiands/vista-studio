@@ -227,8 +227,18 @@ a{color:var(--accent)}
   <div class="card"><div class="tscroll" id="pxptable"></div></div>
 </section>
 
+<section id="themes">
+  <h2>Vista's 2027 themes, and the campaigns that execute them</h2>
+  <p class="lede">The four quarterly themes in Vista's Marketing Plan 2027 are the top layer. The CDS campaigns stay, and each one sits under the theme it carries out.</p>
+  <div class="card"><div class="tscroll"><table class="data"><thead><tr><th>Quarter · Vista theme</th><th>Big event and promotions</th><th>Vista audiences</th><th>CDS campaigns</th></tr></thead><tbody>
+  <tr><td>Q1 Jan–Mar · Moments Worth Seeing</td><td>Eye Carnival (end Feb) · LASIK RM1,998 · Cataract RM5,998 · CNY and Raya · school-reopening screenings</td><td>Adult children 30–50 · active adults 55–75 · young families</td><td>S1 · S2 · C1 · C2 · C3</td></tr>
+  <tr><td>Q2 Apr–Jun · Screen Time, Eye Time</td><td>Workplace Eye Wellness Day (7 Apr, proposed) · corporate eye-check · Parents' Day · Dry Eye Spa / BlephEx RM198</td><td>Corporate HR · working adults 25–55 · insurance holders · adult children</td><td>C4 · C2 · C5 · L1 · B1</td></tr>
+  <tr><td>Q3 Jul–Sep · See the World</td><td>Eye Fair, Merdeka week (proposed) · Merdeka 70 · travel-ready check · medical tourism package</td><td>Malaysians 55+ travelling · Singapore, Batam and Medan · expats and MM2H</td><td>S3 · S4 · T1 · T2</td></tr>
+  <tr><td>Q4 Oct–Dec · World Sight Day</td><td>World Sight Day (14 Oct) · year-end benefits · Deepavali · World Diabetes Day · 12.12 · second eye</td><td>Policyholders · unused benefits · school-break families · people with diabetes</td><td>S5 · C2 · C3 · L1 · I1 · D1</td></tr>
+  </tbody></table></div></div>
+</section>
 <section id="gantt">
-  <h2>Campaign calendar, Nov 2026 – Oct 2027</h2>
+  <h2>Campaign calendar — pre-launch, then Jan–Dec 2027</h2>
   <p class="lede">Always-on programmes run all year with heavier weeks shaded darker; seasonal and explore campaigns sit on their own rows. “Explore” is a scoped trial Vista can scale, hold or stop — it is not a test of whether the work matters. Vertical lines mark festivals and programme gates. Hover a bar for dates; select a row to open its brief.</p>
   <div class="card"><div class="tscroll"><svg id="g" role="img" aria-label="Campaign Gantt chart"></svg></div>
   <div class="legend"><span><i style="background:var(--s1)"></i>Always-on</span><span><i style="background:var(--s1);opacity:.45"></i>Always-on, lighter weeks</span><span><i style="background:var(--s5)"></i>Seasonal</span><span><i style="background:var(--s6)"></i>Explore</span><span><i class="ln" style="background:var(--fest)"></i>Festival or eye-health day</span><span><i class="ln" style="background:var(--gate)"></i>Programme gate</span></div></div>
@@ -245,6 +255,18 @@ a{color:var(--accent)}
   <h2>Monthly content plan — indicative topics</h2>
   <p class="lede">Topic ideas for each month, in slot order, with the campaigns live that month. We call this our content. A piece written here may later be boosted, so the plan is not labelled organic or paid. These are the angles, not final posts: the month's posts are agreed with Vista at the monthly planning meeting. A trending slot for Gen Z can be turned around within 48 hours, because a trend is gone after that. Every piece still clears MAB 3/2023 or carries its KKLIU number.</p>
   <div class="months" id="months"></div>
+<div class="card" style="margin-top:14px"><h3>Key dates 2027</h3><p style="font-size:13px;color:var(--text-secondary)">Ramadan (8 Feb) and Hari Raya (10 Mar) are tentative until the moon sighting. Hungry Ghost Month in August is a lighter month.</p><div class="tscroll"><table class="data"><thead><tr><th>Date</th><th>Moment</th><th>What it triggers</th></tr></thead><tbody>
+<tr><td>1 Jan · 4 Jan</td><td>New Year · school term</td><td>Kids “see the board”; holiday-check push closes</td></tr>
+<tr><td>22 Jan</td><td>Website go-live · Thaipusam</td><td>Go-live; educational greeting</td></tr>
+<tr><td>6 Feb · 8 Feb</td><td>Chinese New Year · Ramadan (tentative)</td><td>ZH reunion reel; BM Ramadan series; adjusted hours</td></tr>
+<tr><td>end Feb</td><td>Vista Eye Carnival</td><td>Registration per branch</td></tr>
+<tr><td>10 Mar</td><td>Hari Raya (tentative) · Glaucoma Week</td><td>Raya push; glaucoma carousel</td></tr>
+<tr><td>7 Apr</td><td>Workplace Eye Wellness Day (proposed)</td><td>Corporate screening launch</td></tr>
+<tr><td>Aug</td><td>Hungry Ghost Month</td><td>Lighter activity</td></tr>
+<tr><td>31 Aug</td><td>Merdeka 70 · Eye Fair (proposed)</td><td>BM creative; travel-ready check</td></tr>
+<tr><td>14 Oct · 14 Nov · 12 Dec</td><td>World Sight Day · World Diabetes Day · 12.12</td><td>Screening drive; diabetic eye; one approved day</td></tr>
+</tbody></table></div></div>
+
   <div class="card" id="cal"></div>
 </section>
 
@@ -326,14 +348,14 @@ function pxp(){
 }
 
 /* gantt */
-const T0=Date.parse('2026-11-01'),T1=Date.parse('2027-11-01');
+const T0=Date.parse('2026-11-01'),T1=Date.parse('2028-01-01');
 function gantt(){
   const svg=$('g');svg.innerHTML='';
   const L=230,R=16,top=40,rh=30,W=Math.max(900,svg.parentElement.clientWidth||900),rows=D.campaigns.length,H=top+rows*rh+34;
   svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);
   const X=d=>L+(Date.parse(d)-T0)/(T1-T0)*(W-L-R);
-  const months=[];for(let i=0;i<12;i++){const dt=new Date(Date.UTC(2026,10+i,1));months.push(dt.toISOString().slice(0,7));}
-  months.forEach((m,i)=>{const x=X(m+'-01');svg.appendChild(el('line',{x1:x,x2:x,y1:top-8,y2:H-26,class:'gl'}));const nx=X((i<11?months[i+1]:'2027-11')+'-01');const t=el('text',{x:(x+nx)/2,y:top-14,class:'tick','text-anchor':'middle'});t.textContent=ML(m);svg.appendChild(t);});
+  const months=[];for(let i=0;i<14;i++){const dt=new Date(Date.UTC(2026,10+i,1));months.push(dt.toISOString().slice(0,7));}
+  months.forEach((m,i)=>{const x=X(m+'-01');svg.appendChild(el('line',{x1:x,x2:x,y1:top-8,y2:H-26,class:'gl'}));const nx=X((i<13?months[i+1]:'2028-01')+'-01');const t=el('text',{x:(x+nx)/2,y:top-14,class:'tick','text-anchor':'middle'});t.textContent=ML(m);svg.appendChild(t);});
   D.campaigns.forEach((c,i)=>{
     const y=top+i*rh;const col=css(colOf(c));
     if(i%2===0)svg.appendChild(el('rect',{x:0,y:y,width:W,height:rh,fill:css('--chip'),opacity:.45}));

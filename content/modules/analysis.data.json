@@ -216,7 +216,7 @@
    "area": "Compliance",
    "scope": "All",
    "title": "Advertising-rule exposure across site, ads and social (flag only)",
-   "evidence": "'Top #1' / 'Best #1' in 8 page titles; 'patients are guaranteed the highest level of service'; 'painless laser surgery'; '99% safety rate' (press clipping); 'most awarded'; Google Ads sitelinks 'The Best Eye Specialists', 'Award Winning'; Newsweek '#23 Refractive Eye Surgery' on the FB cover; public discount pricing on procedure and assessment offers; procedure-led promotions; 'EVO Toric ICL 2,000' milestone. KKLIU 0945 / EXP 31.12.2027 in the site footer; no KKLIU reference on 2026 social posts. No testimonials or before/after images found.",
+   "evidence": "'Top #1' / 'Best #1' in 8 page titles; 'patients are guaranteed the highest level of service'; 'painless laser surgery'; '99% safety rate' (press clipping); 'most awarded'; Google Ads sitelinks 'The Best Eye Specialists', 'Award Winning'; Newsweek '#23 Refractive Eye Surgery' on the FB cover; public discount pricing on procedure and assessment offers; procedure-led promotions; 'EVO Toric ICL 2,000' milestone. KKLIU 0945 / EXP 31.12.2027 in the site footer; no KKLIU reference on 2026 social posts. No testimonials or before/after images found. Crawl 9 Nov 2026: 35 titles or H1s on vista.com.my still carry flagged wording, including 'Over 455,000 Happy Patients' on centre pages. The ad library's '27 Years of Eye Care Experience' line is to be confirmed as a factual claim before it is reused.",
    "impact": "The RFP requires an approval trail evidencing medical and compliance sign-off; none of the observed claims carries one.",
    "source": "Site crawl · Social profiles · Google SERP"
   },
